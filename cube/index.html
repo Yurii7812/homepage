@@ -5,11 +5,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>I love U Rubik's Cube</title>
 <link rel="stylesheet" href="../style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<style>
+  #view { width: 100%; height: 360px; }
+  input[type=text] { width: 100%; font-size: 1rem; padding: 6px; box-sizing: border-box; }
+  #error { color: #b00020; min-height: 1.5em; }
+</style>
 </head>
 <body>
 <p><a href="../">← トップへ</a></p>
 <h1>I love U Rubik's Cube</h1>
-<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
-<model-viewer src="I_love_U_Rubiks_Cube.glb" alt="I love U Rubik's Cube" camera-controls auto-rotate></model-viewer>
+
+<div id="view"></div>
+
+<p>このキューブが表している文字: <strong id="decoded"></strong></p>
+
+<p>
+  <label>文字を入れる（8バイトまで）<br>
+    <input id="text" type="text" value="I love U">
+  </label>
+</p>
+<p>
+  <span id="bytes"></span>
+  <button id="make">キューブを作る</button>
+</p>
+<p id="error"></p>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { textToColors, colorsToText, stickerIndex } from './cube-core.js';
+
+const FACE_HEX = ['#ffffff', '#d50000', '#009b48', '#ffd500', '#ff6d00', '#0046ad'];
+const DIRS = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
+const BODY = '#111111';
+
+const view = document.getElementById('view');
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(view.clientWidth, view.clientHeight);
+view.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(35, view.clientWidth / view.clientHeight, 0.1, 100);
+camera.position.set(5, 4, 7);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+const light = new THREE.DirectionalLight(0xffffff, 1.5);
+light.position.set(3, 5, 4);
+scene.add(light);
+
+// 小立方体 26 個（中心の空間は除く）。面ごとに色を持たせる。
+const geometry = new THREE.BoxGeometry(0.96, 0.96, 0.96);
+const cubies = [];
+for (let x = -1; x <= 1; x++) {
+  for (let y = -1; y <= 1; y++) {
+    for (let z = -1; z <= 1; z++) {
+      if (x === 0 && y === 0 && z === 0) continue;
+      const pos = [x, y, z];
+      const materials = DIRS.map(() => new THREE.MeshStandardMaterial({ color: BODY, roughness: 0.4 }));
+      const mesh = new THREE.Mesh(geometry, materials);
+      mesh.position.set(x, y, z);
+      scene.add(mesh);
+      cubies.push({ pos, materials });
+    }
+  }
+}
+
+// 状態（シールの色）を表示に反映する
+function show(colors) {
+  for (const { pos, materials } of cubies) {
+    DIRS.forEach((d, i) => {
+      const onSurface = pos[0] * d[0] + pos[1] * d[1] + pos[2] * d[2] === 1;
+      materials[i].color.set(onSurface ? FACE_HEX[colors[stickerIndex(pos, d)]] : BODY);
+    });
+  }
+}
+
+const decodedEl = document.getElementById('decoded');
+const textEl = document.getElementById('text');
+const bytesEl = document.getElementById('bytes');
+const errorEl = document.getElementById('error');
+
+function countBytes(text) {
+  return new TextEncoder().encode(text).length;
+}
+
+// 文字 → キューブを作って表示 → 表示されている色から文字を読み直す
+function make(text) {
+  try {
+    const colors = textToColors(text);
+    show(colors);
+    decodedEl.textContent = colorsToText(colors);
+    errorEl.textContent = '';
+  } catch (e) {
+    errorEl.textContent = e.message;
+  }
+}
+
+textEl.addEventListener('input', () => {
+  bytesEl.textContent = countBytes(textEl.value) + ' / 8 バイト';
+});
+textEl.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') make(textEl.value);
+});
+document.getElementById('make').addEventListener('click', () => make(textEl.value));
+
+bytesEl.textContent = countBytes(textEl.value) + ' / 8 バイト';
+make(textEl.value);
+
+function resize() {
+  renderer.setSize(view.clientWidth, view.clientHeight);
+  camera.aspect = view.clientWidth / view.clientHeight;
+  camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', resize);
+
+renderer.setAnimationLoop(() => {
+  controls.update();
+  renderer.render(scene, camera);
+});
+</script>
 </body>
 </html>
