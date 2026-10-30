@@ -262,8 +262,15 @@ $('cube').addEventListener('error', () => {
   $('status').textContent = t('status_loaderr') + ' ' + t('help_3d');
 });
 
-// 現在のキューブの状態（シールの色 54 個）
+// 現在のキューブの状態（シールの色 54 個）。言語を切り替えて読み直したときは、その状態に戻す。
 let current = textToColors('I love U');
+const savedState = sessionStorage.getItem('cubeState');
+sessionStorage.removeItem('cubeState');
+if (savedState && /^[0-5]{54}$/.test(savedState)) current = [...savedState].map(Number);
+// 言語の切り替えボタンを押したら、読み直す前に状態を保存する
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.langsw')) sessionStorage.setItem('cubeState', current.join(''));
+}, true);
 
 // 3D 表示：状態から GLB を作り直して、model-viewer に渡す
 let modelUrl = null;
@@ -922,25 +929,10 @@ $('text').addEventListener('keydown', (e) => {
 });
 $('make').addEventListener('click', () => make($('text').value));
 
-// 言語を切り替えたとき、画面の文言を入れ替えて、表示を作り直す
-window.addEventListener('langchange', () => {
-  applyI18n();
-  $('net').setAttribute('aria-label', t('c_net_aria'));
-  renderKeys();
-  spinLabel();
-  $('bytesCount').textContent = t('c_bytes', { n: countBytes($('text').value) });
-  if (!steps.length) $('astep-title').textContent = t('c_anim_placeholder');
-  if (steps.length) {
-    playing = false;
-    showStep(stepIndex, false);
-  }
-  updateControls();
-  render();
-});
-
 $('bytesCount').textContent = t('c_bytes', { n: countBytes($('text').value) });
 $('astep-title').textContent = t('c_anim_placeholder');
 spinLabel();
+updateControls();
 render();
 window.cubeReady = true;
 </script>

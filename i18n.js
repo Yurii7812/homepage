@@ -398,19 +398,16 @@ export function applyI18n() {
   document.querySelectorAll('[data-i18n-alt]').forEach((el) => { el.alt = t(el.dataset.i18nAlt); });
 }
 
-// 言語を変える。ページは開き直さず、langchange の通知で画面を書き換える。
+// 言語を変える。保存してからページを読み直すので、どの画面も必ず同じ言語になる。
 export function setLang(lang) {
   try {
     localStorage.setItem('lang', lang);
   } catch (e) {
-    // 保存できなくても、この表示では切り替える
+    // 保存できないブラウザでは、読み直したあとは日本語になることがある
   }
   const url = new URL(location.href);
   url.searchParams.delete('lang');
-  history.replaceState(null, '', url);
-  applyI18n();
-  window.dispatchEvent(new Event('langchange'));
-  updateSwitch();
+  location.replace(url.toString());
 }
 
 // 右上の切り替え
