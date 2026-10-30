@@ -30,6 +30,10 @@
   .face { position: relative; display: grid; grid-template-columns: repeat(3, 22px); gap: 2px; background: #121417; padding: 2px; border-radius: 4px; }
   .face span { display: block; width: 22px; height: 22px; border-radius: 3px; }
   .face span.hl { outline: 3px solid #ffd54f; }
+  .face span[data-j] { cursor: pointer; }
+  .face span.pick { outline: 3px solid #4a7fd6; }
+  tr[data-s] { cursor: pointer; }
+  tr[data-s]:hover { background: #eef4ff; }
   .face b { position: absolute; top: -16px; left: 0; font-size: 0.8rem; color: #666; }
   /* アニメーションの説明 */
   #anim { border: 1px solid #ccc; border-radius: 8px; padding: 12px; margin: 12px 0; min-height: 220px; }
@@ -79,6 +83,42 @@
 <p class="note">シールの上をドラッグすると、その面が回ります。背景をドラッグすると、キューブの向きが変わります。</p>
 
 
+<details class="guide" open>
+<summary><strong>仕組みの全体（先にここを読んでください）</strong></summary>
+
+<h3>この仕組みで、やっていること</h3>
+<p>文字（最大 8 バイト）を、「キューブのピースの並べ方と向き」で表します。キューブを 1 つの状態にすると、その状態に対応する 1 つの数が決まります。逆に、その数から、キューブの状態と文字がもとに戻ります。</p>
+
+<h3>前提の言葉</h3>
+<ul>
+  <li><strong>キューブ</strong>: 小さい立方体 27 個でできています。真ん中の 6 個は動きません。動くのは、角 8 個（かど）と辺 12 個（へり）の、合わせて 20 個です。これを「ピース」と呼びます。</li>
+  <li><strong>シール</strong>: ピースの表面の色のところです。角のピースには 3 枚、辺のピースには 2 枚、真ん中には 1 枚あります。全部で 54 枚です。</li>
+  <li><strong>位置</strong>: 上・下・左・右・前・後の組み合わせで決まる、ピースが入る場所です。角は 8 か所、辺は 12 か所あります。</li>
+  <li><strong>番号</strong>: 解けた状態で、その位置にあるピースの番号です。角は 0〜7、辺は 0〜11 です。ピースは、もとの位置の番号で呼ばれます。</li>
+  <li><strong>並べ方</strong>: 位置 0 から順に、どの番号のピースが入っているかを並べたものです。例えば「2, 0, 1」なら、位置 0 に番号 2、位置 1 に番号 0、位置 2 に番号 1 のピースが入っています。</li>
+  <li><strong>向き</strong>: 同じピースでも、入れ方で向きが変わります。角は 3 通り（0・1・2）、辺は 2 通り（0・1）あります。</li>
+  <li><strong>階乗</strong>: 1 から n まで全部かけた数です。例えば 4! = 1×2×3×4 = 24 です。</li>
+  <li><strong>位取り</strong>: 10 進数で、一の位・十の位・百の位のように、位ごとに「いくつ分か」を数える方法です。同じ考え方で、ほかの数（3 進数・2 進数・16 進数）も作れます。</li>
+  <li><strong>バイト</strong>: 1 バイトは 0〜255 の数で、16 進数では 2 けたで書けます。8 バイトなら、0〜2<sup>64</sup>−1 の数（約 1.8×10<sup>19</sup> 通り）です。</li>
+</ul>
+
+<h3>なぜ、数と状態が 1 対 1 で結べるのか</h3>
+<ol>
+  <li><strong>状態の数</strong>: 辺の並べ方は 12!、角の並べ方は 8! の半分（偶数か奇数かの半分だけ）、角の向きは 3<sup>7</sup>、辺の向きは 2<sup>11</sup> です。全部かけると、約 4.3×10<sup>19</sup> 通りです。8 バイトは約 1.8×10<sup>19</sup> 通りなので、8 バイトの数は全部、どれか 1 つの状態に入ります。</li>
+  <li><strong>並べ方を数にする</strong>: 位置 0 から順に、「自分より右にあって、自分より小さい番号の数」を数えます。その数は、位置 i では 0 から（残りの数 − 1）までのどれかです。これを階乗の位取り（11!, 10!, …, 0!）で足すと、並べ方ごとに 1 つの数になります。位取りの表し方は 1 通りしかないので、並べ方と数は 1 対 1 です。</li>
+  <li><strong>向きを数にする</strong>: 角の向き 8 個は、3 進数の 7 桁で表します。最後の 1 個は、全部の合計が 3 の倍数になるように、残りから決まります。辺の向き 12 個は、2 進数の 11 桁で表します。最後の 1 個は、合計が偶数になるように決まります。
+  <br>なぜ残りの 1 個が決まるかというと、キューブを回してできる状態では、向きの合計がいつも決まった形になるからです。</li>
+  <li><strong>並べ方の偶数・奇数</strong>: キューブを 1 回回すと、角の並べ方と辺の並べ方は、どちらも偶数・奇数が同時に変わります。だから、角と辺で偶数・奇数は必ず同じです。辺の並べ方を決めると、角の並べ方は同じ偶数・奇数のグループの中から選べます。</li>
+  <li><strong>4 つの数をまとめる</strong>: e（辺の並べ方）・c（角の並べ方）・T（角の向き）・F（辺の向き）を、N = e + 12! × (c + 20160 × (T + 2187 × F)) でまとめます。N は 0 から約 4.3×10<sup>19</sup> まで、1 つずつ違う状態に対応します。8 バイトの数（2<sup>64</sup> より小さい N）だけを使います。</li>
+</ol>
+
+<h3>全体の流れ</h3>
+<p><strong>暗号化</strong>: 文字 → 番号（バイト）→ 8 バイトの 1 つの数 N → 4 つの数（e・c・T・F）→ ピースの並べ方と向き → 色をぬる</p>
+<p><strong>復号</strong>: 色を読む → ピースの並べ方と向き → 4 つの数 → 1 つの数 N → 8 バイト → 文字</p>
+
+<h3>展開図の見方</h3>
+<p>キューブを開いて平らにしたものです。U は上、D は下、F は前、B は後ろ、L は左、R は右の面です。展開図の上で、シールにマウスを重ねると、その位置の名前が出ます。クリックすると、そのピースのシールがすべて光ります。</p>
+</details>
 <h2>アニメーションで見る</h2>
 <p class="note">キューブの並べ方を「数字」にして、文字を入れたり取り出したりする仕組みです。ボタンを押すと、1 つずつ見られます。</p>
 <p class="ctrl">
@@ -96,6 +136,7 @@
   </p>
   <div id="astep-body"></div>
   <div class="net" id="net" hidden aria-label="キューブの展開図"></div>
+  <p class="tip" id="netInfo" hidden></p>
   <p class="note" id="netNote" hidden>展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
 </div>
 
@@ -151,6 +192,15 @@ const FACE_NAME = ['U', 'R', 'F', 'D', 'L', 'B'];
 // 展開図での位置（行, 列）
 const NET_POS = [[1, 2], [2, 3], [2, 2], [3, 2], [2, 1], [2, 4]];
 
+// シールの説明（マウスを重ねたときに出る）
+function stickerTitle(j) {
+  const { pos: P, n } = STICKER_POSITIONS[j];
+  const face = FACE_NAME[Math.floor(j / 9)];
+  if (P.join() === n.join()) return `${face}面の真ん中（動きません）`;
+  const corner = P.filter((v) => v !== 0).length === 3;
+  return `${face}面 ・ ${posName(P)}の${corner ? '角' : '辺'}`;
+}
+
 // 展開図を描く。色が -1 のシールは灰色にする。
 function drawNet(colors) {
   const net = $('net');
@@ -161,8 +211,9 @@ function drawNet(colors) {
     face.style.gridRow = NET_POS[f][0];
     face.style.gridColumn = NET_POS[f][1];
     face.innerHTML = `<b>${name}</b>` + Array.from({ length: 9 }, (_, i) => {
-      const c = colors[f * 9 + i];
-      return `<span style="background:${c < 0 ? '#d9dde2' : FACE_HEX[c]}"></span>`;
+      const j = f * 9 + i;
+      const c = colors[j];
+      return `<span data-j="${j}" title="${stickerTitle(j)}" style="background:${c < 0 ? '#d9dde2' : FACE_HEX[c]}"></span>`;
     }).join('');
     net.appendChild(face);
   });
@@ -228,7 +279,7 @@ function readOut() {
 
 function render() {
   show3d(current);
-  if (!$('net').hidden) drawNet(current);
+  if (!$('net').hidden && netFollowsCurrent) setNet(current);
   readOut();
 }
 
@@ -515,7 +566,8 @@ function pieceRows(homes, slots, perm, dirText, colors) {
   return slots.map((P, s) => {
     const shown = slotNormals(P).map((n) => NAME[colors[stickerIndex(P, n)]]).join('・');
     const k = perm[s];
-    return `<tr class="rv"><td>${posName(P)}</td><td>${shown}</td><td>${k}（もとは「${posName(homes[k])}」）</td><td>${dirText(s)}</td></tr>`;
+    const kind = homes === CORNER_HOMES ? 'c' : 'e';
+    return `<tr class="rv" data-kind="${kind}" data-s="${s}"><td>${posName(P)}</td><td>${shown}</td><td>${k}（もとは「${posName(homes[k])}」）</td><td>${dirText(s)}</td></tr>`;
   }).join('');
 }
 
@@ -616,6 +668,7 @@ function encodeSteps(text) {
       title: '4. 4 つの数を、キューブの並べ方と向きに変える',
       desc: '数字の番号を、ピースの並びと向きに変えます。これでキューブの形が決まります。',
       html: arrangementHtml(d, textToColors(text)),
+      netColors: textToColors(text),
     },
     {
       title: '5. キューブの色をぬる',
@@ -640,6 +693,7 @@ function decodeSteps(colors) {
       title: '2. ピースの並びと向きを見る',
       desc: 'どのピースが、どこに、どの向きで入っているかを見ます。',
       html: arrangementHtml(d, colors),
+      netColors: colors,
     },
     {
       title: '3. 4 つの数にする',
@@ -659,6 +713,68 @@ function decodeSteps(colors) {
   ];
 }
 
+// 展開図に見せている色と、その読み取り結果（クリックで使う）
+let netD = null;
+let netFollowsCurrent = true;
+
+function setNet(colors) {
+  drawNet(colors);
+  try {
+    netD = decodeDetails(colors);
+  } catch (e) {
+    netD = null;
+  }
+  $('netInfo').hidden = true;
+}
+
+// そのシールが、どの位置（角か辺か）にあるか
+function slotNormalIdx(P) {
+  return slotNormals(P).map((n) => stickerIndex(P, n));
+}
+
+// 位置 s（角か辺）を選んで、展開図で光らせ、説明を出す
+function showPick(corner, s, d) {
+  const homes = corner ? CORNER_HOMES : EDGE_HOMES;
+  const P = homes[s];
+  const idx = new Set(slotNormalIdx(P));
+  $('net').querySelectorAll('span[data-j]').forEach((sp) => {
+    sp.classList.toggle('pick', idx.has(+sp.dataset.j));
+  });
+  const k = (corner ? d.cornerPerm : d.edgePerm)[s];
+  const kind = corner ? '角' : '辺';
+  const dir = corner ? `基準の色（白か黄）が ${d.tw[s]} 番目` : `基準の色が ${d.fl[s]} 番目`;
+  $('netInfo').innerHTML =
+    `<strong>${posName(P)}の${kind}</strong>には、今、番号 ${k} のピースが入っています。<br>` +
+    `この番号のピースは、もとは「${posName(homes[k])}」の${kind}でした。<br>` +
+    `向き: ${dir}（0 から数えます）`;
+  $('netInfo').hidden = false;
+}
+
+// 展開図のシールをクリックしたとき
+function selectSticker(j) {
+  if (!netD) return;
+  const { pos: P, n } = STICKER_POSITIONS[j];
+  $('net').querySelectorAll('span[data-j]').forEach((sp) => sp.classList.remove('pick'));
+  if (P.join() === n.join()) {
+    $('netInfo').textContent = 'この真ん中のシールは、キューブの中心にあって動きません。';
+    $('netInfo').hidden = false;
+    return;
+  }
+  const corner = P.filter((v) => v !== 0).length === 3;
+  const homes = corner ? CORNER_HOMES : EDGE_HOMES;
+  showPick(corner, homes.findIndex((h) => h.join() === P.join()), netD);
+}
+
+$('net').addEventListener('click', (e) => {
+  const sp = e.target.closest('span[data-j]');
+  if (sp) selectSticker(+sp.dataset.j);
+});
+// 並びの表の行をクリックしたとき
+document.addEventListener('click', (e) => {
+  const tr = e.target.closest('tr[data-s]');
+  if (tr && netD && !$('net').hidden) showPick(tr.dataset.kind === 'c', +tr.dataset.s, netD);
+});
+
 // アニメーションの進み方（再生中は、ひとつ進むたびに次を待つ）
 let steps = [];
 let stepIndex = 0;
@@ -673,7 +789,6 @@ function updateControls() {
 // 展開図の色を、ひとつずつ読んで光らせる（読み取り）か、ひとつずつ塗る（暗号化）
 async function paint(p, g) {
   if (p.mode === 'read') {
-    drawNet(current);
     const all = [...$('net').querySelectorAll('span')];
     for (const s of all) {
       if (g !== gen) return;
@@ -683,6 +798,7 @@ async function paint(p, g) {
     }
     return;
   }
+  netD = null;
   drawNet(new Array(54).fill(-1));
   const cells = [...$('net').querySelectorAll('span')];
   for (let i = 0; i < 54; i++) {
@@ -701,11 +817,15 @@ async function showStep(i, autoRun) {
   $('astep-title').textContent = st.title;
   $('astep-desc').textContent = st.desc;
   $('astep-body').innerHTML = st.html || '';
-  // 展開図は、色を読む・色を塗る手順のときだけ出す
-  const showNet = Boolean(st.paint);
+  // 展開図は、色を読む・塗る・並びを説明する手順のときだけ出す
+  const showNet = Boolean(st.paint || st.netColors);
   $('net').hidden = !showNet;
   $('netNote').hidden = !showNet;
-  if (!showNet) drawNet(current);
+  $('netInfo').hidden = true;
+  netFollowsCurrent = !st.netColors;
+  if (showNet && !(st.paint && st.paint.mode === 'fill')) {
+    setNet(st.paint ? st.paint.colors : st.netColors);
+  }
   updateControls();
   if (st.paint) await paint(st.paint, g);
   for (const el of $('astep-body').querySelectorAll('.rv')) {
