@@ -293,15 +293,14 @@ function readOut() {
     $('decodeList').innerHTML = '';
     return;
   }
-  $('decodeList').innerHTML = `
-    <p><strong>${t('d_list_h')}</strong></p>
-    <p>${t('d_corner_perm')}: <code>${d.cornerPerm.join(' ')}</code></p>
-    <p>${t('d_corner_tw')}: <code>${d.tw.join(' ')}</code></p>
-    <p>${t('d_edge_perm')}: <code>${d.edgePerm.join(' ')}</code></p>
-    <p>${t('d_edge_fl')}: <code>${d.fl.join(' ')}</code></p>`;
   const inRange = d.N < TWO_POW_64;
   $('range').textContent = inRange ? '' : t('c_range_warn');
   $('decoded').textContent = inRange ? numberToText(d.N) : t('c_unreadable');
+  // 入力欄の下には、復号された文字だけを出す（textContent なので、文字をそのまま表示する）
+  const line = document.createElement('p');
+  line.textContent = `${t('d_text_label')}: ${$('decoded').textContent}`;
+  $('decodeList').innerHTML = '';
+  $('decodeList').appendChild(line);
   const bytes = numberToBytes(d.N);
   $('bytes').innerHTML = bytes
     .map((b) => `<div><code>${b.toString(16).padStart(2, '0')}</code></div>`)
