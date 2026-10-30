@@ -10,8 +10,12 @@
   model-viewer { width: 100%; height: 360px; background-color: #e9ecef; }
   input[type=text] { width: 100%; font-size: 1rem; padding: 6px; box-sizing: border-box; }
   #error { color: #b00020; min-height: 1.5em; }
-  .turns { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin: 12px 0; }
-  .turns button { padding: 6px 0; font-size: 1rem; }
+  /* 回すボタン（キューブの面に出る） */
+  model-viewer > .hot { display: none; }
+  model-viewer.turning > .hot { display: block; }
+  .hot { width: 34px; height: 34px; border-radius: 50%; border: 2px solid #222; background: #fff; color: #222; font-size: 18px; line-height: 1; padding: 0; cursor: pointer; transform: translate(-50%, -50%); }
+  .hot:hover { background: #ffd54f; }
+  .hot[hidden] { display: none; }
   table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
   th, td { border-bottom: 1px solid #ccc; padding: 4px 6px; text-align: left; }
   td.num { font-family: monospace; text-align: right; }
@@ -35,9 +39,8 @@
 <div class="net" id="net" aria-label="キューブの展開図"></div>
 <p class="note">展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
 
-<div class="turns" id="turns"></div>
-<p><button id="spin">自動で回す</button></p>
-<p class="note">ボタンでキューブを回せます。回すと、読み取られる文字も変わります。</p>
+<p><button id="turnMode">回す</button> <button id="spin">自動で回す</button></p>
+<p class="note">「回す」を押すと、キューブの面にボタンが出ます。↻ は時計回り、↺ は反時計回りです（面の外から見て）。回すと、読み取られる文字も変わります。</p>
 
 <p>
   <label>文字を入れる（8バイトまで）<br>
@@ -84,7 +87,15 @@ import {
 } from './cube-core.js';
 import { cubeGlb } from './gltf.js';
 
-const MOVES = ['U', "U'", 'R', "R'", 'F', "F'", 'D', "D'", 'L', "L'", 'B', "B'"];
+// 面の位置（外向きの法線・右向き・上向き）。3D の面と回すボタンの配置に使う。
+const FACES = [
+  { name: 'U', n: [0, 1, 0], right: [1, 0, 0], up: [0, 0, -1] },
+  { name: 'R', n: [1, 0, 0], right: [0, 0, -1], up: [0, 1, 0] },
+  { name: 'F', n: [0, 0, 1], right: [1, 0, 0], up: [0, 1, 0] },
+  { name: 'D', n: [0, -1, 0], right: [1, 0, 0], up: [0, 0, 1] },
+  { name: 'L', n: [-1, 0, 0], right: [0, 0, 1], up: [0, 1, 0] },
+  { name: 'B', n: [0, 0, -1], right: [-1, 0, 0], up: [0, 1, 0] },
+];
 
 const $ = (id) => document.getElementById(id);
 
@@ -184,20 +195,56 @@ function make(text) {
   render();
 }
 
-// 面を回す（1 手）
-function turn(move) {
-  current = applyMoves(current, move);
+// 面を回す（1 手）。clockwise が true なら時計回り（面の外から見て）。
+// applyMoves の「X」は反時計回りなので、時計回りは「X'」を使う。
+function turn(face, clockwise) {
+  current = applyMoves(current, clockwise ? face + "'" : face);
   render();
 }
 
-// 回すボタン
-const turnsEl = $('turns');
-for (const m of MOVES) {
-  const b = document.createElement('button');
-  b.textContent = m;
-  b.addEventListener('click', () => turn(m));
-  turnsEl.appendChild(b);
+// 面の中心の外側に、時計回り・反時計回りのボタンを置く
+const cube = $('cube');
+const hotspots = [];
+for (const f of FACES) {
+  const at = (u, v) => f.n.map((x, i) => x * 1.62 + u * f.right[i] + v * f.up[i]);
+  const place = [at(-0.5, 0), at(0.5, 0)];
+  [true, false].forEach((clockwise, k) => {
+    const b = document.createElement('button');
+    b.className = 'hot';
+    b.slot = `hotspot-${f.name}-${clockwise ? 'cw' : 'ccw'}`;
+    const [x, y, z] = place[k];
+    b.dataset.position = `${x}m ${y}m ${z}m`;
+    b.textContent = clockwise ? '↻' : '↺';
+    b.title = `${f.name} ${clockwise ? '時計回り' : '反時計回り'}`;
+    b.addEventListener('click', (e) => {
+      e.stopPropagation();
+      turn(f.name, clockwise);
+    });
+    cube.appendChild(b);
+    hotspots.push({ el: b, n: f.n });
+  });
 }
+
+// 向こう側にある面のボタンは隠す（カメラの向きから判断）
+function updateHotspots() {
+  const o = cube.getCameraOrbit();
+  const cam = [
+    Math.sin(o.phi) * Math.sin(o.theta),
+    Math.cos(o.phi),
+    Math.sin(o.phi) * Math.cos(o.theta),
+  ];
+  for (const h of hotspots) {
+    h.el.hidden = h.n[0] * cam[0] + h.n[1] * cam[1] + h.n[2] * cam[2] < 0.2;
+  }
+}
+cube.addEventListener('camera-change', updateHotspots);
+updateHotspots();
+
+$('turnMode').addEventListener('click', () => {
+  const on = !cube.classList.contains('turning');
+  cube.classList.toggle('turning', on);
+  $('turnMode').textContent = on ? '回すのを終える' : '回す';
+});
 
 // 自動で回す（オン・オフ）
 $('spin').addEventListener('click', () => {
