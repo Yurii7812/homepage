@@ -25,6 +25,7 @@
   .facebtns button { padding: 12px 0; font-size: 1.1rem; touch-action: none; cursor: grab; }
   .facebtns button small { display: block; font-size: 0.9rem; opacity: 0.7; }
   #complete { color: #189a5d; }
+  .net[hidden] { display: none; }
   .net { display: grid; grid-template-columns: repeat(4, auto); grid-template-rows: repeat(3, auto); gap: 26px 10px; justify-content: center; margin: 16px 0 8px; }
   .face { position: relative; display: grid; grid-template-columns: repeat(3, 22px); gap: 2px; background: #121417; padding: 2px; border-radius: 4px; }
   .face span { display: block; width: 22px; height: 22px; border-radius: 3px; }
@@ -74,8 +75,6 @@
 <div id="keys"></div>
 <p class="note">シールの上をドラッグすると、その面が回ります。背景をドラッグすると、キューブの向きが変わります。</p>
 
-<div class="net" id="net" aria-label="キューブの展開図"></div>
-<p class="note">展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
 
 <h2>アニメーションで見る</h2>
 <p class="ctrl">
@@ -87,6 +86,8 @@
   <h3 id="astep-title">ボタンを押すと、ここに手順が出ます。</h3>
   <p id="astep-desc"></p>
   <div id="astep-body"></div>
+  <div class="net" id="net" hidden aria-label="キューブの展開図"></div>
+  <p class="note" id="netNote" hidden>展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
   <p class="ctrl">
     <button id="animPrev">前へ</button>
     <button id="animPlay">再生</button>
@@ -103,7 +104,7 @@
 <h2>読み方</h2>
 <p>キューブは、ピースの並び方と向きの組み合わせで、ひとつの数になります。その数を 8 バイトに分けて、文字にします。</p>
 <ol>
-  <li>キューブの 54 枚のシールの色を読む（上の展開図）</li>
+  <li>キューブの 54 枚のシールの色を読む</li>
   <li>どのピースがどこにあるか（並び）と、向きを求める</li>
   <li>それを 4 つの数（辺の並び・角の並び・角の向き・辺の向き）に直す（下の表）</li>
   <li>4 つの数を組み立てて、1 つの数 N にする</li>
@@ -172,7 +173,7 @@ function hasWebGL() {
     return false;
   }
 }
-const HELP_3D = '下の展開図で同じ色を見られます。';
+const HELP_3D = 'シールの色は「アニメーションで見る」の展開図で確かめられます。';
 if (!hasWebGL()) {
   $('cube').hidden = true;
   $('status').textContent = '3D 表示: このブラウザでは WebGL が使えません。Brave なら brave://settings/system で「ハードウェア アクセラレーションを使用」をオンにしてください。' + HELP_3D;
@@ -223,7 +224,7 @@ function readOut() {
 
 function render() {
   show3d(current);
-  drawNet(current);
+  if (!$('net').hidden) drawNet(current);
   readOut();
 }
 
@@ -605,6 +606,8 @@ async function paint(p, g) {
 async function showStep(i, autoRun) {
   gen++;
   const g = gen;
+  $('net').hidden = false;
+  $('netNote').hidden = false;
   stepIndex = i;
   const st = steps[i];
   $('astep-title').textContent = st.title;
