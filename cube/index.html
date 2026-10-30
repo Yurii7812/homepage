@@ -23,6 +23,7 @@
   .warn { color: #b00020; }
   .facebtns { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin: 10px 0; }
   .facebtns button { padding: 12px 0; font-size: 1.1rem; touch-action: none; cursor: grab; }
+  .facebtns button small { display: block; font-size: 0.9rem; opacity: 0.7; }
   #complete { color: #189a5d; }
   .net { display: grid; grid-template-columns: repeat(4, auto); grid-template-rows: repeat(3, auto); gap: 26px 10px; justify-content: center; margin: 16px 0 8px; }
   .face { position: relative; display: grid; grid-template-columns: repeat(3, 22px); gap: 2px; background: #121417; padding: 2px; border-radius: 4px; }
@@ -271,13 +272,14 @@ function shuffle() {
 $('shuffle').addEventListener('click', shuffle);
 
 // 面ボタン: 押してスワイプすると、その面が回る（U・D は左右、ほかは上下）
+// axis: スワイプの向き（h = 左右、v = 上下）
 const BUTTON_FACES = {
-  U: { n: [0, 1, 0], t: [0, 0, 1] },
-  D: { n: [0, -1, 0], t: [0, 0, 1] },
-  L: { n: [-1, 0, 0], t: [0, 0, 1] },
-  R: { n: [1, 0, 0], t: [0, 0, 1] },
-  F: { n: [0, 0, 1], t: [1, 0, 0] },
-  B: { n: [0, 0, -1], t: [1, 0, 0] },
+  U: { n: [0, 1, 0], t: [0, 0, 1], axis: 'h' },
+  D: { n: [0, -1, 0], t: [0, 0, 1], axis: 'h' },
+  L: { n: [-1, 0, 0], t: [0, 0, 1], axis: 'v' },
+  R: { n: [1, 0, 0], t: [0, 0, 1], axis: 'v' },
+  F: { n: [0, 0, 1], t: [1, 0, 0], axis: 'v' },
+  B: { n: [0, 0, -1], t: [1, 0, 0], axis: 'v' },
 };
 // キー（面のボタン）の表示。オフのときは、キーの要素を画面に一切作らない。
 let keysOn = true;
@@ -288,18 +290,19 @@ function renderKeys() {
   if (!keysOn) return;
   const grid = document.createElement('div');
   grid.className = 'facebtns';
-  for (const [name, { n, t }] of Object.entries(BUTTON_FACES)) {
+  for (const [name, { n, t, axis }] of Object.entries(BUTTON_FACES)) {
     const b = document.createElement('button');
-    b.textContent = name;
-    b.title = `${name} をスワイプで回す`;
+    const arrow = axis === 'h' ? '↔' : '↕';
+    b.innerHTML = `<span>${name}</span><small>${arrow}</small>`;
+    b.title = axis === 'h' ? `${name}: 左右にスワイプ` : `${name}: 上下にスワイプ`;
     const pos = n.map((v, i) => v + t[i]);
-    b.addEventListener('pointerdown', (e) => startDrag(e, { el: b, pos, n }));
+    b.addEventListener('pointerdown', (e) => startDrag(e, { el: b, pos, n, axis }));
     grid.appendChild(b);
   }
   box.appendChild(grid);
   const note = document.createElement('p');
   note.className = 'note';
-  note.textContent = '面のボタンはスワイプで回せます。';
+  note.textContent = 'U・D は左右にスワイプ、L・R・F・B は上下にスワイプで回せます。';
   box.appendChild(note);
 }
 $('keysToggle').addEventListener('click', () => {
@@ -395,6 +398,8 @@ window.addEventListener('pointermove', (e) => {
   if (!drag) return;
   drag.dx = e.clientX - drag.x;
   drag.dy = e.clientY - drag.y;
+  if (drag.sticker.axis === 'h') drag.dy = 0; // 左右だけのキー
+  if (drag.sticker.axis === 'v') drag.dx = 0; // 上下だけのキー
   const ang = dragAngle(drag);
   const now = performance.now();
   if (Math.abs(ang - drag.shown) > 0.03 && now - drag.last > 60) {
