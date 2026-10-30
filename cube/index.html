@@ -10,7 +10,6 @@
   model-viewer { width: 100%; height: 360px; background-color: #e9ecef; }
   input[type=text] { width: 100%; font-size: 1rem; padding: 6px; box-sizing: border-box; }
   #error { color: #b00020; min-height: 1.5em; }
-  /* 回すボタン（キューブの面に出る） */
   /* シールの当たり判定（見えない）。手前の面だけ有効にする */
   .hot { width: 44px; height: 44px; border-radius: 6px; cursor: grab; touch-action: none; transform: translate(-50%, -50%); }
   .hot:hover { background: rgba(255, 213, 79, 0.45); }
@@ -21,35 +20,32 @@
   .bytes { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; text-align: center; margin: 8px 0; }
   .bytes code { display: block; }
   .note { color: #666; font-size: 0.9rem; }
+  .warn { color: #b00020; }
   .facebtns { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin: 10px 0; }
   .facebtns button { padding: 12px 0; font-size: 1.1rem; touch-action: none; cursor: grab; }
   #complete { color: #189a5d; }
   .net { display: grid; grid-template-columns: repeat(4, auto); grid-template-rows: repeat(3, auto); gap: 26px 10px; justify-content: center; margin: 16px 0 8px; }
   .face { position: relative; display: grid; grid-template-columns: repeat(3, 22px); gap: 2px; background: #121417; padding: 2px; border-radius: 4px; }
   .face span { display: block; width: 22px; height: 22px; border-radius: 3px; }
+  .face span.hl { outline: 3px solid #ffd54f; }
   .face b { position: absolute; top: -16px; left: 0; font-size: 0.8rem; color: #666; }
-  .warn { color: #b00020; }
+  /* アニメーションの説明 */
+  #anim { border: 1px solid #ccc; border-radius: 8px; padding: 12px; margin: 12px 0; min-height: 220px; }
+  #anim h3 { margin: 0 0 4px; }
+  .rv { opacity: 0; transition: opacity 0.3s; }
+  .rv.on { opacity: 1; }
+  .cells { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; margin: 10px 0; }
+  .cell { text-align: center; border: 1px solid #bbb; border-radius: 4px; padding: 4px 0; font-family: monospace; }
+  .cell span { display: block; font-size: 1.1rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 10px; }
+  .chip { font-family: monospace; border: 1px solid #bbb; border-radius: 4px; padding: 2px 6px; background: #f4f4f4; }
+  .big { font-family: monospace; font-size: 1.1rem; word-break: break-all; }
+  .ctrl { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 </style>
 </head>
 <body>
 <p><a href="../">← トップへ</a></p>
 <h1>I love U Rubik's Cube</h1>
-
-<model-viewer id="cube" alt="I love U Rubik's Cube" camera-controls environment-image="neutral" camera-orbit="35deg 68deg 115%" exposure="1" shadow-intensity="0" touch-action="pan-y"></model-viewer>
-<p class="note" id="status"></p>
-<p class="warn" id="diag"></p>
-<div class="facebtns" id="facebtns"></div>
-
-<div class="net" id="net" aria-label="キューブの展開図"></div>
-<p class="note">展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
-
-<p>
-  <button id="spin">自動で回す</button>
-  <button id="shuffle">シャッフル</button>
-  <strong id="timer">00:00.00</strong>
-  <strong id="complete"></strong>
-</p>
-<p class="note">シールの上をドラッグすると、その面が回ります。背景をドラッグすると、キューブの向きが変わります。回すと、読み取られる文字も変わります。</p>
 
 <p>
   <label>文字を入れる（8バイトまで）<br>
@@ -61,6 +57,38 @@
   <button id="make">キューブを作る</button>
 </p>
 <p id="error"></p>
+
+<p>
+  <button id="spin">自動で回す</button>
+  <button id="shuffle">シャッフル</button>
+  <strong id="complete"></strong>
+</p>
+
+<model-viewer id="cube" alt="I love U Rubik's Cube" camera-controls environment-image="neutral" camera-orbit="35deg 68deg 115%" exposure="1" shadow-intensity="0" rotation-per-second="120deg" touch-action="pan-y"></model-viewer>
+<p class="note" id="status"></p>
+<p class="warn" id="diag"></p>
+<div class="facebtns" id="facebtns"></div>
+<p class="note">シールの上をドラッグすると、その面が回ります。面のボタンはスワイプで回せます。背景をドラッグすると、キューブの向きが変わります。</p>
+
+<div class="net" id="net" aria-label="キューブの展開図"></div>
+<p class="note">展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
+
+<h2>アニメーションで見る</h2>
+<p class="ctrl">
+  <button id="encodeBtn">暗号化を見る（文字 → キューブ）</button>
+  <button id="decodeBtn">復号を見る（キューブ → 文字）</button>
+</p>
+<div id="anim">
+  <p class="note" id="astep-count"></p>
+  <h3 id="astep-title">ボタンを押すと、ここに手順が出ます。</h3>
+  <p id="astep-desc"></p>
+  <div id="astep-body"></div>
+  <p class="ctrl">
+    <button id="animPrev">前へ</button>
+    <button id="animPlay">再生</button>
+    <button id="animNext">次へ</button>
+  </p>
+</div>
 
 <h2>読み取りの結果</h2>
 <p>文字: <strong id="decoded"></strong></p>
@@ -100,13 +128,13 @@ setTimeout(() => {
 </script>
 <script type="module">
 import {
-  textToColors, decodeDetails, numberToText, numberToBytes, applyMoves,
+  textToColors, textToNumber, decodeDetails, numberToText, numberToBytes, applyMoves,
   TWO_POW_64, STICKER_POSITIONS, dragMove, SOLVED,
-} from './cube-core.js?v=3';
-import { cubeGlb } from './gltf.js?v=3';
-
+} from './cube-core.js?v=4';
+import { cubeGlb } from './gltf.js?v=4';
 
 const $ = (id) => document.getElementById(id);
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // シールの色（白・赤・緑・黄・橙・青）。3D と展開図で同じ色を使う。
 const FACE_HEX = ['#f3f3eb', '#db2830', '#189a5d', '#f6cd21', '#f07819', '#1f5ac9'];
@@ -114,7 +142,7 @@ const FACE_NAME = ['U', 'R', 'F', 'D', 'L', 'B'];
 // 展開図での位置（行, 列）
 const NET_POS = [[1, 2], [2, 3], [2, 2], [3, 2], [2, 1], [2, 4]];
 
-// 展開図を描く。シール 54 枚の色をそのまま並べる。
+// 展開図を描く。色が -1 のシールは灰色にする。
 function drawNet(colors) {
   const net = $('net');
   net.innerHTML = '';
@@ -123,8 +151,10 @@ function drawNet(colors) {
     face.className = 'face';
     face.style.gridRow = NET_POS[f][0];
     face.style.gridColumn = NET_POS[f][1];
-    face.innerHTML = `<b>${name}</b>` + Array.from({ length: 9 }, (_, i) =>
-      `<span style="background:${FACE_HEX[colors[f * 9 + i]]}"></span>`).join('');
+    face.innerHTML = `<b>${name}</b>` + Array.from({ length: 9 }, (_, i) => {
+      const c = colors[f * 9 + i];
+      return `<span style="background:${c < 0 ? '#d9dde2' : FACE_HEX[c]}"></span>`;
+    }).join('');
     net.appendChild(face);
   });
 }
@@ -199,45 +229,19 @@ function make(text) {
     current = textToColors(text);
   } catch (e) {
     $('error').textContent = e.message;
-    return;
+    return false;
   }
-  resetTimer();
-  render();
-}
-
-// タイマー（最初の 1 手で開始、完成で止まる）
-let startedAt = null;
-let finished = false;
-let timerId = null;
-const fmtTime = (ms) => {
-  const cs = Math.floor(ms / 10) % 100;
-  const sec = Math.floor(ms / 1000) % 60;
-  const min = Math.floor(ms / 60000);
-  return `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}.${String(cs).padStart(2, '0')}`;
-};
-function showTime(now) {
-  $('timer').textContent = fmtTime(startedAt === null ? 0 : now - startedAt);
-}
-function resetTimer() {
-  startedAt = null;
-  finished = false;
-  clearInterval(timerId);
-  timerId = null;
   $('complete').textContent = '';
-  showTime(0);
+  render();
+  return true;
 }
 
-// 面を 1 手回す（applyMoves の記号）。最初の 1 手でタイマーを始め、そろったら止める。
+// 面を 1 手回す（applyMoves の記号）。そろったら COMPLETE を出す。
+let finished = false;
 function turn(move) {
   current = applyMoves(current, move);
-  if (!finished && startedAt === null) {
-    startedAt = performance.now();
-    timerId = setInterval(() => showTime(performance.now()), 50);
-  }
   if (!finished && current.join() === SOLVED.join()) {
     finished = true;
-    clearInterval(timerId);
-    showTime(performance.now());
     $('complete').textContent = 'COMPLETE!';
   }
   render();
@@ -257,9 +261,11 @@ function shuffle() {
     moves.push(faces[f] + ['', "'", '2'][Math.floor(Math.random() * 3)]);
   }
   current = applyMoves(SOLVED, moves.join(' '));
-  resetTimer();
+  finished = false;
+  $('complete').textContent = '';
   render();
 }
+$('shuffle').addEventListener('click', shuffle);
 
 // 面ボタン: 押してスワイプすると、その面が回る（U・D は左右、ほかは上下）
 const BUTTON_FACES = {
@@ -279,12 +285,10 @@ for (const [name, { n, t }] of Object.entries(BUTTON_FACES)) {
   b.addEventListener('pointerdown', (e) => startDrag(e, { el: b, pos, n }));
   facebtns.appendChild(b);
 }
-$('shuffle').addEventListener('click', shuffle);
 
 // シールごとに当たり判定を置く（中心のシールは動かないので置かない）
 const cube = $('cube');
 const stickers = [];
-const FACE_NAMES = ['U', 'R', 'F', 'D', 'L', 'B'];
 STICKER_POSITIONS.forEach((s, j) => {
   if (s.pos.join() === s.n.join()) return;
   const el = document.createElement('div');
@@ -405,13 +409,235 @@ window.addEventListener('pointerup', () => {
   }, 30);
 });
 
-// 自動で回す（オン・オフ）
+// 自動で回す（オン・オフ）。速さは model-viewer の rotation-per-second で決めている。
 $('spin').addEventListener('click', () => {
-  const on = !$('cube').autoRotate;
-  $('cube').autoRotate = on;
+  const on = !cube.autoRotate;
+  cube.autoRotate = on;
   $('spin').textContent = on ? '自動回転を止める' : '自動で回す';
 });
 
+// ===== アニメーションで見る（暗号化・復号） =====
+const ch = (b) => (b >= 32 && b < 127 ? String.fromCharCode(b) : '·');
+const hex2 = (b) => b.toString(16).padStart(2, '0');
+const chips = (arr) => `<div class="chips">${arr.map((v) => `<span class="chip rv">${v}</span>`).join('')}</div>`;
+
+// 数を 4 つに分ける表（N の割り算の結果）
+function splitHtml(d) {
+  return `
+    <p class="rv">辺の並び e = ${d.e}（N を 12! = 479001600 で割った余り）</p>
+    <p class="rv">角の並び c = ${d.c}（残りを 20160 で割った余り）</p>
+    <p class="rv">角の向き T = ${d.T}（残りを 2187 で割った余り）</p>
+    <p class="rv">辺の向き F = ${d.F}（最後に残った数）</p>`;
+}
+
+// 並びと向きの一覧（4 つの数から求まる）
+function arrangementHtml(d) {
+  return `
+    <p class="rv">辺の並び（12 個のピースの番号を、位置の順に）</p>${chips(d.edgePerm)}
+    <p class="rv">角の並び（8 個のピースの番号を、位置の順に）</p>${chips(d.cornerPerm)}
+    <p class="rv">角の向き（各角で基準のシールが何番目か）</p>${chips(d.tw)}
+    <p class="rv">辺の向き（各辺で基準のシールが何番目か）</p>${chips(d.fl)}`;
+}
+
+// 4 つの数を 1 つの数にまとめる式
+function combineHtml(d) {
+  const X = BigInt(d.T) + 2187n * BigInt(d.F);
+  const Y = BigInt(d.c) + 20160n * X;
+  const N = BigInt(d.e) + 479001600n * Y;
+  return `
+    <p class="rv">X = T + 2187 × F = ${X}</p>
+    <p class="rv">Y = c + 20160 × X = ${Y}</p>
+    <p class="rv">N = e + 479001600 × Y = ${N}</p>`;
+}
+
+// N を 8 バイトに分けて、文字にする
+function bytesHtml(N) {
+  if (N >= TWO_POW_64) {
+    return `<p class="warn rv">この数は 8 バイトを超えるので、文字には戻せません。</p>`;
+  }
+  const bytes = numberToBytes(N);
+  const cells = bytes.map((b) =>
+    `<div class="cell rv"><code>${hex2(b)}</code><span>${ch(b)}</span></div>`).join('');
+  return `<p class="big rv">16進: ${N.toString(16).padStart(16, '0')}</p>
+    <div class="cells">${cells}</div>
+    <p class="rv">文字: <strong>${numberToText(N)}</strong></p>`;
+}
+
+// 暗号化の手順（文字 → キューブ）
+function encodeSteps(text) {
+  const d = decodeDetails(textToColors(text));
+  const N = textToNumber(text);
+  const bytes = [...new TextEncoder().encode(text)];
+  const padded = Array.from({ length: 8 }, (_, i) => bytes[i] ?? 0);
+  return [
+    {
+      title: '1. 文字をバイトにする',
+      desc: `「${text}」を 1 バイトずつ数にします。8 バイトに足りない所は 0 で埋めます。`,
+      html: `<div class="cells">${padded.map((b) =>
+        `<div class="cell rv"><code>${hex2(b)}</code><span>${ch(b)}</span></div>`).join('')}</div>`,
+    },
+    {
+      title: '2. 8 バイトをひとつの数 N にする',
+      desc: '8 バイトを、16 進の 1 つの数として並べます。',
+      html: `<p class="big rv">16進: ${N.toString(16).padStart(16, '0')}</p><p class="rv">10進: ${N}</p>`,
+    },
+    {
+      title: '3. 数 N を 4 つに分ける',
+      desc: 'N を、次の順に割って 4 つの数を取り出します。',
+      html: splitHtml(d),
+    },
+    {
+      title: '4. 4 つの数を、並びと向きに直す',
+      desc: '4 つの数から、どのピースをどこに、どの向きで置くかが決まります。',
+      html: arrangementHtml(d),
+    },
+    {
+      title: '5. シールに色を塗る',
+      desc: '並びと向きから、54 枚のシールの色が決まります。展開図に色が塗られていきます。',
+      html: '',
+      paint: { mode: 'fill', colors: textToColors(text), after: () => make(text) },
+    },
+  ];
+}
+
+// 復号の手順（キューブ → 文字）
+function decodeSteps(colors) {
+  const d = decodeDetails(colors);
+  return [
+    {
+      title: '1. シールの色を読む',
+      desc: '展開図の 54 枚を、順番に読みます。',
+      html: '',
+      paint: { mode: 'read', colors },
+    },
+    {
+      title: '2. 並びと向きを見る',
+      desc: 'どのピースがどこにあるか、どの向きかを求めます。',
+      html: arrangementHtml(d),
+    },
+    {
+      title: '3. 4 つの数にする',
+      desc: '並びと向きを、4 つの数に直します。',
+      html: `
+        <p class="rv">辺の並び e = ${d.e}</p>
+        <p class="rv">角の並び c = ${d.c}</p>
+        <p class="rv">角の向き T = ${d.T}</p>
+        <p class="rv">辺の向き F = ${d.F}</p>`,
+    },
+    {
+      title: '4. ひとつの数 N にまとめる',
+      desc: '4 つの数を、次の式でまとめます。',
+      html: combineHtml(d),
+    },
+    {
+      title: '5. 8 バイトに分けて、文字にする',
+      desc: 'N を 16 進にして、1 バイトずつ文字にします。',
+      html: bytesHtml(d.N),
+    },
+  ];
+}
+
+// アニメーションの進み方（再生中は、ひとつ進むたびに次を待つ）
+let steps = [];
+let stepIndex = 0;
+let playing = false;
+let gen = 0;
+
+function updateControls() {
+  $('animPlay').textContent = playing ? '停止' : '再生';
+  $('astep-count').textContent = steps.length ? `${stepIndex + 1} / ${steps.length}` : '';
+}
+
+// 展開図の色を、ひとつずつ読んで光らせる（読み取り）か、ひとつずつ塗る（暗号化）
+async function paint(p, g) {
+  if (p.mode === 'read') {
+    drawNet(current);
+    const all = [...$('net').querySelectorAll('span')];
+    for (const s of all) {
+      if (g !== gen) return;
+      s.classList.add('hl');
+      await wait(25);
+      s.classList.remove('hl');
+    }
+    return;
+  }
+  drawNet(new Array(54).fill(-1));
+  const cells = [...$('net').querySelectorAll('span')];
+  for (let i = 0; i < 54; i++) {
+    if (g !== gen) return;
+    cells[i].style.background = FACE_HEX[p.colors[i]];
+    await wait(25);
+  }
+  if (g === gen && p.after) p.after();
+}
+
+async function showStep(i, autoRun) {
+  gen++;
+  const g = gen;
+  stepIndex = i;
+  const st = steps[i];
+  $('astep-title').textContent = st.title;
+  $('astep-desc').textContent = st.desc;
+  $('astep-body').innerHTML = st.html || '';
+  if (!st.paint) drawNet(current);
+  updateControls();
+  if (st.paint) await paint(st.paint, g);
+  for (const el of $('astep-body').querySelectorAll('.rv')) {
+    if (g !== gen) return;
+    el.classList.add('on');
+    await wait(260);
+  }
+  if (autoRun && g === gen) {
+    if (i + 1 < steps.length) {
+      await wait(900);
+      if (g === gen) showStep(i + 1, true);
+    } else {
+      playing = false;
+      updateControls();
+    }
+  }
+}
+
+function startAnim(list) {
+  steps = list;
+  playing = false;
+  showStep(0, false);
+}
+
+$('encodeBtn').addEventListener('click', () => {
+  const text = $('text').value;
+  if (countBytes(text) > 8) {
+    $('error').textContent = '8バイトまでです。文字を短くしてください。';
+    return;
+  }
+  $('error').textContent = '';
+  startAnim(encodeSteps(text));
+});
+$('decodeBtn').addEventListener('click', () => startAnim(decodeSteps(current)));
+$('animPrev').addEventListener('click', () => {
+  playing = false;
+  if (stepIndex > 0) showStep(stepIndex - 1, false);
+  updateControls();
+});
+$('animNext').addEventListener('click', () => {
+  playing = false;
+  if (stepIndex + 1 < steps.length) showStep(stepIndex + 1, false);
+  updateControls();
+});
+$('animPlay').addEventListener('click', () => {
+  if (!steps.length) return;
+  if (playing) {
+    playing = false;
+    gen++;
+    updateControls();
+    return;
+  }
+  playing = true;
+  showStep(stepIndex, true);
+  updateControls();
+});
+
+// 入力
 $('text').addEventListener('input', () => {
   $('bytesCount').textContent = countBytes($('text').value) + ' / 8 バイト';
 });

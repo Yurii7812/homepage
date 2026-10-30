@@ -1,5 +1,5 @@
 // キューブの状態（シールの色 54 個）から、GLB（model-viewer で表示できる 3D ファイル）を作る。
-import { stickerIndex } from './cube-core.js?v=3';
+import { stickerIndex } from './cube-core.js?v=4';
 
 // 元の GLB と同じ色（白・赤・緑・黄・橙・青）と、黒っぽい本体の色
 const STICKER_RGB = [
