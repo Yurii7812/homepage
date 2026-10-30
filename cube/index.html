@@ -18,6 +18,10 @@
   .bytes { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; text-align: center; margin: 8px 0; }
   .bytes code { display: block; }
   .note { color: #666; font-size: 0.9rem; }
+  .net { display: grid; grid-template-columns: repeat(4, auto); grid-template-rows: repeat(3, auto); gap: 26px 10px; justify-content: center; margin: 16px 0 8px; }
+  .face { position: relative; display: grid; grid-template-columns: repeat(3, 22px); gap: 2px; background: #121417; padding: 2px; border-radius: 4px; }
+  .face span { display: block; width: 22px; height: 22px; border-radius: 3px; }
+  .face b { position: absolute; top: -16px; left: 0; font-size: 0.8rem; color: #666; }
   .warn { color: #b00020; }
 </style>
 </head>
@@ -25,7 +29,11 @@
 <p><a href="../">← トップへ</a></p>
 <h1>I love U Rubik's Cube</h1>
 
-<model-viewer id="cube" alt="I love U Rubik's Cube" camera-controls environment-image="neutral" camera-orbit="35deg 68deg 115%" exposure="0.9" shadow-intensity="1" touch-action="pan-y"></model-viewer>
+<model-viewer id="cube" alt="I love U Rubik's Cube" camera-controls environment-image="neutral" camera-orbit="35deg 68deg 115%" exposure="1" shadow-intensity="0" touch-action="pan-y"></model-viewer>
+<p class="note" id="status"></p>
+
+<div class="net" id="net" aria-label="キューブの展開図"></div>
+<p class="note">展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
 
 <div class="turns" id="turns"></div>
 <p class="note">ボタンでキューブを回せます。回すと、読み取られる文字も変わります。</p>
@@ -49,6 +57,13 @@
 
 <h2>読み方</h2>
 <p>キューブは、ピースの並び方と向きの組み合わせで、ひとつの数になります。その数を 8 バイトに分けて、文字にします。</p>
+<ol>
+  <li>キューブの 54 枚のシールの色を読む（上の展開図）</li>
+  <li>どのピースがどこにあるか（並び）と、向きを求める</li>
+  <li>それを 4 つの数（辺の並び・角の並び・角の向き・辺の向き）に直す（下の表）</li>
+  <li>4 つの数を組み立てて、1 つの数 N にする</li>
+  <li>N を 16 進の 8 バイトに分けて、文字にする（上の段）</li>
+</ol>
 <table>
   <thead><tr><th>何を読むか</th><th>数</th><th>取りうる範囲</th></tr></thead>
   <tbody>
@@ -71,6 +86,46 @@ import { cubeGlb } from './gltf.js';
 const MOVES = ['U', "U'", 'R', "R'", 'F', "F'", 'D', "D'", 'L', "L'", 'B', "B'"];
 
 const $ = (id) => document.getElementById(id);
+
+// シールの色（白・赤・緑・黄・橙・青）。3D と展開図で同じ色を使う。
+const FACE_HEX = ['#f3f3eb', '#db2830', '#189a5d', '#f6cd21', '#f07819', '#1f5ac9'];
+const FACE_NAME = ['U', 'R', 'F', 'D', 'L', 'B'];
+// 展開図での位置（行, 列）
+const NET_POS = [[1, 2], [2, 3], [2, 2], [3, 2], [2, 1], [2, 4]];
+
+// 展開図を描く。シール 54 枚の色をそのまま並べる。
+function drawNet(colors) {
+  const net = $('net');
+  net.innerHTML = '';
+  FACE_NAME.forEach((name, f) => {
+    const face = document.createElement('div');
+    face.className = 'face';
+    face.style.gridRow = NET_POS[f][0];
+    face.style.gridColumn = NET_POS[f][1];
+    face.innerHTML = `<b>${name}</b>` + Array.from({ length: 9 }, (_, i) =>
+      `<span style="background:${FACE_HEX[colors[f * 9 + i]]}"></span>`).join('');
+    net.appendChild(face);
+  });
+}
+
+// WebGL（3D 表示に必要）が使えるか
+function hasWebGL() {
+  try {
+    const c = document.createElement('canvas');
+    return !!(c.getContext('webgl2') || c.getContext('webgl'));
+  } catch (e) {
+    return false;
+  }
+}
+const HELP_3D = '下の展開図で同じ色を見られます。';
+if (!hasWebGL()) {
+  $('cube').hidden = true;
+  $('status').textContent = '3D 表示: このブラウザでは WebGL が使えません。Brave なら brave://settings/system で「ハードウェア アクセラレーションを使用」をオンにしてください。' + HELP_3D;
+}
+$('cube').addEventListener('load', () => { $('status').textContent = ''; });
+$('cube').addEventListener('error', () => {
+  $('status').textContent = '3D 表示: 読み込みに失敗しました。' + HELP_3D;
+});
 const countBytes = (text) => new TextEncoder().encode(text).length;
 
 // 現在のキューブの状態（シールの色 54 個）
@@ -113,6 +168,7 @@ function readOut() {
 
 function render() {
   show3d(current);
+  drawNet(current);
   readOut();
 }
 
