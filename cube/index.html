@@ -61,6 +61,8 @@
 <p>
   <button id="spin">自動で回す</button>
   <button id="shuffle">シャッフル</button>
+  <button id="viewFront">正面</button>
+  <button id="viewDiag">斜め</button>
   <strong id="complete"></strong>
 </p>
 
@@ -415,6 +417,10 @@ $('spin').addEventListener('click', () => {
   cube.autoRotate = on;
   $('spin').textContent = on ? '自動回転を止める' : '自動で回す';
 });
+
+// 視点の切り替え（正面・斜め）
+$('viewFront').addEventListener('click', () => { cube.cameraOrbit = '0deg 75deg 115%'; });
+$('viewDiag').addEventListener('click', () => { cube.cameraOrbit = '35deg 68deg 115%'; });
 
 // ===== アニメーションで見る（暗号化・復号） =====
 const ch = (b) => (b >= 32 && b < 127 ? String.fromCharCode(b) : '·');
