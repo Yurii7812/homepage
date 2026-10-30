@@ -12,7 +12,7 @@
   #error { color: #b00020; min-height: 1.5em; }
   /* 回すボタン（キューブの面に出る） */
   /* シールの当たり判定（見えない）。手前の面だけ有効にする */
-  .hot { width: 30px; height: 30px; border-radius: 4px; cursor: grab; touch-action: none; transform: translate(-50%, -50%); }
+  .hot { width: 44px; height: 44px; border-radius: 6px; cursor: grab; touch-action: none; transform: translate(-50%, -50%); }
   .hot:hover { background: rgba(255, 213, 79, 0.45); }
   .hot[hidden] { display: none; }
   table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
@@ -22,7 +22,7 @@
   .bytes code { display: block; }
   .note { color: #666; font-size: 0.9rem; }
   .facebtns { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin: 10px 0; }
-  .facebtns button { padding: 8px 0; font-size: 1rem; }
+  .facebtns button { padding: 12px 0; font-size: 1.1rem; touch-action: none; cursor: grab; }
   #complete { color: #189a5d; }
   .net { display: grid; grid-template-columns: repeat(4, auto); grid-template-rows: repeat(3, auto); gap: 26px 10px; justify-content: center; margin: 16px 0 8px; }
   .face { position: relative; display: grid; grid-template-columns: repeat(3, 22px); gap: 2px; background: #121417; padding: 2px; border-radius: 4px; }
@@ -261,12 +261,22 @@ function shuffle() {
   render();
 }
 
-// 面ボタン（時計回り・反時計回り）
+// 面ボタン: 押してスワイプすると、その面が回る（U・D は左右、ほかは上下）
+const BUTTON_FACES = {
+  U: { n: [0, 1, 0], t: [0, 0, 1] },
+  D: { n: [0, -1, 0], t: [0, 0, 1] },
+  L: { n: [-1, 0, 0], t: [0, 0, 1] },
+  R: { n: [1, 0, 0], t: [0, 0, 1] },
+  F: { n: [0, 0, 1], t: [1, 0, 0] },
+  B: { n: [0, 0, -1], t: [1, 0, 0] },
+};
 const facebtns = $('facebtns');
-for (const m of ['U', "U'", 'D', "D'", 'L', "L'", 'R', "R'", 'F', "F'", 'B', "B'"]) {
+for (const [name, { n, t }] of Object.entries(BUTTON_FACES)) {
   const b = document.createElement('button');
-  b.textContent = m;
-  b.addEventListener('click', () => turn(m));
+  b.textContent = name;
+  b.title = `${name} をスワイプで回す`;
+  const pos = n.map((v, i) => v + t[i]);
+  b.addEventListener('pointerdown', (e) => startDrag(e, { el: b, pos, n }));
   facebtns.appendChild(b);
 }
 $('shuffle').addEventListener('click', shuffle);
