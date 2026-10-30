@@ -9,14 +9,20 @@
 <body>
 <h1>Hi I'm Yurii</h1>
 <nav>
-  <a href="#works">作品</a>
-  <a href="#contact">連絡先</a>
+  <a href="#works" data-i18n="h_works">作品</a>
+  <a href="#contact" data-i18n="h_contact">連絡先</a>
 </nav>
 
-<h2 id="works">作品</h2>
-<p><a href="cube/">I love U Rubik's Cube</a>（3D モデル）</p>
+<h2 id="works" data-i18n="h_works">作品</h2>
+<p><a href="cube/" data-i18n="home_cube">I love U Rubik's Cube</a><span data-i18n="home_cube_desc">（3D モデル）</span></p>
 
-<h2 id="contact">連絡先</h2>
-<p>SimpleX で連絡できます: <a href="https://smp18.simplex.im/a#7VdnQWiFgN_xi4BoW1QFBVJLWPeN5uEtJRZqyUy8ydY">SimpleX の連絡先リンク</a></p>
+<h2 id="contact" data-i18n="h_contact">連絡先</h2>
+<p><span data-i18n="home_contact">SimpleX で連絡できます: </span><a href="https://smp18.simplex.im/a#7VdnQWiFgN_xi4BoW1QFBVJLWPeN5uEtJRZqyUy8ydY" data-i18n="home_simplex">SimpleX の連絡先リンク</a></p>
+
+<script type="module">
+import { applyI18n, mountLangSwitch } from './i18n.js';
+mountLangSwitch();
+applyI18n();
+</script>
 </body>
 </html>

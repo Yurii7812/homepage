@@ -50,156 +50,179 @@
   .tip { background: #eef4ff; border-left: 4px solid #4a7fd6; padding: 8px 10px; border-radius: 4px; font-size: 1rem; }
   #astep-desc { font-size: 1.05rem; }
   #astep-body { min-height: 260px; }
+  .guide h3 { margin-top: 1.2em; }
 </style>
 </head>
 <body>
-<p><a href="../">← トップへ</a></p>
-<h1>I love U Rubik's Cube</h1>
+<p><a href="../" data-i18n="back">← トップへ</a></p>
+<h1 data-i18n="c_title">I love U Rubik's Cube</h1>
 
 <p>
-  <label>文字を入れる（8バイトまで）<br>
+  <label><span data-i18n="c_input_label">文字を入れる（8バイトまで）</span><br>
     <input id="text" type="text" value="I love U">
   </label>
 </p>
 <p>
   <span id="bytesCount"></span>
-  <button id="make">キューブを作る</button>
+  <button id="make" data-i18n="c_make">キューブを作る</button>
 </p>
 <p id="error"></p>
 <div id="decodeList" class="note"></div>
 
 <p>
   <button id="spin">自動で回す</button>
-  <button id="shuffle">シャッフル</button>
-  <button id="viewFront">正面</button>
-  <button id="viewDiag">斜め</button>
+  <button id="shuffle" data-i18n="c_shuffle">シャッフル</button>
+  <button id="viewFront" data-i18n="c_front">正面</button>
+  <button id="viewDiag" data-i18n="c_angle">斜め</button>
   <button id="keysToggle">キーを隠す</button>
   <strong id="complete"></strong>
 </p>
 
-<model-viewer id="cube" alt="I love U Rubik's Cube" camera-controls environment-image="neutral" camera-orbit="35deg 68deg 115%" exposure="1" shadow-intensity="0" rotation-per-second="120deg" touch-action="pan-y"></model-viewer>
+<model-viewer id="cube" data-i18n-alt="c_model_alt" alt="I love U Rubik's Cube" camera-controls environment-image="neutral" camera-orbit="35deg 68deg 115%" exposure="1" shadow-intensity="0" rotation-per-second="120deg" touch-action="pan-y"></model-viewer>
 <p class="note" id="status"></p>
 <p class="warn" id="diag"></p>
 <div id="keys"></div>
-<p class="note">シールの上をドラッグすると、その面が回ります。背景をドラッグすると、キューブの向きが変わります。</p>
+<p class="note" data-i18n="c_drag_note">シールの上をドラッグすると、その面が回ります。背景をドラッグすると、キューブの向きが変わります。</p>
 
 
 <details class="guide" open>
-<summary><strong>仕組みの全体（先にここを読んでください）</strong></summary>
+<summary><strong data-i18n="g_sum">仕組みの全体（先にここを読んでください）</strong></summary>
 
-<h3>この仕組みで、やっていること</h3>
-<p>文字（最大 8 バイト）を、「キューブのピースの並べ方と向き」で表します。キューブを 1 つの状態にすると、その状態に対応する 1 つの数が決まります。逆に、その数から、キューブの状態と文字がもとに戻ります。</p>
+<h3 data-i18n="g_what_h">この仕組みで、やっていること</h3>
+<p data-i18n="g_what_p">文字（最大 8 バイト）を、「キューブのピースの並べ方と向き」で表します。キューブを 1 つの状態にすると、その状態に対応する 1 つの数が決まります。逆に、その数から、キューブの状態と文字がもとに戻ります。</p>
 
-<h3>前提の言葉</h3>
+<h3 data-i18n="g_terms_h">前提の言葉</h3>
 <ul>
-  <li><strong>キューブ</strong>: 小さい立方体 27 個でできています。真ん中の 6 個は動きません。動くのは、角 8 個（かど）と辺 12 個（へり）の、合わせて 20 個です。これを「ピース」と呼びます。</li>
-  <li><strong>シール</strong>: ピースの表面の色のところです。角のピースには 3 枚、辺のピースには 2 枚、真ん中には 1 枚あります。全部で 54 枚です。</li>
-  <li><strong>位置</strong>: 上・下・左・右・前・後の組み合わせで決まる、ピースが入る場所です。角は 8 か所、辺は 12 か所あります。</li>
-  <li><strong>番号</strong>: 解けた状態で、その位置にあるピースの番号です。角は 0〜7、辺は 0〜11 です。ピースは、もとの位置の番号で呼ばれます。</li>
-  <li><strong>並べ方</strong>: 位置 0 から順に、どの番号のピースが入っているかを並べたものです。例えば「2, 0, 1」なら、位置 0 に番号 2、位置 1 に番号 0、位置 2 に番号 1 のピースが入っています。</li>
-  <li><strong>向き</strong>: 同じピースでも、入れ方で向きが変わります。角は 3 通り（0・1・2）、辺は 2 通り（0・1）あります。</li>
-  <li><strong>階乗</strong>: 1 から n まで全部かけた数です。例えば 4! = 1×2×3×4 = 24 です。</li>
-  <li><strong>位取り</strong>: 10 進数で、一の位・十の位・百の位のように、位ごとに「いくつ分か」を数える方法です。同じ考え方で、ほかの数（3 進数・2 進数・16 進数）も作れます。</li>
-  <li><strong>バイト</strong>: 1 バイトは 0〜255 の数で、16 進数では 2 けたで書けます。8 バイトなら、0〜2<sup>64</sup>−1 の数（約 1.8×10<sup>19</sup> 通り）です。</li>
+  <li data-i18n="g_t1"></li>
+  <li data-i18n="g_t2"></li>
+  <li data-i18n="g_t3"></li>
+  <li data-i18n="g_t4"></li>
+  <li data-i18n="g_t5"></li>
+  <li data-i18n="g_t6"></li>
+  <li data-i18n="g_t7"></li>
+  <li data-i18n="g_t8"></li>
+  <li data-i18n="g_t9"></li>
 </ul>
 
-<h3>なぜ、数と状態が 1 対 1 で結べるのか</h3>
+<h3 data-i18n="g_why_h">なぜ、数と状態が 1 対 1 で結べるのか</h3>
 <ol>
-  <li><strong>状態の数</strong>: 辺の並べ方は 12!、角の並べ方は 8! の半分（偶数か奇数かの半分だけ）、角の向きは 3<sup>7</sup>、辺の向きは 2<sup>11</sup> です。全部かけると、約 4.3×10<sup>19</sup> 通りです。8 バイトは約 1.8×10<sup>19</sup> 通りなので、8 バイトの数は全部、どれか 1 つの状態に入ります。</li>
-  <li><strong>並べ方を数にする</strong>: 位置 0 から順に、「自分より右にあって、自分より小さい番号の数」を数えます。その数は、位置 i では 0 から（残りの数 − 1）までのどれかです。これを階乗の位取り（11!, 10!, …, 0!）で足すと、並べ方ごとに 1 つの数になります。位取りの表し方は 1 通りしかないので、並べ方と数は 1 対 1 です。</li>
-  <li><strong>向きを数にする</strong>: 角の向き 8 個は、3 進数の 7 桁で表します。最後の 1 個は、全部の合計が 3 の倍数になるように、残りから決まります。辺の向き 12 個は、2 進数の 11 桁で表します。最後の 1 個は、合計が偶数になるように決まります。
-  <br>なぜ残りの 1 個が決まるかというと、キューブを回してできる状態では、向きの合計がいつも決まった形になるからです。</li>
-  <li><strong>並べ方の偶数・奇数</strong>: キューブを 1 回回すと、角の並べ方と辺の並べ方は、どちらも偶数・奇数が同時に変わります。だから、角と辺で偶数・奇数は必ず同じです。辺の並べ方を決めると、角の並べ方は同じ偶数・奇数のグループの中から選べます。</li>
-  <li><strong>4 つの数をまとめる</strong>: e（辺の並べ方）・c（角の並べ方）・T（角の向き）・F（辺の向き）を、N = e + 12! × (c + 20160 × (T + 2187 × F)) でまとめます。N は 0 から約 4.3×10<sup>19</sup> まで、1 つずつ違う状態に対応します。8 バイトの数（2<sup>64</sup> より小さい N）だけを使います。</li>
+  <li data-i18n="g_w1"></li>
+  <li data-i18n="g_w2"></li>
+  <li data-i18n="g_w3"></li>
+  <li data-i18n="g_w4"></li>
+  <li data-i18n="g_w5"></li>
 </ol>
 
-<h3>全体の流れ</h3>
-<p><strong>暗号化</strong>: 文字 → 番号（バイト）→ 8 バイトの 1 つの数 N → 4 つの数（e・c・T・F）→ ピースの並べ方と向き → 色をぬる</p>
-<p><strong>復号</strong>: 色を読む → ピースの並べ方と向き → 4 つの数 → 1 つの数 N → 8 バイト → 文字</p>
+<h3 data-i18n="g_flow_h">全体の流れ</h3>
+<p data-i18n="g_flow_enc">暗号化</p>
+<p data-i18n="g_flow_dec">復号</p>
 
-<h3>展開図の見方</h3>
-<p>キューブを開いて平らにしたものです。U は上、D は下、F は前、B は後ろ、L は左、R は右の面です。展開図の上で、シールにマウスを重ねると、その位置の名前が出ます。クリックすると、そのピースのシールがすべて光ります。</p>
+<h3 data-i18n="g_net_h">展開図の見方</h3>
+<p data-i18n="g_net_p">キューブを開いて平らにしたものです。</p>
 </details>
-<h2>アニメーションで見る</h2>
-<p class="note">キューブの並べ方を「数字」にして、文字を入れたり取り出したりする仕組みです。ボタンを押すと、1 つずつ見られます。</p>
+
+<h2 data-i18n="c_anim_h">アニメーションで見る</h2>
+<p class="note" data-i18n="c_anim_note">キューブの並べ方を「数字」にして、文字を入れたり取り出したりする仕組みです。ボタンを押すと、1 つずつ見られます。</p>
 <p class="ctrl">
-  <button id="encodeBtn">暗号化を見る（文字 → キューブ）</button>
-  <button id="decodeBtn">復号を見る（キューブ → 文字）</button>
+  <button id="encodeBtn" data-i18n="c_enc_btn">暗号化を見る（文字 → キューブ）</button>
+  <button id="decodeBtn" data-i18n="c_dec_btn">復号を見る（キューブ → 文字）</button>
 </p>
 <div id="anim">
   <p class="note" id="astep-count"></p>
   <h3 id="astep-title">ボタンを押すと、ここに手順が出ます。</h3>
   <p id="astep-desc"></p>
   <p class="ctrl">
-    <button id="animPrev">前へ</button>
+    <button id="animPrev" data-i18n="c_prev">前へ</button>
     <button id="animPlay">再生</button>
-    <button id="animNext">次へ</button>
+    <button id="animNext" data-i18n="c_next">次へ</button>
   </p>
   <div id="astep-body"></div>
-  <div class="net" id="net" hidden aria-label="キューブの展開図"></div>
+  <div class="net" id="net" hidden></div>
   <p class="tip" id="netInfo" hidden></p>
-  <p class="note" id="netNote" hidden>展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
+  <p class="note" id="netNote" hidden data-i18n="c_net_note">展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
 </div>
 
-<h2>読み取りの結果</h2>
-<p>文字: <strong id="decoded"></strong></p>
+<h2 data-i18n="c_result_h">読み取りの結果</h2>
+<p><span data-i18n="c_text_label">文字: </span><strong id="decoded"></strong></p>
 <p id="range" class="warn"></p>
 <div class="bytes" id="bytes"></div>
 <p class="note" id="hex"></p>
 
-<h2>読み方</h2>
-<p>キューブは、ピースの並び方と向きの組み合わせで、ひとつの数になります。その数を 8 バイトに分けて、文字にします。</p>
+<h2 data-i18n="c_read_h">読み方</h2>
+<p data-i18n="c_read_p">キューブは、ピースの並び方と向きの組み合わせで、ひとつの数になります。その数を 8 バイトに分けて、文字にします。</p>
 <ol>
-  <li>キューブの 54 枚のシールの色を読む</li>
-  <li>どのピースがどこにあるか（並び）と、向きを求める</li>
-  <li>それを 4 つの数（辺の並び・角の並び・角の向き・辺の向き）に直す（下の表）</li>
-  <li>4 つの数を組み立てて、1 つの数 N にする</li>
-  <li>N を 16 進の 8 バイトに分けて、文字にする（上の段）</li>
+  <li data-i18n="c_read_1">キューブの 54 枚のシールの色を読む</li>
+  <li data-i18n="c_read_2">どのピースがどこにあるか（並び）と、向きを求める</li>
+  <li data-i18n="c_read_3">それを 4 つの数（辺の並び・角の並び・角の向き・辺の向き）に直す（下の表）</li>
+  <li data-i18n="c_read_4">4 つの数を組み立てて、1 つの数 N にする</li>
+  <li data-i18n="c_read_5">N を 16 進の 8 バイトに分けて、文字にする（上の段）</li>
 </ol>
 <table>
-  <thead><tr><th>何を読むか</th><th>数</th><th>取りうる範囲</th></tr></thead>
+  <thead><tr><th data-i18n="c_th_what">何を読むか</th><th data-i18n="c_th_num">数</th><th data-i18n="c_th_range">取りうる範囲</th></tr></thead>
   <tbody>
-    <tr><td>辺 12 個の並び</td><td class="num" id="e"></td><td class="num">0 〜 479001599</td></tr>
-    <tr><td>角 8 個の並び</td><td class="num" id="c"></td><td class="num">0 〜 20159</td></tr>
-    <tr><td>角の向き（7 個で決まる）</td><td class="num" id="T"></td><td class="num">0 〜 2186</td></tr>
-    <tr><td>辺の向き（11 個で決まる）</td><td class="num" id="F"></td><td class="num">0 〜 2047</td></tr>
-    <tr><td><strong>合計の数</strong></td><td class="num" id="N"></td><td class="num">0 〜 2^64 − 1（8 バイト）</td></tr>
+    <tr><td data-i18n="c_row_e">辺 12 個の並び</td><td class="num" id="e"></td><td class="num">0 〜 479001599</td></tr>
+    <tr><td data-i18n="c_row_c">角 8 個の並び</td><td class="num" id="c"></td><td class="num">0 〜 20159</td></tr>
+    <tr><td data-i18n="c_row_t">角の向き（7 個で決まる）</td><td class="num" id="T"></td><td class="num">0 〜 2186</td></tr>
+    <tr><td data-i18n="c_row_f">辺の向き（11 個で決まる）</td><td class="num" id="F"></td><td class="num">0 〜 2047</td></tr>
+    <tr><td><strong data-i18n="c_row_n">合計の数</strong></td><td class="num" id="N"></td><td class="num" data-i18n="c_range_n">0 〜 2^64 − 1（8 バイト）</td></tr>
   </tbody>
 </table>
-<p class="note">合計 = 辺の並び + 479001600 × (角の並び + 20160 × (角の向き + 2187 × 辺の向き))</p>
+<p class="note" data-i18n="c_formula">合計 = 辺の並び + 479001600 × (角の並び + 20160 × (角の向き + 2187 × 辺の向き))</p>
 
 <script>
-// スクリプトが動かなかったとき、その理由を画面に出す
+// スクリプトが動かなかったとき、その理由を画面に出す（言語は保存した設定に合わせる）
+const enDiag = /[?&]lang=en\b/.test(location.search) || localStorage.getItem('lang') === 'en';
 window.addEventListener('error', (e) => {
-  document.getElementById('diag').textContent = '表示のエラー: ' + e.message;
+  document.getElementById('diag').textContent = (enDiag ? 'Display error: ' : '表示のエラー: ') + e.message;
 });
 setTimeout(() => {
-  if (!window.cubeReady) document.getElementById('diag').textContent = '表示の準備ができませんでした（スクリプトが動いていません）。古い表示が残っている可能性があるので、Ctrl+Shift+R（スマホは再読み込みを強く）で開き直してください。';
+  if (!window.cubeReady) document.getElementById('diag').textContent = enDiag
+    ? 'The display could not start (the script is not running). An old page may be cached. Reload it hard (Ctrl+Shift+R; on a phone, do a strong reload).'
+    : '表示の準備ができませんでした（スクリプトが動いていません）。古い表示が残っている可能性があるので、Ctrl+Shift+R（スマホは再読み込みを強く）で開き直してください。';
 }, 5000);
 </script>
 <script type="module">
 import {
   textToColors, textToNumber, decodeDetails, numberToText, numberToBytes, applyMoves,
   TWO_POW_64, STICKER_POSITIONS, dragMove, SOLVED, stickerIndex,
-} from './cube-core.js?v=4';
-import { cubeGlb } from './gltf.js?v=4';
+} from './cube-core.js?v=5';
+import { cubeGlb } from './gltf.js?v=5';
+import { t, tErr, applyI18n, mountLangSwitch } from '../i18n.js';
 
 const $ = (id) => document.getElementById(id);
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+mountLangSwitch();
+applyI18n();
 
 // シールの色（白・赤・緑・黄・橙・青）。3D と展開図で同じ色を使う。
 const FACE_HEX = ['#f3f3eb', '#db2830', '#189a5d', '#f6cd21', '#f07819', '#1f5ac9'];
 const FACE_NAME = ['U', 'R', 'F', 'D', 'L', 'B'];
 // 展開図での位置（行, 列）
 const NET_POS = [[1, 2], [2, 3], [2, 2], [3, 2], [2, 1], [2, 4]];
+const colorName = (c) => t(`col_${c}`);
+const countBytes = (text) => new TextEncoder().encode(text).length;
+
+// 位置の名前（例: 上・前 / top, front）
+function posName(p) {
+  const parts = [];
+  if (p[1] === 1) parts.push(t('pos_top'));
+  if (p[1] === -1) parts.push(t('pos_bottom'));
+  if (p[0] === -1) parts.push(t('pos_left'));
+  if (p[0] === 1) parts.push(t('pos_right'));
+  if (p[2] === 1) parts.push(t('pos_front'));
+  if (p[2] === -1) parts.push(t('pos_back'));
+  return parts.join(t('list_sep'));
+}
+// 「位置」と「角か辺か」をまとめた名前
+const posKind = (P, corner) => t('pos_kind', { pos: posName(P), kind: t(corner ? 'kind_corner' : 'kind_edge') });
 
 // シールの説明（マウスを重ねたときに出る）
 function stickerTitle(j) {
   const { pos: P, n } = STICKER_POSITIONS[j];
   const face = FACE_NAME[Math.floor(j / 9)];
-  if (P.join() === n.join()) return `${face}面の真ん中（動きません）`;
+  if (P.join() === n.join()) return t('sticker_center', { face });
   const corner = P.filter((v) => v !== 0).length === 3;
-  return `${face}面 ・ ${posName(P)}の${corner ? '角' : '辺'}`;
+  return t('sticker_title', { face, posk: posKind(P, corner) });
 }
 
 // 展開図を描く。色が -1 のシールは灰色にする。
@@ -219,6 +242,7 @@ function drawNet(colors) {
     net.appendChild(face);
   });
 }
+$('net').setAttribute('aria-label', t('c_net_aria'));
 
 // WebGL（3D 表示に必要）が使えるか
 function hasWebGL() {
@@ -229,16 +253,14 @@ function hasWebGL() {
     return false;
   }
 }
-const HELP_3D = 'シールの色は「アニメーションで見る」の展開図で確かめられます。';
 if (!hasWebGL()) {
   $('cube').hidden = true;
-  $('status').textContent = '3D 表示: このブラウザでは WebGL が使えません。Brave なら brave://settings/system で「ハードウェア アクセラレーションを使用」をオンにしてください。' + HELP_3D;
+  $('status').textContent = t('status_nowebgl') + ' ' + t('help_3d');
 }
 $('cube').addEventListener('load', () => { $('status').textContent = ''; });
 $('cube').addEventListener('error', () => {
-  $('status').textContent = '3D 表示: 読み込みに失敗しました。' + HELP_3D;
+  $('status').textContent = t('status_loaderr') + ' ' + t('help_3d');
 });
-const countBytes = (text) => new TextEncoder().encode(text).length;
 
 // 現在のキューブの状態（シールの色 54 個）
 let current = textToColors('I love U');
@@ -260,24 +282,24 @@ function readOut() {
   try {
     d = decodeDetails(current);
   } catch (e) {
-    $('error').textContent = e.message;
+    $('error').textContent = tErr(e.message);
     $('decodeList').innerHTML = '';
     return;
   }
   $('decodeList').innerHTML = `
-    <p><strong>今のキューブの復号配列</strong></p>
-    <p>角の並び（位置 0〜7 に入る番号）: <code>${d.cornerPerm.join(' ')}</code></p>
-    <p>角の向き（位置 0〜7）: <code>${d.tw.join(' ')}</code></p>
-    <p>辺の並び（位置 0〜11 に入る番号）: <code>${d.edgePerm.join(' ')}</code></p>
-    <p>辺の向き（位置 0〜11）: <code>${d.fl.join(' ')}</code></p>`;
+    <p><strong>${t('d_list_h')}</strong></p>
+    <p>${t('d_corner_perm')}: <code>${d.cornerPerm.join(' ')}</code></p>
+    <p>${t('d_corner_tw')}: <code>${d.tw.join(' ')}</code></p>
+    <p>${t('d_edge_perm')}: <code>${d.edgePerm.join(' ')}</code></p>
+    <p>${t('d_edge_fl')}: <code>${d.fl.join(' ')}</code></p>`;
   const inRange = d.N < TWO_POW_64;
-  $('range').textContent = inRange ? '' : '8 バイトに収まらない数です。文字としては読めません。';
-  $('decoded').textContent = inRange ? numberToText(d.N) : '（読めない）';
+  $('range').textContent = inRange ? '' : t('c_range_warn');
+  $('decoded').textContent = inRange ? numberToText(d.N) : t('c_unreadable');
   const bytes = numberToBytes(d.N);
   $('bytes').innerHTML = bytes
     .map((b) => `<div><code>${b.toString(16).padStart(2, '0')}</code></div>`)
     .join('');
-  $('hex').textContent = '16進: ' + d.N.toString(16);
+  $('hex').textContent = t('c_hex') + d.N.toString(16);
   $('e').textContent = d.e;
   $('c').textContent = d.c;
   $('T').textContent = d.T;
@@ -293,10 +315,14 @@ function render() {
 
 // 文字からキューブを作る
 function make(text) {
+  if (countBytes(text) > 8) {
+    $('error').textContent = t('err_8bytes');
+    return false;
+  }
   try {
     current = textToColors(text);
   } catch (e) {
-    $('error').textContent = e.message;
+    $('error').textContent = tErr(e.message);
     return false;
   }
   $('complete').textContent = '';
@@ -310,7 +336,7 @@ function turn(move) {
   current = applyMoves(current, move);
   if (!finished && current.join() === SOLVED.join()) {
     finished = true;
-    $('complete').textContent = 'COMPLETE!';
+    $('complete').textContent = t('complete');
   }
   render();
 }
@@ -350,23 +376,23 @@ let keysOn = true;
 function renderKeys() {
   const box = $('keys');
   box.innerHTML = '';
-  $('keysToggle').textContent = keysOn ? 'キーを隠す' : 'キーを表示';
+  $('keysToggle').textContent = keysOn ? t('c_keys_hide') : t('c_keys_show');
   if (!keysOn) return;
   const grid = document.createElement('div');
   grid.className = 'facebtns';
-  for (const [name, { n, t, axis }] of Object.entries(BUTTON_FACES)) {
+  for (const [name, { n, t: tn, axis }] of Object.entries(BUTTON_FACES)) {
     const b = document.createElement('button');
     const arrow = axis === 'h' ? '↔' : '↕';
     b.innerHTML = `<span>${name}</span><small>${arrow}</small>`;
-    b.title = axis === 'h' ? `${name}: 左右にスワイプ` : `${name}: 上下にスワイプ`;
-    const pos = n.map((v, i) => v + t[i]);
+    b.title = t(axis === 'h' ? 'c_key_h' : 'c_key_v', { name });
+    const pos = n.map((v, i) => v + tn[i]);
     b.addEventListener('pointerdown', (e) => startDrag(e, { el: b, pos, n, axis }));
     grid.appendChild(b);
   }
   box.appendChild(grid);
   const note = document.createElement('p');
   note.className = 'note';
-  note.textContent = 'U・D は左右にスワイプ、L・R・F・B は上下にスワイプで回せます。';
+  note.textContent = t('c_keys_note');
   box.appendChild(note);
 }
 $('keysToggle').addEventListener('click', () => {
@@ -501,10 +527,12 @@ window.addEventListener('pointerup', () => {
 });
 
 // 自動で回す（オン・オフ）。速さは model-viewer の rotation-per-second で決めている。
+function spinLabel() {
+  $('spin').textContent = cube.autoRotate ? t('c_spin_stop') : t('c_spin');
+}
 $('spin').addEventListener('click', () => {
-  const on = !cube.autoRotate;
-  cube.autoRotate = on;
-  $('spin').textContent = on ? '自動回転を止める' : '自動で回す';
+  cube.autoRotate = !cube.autoRotate;
+  spinLabel();
 });
 
 // 視点の切り替え（正面・斜め）
@@ -517,38 +545,25 @@ const hex2 = (b) => b.toString(16).padStart(2, '0');
 const chips = (arr) => `<div class="chips">${arr.map((v) => `<span class="chip rv">${v}</span>`).join('')}</div>`;
 
 // 中学生にも分かる言葉で書く説明
-const tip = (t) => `<p class="tip rv">${t}</p>`;
+const tip = (s) => `<p class="tip rv">${s}</p>`;
 
 // ③ 大きな数を、わり算のあまりで 4 つに分ける
 function splitHtml(d) {
   return `
-    ${tip('大きな数を、わり算の「あまり」で 4 つの小さな数に分けます。')}
-    <p class="rv">① 479001600 でわったあまり → <strong>${d.e}</strong>（これを「辺の並び」の番号にします）</p>
-    <p class="rv">② そのあとの数を 20160 でわったあまり → <strong>${d.c}</strong>（「角の並び」の番号）</p>
-    <p class="rv">③ そのあとの数を 2187 でわったあまり → <strong>${d.T}</strong>（「角の向き」の番号）</p>
-    <p class="rv">④ 最後に残った数 → <strong>${d.F}</strong>（「辺の向き」の番号）</p>`;
+    ${tip(t('s_tip'))}
+    <p class="rv">${t('s_1', { v: d.e })}</p>
+    <p class="rv">${t('s_2', { v: d.c })}</p>
+    <p class="rv">${t('s_3', { v: d.T })}</p>
+    <p class="rv">${t('s_4', { v: d.F })}</p>`;
 }
 
 // ピースの置き場所と番号の決まりを、プログラムと同じ順番で作る
-const NAME = ['白', '赤', '緑', '黄', '橙', '青'];
 const FACT = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 479001600];
 const CORNER_HOMES = [];
 for (const sx of [-1, 1]) for (const sy of [-1, 1]) for (const sz of [-1, 1]) CORNER_HOMES.push([sx, sy, sz]);
 const EDGE_HOMES = [];
 for (let x = -1; x <= 1; x++) for (let y = -1; y <= 1; y++) for (let z = -1; z <= 1; z++) {
   if ([x, y, z].filter((v) => v !== 0).length === 2) EDGE_HOMES.push([x, y, z]);
-}
-
-// 位置の名前（例: 上・前）
-function posName(p) {
-  const parts = [];
-  if (p[1] === 1) parts.push('上');
-  if (p[1] === -1) parts.push('下');
-  if (p[0] === -1) parts.push('左');
-  if (p[0] === 1) parts.push('右');
-  if (p[2] === 1) parts.push('前');
-  if (p[2] === -1) parts.push('後');
-  return parts.join('・');
 }
 
 // その位置のシールの向き（プログラムと同じ順番）
@@ -572,26 +587,27 @@ function slotNormals(p) {
 // 表の行。位置・今ある色・番号（もとの位置）・向き
 function pieceRows(homes, slots, perm, dirText, colors) {
   return slots.map((P, s) => {
-    const shown = slotNormals(P).map((n) => NAME[colors[stickerIndex(P, n)]]).join('・');
+    const shown = slotNormals(P).map((n) => colorName(colors[stickerIndex(P, n)])).join(t('list_sep'));
     const k = perm[s];
     const kind = homes === CORNER_HOMES ? 'c' : 'e';
-    return `<tr class="rv" data-kind="${kind}" data-s="${s}"><td>${posName(P)}</td><td>${shown}</td><td>${k}（もとは「${posName(homes[k])}」）</td><td>${dirText(s)}</td></tr>`;
+    return `<tr class="rv" data-kind="${kind}" data-s="${s}"><td>${posName(P)}</td><td>${shown}</td><td>${t('piece_origin', { k, pos: posName(homes[k]) })}</td><td>${dirText(s)}</td></tr>`;
   }).join('');
 }
 
-const HEAD = '<tr><th>位置</th><th>今ある色（順番どおり）</th><th>番号</th><th>向き</th></tr>';
+const headHtml = () =>
+  `<tr><th>${t('th_pos')}</th><th>${t('th_colors')}</th><th>${t('th_num')}</th><th>${t('th_dir')}</th></tr>`;
 
 // ④ 並びと向きを、表で読む
 function arrangementHtml(d, colors) {
   return `
-    ${tip('キューブのピースには番号があります。解けた状態で「その位置にあるピース」が、そのピースの番号です。例：「上・前」の辺にあるピースが番号 7 なら、「上・前」の位置は 7 のピースが入る場所です。')}
-    <p class="rv"><strong>角（8 個）</strong></p>
-    <table>${HEAD}${pieceRows(CORNER_HOMES, CORNER_HOMES, d.cornerPerm,
-      (s) => `基準の色（白か黄）が ${d.tw[s]} 番目`, colors)}</table>
-    <p class="rv"><strong>辺（12 個）</strong></p>
-    <table>${HEAD}${pieceRows(EDGE_HOMES, EDGE_HOMES, d.edgePerm,
-      (s) => `基準の色が ${d.fl[s]} 番目`, colors)}</table>
-    ${tip('向きの「基準」: 角は白か黄のシール。辺は上か下のシール（なければ前か後ろのシール）。その色が、表の中で何番目（0 から数える）かを書きます。')}`;
+    ${tip(t('arr_tip'))}
+    <p class="rv"><strong>${t('arr_corner_h')}</strong></p>
+    <table>${headHtml()}${pieceRows(CORNER_HOMES, CORNER_HOMES, d.cornerPerm,
+      (s) => t('dir_corner', { v: d.tw[s] }), colors)}</table>
+    <p class="rv"><strong>${t('arr_edge_h')}</strong></p>
+    <table>${headHtml()}${pieceRows(EDGE_HOMES, EDGE_HOMES, d.edgePerm,
+      (s) => t('dir_edge', { v: d.fl[s] }), colors)}</table>
+    ${tip(t('arr_base_tip'))}`;
 }
 
 // ③ 4 つの数を、表の計算で求める
@@ -600,23 +616,23 @@ function numbersHtml(d) {
   const edgeRows = d.edgePerm.map((v, i) =>
     `<tr class="rv"><td>${i}</td><td>${v}</td><td>${qs[i]}</td><td>${FACT[11 - i]}</td><td>${qs[i] * FACT[11 - i]}</td></tr>`).join('');
   const tRows = d.tw.slice(0, 7).map((v, j) =>
-    `<tr class="rv"><td>角 ${j}</td><td>${v}</td><td>${3 ** j}</td><td>${v * 3 ** j}</td></tr>`).join('');
+    `<tr class="rv"><td>${t('n_corner_row', { j })}</td><td>${v}</td><td>${3 ** j}</td><td>${v * 3 ** j}</td></tr>`).join('');
   const fRows = d.fl.slice(0, 11).map((v, j) =>
-    `<tr class="rv"><td>辺 ${j}</td><td>${v}</td><td>${2 ** j}</td><td>${v * 2 ** j}</td></tr>`).join('');
+    `<tr class="rv"><td>${t('n_edge_row', { j })}</td><td>${v}</td><td>${2 ** j}</td><td>${v * 2 ** j}</td></tr>`).join('');
   return `
-    ${tip('数の求め方: 「右にある、自分より小さい番号の数」を数え、それに階乗（11! など）をかけて足します。')}
-    <p class="rv"><strong>① 辺の並び e</strong></p>
-    <table><tr><th>位置</th><th>番号</th><th>右にある小さい番号の数</th><th>かける数</th><th>答え</th></tr>${edgeRows}</table>
-    <p class="rv">合計: e = <strong>${d.e}</strong></p>
-    <p class="rv"><strong>② 角の並び c</strong></p>
-    ${tip('角の並びは、偶数の並びか奇数の並びのどちらかの仲間の中で、番号が小さい順に数えた「何番目か」です（0 から数えます）。')}
-    <p class="rv">c = <strong>${d.c}</strong></p>
-    <p class="rv"><strong>③ 角の向き T（3 進法）</strong></p>
-    <table><tr><th>角</th><th>向き</th><th>かける数</th><th>答え</th></tr>${tRows}</table>
-    <p class="rv">角 7 の向きは、残りの合計で自動的に決まります。合計: T = <strong>${d.T}</strong></p>
-    <p class="rv"><strong>④ 辺の向き F（2 進法）</strong></p>
-    <table><tr><th>辺</th><th>向き</th><th>かける数</th><th>答え</th></tr>${fRows}</table>
-    <p class="rv">辺 11 の向きは、残りの合計で自動的に決まります。合計: F = <strong>${d.F}</strong></p>`;
+    ${tip(t('n_tip'))}
+    <p class="rv"><strong>${t('n_e_h')}</strong></p>
+    <table><tr><th>${t('th_pos')}</th><th>${t('th_num')}</th><th>${t('n_th_right')}</th><th>${t('n_th_mul')}</th><th>${t('n_th_ans')}</th></tr>${edgeRows}</table>
+    <p class="rv">${t('n_sum_e', { v: `<strong>${d.e}</strong>` })}</p>
+    <p class="rv"><strong>${t('n_c_h')}</strong></p>
+    ${tip(t('n_c_tip'))}
+    <p class="rv">${t('n_c_val', { v: `<strong>${d.c}</strong>` })}</p>
+    <p class="rv"><strong>${t('n_t_h')}</strong></p>
+    <table><tr><th>${t('n_th_corner')}</th><th>${t('n_th_dir')}</th><th>${t('n_th_mul')}</th><th>${t('n_th_ans')}</th></tr>${tRows}</table>
+    <p class="rv">${t('n_t_note', { v: `<strong>${d.T}</strong>` })}</p>
+    <p class="rv"><strong>${t('n_f_h')}</strong></p>
+    <table><tr><th>${t('n_th_edge')}</th><th>${t('n_th_dir')}</th><th>${t('n_th_mul')}</th><th>${t('n_th_ans')}</th></tr>${fRows}</table>
+    <p class="rv">${t('n_f_note', { v: `<strong>${d.F}</strong>` })}</p>`;
 }
 
 // 向きと並びの番号を、ひとつの大きな数にまとめる
@@ -625,25 +641,25 @@ function combineHtml(d) {
   const Y = BigInt(d.c) + 20160n * X;
   const N = BigInt(d.e) + 479001600n * Y;
   return `
-    ${tip('「○ × 大きさ + 次の数」を 3 回くり返して、ひとつの数にします。')}
-    <p class="rv">① 向きの 2 つの数をまとめる：T + 2187 × F = <strong>${X}</strong></p>
-    <p class="rv">② そこに角の並びをたす：c + 20160 × ① = <strong>${Y}</strong></p>
-    <p class="rv">③ 最後に辺の並びをたす：e + 479001600 × ② = <strong>${N}</strong></p>`;
+    ${tip(t('comb_tip'))}
+    <p class="rv">${t('comb_1', { v: X })}</p>
+    <p class="rv">${t('comb_2', { v: Y })}</p>
+    <p class="rv">${t('comb_3', { v: N })}</p>`;
 }
 
 // 数を 8 つの番号（1 文字ぶん）に分けて、文字にもどす
 function bytesHtml(N) {
   if (N >= TWO_POW_64) {
-    return tip('この数は大きすぎて、8 文字ぶんの番号に収まりません。だから文字には戻せません。');
+    return tip(t('b_big'));
   }
   const bytes = numberToBytes(N);
   const cells = bytes.map((b) =>
     `<div class="cell rv"><code>${hex2(b)}</code><span>${ch(b)}</span></div>`).join('');
   return `
-    ${tip('数を 16 進数（0〜9 と A〜F の 16 種類の数字）に直すと、2 けたずつ 8 組になります。1 組が 1 文字です。')}
-    <p class="big rv">16進: ${N.toString(16).padStart(16, '0')}</p>
+    ${tip(t('b_tip'))}
+    <p class="big rv">${t('b_hex', { v: N.toString(16).padStart(16, '0') })}</p>
     <div class="cells">${cells}</div>
-    <p class="rv">文字にもどすと: <strong>${numberToText(N)}</strong></p>`;
+    <p class="rv">${t('b_text', { v: numberToText(N) })}</p>`;
 }
 
 // 暗号化の手順（文字 → キューブ）
@@ -654,33 +670,33 @@ function encodeSteps(text) {
   const padded = Array.from({ length: 8 }, (_, i) => bytes[i] ?? 0);
   return [
     {
-      title: '1. 文字を番号にする',
-      desc: 'コンピューターは、文字を番号で覚えています。1 文字が 1 つの番号になります。番号は 8 つまでです。足りない所は 0 で埋めます。',
-      html: `${tip('例：「I」の番号は 49（16 進数）です。')}
+      title: t('e1_title'),
+      desc: t('e1_desc'),
+      html: `${tip(t('e1_tip'))}
         <div class="cells">${padded.map((b) =>
           `<div class="cell rv"><code>${hex2(b)}</code><span>${ch(b)}</span></div>`).join('')}</div>`,
     },
     {
-      title: '2. 8 つの番号を、ひとつの大きな数にする',
-      desc: '8 つの番号を、順番にならべて、長い 1 つの数にします。',
-      html: `${tip('これで、文字 8 つが「ひとつの数」になりました。')}
-        <p class="big rv">16進: ${N.toString(16).padStart(16, '0')}</p>
-        <p class="rv">10進（ふつうの数）: ${N}</p>`,
+      title: t('e2_title'),
+      desc: t('e2_desc'),
+      html: `${tip(t('e2_tip'))}
+        <p class="big rv">${t('b_hex', { v: N.toString(16).padStart(16, '0') })}</p>
+        <p class="rv">${t('e2_dec', { v: N.toString() })}</p>`,
     },
     {
-      title: '3. 大きな数を、4 つの小さな数に分ける',
-      desc: 'わり算の「あまり」を使って、大きな数を 4 つの小さな数に分けます。',
+      title: t('e3_title'),
+      desc: t('e3_desc'),
       html: splitHtml(d),
     },
     {
-      title: '4. 4 つの数を、キューブの並べ方と向きに変える',
-      desc: '数字の番号を、ピースの並びと向きに変えます。これでキューブの形が決まります。',
+      title: t('e4_title'),
+      desc: t('e4_desc'),
       html: arrangementHtml(d, textToColors(text)),
       netColors: textToColors(text),
     },
     {
-      title: '5. キューブの色をぬる',
-      desc: '並びと向きが決まったので、シールの色をぬります。展開図に、色が 1 枚ずつ入っていきます。',
+      title: t('e5_title'),
+      desc: t('e5_desc'),
       html: '',
       paint: { mode: 'fill', colors: textToColors(text), after: () => make(text) },
     },
@@ -692,30 +708,34 @@ function decodeSteps(colors) {
   const d = decodeDetails(colors);
   return [
     {
-      title: '1. シールの色を見る',
-      desc: 'キューブの 54 枚のシールの色を、1 枚ずつ見ていきます。',
+      title: t('d1_title'),
+      desc: t('d1_desc'),
       html: '',
       paint: { mode: 'read', colors },
     },
     {
-      title: '2. ピースの並びと向きを見る',
-      desc: 'どのピースが、どこに、どの向きで入っているかを見ます。',
+      title: t('d2_title'),
+      desc: t('d2_desc'),
       html: arrangementHtml(d, colors),
       netColors: colors,
     },
     {
-      title: '3. 4 つの数にする',
-      desc: '並びと向きを、番号（数）に直します。表の計算で、1 つずつ求めます。',
-      html: numbersHtml(d),
+      title: t('d3_title'),
+      desc: t('d3_desc'),
+      html: `${tip(t('d3_tip'))}
+        <p class="rv">${t('d3_e', { v: d.e })}</p>
+        <p class="rv">${t('d3_c', { v: d.c })}</p>
+        <p class="rv">${t('d3_t', { v: d.T })}</p>
+        <p class="rv">${t('d3_f', { v: d.F })}</p>`,
     },
     {
-      title: '4. ひとつの大きな数にまとめる',
-      desc: '4 つの数を、ひとつの大きな数にまとめます。',
+      title: t('d4_title'),
+      desc: t('d4_desc'),
       html: combineHtml(d),
     },
     {
-      title: '5. 文字にもどす',
-      desc: '大きな数を 16 進数にして、2 けたずつ分けます。1 組が 1 文字です。',
+      title: t('d5_title'),
+      desc: t('d5_desc'),
       html: bytesHtml(d.N),
     },
   ];
@@ -740,7 +760,7 @@ function slotNormalIdx(P) {
   return slotNormals(P).map((n) => stickerIndex(P, n));
 }
 
-// 位置 s（角か辺）を選んで、展開図で光らせ、説明を出す
+// 位置 s（角か辺か）を選んで、展開図で光らせ、説明を出す
 function showPick(corner, s, d) {
   const homes = corner ? CORNER_HOMES : EDGE_HOMES;
   const P = homes[s];
@@ -749,12 +769,14 @@ function showPick(corner, s, d) {
     sp.classList.toggle('pick', idx.has(+sp.dataset.j));
   });
   const k = (corner ? d.cornerPerm : d.edgePerm)[s];
-  const kind = corner ? '角' : '辺';
-  const dir = corner ? `基準の色（白か黄）が ${d.tw[s]} 番目` : `基準の色が ${d.fl[s]} 番目`;
-  $('netInfo').innerHTML =
-    `<strong>${posName(P)}の${kind}</strong>には、今、番号 ${k} のピースが入っています。<br>` +
-    `この番号のピースは、もとは「${posName(homes[k])}」の${kind}でした。<br>` +
-    `向き: ${dir}（0 から数えます）`;
+  const dir = corner ? t('dir_corner', { v: d.tw[s] }) : t('dir_edge', { v: d.fl[s] });
+  $('netInfo').innerHTML = t('pick_info', {
+    title: posKind(P, corner),
+    k,
+    home: posName(homes[k]),
+    kind: t(corner ? 'kind_corner' : 'kind_edge'),
+    dir,
+  });
   $('netInfo').hidden = false;
 }
 
@@ -764,7 +786,7 @@ function selectSticker(j) {
   const { pos: P, n } = STICKER_POSITIONS[j];
   $('net').querySelectorAll('span[data-j]').forEach((sp) => sp.classList.remove('pick'));
   if (P.join() === n.join()) {
-    $('netInfo').textContent = 'この真ん中のシールは、キューブの中心にあって動きません。';
+    $('netInfo').textContent = t('pick_center');
     $('netInfo').hidden = false;
     return;
   }
@@ -790,7 +812,7 @@ let playing = false;
 let gen = 0;
 
 function updateControls() {
-  $('animPlay').textContent = playing ? '停止' : '再生';
+  $('animPlay').textContent = playing ? t('c_stop') : t('c_play');
   $('astep-count').textContent = steps.length ? `${stepIndex + 1} / ${steps.length}` : '';
 }
 
@@ -861,7 +883,7 @@ function startAnim(list) {
 $('encodeBtn').addEventListener('click', () => {
   const text = $('text').value;
   if (countBytes(text) > 8) {
-    $('error').textContent = '8バイトまでです。文字を短くしてください。';
+    $('error').textContent = t('err_8bytes');
     return;
   }
   $('error').textContent = '';
@@ -893,14 +915,32 @@ $('animPlay').addEventListener('click', () => {
 
 // 入力
 $('text').addEventListener('input', () => {
-  $('bytesCount').textContent = countBytes($('text').value) + ' / 8 バイト';
+  $('bytesCount').textContent = t('c_bytes', { n: countBytes($('text').value) });
 });
 $('text').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') make($('text').value);
 });
 $('make').addEventListener('click', () => make($('text').value));
 
-$('bytesCount').textContent = countBytes($('text').value) + ' / 8 バイト';
+// 言語を切り替えたとき、画面の文言を入れ替えて、表示を作り直す
+window.addEventListener('langchange', () => {
+  applyI18n();
+  $('net').setAttribute('aria-label', t('c_net_aria'));
+  renderKeys();
+  spinLabel();
+  $('bytesCount').textContent = t('c_bytes', { n: countBytes($('text').value) });
+  if (!steps.length) $('astep-title').textContent = t('c_anim_placeholder');
+  if (steps.length) {
+    playing = false;
+    showStep(stepIndex, false);
+  }
+  updateControls();
+  render();
+});
+
+$('bytesCount').textContent = t('c_bytes', { n: countBytes($('text').value) });
+$('astep-title').textContent = t('c_anim_placeholder');
+spinLabel();
 render();
 window.cubeReady = true;
 </script>
