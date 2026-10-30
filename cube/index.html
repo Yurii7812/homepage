@@ -63,14 +63,15 @@
   <button id="shuffle">シャッフル</button>
   <button id="viewFront">正面</button>
   <button id="viewDiag">斜め</button>
+  <button id="keysToggle">キーを隠す</button>
   <strong id="complete"></strong>
 </p>
 
 <model-viewer id="cube" alt="I love U Rubik's Cube" camera-controls environment-image="neutral" camera-orbit="35deg 68deg 115%" exposure="1" shadow-intensity="0" rotation-per-second="120deg" touch-action="pan-y"></model-viewer>
 <p class="note" id="status"></p>
 <p class="warn" id="diag"></p>
-<div class="facebtns" id="facebtns"></div>
-<p class="note">シールの上をドラッグすると、その面が回ります。面のボタンはスワイプで回せます。背景をドラッグすると、キューブの向きが変わります。</p>
+<div id="keys"></div>
+<p class="note">シールの上をドラッグすると、その面が回ります。背景をドラッグすると、キューブの向きが変わります。</p>
 
 <div class="net" id="net" aria-label="キューブの展開図"></div>
 <p class="note">展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
@@ -278,15 +279,34 @@ const BUTTON_FACES = {
   F: { n: [0, 0, 1], t: [1, 0, 0] },
   B: { n: [0, 0, -1], t: [1, 0, 0] },
 };
-const facebtns = $('facebtns');
-for (const [name, { n, t }] of Object.entries(BUTTON_FACES)) {
-  const b = document.createElement('button');
-  b.textContent = name;
-  b.title = `${name} をスワイプで回す`;
-  const pos = n.map((v, i) => v + t[i]);
-  b.addEventListener('pointerdown', (e) => startDrag(e, { el: b, pos, n }));
-  facebtns.appendChild(b);
+// キー（面のボタン）の表示。オフのときは、キーの要素を画面に一切作らない。
+let keysOn = true;
+function renderKeys() {
+  const box = $('keys');
+  box.innerHTML = '';
+  $('keysToggle').textContent = keysOn ? 'キーを隠す' : 'キーを表示';
+  if (!keysOn) return;
+  const grid = document.createElement('div');
+  grid.className = 'facebtns';
+  for (const [name, { n, t }] of Object.entries(BUTTON_FACES)) {
+    const b = document.createElement('button');
+    b.textContent = name;
+    b.title = `${name} をスワイプで回す`;
+    const pos = n.map((v, i) => v + t[i]);
+    b.addEventListener('pointerdown', (e) => startDrag(e, { el: b, pos, n }));
+    grid.appendChild(b);
+  }
+  box.appendChild(grid);
+  const note = document.createElement('p');
+  note.className = 'note';
+  note.textContent = '面のボタンはスワイプで回せます。';
+  box.appendChild(note);
 }
+$('keysToggle').addEventListener('click', () => {
+  keysOn = !keysOn;
+  renderKeys();
+});
+renderKeys();
 
 // シールごとに当たり判定を置く（中心のシールは動かないので置かない）
 const cube = $('cube');
