@@ -43,6 +43,8 @@
   .chip { font-family: monospace; border: 1px solid #bbb; border-radius: 4px; padding: 2px 6px; background: #f4f4f4; }
   .big { font-family: monospace; font-size: 1.1rem; word-break: break-all; }
   .ctrl { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .tip { background: #eef4ff; border-left: 4px solid #4a7fd6; padding: 8px 10px; border-radius: 4px; font-size: 1rem; }
+  #astep-desc { font-size: 1.05rem; }
 </style>
 </head>
 <body>
@@ -77,6 +79,7 @@
 
 
 <h2>アニメーションで見る</h2>
+<p class="note">キューブの並べ方を「数字」にして、文字を入れたり取り出したりする仕組みです。ボタンを押すと、1 つずつ見られます。</p>
 <p class="ctrl">
   <button id="encodeBtn">暗号化を見る（文字 → キューブ）</button>
   <button id="decodeBtn">復号を見る（キューブ → 文字）</button>
@@ -453,46 +456,54 @@ const ch = (b) => (b >= 32 && b < 127 ? String.fromCharCode(b) : '·');
 const hex2 = (b) => b.toString(16).padStart(2, '0');
 const chips = (arr) => `<div class="chips">${arr.map((v) => `<span class="chip rv">${v}</span>`).join('')}</div>`;
 
-// 数を 4 つに分ける表（N の割り算の結果）
+// 中学生にも分かる言葉で書く説明
+const tip = (t) => `<p class="tip rv">${t}</p>`;
+
+// ③ 大きな数を、わり算のあまりで 4 つに分ける
 function splitHtml(d) {
   return `
-    <p class="rv">辺の並び e = ${d.e}（N を 12! = 479001600 で割った余り）</p>
-    <p class="rv">角の並び c = ${d.c}（残りを 20160 で割った余り）</p>
-    <p class="rv">角の向き T = ${d.T}（残りを 2187 で割った余り）</p>
-    <p class="rv">辺の向き F = ${d.F}（最後に残った数）</p>`;
+    ${tip('大きな数を、わり算の「あまり」で 4 つの小さな数に分けます。')}
+    <p class="rv">① 479001600 でわったあまり → <strong>${d.e}</strong>（これを「辺の並び」の番号にします）</p>
+    <p class="rv">② そのあとの数を 20160 でわったあまり → <strong>${d.c}</strong>（「角の並び」の番号）</p>
+    <p class="rv">③ そのあとの数を 2187 でわったあまり → <strong>${d.T}</strong>（「角の向き」の番号）</p>
+    <p class="rv">④ 最後に残った数 → <strong>${d.F}</strong>（「辺の向き」の番号）</p>`;
 }
 
-// 並びと向きの一覧（4 つの数から求まる）
+// ④ 4 つの番号を、ピースの並びと向きに変える
 function arrangementHtml(d) {
   return `
-    <p class="rv">辺の並び（12 個のピースの番号を、位置の順に）</p>${chips(d.edgePerm)}
-    <p class="rv">角の並び（8 個のピースの番号を、位置の順に）</p>${chips(d.cornerPerm)}
-    <p class="rv">角の向き（各角で基準のシールが何番目か）</p>${chips(d.tw)}
-    <p class="rv">辺の向き（各辺で基準のシールが何番目か）</p>${chips(d.fl)}`;
+    ${tip('ピースに番号をつけると、「どの番号のピースを、どこに置くか」を数字で言えます。')}
+    <p class="rv">辺のピース（12 個）が、位置 0〜11 にどの番号で入るか：</p>${chips(d.edgePerm)}
+    <p class="rv">角のピース（8 個）が、位置 0〜7 にどの番号で入るか：</p>${chips(d.cornerPerm)}
+    <p class="rv">角のピースの向き（0・1・2 のどれか）：</p>${chips(d.tw)}
+    <p class="rv">辺のピースの向き（0・1 のどちらか）：</p>${chips(d.fl)}`;
 }
 
-// 4 つの数を 1 つの数にまとめる式
+// 向きと並びの番号を、ひとつの大きな数にまとめる
 function combineHtml(d) {
   const X = BigInt(d.T) + 2187n * BigInt(d.F);
   const Y = BigInt(d.c) + 20160n * X;
   const N = BigInt(d.e) + 479001600n * Y;
   return `
-    <p class="rv">X = T + 2187 × F = ${X}</p>
-    <p class="rv">Y = c + 20160 × X = ${Y}</p>
-    <p class="rv">N = e + 479001600 × Y = ${N}</p>`;
+    ${tip('「○ × 大きさ + 次の数」を 3 回くり返して、ひとつの数にします。')}
+    <p class="rv">① 向きの 2 つの数をまとめる：T + 2187 × F = <strong>${X}</strong></p>
+    <p class="rv">② そこに角の並びをたす：c + 20160 × ① = <strong>${Y}</strong></p>
+    <p class="rv">③ 最後に辺の並びをたす：e + 479001600 × ② = <strong>${N}</strong></p>`;
 }
 
-// N を 8 バイトに分けて、文字にする
+// 数を 8 つの番号（1 文字ぶん）に分けて、文字にもどす
 function bytesHtml(N) {
   if (N >= TWO_POW_64) {
-    return `<p class="warn rv">この数は 8 バイトを超えるので、文字には戻せません。</p>`;
+    return tip('この数は大きすぎて、8 文字ぶんの番号に収まりません。だから文字には戻せません。');
   }
   const bytes = numberToBytes(N);
   const cells = bytes.map((b) =>
     `<div class="cell rv"><code>${hex2(b)}</code><span>${ch(b)}</span></div>`).join('');
-  return `<p class="big rv">16進: ${N.toString(16).padStart(16, '0')}</p>
+  return `
+    ${tip('数を 16 進数（0〜9 と A〜F の 16 種類の数字）に直すと、2 けたずつ 8 組になります。1 組が 1 文字です。')}
+    <p class="big rv">16進: ${N.toString(16).padStart(16, '0')}</p>
     <div class="cells">${cells}</div>
-    <p class="rv">文字: <strong>${numberToText(N)}</strong></p>`;
+    <p class="rv">文字にもどすと: <strong>${numberToText(N)}</strong></p>`;
 }
 
 // 暗号化の手順（文字 → キューブ）
@@ -503,29 +514,32 @@ function encodeSteps(text) {
   const padded = Array.from({ length: 8 }, (_, i) => bytes[i] ?? 0);
   return [
     {
-      title: '1. 文字をバイトにする',
-      desc: `「${text}」を 1 バイトずつ数にします。8 バイトに足りない所は 0 で埋めます。`,
-      html: `<div class="cells">${padded.map((b) =>
-        `<div class="cell rv"><code>${hex2(b)}</code><span>${ch(b)}</span></div>`).join('')}</div>`,
+      title: '1. 文字を番号にする',
+      desc: 'コンピューターは、文字を番号で覚えています。1 文字が 1 つの番号になります。番号は 8 つまでです。足りない所は 0 で埋めます。',
+      html: `${tip('例：「I」の番号は 49（16 進数）です。')}
+        <div class="cells">${padded.map((b) =>
+          `<div class="cell rv"><code>${hex2(b)}</code><span>${ch(b)}</span></div>`).join('')}</div>`,
     },
     {
-      title: '2. 8 バイトをひとつの数 N にする',
-      desc: '8 バイトを、16 進の 1 つの数として並べます。',
-      html: `<p class="big rv">16進: ${N.toString(16).padStart(16, '0')}</p><p class="rv">10進: ${N}</p>`,
+      title: '2. 8 つの番号を、ひとつの大きな数にする',
+      desc: '8 つの番号を、順番にならべて、長い 1 つの数にします。',
+      html: `${tip('これで、文字 8 つが「ひとつの数」になりました。')}
+        <p class="big rv">16進: ${N.toString(16).padStart(16, '0')}</p>
+        <p class="rv">10進（ふつうの数）: ${N}</p>`,
     },
     {
-      title: '3. 数 N を 4 つに分ける',
-      desc: 'N を、次の順に割って 4 つの数を取り出します。',
+      title: '3. 大きな数を、4 つの小さな数に分ける',
+      desc: 'わり算の「あまり」を使って、大きな数を 4 つの小さな数に分けます。',
       html: splitHtml(d),
     },
     {
-      title: '4. 4 つの数を、並びと向きに直す',
-      desc: '4 つの数から、どのピースをどこに、どの向きで置くかが決まります。',
+      title: '4. 4 つの数を、キューブの並べ方と向きに変える',
+      desc: '数字の番号を、ピースの並びと向きに変えます。これでキューブの形が決まります。',
       html: arrangementHtml(d),
     },
     {
-      title: '5. シールに色を塗る',
-      desc: '並びと向きから、54 枚のシールの色が決まります。展開図に色が塗られていきます。',
+      title: '5. キューブの色をぬる',
+      desc: '並びと向きが決まったので、シールの色をぬります。展開図に、色が 1 枚ずつ入っていきます。',
       html: '',
       paint: { mode: 'fill', colors: textToColors(text), after: () => make(text) },
     },
@@ -537,33 +551,33 @@ function decodeSteps(colors) {
   const d = decodeDetails(colors);
   return [
     {
-      title: '1. シールの色を読む',
-      desc: '展開図の 54 枚を、順番に読みます。',
+      title: '1. シールの色を見る',
+      desc: 'キューブの 54 枚のシールの色を、1 枚ずつ見ていきます。',
       html: '',
       paint: { mode: 'read', colors },
     },
     {
-      title: '2. 並びと向きを見る',
-      desc: 'どのピースがどこにあるか、どの向きかを求めます。',
+      title: '2. ピースの並びと向きを見る',
+      desc: 'どのピースが、どこに、どの向きで入っているかを見ます。',
       html: arrangementHtml(d),
     },
     {
       title: '3. 4 つの数にする',
-      desc: '並びと向きを、4 つの数に直します。',
-      html: `
-        <p class="rv">辺の並び e = ${d.e}</p>
-        <p class="rv">角の並び c = ${d.c}</p>
-        <p class="rv">角の向き T = ${d.T}</p>
-        <p class="rv">辺の向き F = ${d.F}</p>`,
+      desc: 'ピースの並びと向きを、番号（数）に直します。',
+      html: `${tip('並びと向きを、4 つの数に直すと、この 4 つになります。')}
+        <p class="rv">辺の並びの番号 e = <strong>${d.e}</strong></p>
+        <p class="rv">角の並びの番号 c = <strong>${d.c}</strong></p>
+        <p class="rv">角の向きの番号 T = <strong>${d.T}</strong></p>
+        <p class="rv">辺の向きの番号 F = <strong>${d.F}</strong></p>`,
     },
     {
-      title: '4. ひとつの数 N にまとめる',
-      desc: '4 つの数を、次の式でまとめます。',
+      title: '4. ひとつの大きな数にまとめる',
+      desc: '4 つの数を、ひとつの大きな数にまとめます。',
       html: combineHtml(d),
     },
     {
-      title: '5. 8 バイトに分けて、文字にする',
-      desc: 'N を 16 進にして、1 バイトずつ文字にします。',
+      title: '5. 文字にもどす',
+      desc: '大きな数を 16 進数にして、2 けたずつ分けます。1 組が 1 文字です。',
       html: bytesHtml(d.N),
     },
   ];
