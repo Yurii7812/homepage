@@ -36,6 +36,7 @@
 <p class="note">展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
 
 <div class="turns" id="turns"></div>
+<p><button id="spin">自動で回す</button></p>
 <p class="note">ボタンでキューブを回せます。回すと、読み取られる文字も変わります。</p>
 
 <p>
@@ -197,6 +198,13 @@ for (const m of MOVES) {
   b.addEventListener('click', () => turn(m));
   turnsEl.appendChild(b);
 }
+
+// 自動で回す（オン・オフ）
+$('spin').addEventListener('click', () => {
+  const on = !$('cube').autoRotate;
+  $('cube').autoRotate = on;
+  $('spin').textContent = on ? '自動回転を止める' : '自動で回す';
+});
 
 $('text').addEventListener('input', () => {
   $('bytesCount').textContent = countBytes($('text').value) + ' / 8 バイト';

@@ -13,6 +13,9 @@ const STICKER_RGB = [
 const BODY_RGB = [0.0706, 0.0784, 0.0941];
 const DIRS = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
 
+// 表示の色（見た目どおりの明るさ）を、glTF が使う直線の明るさに変換する
+const toLinear = (rgb) => rgb.map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+
 // 箱（中心 c、半径 h）を、面ごとに 4 頂点・2 三角形で追加する
 function addBox(prim, c, h) {
   for (let a = 0; a < 3; a++) {
@@ -112,7 +115,7 @@ function buildGlb(pieces) {
   });
   const materials = pieces.map((piece) => ({
     pbrMetallicRoughness: {
-      baseColorFactor: [...piece.rgb, 1],
+      baseColorFactor: [...toLinear(piece.rgb), 1],
       roughnessFactor: piece.rough,
       metallicFactor: 0,
     },
