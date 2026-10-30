@@ -66,6 +66,7 @@
   <button id="make">キューブを作る</button>
 </p>
 <p id="error"></p>
+<div id="decodeList" class="note"></div>
 
 <p>
   <button id="spin">自動で回す</button>
@@ -260,8 +261,15 @@ function readOut() {
     d = decodeDetails(current);
   } catch (e) {
     $('error').textContent = e.message;
+    $('decodeList').innerHTML = '';
     return;
   }
+  $('decodeList').innerHTML = `
+    <p><strong>今のキューブの復号配列</strong></p>
+    <p>角の並び（位置 0〜7 に入る番号）: <code>${d.cornerPerm.join(' ')}</code></p>
+    <p>角の向き（位置 0〜7）: <code>${d.tw.join(' ')}</code></p>
+    <p>辺の並び（位置 0〜11 に入る番号）: <code>${d.edgePerm.join(' ')}</code></p>
+    <p>辺の向き（位置 0〜11）: <code>${d.fl.join(' ')}</code></p>`;
   const inRange = d.N < TWO_POW_64;
   $('range').textContent = inRange ? '' : '8 バイトに収まらない数です。文字としては読めません。';
   $('decoded').textContent = inRange ? numberToText(d.N) : '（読めない）';
