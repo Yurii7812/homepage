@@ -11,10 +11,9 @@
   input[type=text] { width: 100%; font-size: 1rem; padding: 6px; box-sizing: border-box; }
   #error { color: #b00020; min-height: 1.5em; }
   /* 回すボタン（キューブの面に出る） */
-  model-viewer > .hot { display: none; }
-  model-viewer.turning > .hot { display: block; }
-  .hot { width: 34px; height: 34px; border-radius: 50%; border: 2px solid #222; background: #fff; color: #222; font-size: 18px; line-height: 1; padding: 0; cursor: pointer; transform: translate(-50%, -50%); }
-  .hot:hover { background: #ffd54f; }
+  /* シールの当たり判定（見えない）。手前の面だけ有効にする */
+  .hot { width: 30px; height: 30px; border-radius: 4px; cursor: grab; touch-action: none; transform: translate(-50%, -50%); }
+  .hot:hover { background: rgba(255, 213, 79, 0.45); }
   .hot[hidden] { display: none; }
   table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
   th, td { border-bottom: 1px solid #ccc; padding: 4px 6px; text-align: left; }
@@ -39,8 +38,8 @@
 <div class="net" id="net" aria-label="キューブの展開図"></div>
 <p class="note">展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
 
-<p><button id="turnMode">回す</button> <button id="spin">自動で回す</button></p>
-<p class="note">「回す」を押すと、キューブの面にボタンが出ます。↻ は時計回り、↺ は反時計回りです（面の外から見て）。回すと、読み取られる文字も変わります。</p>
+<p><button id="spin">自動で回す</button></p>
+<p class="note">シールの上をドラッグすると、その面が回ります。背景をドラッグすると、キューブの向きが変わります。回すと、読み取られる文字も変わります。</p>
 
 <p>
   <label>文字を入れる（8バイトまで）<br>
@@ -83,19 +82,10 @@
 <script type="module">
 import {
   textToColors, decodeDetails, numberToText, numberToBytes, applyMoves,
-  TWO_POW_64,
+  TWO_POW_64, STICKER_POSITIONS, dragMove,
 } from './cube-core.js';
 import { cubeGlb } from './gltf.js';
 
-// 面の位置（外向きの法線・右向き・上向き）。3D の面と回すボタンの配置に使う。
-const FACES = [
-  { name: 'U', n: [0, 1, 0], right: [1, 0, 0], up: [0, 0, -1] },
-  { name: 'R', n: [1, 0, 0], right: [0, 0, -1], up: [0, 1, 0] },
-  { name: 'F', n: [0, 0, 1], right: [1, 0, 0], up: [0, 1, 0] },
-  { name: 'D', n: [0, -1, 0], right: [1, 0, 0], up: [0, 0, 1] },
-  { name: 'L', n: [-1, 0, 0], right: [0, 0, 1], up: [0, 1, 0] },
-  { name: 'B', n: [0, 0, -1], right: [-1, 0, 0], up: [0, 1, 0] },
-];
 
 const $ = (id) => document.getElementById(id);
 
@@ -195,55 +185,85 @@ function make(text) {
   render();
 }
 
-// 面を回す（1 手）。clockwise が true なら時計回り（面の外から見て）。
-// applyMoves の「X」は反時計回りなので、時計回りは「X'」を使う。
-function turn(face, clockwise) {
-  current = applyMoves(current, clockwise ? face + "'" : face);
+// 面を 1 手回す（applyMoves の記号）
+function turn(move) {
+  current = applyMoves(current, move);
   render();
 }
 
-// 面の中心の外側に、時計回り・反時計回りのボタンを置く
+// シールごとに当たり判定を置く（中心のシールは動かないので置かない）
 const cube = $('cube');
-const hotspots = [];
-for (const f of FACES) {
-  const at = (u, v) => f.n.map((x, i) => x * 1.62 + u * f.right[i] + v * f.up[i]);
-  const place = [at(-0.5, 0), at(0.5, 0)];
-  [true, false].forEach((clockwise, k) => {
-    const b = document.createElement('button');
-    b.className = 'hot';
-    b.slot = `hotspot-${f.name}-${clockwise ? 'cw' : 'ccw'}`;
-    const [x, y, z] = place[k];
-    b.dataset.position = `${x}m ${y}m ${z}m`;
-    b.textContent = clockwise ? '↻' : '↺';
-    b.title = `${f.name} ${clockwise ? '時計回り' : '反時計回り'}`;
-    b.addEventListener('click', (e) => {
-      e.stopPropagation();
-      turn(f.name, clockwise);
-    });
-    cube.appendChild(b);
-    hotspots.push({ el: b, n: f.n });
-  });
-}
+const stickers = [];
+const FACE_NAMES = ['U', 'R', 'F', 'D', 'L', 'B'];
+STICKER_POSITIONS.forEach((s, j) => {
+  if (s.pos.join() === s.n.join()) return;
+  const el = document.createElement('div');
+  el.className = 'hot';
+  el.slot = `hotspot-s${j}`;
+  const p = s.pos.map((v, i) => v + s.n[i] * 0.55);
+  el.dataset.position = `${p[0]}m ${p[1]}m ${p[2]}m`;
+  el.dataset.normal = `${s.n[0]}m ${s.n[1]}m ${s.n[2]}m`;
+  cube.appendChild(el);
+  stickers.push({ el, pos: s.pos, n: s.n });
+  el.addEventListener('pointerdown', (e) => startDrag(e, { el, pos: s.pos, n: s.n }));
+});
 
-// 向こう側にある面のボタンは隠す（カメラの向きから判断）
-function updateHotspots() {
+// カメラの向こう側にあるシールは隠す（当たり判定が手前と重ならないように）
+function updateStickerVisibility() {
   const o = cube.getCameraOrbit();
   const cam = [
     Math.sin(o.phi) * Math.sin(o.theta),
     Math.cos(o.phi),
     Math.sin(o.phi) * Math.cos(o.theta),
   ];
-  for (const h of hotspots) {
-    h.el.hidden = h.n[0] * cam[0] + h.n[1] * cam[1] + h.n[2] * cam[2] < 0.2;
+  for (const st of stickers) {
+    st.el.hidden = st.n[0] * cam[0] + st.n[1] * cam[1] + st.n[2] * cam[2] < 0.2;
   }
 }
-cube.addEventListener('camera-change', updateHotspots);
-updateHotspots();
+cube.addEventListener('camera-change', updateStickerVisibility);
+updateStickerVisibility();
 
-$('turnMode').addEventListener('click', () => {
-  const on = !cube.classList.contains('turning');
-  cube.classList.toggle('turning', on);
-  $('turnMode').textContent = on ? '回すのを終える' : '回す';
+// 画面上のドラッグの向きを、3D 空間の向きに直す（カメラの右・上の向き）
+function cameraRightUp() {
+  const o = cube.getCameraOrbit();
+  const c = [
+    Math.sin(o.phi) * Math.sin(o.theta),
+    Math.cos(o.phi),
+    Math.sin(o.phi) * Math.cos(o.theta),
+  ];
+  const f = [-c[0], -c[1], -c[2]];
+  const r = cross(f, [0, 1, 0]);
+  const rl = Math.hypot(...r);
+  const right = r.map((v) => v / rl);
+  const up = cross(right, f);
+  return { right, up };
+}
+function cross(a, b) {
+  return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+}
+
+// 面のドラッグ。動かした量が小さすぎれば何もしない。
+let drag = null;
+function startDrag(e, sticker) {
+  e.preventDefault();
+  e.stopPropagation();
+  drag = { sticker, x: e.clientX, y: e.clientY };
+  sticker.el.setPointerCapture(e.pointerId);
+  cube.cameraControls = false; // 面を回している間は、視点を動かさない
+}
+window.addEventListener('pointerup', (e) => {
+  if (!drag) return;
+  const { sticker, x, y } = drag;
+  drag = null;
+  cube.cameraControls = true;
+  const dx = e.clientX - x;
+  const dy = e.clientY - y;
+  if (Math.hypot(dx, dy) < 12) return;
+  const { right, up } = cameraRightUp();
+  // 画面の下向きは、3D の上向きの逆
+  const w = right.map((v, i) => v * dx - up[i] * dy);
+  const move = dragMove(sticker.pos, sticker.n, w);
+  if (move) turn(move);
 });
 
 // 自動で回す（オン・オフ）

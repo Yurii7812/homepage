@@ -320,3 +320,18 @@ export function colorsToText(colors) {
   return numberToText(decodeColors(colors));
 }
 export const SOLVED = encodeNumber(0n);
+
+// 面の文字（FACES と同じ順）
+const FACE_LETTERS = ['U', 'R', 'F', 'D', 'L', 'B'];
+
+// シールドラッグから回す手を決める。
+// pos: シールのある小片の位置、n: シールの向き（外向きの法線）、
+// w: ドラッグの向き（3D 空間の方向）。
+// シールはこの回しで w の向きに動く手を返す。動かない（中心など）なら null。
+export function dragMove(pos, n, w) {
+  const v = cross(n, pos);
+  const d = dot(v, w);
+  if (Math.abs(d) < 1e-9) return null;
+  const face = FACES.findIndex((f) => key(f.n) === key(n));
+  return FACE_LETTERS[face] + (d > 0 ? '' : "'");
+}
