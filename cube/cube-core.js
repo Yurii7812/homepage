@@ -192,12 +192,7 @@ export function textToNumber(text) {
   return n;
 }
 export function numberToText(n) {
-  const bytes = [];
-  let rest = n;
-  for (let i = 0; i < 8; i++) {
-    bytes.unshift(Number(rest & 255n));
-    rest >>= 8n;
-  }
+  const bytes = numberToBytes(n);
   let end = bytes.length;
   while (end > 0 && bytes[end - 1] === 0) end--;
   return new TextDecoder().decode(new Uint8Array(bytes.slice(0, end)));
@@ -253,6 +248,13 @@ export function encodeNumber(N) {
 
 // キューブの色 → 数。おかしい状態（組み合わせが不可能）なら例外。
 export function decodeColors(colors) {
+  return decodeDetails(colors).N;
+}
+
+// 読み取りの内訳。N = e + 12! × (c + 20160 × (T + 2187 × F))
+// edgePerm / cornerPerm: どのピースがどこにあるか（家の番号）
+// tw / fl: 角の向き・辺の向き（各スロット）
+export function decodeDetails(colors) {
   const cornerPerm = [];
   const tw = [];
   for (let s = 0; s < 8; s++) {
@@ -294,10 +296,21 @@ export function decodeColors(colors) {
   for (let j = 6; j >= 0; j--) T = T * 3 + tw[j];
   let F = 0;
   for (let j = 10; j >= 0; j--) F = F * 2 + fl[j];
-  return (
-    big(rankPerm(edgePerm)) +
-    big(TOTAL_EDGE_PERM) * (big(c) + big(TOTAL_CORNER_PERM) * (big(T) + 2187n * big(F)))
-  );
+  const e = rankPerm(edgePerm);
+  const N = big(e) + big(TOTAL_EDGE_PERM) * (big(c) + big(TOTAL_CORNER_PERM) * (big(T) + 2187n * big(F)));
+  return { N, e, c, T, F, edgePerm, cornerPerm, tw, fl };
+}
+
+// 数 → 8 バイト（上位から）。8 バイトに収まらない数は下位 8 バイトだけ。
+export const TWO_POW_64 = 1n << 64n;
+export function numberToBytes(n) {
+  const bytes = [];
+  let rest = n;
+  for (let i = 0; i < 8; i++) {
+    bytes.unshift(Number(rest & 255n));
+    rest >>= 8n;
+  }
+  return bytes;
 }
 
 export function textToColors(text) {

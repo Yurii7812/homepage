@@ -17,6 +17,16 @@
   #view { width: 100%; height: 360px; }
   input[type=text] { width: 100%; font-size: 1rem; padding: 6px; box-sizing: border-box; }
   #error { color: #b00020; min-height: 1.5em; }
+  .turns { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin: 12px 0; }
+  .turns button { padding: 6px 0; font-size: 1rem; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+  th, td { border-bottom: 1px solid #ccc; padding: 4px 6px; text-align: left; }
+  td.num { font-family: monospace; text-align: right; }
+  .bytes { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; text-align: center; margin: 8px 0; }
+  .bytes code { display: block; }
+  .bytes span { display: block; min-height: 1.4em; }
+  .note { color: #666; font-size: 0.9rem; }
+  .warn { color: #b00020; }
 </style>
 </head>
 <body>
@@ -25,7 +35,8 @@
 
 <div id="view"></div>
 
-<p>このキューブが表している文字: <strong id="decoded"></strong></p>
+<div class="turns" id="turns"></div>
+<p class="note">ボタンでキューブを回せます。回すと、読み取られる文字も変わります。</p>
 
 <p>
   <label>文字を入れる（8バイトまで）<br>
@@ -33,19 +44,43 @@
   </label>
 </p>
 <p>
-  <span id="bytes"></span>
+  <span id="bytesCount"></span>
   <button id="make">キューブを作る</button>
 </p>
 <p id="error"></p>
 
+<h2>読み取りの結果</h2>
+<p>文字: <strong id="decoded"></strong></p>
+<p id="range" class="warn"></p>
+<div class="bytes" id="bytes"></div>
+<p class="note" id="hex"></p>
+
+<h2>読み方</h2>
+<p>キューブは、ピースの並び方と向きの組み合わせで、ひとつの数になります。その数を 8 バイトに分けて、文字にします。</p>
+<table>
+  <thead><tr><th>何を読むか</th><th>数</th><th>取りうる範囲</th></tr></thead>
+  <tbody>
+    <tr><td>辺 12 個の並び</td><td class="num" id="e"></td><td class="num">0 〜 479001599</td></tr>
+    <tr><td>角 8 個の並び</td><td class="num" id="c"></td><td class="num">0 〜 20159</td></tr>
+    <tr><td>角の向き（7 個で決まる）</td><td class="num" id="T"></td><td class="num">0 〜 2186</td></tr>
+    <tr><td>辺の向き（11 個で決まる）</td><td class="num" id="F"></td><td class="num">0 〜 2047</td></tr>
+    <tr><td><strong>合計の数</strong></td><td class="num" id="N"></td><td class="num">0 〜 2^64 − 1（8 バイト）</td></tr>
+  </tbody>
+</table>
+<p class="note">合計 = 辺の並び + 479001600 × (角の並び + 20160 × (角の向き + 2187 × 辺の向き))</p>
+
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { textToColors, colorsToText, stickerIndex } from './cube-core.js';
+import {
+  textToColors, decodeDetails, numberToText, numberToBytes, applyMoves,
+  stickerIndex, TWO_POW_64,
+} from './cube-core.js';
 
 const FACE_HEX = ['#ffffff', '#d50000', '#009b48', '#ffd500', '#ff6d00', '#0046ad'];
 const DIRS = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
 const BODY = '#111111';
+const MOVES = ['U', "U'", 'R', "R'", 'F', "F'", 'D', "D'", 'L', "L'", 'B', "B'"];
 
 const view = document.getElementById('view');
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -80,7 +115,9 @@ for (let x = -1; x <= 1; x++) {
   }
 }
 
-// 状態（シールの色）を表示に反映する
+// 現在のキューブの状態（シールの色 54 個）
+let current = textToColors('I love U');
+
 function show(colors) {
   for (const { pos, materials } of cubies) {
     DIRS.forEach((d, i) => {
@@ -90,37 +127,76 @@ function show(colors) {
   }
 }
 
-const decodedEl = document.getElementById('decoded');
-const textEl = document.getElementById('text');
-const bytesEl = document.getElementById('bytes');
-const errorEl = document.getElementById('error');
+const $ = (id) => document.getElementById(id);
+const countBytes = (text) => new TextEncoder().encode(text).length;
 
-function countBytes(text) {
-  return new TextEncoder().encode(text).length;
+// 現在の色から読み取って、結果の欄を書き換える
+function readOut() {
+  $('error').textContent = '';
+  let d;
+  try {
+    d = decodeDetails(current);
+  } catch (e) {
+    $('error').textContent = e.message;
+    return;
+  }
+  const inRange = d.N < TWO_POW_64;
+  $('range').textContent = inRange ? '' : '8 バイトに収まらない数です。文字としては読めません。';
+  $('decoded').textContent = inRange ? numberToText(d.N) : '（読めない）';
+  const bytes = numberToBytes(d.N);
+  $('bytes').innerHTML = bytes
+    .map((b) => `<div><span><code>${b.toString(16).padStart(2, '0')}</code></span></div>`)
+    .join('');
+  $('hex').textContent = '16進: ' + d.N.toString(16);
+  $('e').textContent = d.e;
+  $('c').textContent = d.c;
+  $('T').textContent = d.T;
+  $('F').textContent = d.F;
+  $('N').textContent = d.N.toString();
 }
 
-// 文字 → キューブを作って表示 → 表示されている色から文字を読み直す
+function render() {
+  show(current);
+  readOut();
+}
+
+// 文字からキューブを作る
 function make(text) {
   try {
-    const colors = textToColors(text);
-    show(colors);
-    decodedEl.textContent = colorsToText(colors);
-    errorEl.textContent = '';
+    current = textToColors(text);
+    $('error').textContent = '';
   } catch (e) {
-    errorEl.textContent = e.message;
+    $('error').textContent = e.message;
+    return;
   }
+  render();
 }
 
-textEl.addEventListener('input', () => {
-  bytesEl.textContent = countBytes(textEl.value) + ' / 8 バイト';
-});
-textEl.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') make(textEl.value);
-});
-document.getElementById('make').addEventListener('click', () => make(textEl.value));
+// 面を回す（1 手）
+function turn(move) {
+  current = applyMoves(current, move);
+  render();
+}
 
-bytesEl.textContent = countBytes(textEl.value) + ' / 8 バイト';
-make(textEl.value);
+// 回すボタン
+const turnsEl = $('turns');
+for (const m of MOVES) {
+  const b = document.createElement('button');
+  b.textContent = m;
+  b.addEventListener('click', () => turn(m));
+  turnsEl.appendChild(b);
+}
+
+$('text').addEventListener('input', () => {
+  $('bytesCount').textContent = countBytes($('text').value) + ' / 8 バイト';
+});
+$('text').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') make($('text').value);
+});
+$('make').addEventListener('click', () => make($('text').value));
+
+$('bytesCount').textContent = countBytes($('text').value) + ' / 8 バイト';
+render();
 
 function resize() {
   renderer.setSize(view.clientWidth, view.clientHeight);
