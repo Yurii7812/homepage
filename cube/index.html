@@ -138,7 +138,7 @@ setTimeout(() => {
 <script type="module">
 import {
   textToColors, textToNumber, decodeDetails, numberToText, numberToBytes, applyMoves,
-  TWO_POW_64, STICKER_POSITIONS, dragMove, SOLVED,
+  TWO_POW_64, STICKER_POSITIONS, dragMove, SOLVED, stickerIndex,
 } from './cube-core.js?v=4';
 import { cubeGlb } from './gltf.js?v=4';
 
@@ -470,14 +470,93 @@ function splitHtml(d) {
     <p class="rv">④ 最後に残った数 → <strong>${d.F}</strong>（「辺の向き」の番号）</p>`;
 }
 
-// ④ 4 つの番号を、ピースの並びと向きに変える
-function arrangementHtml(d) {
+// ピースの置き場所と番号の決まりを、プログラムと同じ順番で作る
+const NAME = ['白', '赤', '緑', '黄', '橙', '青'];
+const FACT = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 479001600];
+const CORNER_HOMES = [];
+for (const sx of [-1, 1]) for (const sy of [-1, 1]) for (const sz of [-1, 1]) CORNER_HOMES.push([sx, sy, sz]);
+const EDGE_HOMES = [];
+for (let x = -1; x <= 1; x++) for (let y = -1; y <= 1; y++) for (let z = -1; z <= 1; z++) {
+  if ([x, y, z].filter((v) => v !== 0).length === 2) EDGE_HOMES.push([x, y, z]);
+}
+
+// 位置の名前（例: 上・前）
+function posName(p) {
+  const parts = [];
+  if (p[1] === 1) parts.push('上');
+  if (p[1] === -1) parts.push('下');
+  if (p[0] === -1) parts.push('左');
+  if (p[0] === 1) parts.push('右');
+  if (p[2] === 1) parts.push('前');
+  if (p[2] === -1) parts.push('後');
+  return parts.join('・');
+}
+
+// その位置のシールの向き（プログラムと同じ順番）
+// 角: 左右・上下・前後の順。辺: 上下の面があれば上下が先、なければ前後が先。
+function slotNormals(p) {
+  let vecs = [0, 1, 2].filter((i) => p[i] !== 0).map((i) => {
+    const v = [0, 0, 0];
+    v[i] = p[i];
+    return v;
+  });
+  if (vecs.length === 3) {
+    if (p[0] * p[1] * p[2] < 0) [vecs[1], vecs[2]] = [vecs[2], vecs[1]];
+  } else {
+    let ref = vecs.findIndex((v) => v[1] !== 0);
+    if (ref < 0) ref = vecs.findIndex((v) => v[2] !== 0);
+    vecs = [vecs[ref], ...vecs.filter((_, i) => i !== ref)];
+  }
+  return vecs;
+}
+
+// 表の行。位置・今ある色・番号（もとの位置）・向き
+function pieceRows(homes, slots, perm, dirText, colors) {
+  return slots.map((P, s) => {
+    const shown = slotNormals(P).map((n) => NAME[colors[stickerIndex(P, n)]]).join('・');
+    const k = perm[s];
+    return `<tr class="rv"><td>${posName(P)}</td><td>${shown}</td><td>${k}（もとは「${posName(homes[k])}」）</td><td>${dirText(s)}</td></tr>`;
+  }).join('');
+}
+
+const HEAD = '<tr><th>位置</th><th>今ある色（順番どおり）</th><th>番号</th><th>向き</th></tr>';
+
+// ④ 並びと向きを、表で読む
+function arrangementHtml(d, colors) {
   return `
-    ${tip('ピースに番号をつけると、「どの番号のピースを、どこに置くか」を数字で言えます。')}
-    <p class="rv">辺のピース（12 個）が、位置 0〜11 にどの番号で入るか：</p>${chips(d.edgePerm)}
-    <p class="rv">角のピース（8 個）が、位置 0〜7 にどの番号で入るか：</p>${chips(d.cornerPerm)}
-    <p class="rv">角のピースの向き（0・1・2 のどれか）：</p>${chips(d.tw)}
-    <p class="rv">辺のピースの向き（0・1 のどちらか）：</p>${chips(d.fl)}`;
+    ${tip('キューブのピースには番号があります。解けた状態で「その位置にあるピース」が、そのピースの番号です。例：「上・前」の辺にあるピースが番号 7 なら、「上・前」の位置は 7 のピースが入る場所です。')}
+    <p class="rv"><strong>角（8 個）</strong></p>
+    <table>${HEAD}${pieceRows(CORNER_HOMES, CORNER_HOMES, d.cornerPerm,
+      (s) => `基準の色（白か黄）が ${d.tw[s]} 番目`, colors)}</table>
+    <p class="rv"><strong>辺（12 個）</strong></p>
+    <table>${HEAD}${pieceRows(EDGE_HOMES, EDGE_HOMES, d.edgePerm,
+      (s) => `基準の色が ${d.fl[s]} 番目`, colors)}</table>
+    ${tip('向きの「基準」: 角は白か黄のシール。辺は上か下のシール（なければ前か後ろのシール）。その色が、表の中で何番目（0 から数える）かを書きます。')}`;
+}
+
+// ③ 4 つの数を、表の計算で求める
+function numbersHtml(d) {
+  const qs = d.edgePerm.map((v, i) => d.edgePerm.slice(i + 1).filter((w) => w < v).length);
+  const edgeRows = d.edgePerm.map((v, i) =>
+    `<tr class="rv"><td>${i}</td><td>${v}</td><td>${qs[i]}</td><td>${FACT[11 - i]}</td><td>${qs[i] * FACT[11 - i]}</td></tr>`).join('');
+  const tRows = d.tw.slice(0, 7).map((v, j) =>
+    `<tr class="rv"><td>角 ${j}</td><td>${v}</td><td>${3 ** j}</td><td>${v * 3 ** j}</td></tr>`).join('');
+  const fRows = d.fl.slice(0, 11).map((v, j) =>
+    `<tr class="rv"><td>辺 ${j}</td><td>${v}</td><td>${2 ** j}</td><td>${v * 2 ** j}</td></tr>`).join('');
+  return `
+    ${tip('数の求め方: 「右にある、自分より小さい番号の数」を数え、それに階乗（11! など）をかけて足します。')}
+    <p class="rv"><strong>① 辺の並び e</strong></p>
+    <table><tr><th>位置</th><th>番号</th><th>右にある小さい番号の数</th><th>かける数</th><th>答え</th></tr>${edgeRows}</table>
+    <p class="rv">合計: e = <strong>${d.e}</strong></p>
+    <p class="rv"><strong>② 角の並び c</strong></p>
+    ${tip('角の並びは、偶数の並びか奇数の並びのどちらかの仲間の中で、番号が小さい順に数えた「何番目か」です（0 から数えます）。')}
+    <p class="rv">c = <strong>${d.c}</strong></p>
+    <p class="rv"><strong>③ 角の向き T（3 進法）</strong></p>
+    <table><tr><th>角</th><th>向き</th><th>かける数</th><th>答え</th></tr>${tRows}</table>
+    <p class="rv">角 7 の向きは、残りの合計で自動的に決まります。合計: T = <strong>${d.T}</strong></p>
+    <p class="rv"><strong>④ 辺の向き F（2 進法）</strong></p>
+    <table><tr><th>辺</th><th>向き</th><th>かける数</th><th>答え</th></tr>${fRows}</table>
+    <p class="rv">辺 11 の向きは、残りの合計で自動的に決まります。合計: F = <strong>${d.F}</strong></p>`;
 }
 
 // 向きと並びの番号を、ひとつの大きな数にまとめる
@@ -536,7 +615,7 @@ function encodeSteps(text) {
     {
       title: '4. 4 つの数を、キューブの並べ方と向きに変える',
       desc: '数字の番号を、ピースの並びと向きに変えます。これでキューブの形が決まります。',
-      html: arrangementHtml(d),
+      html: arrangementHtml(d, textToColors(text)),
     },
     {
       title: '5. キューブの色をぬる',
@@ -560,16 +639,12 @@ function decodeSteps(colors) {
     {
       title: '2. ピースの並びと向きを見る',
       desc: 'どのピースが、どこに、どの向きで入っているかを見ます。',
-      html: arrangementHtml(d),
+      html: arrangementHtml(d, colors),
     },
     {
       title: '3. 4 つの数にする',
-      desc: 'ピースの並びと向きを、番号（数）に直します。',
-      html: `${tip('並びと向きを、4 つの数に直すと、この 4 つになります。')}
-        <p class="rv">辺の並びの番号 e = <strong>${d.e}</strong></p>
-        <p class="rv">角の並びの番号 c = <strong>${d.c}</strong></p>
-        <p class="rv">角の向きの番号 T = <strong>${d.T}</strong></p>
-        <p class="rv">辺の向きの番号 F = <strong>${d.F}</strong></p>`,
+      desc: '並びと向きを、番号（数）に直します。表の計算で、1 つずつ求めます。',
+      html: numbersHtml(d),
     },
     {
       title: '4. ひとつの大きな数にまとめる',
