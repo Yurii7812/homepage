@@ -45,6 +45,7 @@
   .ctrl { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
   .tip { background: #eef4ff; border-left: 4px solid #4a7fd6; padding: 8px 10px; border-radius: 4px; font-size: 1rem; }
   #astep-desc { font-size: 1.05rem; }
+  #astep-body { min-height: 260px; }
 </style>
 </head>
 <body>
@@ -88,14 +89,14 @@
   <p class="note" id="astep-count"></p>
   <h3 id="astep-title">ボタンを押すと、ここに手順が出ます。</h3>
   <p id="astep-desc"></p>
-  <div id="astep-body"></div>
-  <div class="net" id="net" hidden aria-label="キューブの展開図"></div>
-  <p class="note" id="netNote" hidden>展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
   <p class="ctrl">
     <button id="animPrev">前へ</button>
     <button id="animPlay">再生</button>
     <button id="animNext">次へ</button>
   </p>
+  <div id="astep-body"></div>
+  <div class="net" id="net" hidden aria-label="キューブの展開図"></div>
+  <p class="note" id="netNote" hidden>展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
 </div>
 
 <h2>読み取りの結果</h2>
@@ -620,14 +621,16 @@ async function paint(p, g) {
 async function showStep(i, autoRun) {
   gen++;
   const g = gen;
-  $('net').hidden = false;
-  $('netNote').hidden = false;
   stepIndex = i;
   const st = steps[i];
   $('astep-title').textContent = st.title;
   $('astep-desc').textContent = st.desc;
   $('astep-body').innerHTML = st.html || '';
-  if (!st.paint) drawNet(current);
+  // 展開図は、色を読む・色を塗る手順のときだけ出す
+  const showNet = Boolean(st.paint);
+  $('net').hidden = !showNet;
+  $('netNote').hidden = !showNet;
+  if (!showNet) drawNet(current);
   updateControls();
   if (st.paint) await paint(st.paint, g);
   for (const el of $('astep-body').querySelectorAll('.rv')) {
