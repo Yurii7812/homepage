@@ -86,15 +86,15 @@ window.addEventListener('error', (e) => {
   document.getElementById('diag').textContent = '表示のエラー: ' + e.message;
 });
 setTimeout(() => {
-  if (!window.cubeReady) document.getElementById('diag').textContent = '表示の準備ができませんでした（スクリプトが動いていません）。';
+  if (!window.cubeReady) document.getElementById('diag').textContent = '表示の準備ができませんでした（スクリプトが動いていません）。古い表示が残っている可能性があるので、Ctrl+Shift+R（スマホは再読み込みを強く）で開き直してください。';
 }, 5000);
 </script>
 <script type="module">
 import {
   textToColors, decodeDetails, numberToText, numberToBytes, applyMoves,
   TWO_POW_64, STICKER_POSITIONS, dragMove,
-} from './cube-core.js';
-import { cubeGlb } from './gltf.js';
+} from './cube-core.js?v=3';
+import { cubeGlb } from './gltf.js?v=3';
 
 
 const $ = (id) => document.getElementById(id);
