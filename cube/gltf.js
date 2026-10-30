@@ -16,8 +16,18 @@ const DIRS = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1
 // 表示の色（見た目どおりの明るさ）を、glTF が使う直線の明るさに変換する
 const toLinear = (rgb) => rgb.map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
 
-// 箱（中心 c、半径 h）を、面ごとに 4 頂点・2 三角形で追加する
-function addBox(prim, c, h) {
+// 軸 a の周りに角度 t だけ回す（右ねじの向き）
+function rotateAxis(v, a, t) {
+  const c = Math.cos(t);
+  const s = Math.sin(t);
+  const ad = a[0] * v[0] + a[1] * v[1] + a[2] * v[2];
+  const ax = [a[1] * v[2] - a[2] * v[1], a[2] * v[0] - a[0] * v[2], a[0] * v[1] - a[1] * v[0]];
+  return [0, 1, 2].map((i) => v[i] * c + ax[i] * s + a[i] * ad * (1 - c));
+}
+
+// 箱（中心 c、半径 h）を、面ごとに 4 頂点・2 三角形で追加する。
+// rot があれば、頂点と法線をそれで回す（層を回した途中の形を作るため）。
+function addBox(prim, c, h, rot = (v) => v) {
   for (let a = 0; a < 3; a++) {
     const b = (a + 1) % 3;
     const cc = (a + 2) % 3;
@@ -31,10 +41,10 @@ function addBox(prim, c, h) {
         p[a] = c[a] + s * h[a];
         p[b] = c[b] + ub * h[b];
         p[cc] = c[cc] + uc * h[cc];
-        prim.pos.push(...p);
+        prim.pos.push(...rot(p));
         const n = [0, 0, 0];
         n[a] = s;
-        prim.nrm.push(...n);
+        prim.nrm.push(...rot(n));
       }
       prim.idx.push(base, base + 1, base + 2, base, base + 2, base + 3);
     }
@@ -43,8 +53,9 @@ function addBox(prim, c, h) {
 
 const newPrim = () => ({ pos: [], nrm: [], idx: [] });
 
-// colors（54 個）→ GLB のバイト列
-export function cubeGlb(colors) {
+// colors（54 個）→ GLB のバイト列。
+// turn があれば、その層（pos·axis = 1 の小片）を axis の周りに angle（ラジアン）回した形にする。
+export function cubeGlb(colors, turn = null) {
   const body = newPrim();
   const stickers = STICKER_RGB.map(newPrim);
   const pieces = [];
@@ -53,7 +64,9 @@ export function cubeGlb(colors) {
       for (let z = -1; z <= 1; z++) {
         if (x === 0 && y === 0 && z === 0) continue;
         const pos = [x, y, z];
-        addBox(body, pos, [0.475, 0.475, 0.475]);
+        const moving = turn && pos[0] * turn.axis[0] + pos[1] * turn.axis[1] + pos[2] * turn.axis[2] === 1;
+        const rot = moving ? (v) => rotateAxis(v, turn.axis, turn.angle) : (v) => v;
+        addBox(body, pos, [0.475, 0.475, 0.475], rot);
         for (const d of DIRS) {
           if (pos[0] * d[0] + pos[1] * d[1] + pos[2] * d[2] !== 1) continue;
           // シールは薄い板。法線の方向だけ薄くする
@@ -61,7 +74,7 @@ export function cubeGlb(colors) {
           const axis = d.findIndex((v) => v !== 0);
           h[axis] = 0.01;
           const c = pos.map((v, i) => v + d[i] * 0.485);
-          addBox(stickers[colors[stickerIndex(pos, d)]], c, h);
+          addBox(stickers[colors[stickerIndex(pos, d)]], c, h, rot);
         }
       }
     }

@@ -21,6 +21,9 @@
   .bytes { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; text-align: center; margin: 8px 0; }
   .bytes code { display: block; }
   .note { color: #666; font-size: 0.9rem; }
+  .facebtns { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin: 10px 0; }
+  .facebtns button { padding: 8px 0; font-size: 1rem; }
+  #complete { color: #189a5d; }
   .net { display: grid; grid-template-columns: repeat(4, auto); grid-template-rows: repeat(3, auto); gap: 26px 10px; justify-content: center; margin: 16px 0 8px; }
   .face { position: relative; display: grid; grid-template-columns: repeat(3, 22px); gap: 2px; background: #121417; padding: 2px; border-radius: 4px; }
   .face span { display: block; width: 22px; height: 22px; border-radius: 3px; }
@@ -35,11 +38,17 @@
 <model-viewer id="cube" alt="I love U Rubik's Cube" camera-controls environment-image="neutral" camera-orbit="35deg 68deg 115%" exposure="1" shadow-intensity="0" touch-action="pan-y"></model-viewer>
 <p class="note" id="status"></p>
 <p class="warn" id="diag"></p>
+<div class="facebtns" id="facebtns"></div>
 
 <div class="net" id="net" aria-label="キューブの展開図"></div>
 <p class="note">展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
 
-<p><button id="spin">自動で回す</button></p>
+<p>
+  <button id="spin">自動で回す</button>
+  <button id="shuffle">シャッフル</button>
+  <strong id="timer">00:00.00</strong>
+  <strong id="complete"></strong>
+</p>
 <p class="note">シールの上をドラッグすると、その面が回ります。背景をドラッグすると、キューブの向きが変わります。回すと、読み取られる文字も変わります。</p>
 
 <p>
@@ -92,7 +101,7 @@ setTimeout(() => {
 <script type="module">
 import {
   textToColors, decodeDetails, numberToText, numberToBytes, applyMoves,
-  TWO_POW_64, STICKER_POSITIONS, dragMove,
+  TWO_POW_64, STICKER_POSITIONS, dragMove, SOLVED,
 } from './cube-core.js?v=3';
 import { cubeGlb } from './gltf.js?v=3';
 
@@ -145,8 +154,8 @@ let current = textToColors('I love U');
 
 // 3D 表示：状態から GLB を作り直して、model-viewer に渡す
 let modelUrl = null;
-function show3d(colors) {
-  const blob = new Blob([cubeGlb(colors)], { type: 'model/gltf-binary' });
+function show3d(colors, turnPreview = null) {
+  const blob = new Blob([cubeGlb(colors, turnPreview)], { type: 'model/gltf-binary' });
   const url = URL.createObjectURL(blob);
   $('cube').src = url;
   if (modelUrl) URL.revokeObjectURL(modelUrl);
@@ -192,14 +201,75 @@ function make(text) {
     $('error').textContent = e.message;
     return;
   }
+  resetTimer();
   render();
 }
 
-// 面を 1 手回す（applyMoves の記号）
+// タイマー（最初の 1 手で開始、完成で止まる）
+let startedAt = null;
+let finished = false;
+let timerId = null;
+const fmtTime = (ms) => {
+  const cs = Math.floor(ms / 10) % 100;
+  const sec = Math.floor(ms / 1000) % 60;
+  const min = Math.floor(ms / 60000);
+  return `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}.${String(cs).padStart(2, '0')}`;
+};
+function showTime(now) {
+  $('timer').textContent = fmtTime(startedAt === null ? 0 : now - startedAt);
+}
+function resetTimer() {
+  startedAt = null;
+  finished = false;
+  clearInterval(timerId);
+  timerId = null;
+  $('complete').textContent = '';
+  showTime(0);
+}
+
+// 面を 1 手回す（applyMoves の記号）。最初の 1 手でタイマーを始め、そろったら止める。
 function turn(move) {
   current = applyMoves(current, move);
+  if (!finished && startedAt === null) {
+    startedAt = performance.now();
+    timerId = setInterval(() => showTime(performance.now()), 50);
+  }
+  if (!finished && current.join() === SOLVED.join()) {
+    finished = true;
+    clearInterval(timerId);
+    showTime(performance.now());
+    $('complete').textContent = 'COMPLETE!';
+  }
   render();
 }
+
+// シャッフル（同じ面を続けて回さない 25 手）
+function shuffle() {
+  const faces = ['U', 'R', 'F', 'D', 'L', 'B'];
+  const moves = [];
+  let prev = -1;
+  for (let i = 0; i < 25; i++) {
+    let f;
+    do {
+      f = Math.floor(Math.random() * 6);
+    } while (f === prev);
+    prev = f;
+    moves.push(faces[f] + ['', "'", '2'][Math.floor(Math.random() * 3)]);
+  }
+  current = applyMoves(SOLVED, moves.join(' '));
+  resetTimer();
+  render();
+}
+
+// 面ボタン（時計回り・反時計回り）
+const facebtns = $('facebtns');
+for (const m of ['U', "U'", 'D', "D'", 'L', "L'", 'R', "R'", 'F', "F'", 'B', "B'"]) {
+  const b = document.createElement('button');
+  b.textContent = m;
+  b.addEventListener('click', () => turn(m));
+  facebtns.appendChild(b);
+}
+$('shuffle').addEventListener('click', shuffle);
 
 // シールごとに当たり判定を置く（中心のシールは動かないので置かない）
 const cube = $('cube');
@@ -254,28 +324,75 @@ function cross(a, b) {
   return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
 }
 
-// 面のドラッグ。動かした量が小さすぎれば何もしない。
+// 面のドラッグ。ドラッグに合わせて面が動き、離すと 90 度単位でそろう。
+const PX_PER_QUARTER = 120; // この距離で 90 度回る
 let drag = null;
+
+const dot3 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+const len3 = (a) => Math.hypot(a[0], a[1], a[2]);
+
+// 画面のドラッグを 3D 空間の向きに直す
+function worldDrag(d) {
+  const { right, up } = cameraRightUp();
+  return right.map((v, i) => v * d.dx - up[i] * d.dy);
+}
+
+// いまの回転角（ラジアン）。正の向きは、その面の「X」（反時計回り）の向き。
+function dragAngle(d) {
+  const v = cross(d.sticker.n, d.sticker.pos);
+  const along = dot3(v, worldDrag(d)) / len3(v);
+  const quarters = Math.max(-1, Math.min(1, along / PX_PER_QUARTER));
+  return (quarters * Math.PI) / 2;
+}
+
 function startDrag(e, sticker) {
   e.preventDefault();
   e.stopPropagation();
-  drag = { sticker, x: e.clientX, y: e.clientY };
+  if (drag) return;
+  drag = { sticker, x: e.clientX, y: e.clientY, dx: 0, dy: 0, shown: 0, last: 0 };
   sticker.el.setPointerCapture(e.pointerId);
   cube.cameraControls = false; // 面を回している間は、視点を動かさない
 }
-window.addEventListener('pointerup', (e) => {
+
+// ドラッグ中は、動いている途中の形を見せる（作り直しが重くならないよう間隔を空ける）
+window.addEventListener('pointermove', (e) => {
   if (!drag) return;
-  const { sticker, x, y } = drag;
+  drag.dx = e.clientX - drag.x;
+  drag.dy = e.clientY - drag.y;
+  const ang = dragAngle(drag);
+  const now = performance.now();
+  if (Math.abs(ang - drag.shown) > 0.03 && now - drag.last > 60) {
+    show3d(current, { axis: drag.sticker.n, angle: ang });
+    drag.shown = ang;
+    drag.last = now;
+  }
+});
+
+// 離したら、半分以上回っていれば 90 度まで回してその手を確定、そうでなければ元に戻す
+window.addEventListener('pointerup', () => {
+  if (!drag) return;
+  const d = drag;
   drag = null;
   cube.cameraControls = true;
-  const dx = e.clientX - x;
-  const dy = e.clientY - y;
-  if (Math.hypot(dx, dy) < 12) return;
-  const { right, up } = cameraRightUp();
-  // 画面の下向きは、3D の上向きの逆
-  const w = right.map((v, i) => v * dx - up[i] * dy);
-  const move = dragMove(sticker.pos, sticker.n, w);
-  if (move) turn(move);
+  const ang = dragAngle(d);
+  const quarter = Math.abs(ang) >= Math.PI / 4 ? Math.sign(ang) : 0;
+  const target = quarter * (Math.PI / 2);
+  const steps = 6;
+  let k = 0;
+  const timer = setInterval(() => {
+    k++;
+    if (k < steps) {
+      show3d(current, { axis: d.sticker.n, angle: ang + (target - ang) * (k / steps) });
+      return;
+    }
+    clearInterval(timer);
+    if (quarter === 0) {
+      render();
+      return;
+    }
+    const move = dragMove(d.sticker.pos, d.sticker.n, worldDrag(d));
+    turn(move);
+  }, 30);
 });
 
 // 自動で回す（オン・オフ）
