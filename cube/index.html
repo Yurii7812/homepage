@@ -34,6 +34,7 @@
 
 <model-viewer id="cube" alt="I love U Rubik's Cube" camera-controls environment-image="neutral" camera-orbit="35deg 68deg 115%" exposure="1" shadow-intensity="0" touch-action="pan-y"></model-viewer>
 <p class="note" id="status"></p>
+<p class="warn" id="diag"></p>
 
 <div class="net" id="net" aria-label="キューブの展開図"></div>
 <p class="note">展開図: キューブを開いて平らにしたものです。読み取りは、この 54 枚の色から行います。</p>
@@ -79,6 +80,15 @@
 </table>
 <p class="note">合計 = 辺の並び + 479001600 × (角の並び + 20160 × (角の向き + 2187 × 辺の向き))</p>
 
+<script>
+// スクリプトが動かなかったとき、その理由を画面に出す
+window.addEventListener('error', (e) => {
+  document.getElementById('diag').textContent = '表示のエラー: ' + e.message;
+});
+setTimeout(() => {
+  if (!window.cubeReady) document.getElementById('diag').textContent = '表示の準備ができませんでした（スクリプトが動いていません）。';
+}, 5000);
+</script>
 <script type="module">
 import {
   textToColors, decodeDetails, numberToText, numberToBytes, applyMoves,
@@ -210,6 +220,7 @@ STICKER_POSITIONS.forEach((s, j) => {
 
 // カメラの向こう側にあるシールは隠す（当たり判定が手前と重ならないように）
 function updateStickerVisibility() {
+  if (typeof cube.getCameraOrbit !== 'function') return; // 3D 部品が未準備のとき
   const o = cube.getCameraOrbit();
   const cam = [
     Math.sin(o.phi) * Math.sin(o.theta),
@@ -221,6 +232,7 @@ function updateStickerVisibility() {
   }
 }
 cube.addEventListener('camera-change', updateStickerVisibility);
+cube.addEventListener('load', updateStickerVisibility);
 updateStickerVisibility();
 
 // 画面上のドラッグの向きを、3D 空間の向きに直す（カメラの右・上の向き）
@@ -283,6 +295,7 @@ $('make').addEventListener('click', () => make($('text').value));
 
 $('bytesCount').textContent = countBytes($('text').value) + ' / 8 バイト';
 render();
+window.cubeReady = true;
 </script>
 </body>
 </html>
