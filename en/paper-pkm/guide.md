@@ -52,17 +52,23 @@ As the sheets pile up, add the words you are likely to remember when looking for
 
 Place the new note under the note whose subject it **deepens or broadens**, or under a note it **relates to**.
 
-| Numeric ID | First branch level | Second branch level |
-|---|---|---|
-| `1` PKM overview | | |
-| | `1a` Paper PKM | |
-| | | `1a1` Arranging paper notes |
-| | `1b` Digital PKM | |
-| | | `1b1` Title search |
-| `2` Goals | | |
-| `3` Series containing the KJ Method note | | |
+| Numeric ID | First branch level | Second branch level | Third branch level |
+|---|---|---|---|
+| `1` PKM overview |  |  |  |
+|  | `1a` Paper PKM |  |  |
+|  |  | `1a1` Arranging paper notes |  |
+|  |  |  | `1a1a` Filing example |
+|  |  | `1a2` Pens |  |
+|  | `1b` Digital PKM |  |  |
+|  |  | `1b1` Title search |  |
+|  |  | `1b2` Full-text search |  |
+|  | `1c` Zettelkasten |  |  |
+|  |  | `1c1` Zettelkasten index |  |
+|  |  | `1c2` Branching notes |  |
+| `2` Goals |  |  |  |
+| `3` |  |  |  |
 
-**Actual filing order (front to back)**　`1 → 1a → 1a1 → 1b → 1b1 → 2 → 3`.
+**Actual filing order (front to back)**　`1 → 1a → 1a1 → 1a1a → 1a2 → 1b → 1b1 → 1b2 → 1c → 1c1 → 1c2 → 2 → 3`.
 
 [See the branching and filing diagrams](https://yurii7812.github.io/homepage/en/paper-pkm/#branch-layout).
 
@@ -222,6 +228,8 @@ You can list the same note in different indexes. If `1d` compares finding things
 
 Put the notes and A4 Topic Index sheets into **A4 clear folders**. Start another folder when one fills up.
 
+[See how the A4 sheets overlap in the folder](https://yurii7812.github.io/homepage/en/paper-pkm/#filing-stack).
+
 | Where | What to write | Purpose |
 | --- | --- | --- |
 | Front of the clear folder | Folder number, e.g. `1` or `2` | Put the folders back in order |
@@ -229,7 +237,7 @@ Put the notes and A4 Topic Index sheets into **A4 clear folders**. Start another
 
 Use a **permanent marker to number the front of each folder `1`, `2`, and so on**. The number tells you where the folder goes in the sequence. Note IDs identify the sheets inside.
 
-Start at the **front face of the clear folder**. Stack the notes in order from front to back, for example `1`, `1a`, `1a1`, `1b`, `1b1`, `2`, `3`. Put lower-numbered series first and keep their branches together.
+Start at the **front face of the clear folder**. Stack the notes in order from front to back, for example `1`, `1a`, `1a1`, `1a1a`, `1a2`, and so on. Put lower-numbered series first and keep their branches together.
 
 For a topic with lots of notes, or a note with a numeric ID such as `1` or `2`, put a **sticky tab with the ID** near the top so you can find it while flipping through.
 
@@ -329,7 +337,7 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 | Topic Index | Write “ID-Topic” at the upper left of a portrait A4 sheet. List keyword–ID pairs in two columns, omitting headings and lines. A keyword can have more than one ID. |
 | Dots and stars | When a keyword lists two or more IDs and has a Topic Index, put a red dot directly above the ID for that index. Start an entry with a hand-drawn star to point to a related Topic Index. |
 | Making an index | One Topic Index per ID. Before making one, check the Global Index and related Topic Indexes. If an index already covers the same subject, add entries there. |
-| Pages and filing | Label the next page of an index `1-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1a1, 1b, 1b1, 2, 3. Use tabs at the top for numeric IDs or topics with many notes. |
+| Pages and filing | Label the next page of an index `1-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1a1, 1a1a, 1a2, and so on. Use tabs at the top for numeric IDs or topics with many notes. |
 | Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. Write referenced note IDs in red. |
 | Summaries and progress | Start with smaller topics. Write the main points in the overview and link to the subject notes. Index dated updates so you can find them again. |
 | Fragment Notes | In the Global Index, write “Fragment Notes” with the first sheet’s ID. Add short items to the same sheet until it fills up, then start a continuation sheet. |
