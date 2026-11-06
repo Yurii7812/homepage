@@ -21,7 +21,7 @@ Put an A4 sheet in **portrait orientation** and leave some space at the top. Sta
 | Start writing | Leave clear | Leave room for the date |
 | After choosing a position | Write the ID | Write the date, e.g. `2026 10 02` |
 
-I use a **red ballpoint pen for IDs that refer to other notes and a blue one for everything else**. That makes IDs in indexes, citations, and continuation links easy to spot. I use **non-erasable ballpoint pens** in both colors.
+I use a **red ballpoint pen for IDs that refer to other notes and a blue one for everything else**. That makes IDs in indexes, citations, and continuation links easy to spot. When I list several IDs in an index, I write the commas between them in red, too. I use **non-erasable ballpoint pens** in both colors.
 
 Put the date at the upper right. When writing it by hand, use **`2026 10 02`**, with spaces between the year, month, and day. The **COLOP Mini Dater S 120 with a numeric month (CLP120B2)** stamps the date in year–month–day order. [Sample imprint from the Japanese distributor](https://item.rakuten.co.jp/thewind/513526/)
 
@@ -78,7 +78,7 @@ To cite a whole note, write **`ID:`** (for example, `1a:`). To point to the cont
 
 ### 5. Find a keyword in the Global Index
 
-For the paper version, fold an A8 sheet in half with the **crease parallel to the long edge**. With the slip facing you in its reading orientation, punch a hole on the **left** and put it on a metal binder ring or similar fastener.
+Fold an A8 sheet in half with the **crease parallel to the long edge**. With the slip facing you in its reading orientation, punch a hole on the **left** and put it on a metal binder ring or similar fastener.
 
 | Keyword | Sort key | ID |
 | --- | --- | --- |
@@ -87,7 +87,7 @@ For the paper version, fold an A8 sheet in half with the **crease parallel to th
 
 Write one keyword per slip, with its associated IDs. The slips for “Zettelkasten” and “PKM” can both list `1`. Sort the slips by the reading of the keyword, in **Japanese kana order** or alphabetically for English keywords.
 
-You can **keep the Global Index on a computer**, too. A table with columns for the keyword, its reading or sort key, and the IDs is easy to sort and search by keyword or ID.
+**A spreadsheet makes it easier to reorder the paper slips.** Enter the keywords, readings, and IDs, then sort by reading or alphabetically. Use that order to rearrange the slips on the ring.
 
 ### 6. Find a note within a topic
 
@@ -114,7 +114,7 @@ For example, look up “PKM” in the Global Index and open the A4 sheet marked 
 
 ### 7. Add a dot when both conditions apply
 
-**Add a dot only when one keyword lists two or more IDs and you have made a Topic Index for that keyword.** Put the dot directly above the ID you used for the Topic Index. The rule applies to both Global Index slips and entries in a Topic Index.
+**Add a dot only when one keyword lists two or more IDs and you have made a Topic Index for that keyword.** Put a blue dot directly above the ID you used for the Topic Index. The rule applies to both Global Index slips and entries in a Topic Index.
 
 | IDs for one keyword | Topic Index | Dot |
 | --- | --- | --- |
@@ -123,7 +123,7 @@ For example, look up “PKM” in the Global Index and open the A4 sheet marked 
 | Digital PKM `1b, 1b1` | `1b-Digital PKM` | **Directly above `1b`** |
 | Zettelkasten `1, 1c1` | `1c1-Zettelkasten` | **Directly above `1c1`** |
 
-For example, if “Zettelkasten” lists `1, 1c1`, put the dot **directly above `1c1`** once you make `1c1-Zettelkasten`. You can still go to `1` to read the note itself.
+For example, if “Zettelkasten” lists `1, 1c1`, put the blue dot **directly above `1c1`** once you make `1c1-Zettelkasten`. You can still go to `1` to read the note itself.
 
 A keyword with only one ID gets no dot, even if it has an index. A keyword with several IDs gets no dot while its index is still unmade.
 
@@ -235,11 +235,11 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 | Item | Rule |
 | --- | --- |
 | Notes | Use portrait A4. Leave the top clear and write the body first. Assign the ID later and write it at the upper left. Put the date at the upper right. Keep sheets with unfinished thoughts, too. |
-| Pens | Write referenced IDs in red and everything else in blue. Use non-erasable ballpoint pens for both. |
+| Pens | Write referenced IDs and the commas between them in red. Use blue for the index dot and the rest of the writing. Use non-erasable ballpoint pens for both. |
 | Citations and continuations | Mark the end of a passage with `(1)` or `(2)`. Refer to it as `(1):Like this` on the same sheet or `1a(1)` from a different sheet. Use `ID:` for a citation and `:ID` for a continuation. |
-| Global Index | Look up keywords across the collection. Sort slips by kana reading or alphabetically. A computer table can be sorted by a sort key and searched by keyword or ID. |
+| Global Index | Look up keywords across the collection. Sort paper slips by kana reading or alphabetically. Use a spreadsheet to work out the order before rearranging the slips. |
 | Topic Index | Write “ID-Topic” at the upper left of a portrait A4 sheet. List keyword–ID pairs in two columns, omitting headings and lines. A keyword can have more than one ID. |
-| Dots and stars | When a keyword lists two or more IDs and has a Topic Index, dot the ID that has the index. Put the dot directly above it. Start an entry with a hand-drawn star to point to a related Topic Index. |
+| Dots and stars | When a keyword lists two or more IDs and has a Topic Index, put a blue dot directly above the ID for that index. Start an entry with a hand-drawn star to point to a related Topic Index. |
 | Making an index | One Topic Index per ID. Before making one, look for the subject and its other names in the Global Index. If an index already covers the same subject, add entries there. |
 | Pages and filing | Label the next page of an index `1-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1b, 2, 3. Use tabs at the top for numeric IDs or topics with many notes. |
 | Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. |
