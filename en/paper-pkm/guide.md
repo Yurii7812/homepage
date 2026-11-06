@@ -2,6 +2,8 @@
 
 [Illustrated guide](https://yurii7812.github.io/homepage/en/paper-pkm/) · [日本語](https://github.com/Yurii7812/homepage/blob/main/ja/paper-pkm/guide.md)
 
+The system builds on Niklas Luhmann’s Zettelkasten and uses branching **Folgezettel IDs** and links between notes. Write on A4, then assign an ID. Use the Global Index to find an entry point and the Topic Index to find notes within that subject. Together, the two indexes make up the Double Index System.
+
 ## Why I use the Double Index System
 
 - **A4 is practical at university and in libraries.** I can carry A4 sheets with my usual supplies, which is easier than carrying a box of A6 cards. The larger page gives me room for long passages and diagrams.
@@ -58,7 +60,13 @@ A["1 PKM overview"] --> B["1a Paper PKM"]
   C --> E["1b1 Title search"]
 ```
 
-For example, after writing about arranging paper notes in `1a1`, you think about how to find notes digitally. Arranging paper notes stays under `1a`. Digital PKM starts a separate branch of `1` at `1b`.
+#### Why branching on every continuation makes IDs grow
+
+If every follow-up goes under the note you just wrote, the IDs keep getting longer, as in `1 → 1a → 1a1 → 1a1a → 1a1a1 → …`. Even when the subject has broadened, the sequence makes each note look like a closer examination of the one immediately before it.
+
+**Ask which note the new one deepens, broadens, or relates to.** If a follow-up to `1a`, “Paper PKM,” goes into arranging paper notes, put it at `1a1`. If it introduces Digital PKM, it broadens `1`, “PKM overview,” in a different direction. Give it `1b`, alongside `1a`. A note that goes deeper into the arrangement described at `1a1` can still go under it at `1a1a`.
+
+To suggest what to read next, add a continuation link such as `:1b` in the note itself. You can choose the reading order separately from the branches you assign.
 
 ### 4. Mark sources and continuations
 
@@ -131,9 +139,21 @@ If you use both “Passage references” and “In-text references” and might 
 
 A sheet that touches on several subjects can appear under the same note ID in several Topic Indexes. In the indexes, write the note ID. Use markers such as `(1)` when referring to a specific passage from the body of a note.
 
+#### Use a Topic Index to reach a more specific Topic Index
+
+As notes on Digital PKM accumulate, you can make `1b-Digital PKM` using its entry ID, `1b`. If the notes on title search grow into a subject of their own, use the same pattern to make `1b1-Title search`.
+
+| Index you have open | Entry to look for | Topic Index you can open next |
+| --- | --- | --- |
+| Global Index | PKM `1` | `1-PKM` |
+| `1-PKM` | Digital PKM `1b, 1b1` | `1b-Digital PKM` |
+| `1b-Digital PKM` | Title search `1b1` | `1b1-Title search` |
+
+Repeat the pattern at any depth where it helps. Each broader index gives you an entry point, and each narrower index holds the detailed entries for its subject.
+
 ### 7. Add a dot when both conditions apply
 
-**Add a dot only when one keyword lists two or more IDs and you have made a Topic Index for that keyword.** Put a red dot directly above the ID you used for the Topic Index. The rule applies to both Global Index slips and entries in a Topic Index.
+**Add a dot only when one keyword lists two or more IDs and you have made a Topic Index for that keyword.** Put a red dot directly above the ID you used for the Topic Index. The rule applies to both Global Index slips and entries in a Topic Index. **Keep the IDs already written.** The dot identifies the ID whose Topic Index gathers the notes on that subject, so you can add the index without rewriting the original list.
 
 | IDs for one keyword | Topic Index | Dot |
 | --- | --- | --- |
@@ -163,6 +183,12 @@ Say “Passage references” in `1-PKM` lists `1c3, 1c6, 1c8`, and `1c6` gives t
 |  | How to refer to part of a diagram `1c9` (added later) |
 
 Add the fourth note, `1c9`, to the dedicated index first. You can already get there through `1-PKM`. If you also want to find it while working on reports, list the same `1c9` in the reports Topic Index. Add a Global Index entry when it would help you start directly from that term.
+
+#### Keep one Topic Index for the same subject
+
+Several keywords can point to one note, and its ID gets one Topic Index. For example, “PKM” and “Personal knowledge management” both point to `1` and lead to `1-PKM`. To index Zettelkasten as its own subject, use the ID for that subject, `1c1`, and make `1c1-Zettelkasten`.
+
+Before making an index, check other names for the subject in the Global Index and look through related Topic Indexes. If an index already covers the same subject, add to it. Use a `★` link from related subjects to that existing index.
 
 ### 8. Add index pages and links to related topics
 
@@ -223,7 +249,7 @@ A Topic Index can have an entry called “Summary.” In the Goals index it cove
 | `2a1-Summary` (Finances) | `Summary 1 2a1a`, `Summary 2 2a1b` |
 | `2d-Summary` (All goals) | `Summary 1 2d1`, `Summary 2 2d2` |
 
-Start with smaller subjects, such as financial goals, goals related to mysticism, or recent goals. In the overall summary, write a short account of what matters now in each area and link to the smaller summaries for details.
+Start with smaller subjects, such as financial goals, goals related to mysticism, or recent goals. In the overall summary, write a short account of what matters now in each area and link to the smaller summaries for details. When you update the overview, you can reuse those summaries without copying every detail again.
 
 In the Finances Topic Index at `2a`, the summary has **one entry, `Summary 2a1`**. Put the versions, `Summary 1 2a1a` and `Summary 2 2a1b`, in **the Topic Index at `2a1`**. Their note titles can be `Summary-2026 10 01` and `Summary-2026 10 02`. Do the same for the overall summary. Put `Summary 2d` in the Goals index and list the versions in the Topic Index at `2d`.
 
@@ -240,6 +266,8 @@ A “Progress” entry tells you how far you had got by that date. For example, 
 | History `4b1` | Divided the timeline into three periods |
 
 In the overall study progress note, add a short review of the day and the IDs for the philosophy and history progress notes. As the updates accumulate, give Progress its own Topic Index so you can find the dated notes, just as with summaries.
+
+When progress notes accumulate, add a “Progress” entry in each subject’s Topic Index and list dated notes in the index it leads to. Use the same pattern for overall progress. For example, `4-Study` can lead to “Philosophy `4a`,” “History `4b`,” and “Progress `4c`.” The subject indexes lead to “Progress `4a1`” and “Progress `4b1`.” The overall index, `4c-Progress`, lists the daily overview at `4c1`.
 
 ### 13. Collect short items in Fragment Notes
 
