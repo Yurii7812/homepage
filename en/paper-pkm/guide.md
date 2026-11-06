@@ -10,12 +10,12 @@ Put an A4 sheet in **portrait orientation** and leave some space at the top. Sta
 
 | Stage | Upper left | Upper right |
 | --- | --- | --- |
-| Start writing | Leave clear | Leave room for the date and time |
-| After choosing a position | Write the ID | For example, `2026 10 02` and `14:20` |
+| Start writing | Leave clear | Leave room for the date |
+| After choosing a position | Write the ID | Write the date, e.g. `2026 10 02` |
 
 I use a **red ballpoint pen for IDs that refer to other notes and a blue one for everything else**. That makes IDs in indexes, citations, and continuation links easy to spot. I use **non-erasable ballpoint pens** in both colors.
 
-Reserve the upper right for the date and time. Write the date as **`2026 10 02`**, with spaces between the year, month, and day. Write the time separately, such as `14:20`. A date stamp that prints in this order is handy. The **COLOP Mini Dater S 120** is a date stamp, and the manufacturer lists its format as day, month, year. [COLOP product specifications](https://www.colop.com/us/traditional-stamps/printer-line/mini-line-s200/mini-dater-s-120)
+Put the date at the upper right. When writing it by hand, use **`2026 10 02`**, with spaces between the year, month, and day. The **COLOP Mini Dater S 120 with a numeric month (CLP120B2)** stamps the date in year–month–day order. [Sample imprint from the Japanese distributor](https://item.rakuten.co.jp/thewind/513526/)
 
 ### 2. Keep the sheets you thought on
 
@@ -226,7 +226,7 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 
 | Item | Rule |
 | --- | --- |
-| Notes | Use portrait A4. Leave the top clear and write the body first. Assign the ID later and write it at the upper left. Put the date and time at the upper right. Keep sheets with unfinished thoughts, too. |
+| Notes | Use portrait A4. Leave the top clear and write the body first. Assign the ID later and write it at the upper left. Put the date at the upper right. Keep sheets with unfinished thoughts, too. |
 | Pens | Write referenced IDs in red and everything else in blue. Use non-erasable ballpoint pens for both. |
 | Citations and continuations | Mark the end of a passage with `(1)` or `(2)`. Refer to it as `(1):Like this` on the same sheet or `1a(1)` from a different sheet. Use `ID:` for a citation and `:ID` for a continuation. |
 | Global Index | Look up keywords across the collection. Sort slips by kana reading or alphabetically. A computer table can be sorted by a sort key and searched by keyword or ID. |
