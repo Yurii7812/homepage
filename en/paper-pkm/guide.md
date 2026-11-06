@@ -31,7 +31,7 @@ The figure shows **one way a sheet can look when you think on paper**. This one 
 
 ```mermaid
 flowchart TD
-A["The village feels empty"] --> B["What’s missing?"]
+A["6a The village feels empty"] --> B["What’s missing?"]
   A --> C["What do villagers do now?"]
   B --> D["Add more people?"]
   C --> E["Field, storehouse, home"]
@@ -42,7 +42,7 @@ A["The village feels empty"] --> B["What’s missing?"]
   H --> I["Same time every day? Too routine?"]
 ```
 
-Here, I wondered whether to add more people and wrote down what the villagers were already doing. Looking at both sides gave me another idea: maybe what was missing was what happens between errands. I drew a line to connect the thoughts. Later, I gave the sheet the ID `1e` and filed it with the question still open.
+Here, I wondered whether to add more people and wrote down what the villagers were already doing. Looking at both sides gave me another idea: maybe what was missing was what happens between errands. I drew a line to connect the thoughts. Later, I filed this sheet as `6a` under my existing “Village design” note, `6`, with the question still open.
 
 As the sheets pile up, add the words you are likely to remember when looking for them. The **Global Index** searches across the collection, while a **Topic Index** gives you entries within a topic. Together they form the **Double Index**.
 
@@ -52,17 +52,17 @@ Place the new note under the note whose subject it **deepens or broadens**, or u
 
 ```mermaid
 flowchart TD
-A["1 Finding notes"] --> B["1a Paper notes"]
-  A --> C["1b Digital search"]
+A["1 PKM overview"] --> B["1a Paper PKM"]
+  A --> C["1b Digital PKM"]
   B --> D["1a1 Arranging paper notes"]
-  C --> E["1b1 Title and text search"]
+  C --> E["1b1 Title search"]
 ```
 
-Say you write about arranging paper notes in `1a1` and then think of digital search. Digital search broadens the original subject in `1` in a different direction, so it goes at `1b`.
+For example, after writing about arranging paper notes in `1a1`, you think about how to find notes digitally. Arranging paper notes stays under `1a`. Digital PKM starts a separate branch of `1` at `1b`.
 
 ### 4. Mark sources and continuations
 
-Write `(1)` or `(2)` **at the end of a passage** you may want to cite, as in “Where you put a paper note can help you find it.  (1)”.
+Write `(1)` or `(2)` **at the end of a passage** you may want to cite. For example, the Paper PKM note `1a` could say “Where you put a paper note can help you find it.  (1)”.
 
 | Situation | Notation |
 | --- | --- |
@@ -72,7 +72,7 @@ Write `(1)` or `(2)` **at the end of a passage** you may want to cite, as in “
 | Cite a whole note | `1a:` |
 | Point to a continuation | `:1a1` |
 
-To refer to that passage on the same sheet, write **`(1):Like this`**. To point to it from another note, write **`1a(1)`**. To cite the passage and add text, you could write `1a(1):Choose where to put the note.`
+To refer to that passage on the same sheet, write **`(1):Like this`**. To point to it from another note, write **`1a(1)`**. In the Search comparison note `1d`, you could write `1a(1):Compare this with digital search.`
 
 To cite a whole note, write **`ID:`** (for example, `1a:`). To point to the continuation, write **`:ID`** (for example, `:1a1`). Put the colon right next to the ID. Write the referenced ID in red.
 
@@ -82,10 +82,11 @@ Fold an A8 sheet in half with the **crease parallel to the long edge**. With the
 
 | Keyword | Sort key | ID |
 | --- | --- | --- |
+| Personal knowledge management | personal knowledge management | `1` |
 | PKM | pkm | `1` |
-| Zettelkasten | zettelkasten | `1` |
+| Village design | village design | `6` |
 
-Write one keyword per slip, with its associated IDs. The slips for “Zettelkasten” and “PKM” can both list `1`. Sort the slips by the reading of the keyword, in **Japanese kana order** or alphabetically for English keywords.
+Write one keyword per slip, with its associated IDs. The slips for “Personal knowledge management” and “PKM” can both list `1`. Sort the slips by the reading of the keyword, in **Japanese kana order** or alphabetically for English keywords.
 
 **A spreadsheet makes it easier to reorder the paper slips.** Enter the keywords, readings, and IDs, then sort by reading or alphabetically. Use that order to rearrange the slips on the ring.
 
@@ -101,7 +102,7 @@ When you have several notes about PKM, take a separate portrait A4 sheet and wri
 | Arranging notes | `1a1` | Branching notes | `1c2` |
 | Pens | `1a2` | Passage references | `1c3` |
 | Clear folders | `1a3` | Continuations | `1c4` |
-| Sticky tabs | `1a4` | Brainstorming | `1e` |
+| Sticky tabs | `1a4` | Write reference IDs in red | `1c5` |
 | Filing notes | `1a5` | Summary | `1g` |
 | Digital PKM | `1b, 1b1` | Double Index | `1f` |
 | Title search | `1b1` | Global Index | `1f1` |
@@ -110,7 +111,7 @@ When you have several notes about PKM, take a separate portrait A4 sheet and wri
 | Search comparison | `1d` | Progress | `1h` |
 | Scanning paper | `1b4` | ★KJ method | `3a1` |
 
-For example, look up “PKM” in the Global Index and open the A4 sheet marked `1-PKM`. Find “Paper PKM `1a`” there, then read note `1a`. A brainstorming sheet is just as easy to find once you add a keyword you will remember and its ID.
+For example, look up “PKM” in the Global Index and open the A4 sheet marked `1-PKM`. Find “Paper PKM `1a`” there, then read note `1a`. To find the village brainstorm, start from “Village design `6`” in the Global Index. Open `6-Village design` and look up “Village life `6a`”.
 
 #### Choose where to put an entry
 
@@ -139,9 +140,9 @@ A sheet that touches on several subjects can appear under the same note ID in se
 | PKM `1` | `1-PKM` | None (one ID) |
 | Digital PKM `1b, 1b1` | Not yet made | None |
 | Digital PKM `1b, 1b1` | `1b-Digital PKM` | **Directly above `1b`** |
-| Zettelkasten `1, 1c1` | `1c1-Zettelkasten` | **Directly above `1c1`** |
+| Zettelkasten `1c, 1c1` | `1c1-Zettelkasten` | **Directly above `1c1`** |
 
-For example, if “Zettelkasten” lists `1, 1c1`, put the red dot **directly above `1c1`** once you make `1c1-Zettelkasten`. You can still go to `1` to read the note itself.
+For example, if “Zettelkasten” lists `1c, 1c1`, put the red dot **directly above `1c1`** once you make `1c1-Zettelkasten`. The note `1c` still gives the Zettelkasten overview.
 
 A keyword with only one ID gets no dot, even if it has an index. A keyword with several IDs gets no dot while its index is still unmade.
 
@@ -165,7 +166,7 @@ Add the fourth note, `1c9`, to the dedicated index first. You can already get th
 
 ### 8. Add index pages and links to related topics
 
-When `1-PKM` fills up, write `1-PKM 2` at the upper left of the next A4 sheet and keep adding entries. The entry ID is still `1`.
+When `1-PKM` fills up, write `1-PKM 2` at the upper left of the next A4 sheet and keep adding entries. The final 2 is the sheet number. The entry ID is still `1`.
 
 ```mermaid
 flowchart TD
