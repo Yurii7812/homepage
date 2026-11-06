@@ -1,0 +1,23 @@
+
+.page-bar, .page-links, .language-switch {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.page-bar { justify-content: space-between; }
+.page-links { gap: .9rem; }
+.language-switch { justify-content: flex-end; }
+.language-switch a {
+  margin: 0;
+  border: 1px solid #a2b2a6;
+  border-radius: 4px;
+  padding: .2rem .55rem;
+  color: #244535;
+  background: #fff;
+  font: 600 .875rem/1.5 system-ui, sans-serif;
+  text-decoration: none;
+}
+.language-switch a[aria-current="page"] { color: #fff; background: #244535; border-color: #244535; }
+.language-switch a:hover { text-decoration: underline; }
+@media print { .page-bar, .language-switch { display: none; } }
