@@ -160,9 +160,10 @@ Repeat the pattern at any depth where it helps. Each broader index gives you an 
 | PKM `1` | `1-PKM` | None (one ID) |
 | Digital PKM `1b, 1b1` | Not yet made | None |
 | Digital PKM `1b, 1b1` | `1b-Digital PKM` | **Directly above `1b`** |
+| Zettelkasten `1c, 1c1` | Not yet made | None |
 | Zettelkasten `1c, 1c1` | `1c1-Zettelkasten` | **Directly above `1c1`** |
 
-For example, if “Zettelkasten” lists `1c, 1c1`, put the red dot **directly above `1c1`** once you make `1c1-Zettelkasten`. The note `1c` still gives the Zettelkasten overview.
+Say the Global Index slip reads “Zettelkasten `1c, 1c1`.” Once you make `1c1-Zettelkasten`, **add one red dot directly above `1c1`**. Keep the heading and the original list, `1c, 1c1`, as written. To read the overview, go to note `1c`. To see the notes gathered under this subject, follow the dot to `1c1-Zettelkasten`.
 
 A keyword with only one ID gets no dot, even if it has an index. A keyword with several IDs gets no dot while its index is still unmade.
 
@@ -186,9 +187,9 @@ Add the fourth note, `1c9`, to the dedicated index first. You can already get th
 
 #### Keep one Topic Index for the same subject
 
-Several keywords can point to one note, and its ID gets one Topic Index. For example, “PKM” and “Personal knowledge management” both point to `1` and lead to `1-PKM`. To index Zettelkasten as its own subject, use the ID for that subject, `1c1`, and make `1c1-Zettelkasten`.
+**Give each ID one Topic Index.** Several indexes at the same ID would leave you unsure which one to open. For example, “PKM” and “Personal knowledge management” both point to `1` and lead to `1-PKM`. To index Zettelkasten as its own subject, make `1c1-Zettelkasten` at the ID for that subject, `1c1`.
 
-Before making an index, check other names for the subject in the Global Index and look through related Topic Indexes. If an index already covers the same subject, add to it. Use a `★` link from related subjects to that existing index.
+**Keep one index for each subject at the same scope.** If `1c1-Zettelkasten` already exists and you make another index at `1c` with the same scope, entries can end up split between the two. It becomes harder to tell where to find the full list. Before making an index, check other names for the subject in the Global Index and look through related Topic Indexes. Add entries to the existing index if it already covers the subject, and use `★` links to reach it from related subjects.
 
 ### 8. Add index pages and links to related topics
 
