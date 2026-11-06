@@ -197,12 +197,18 @@ Keep a Topic Index and the note with the same ID together in one clear folder. F
 
 ### 10. Keep the diary in a separate clear folder
 
-Write the **date** at the upper left using the same format as the notes, for example `2026 10 02`. A stamp that prints in this order works here, too. Write about anything you want. A brief note about what you wrote or concluded that day can help when you look back.
+Write the **date** at the upper left using the same format as the notes, for example `2026 10 02`. A stamp that prints in this order works here, too. Write about anything you want. A brief note about what you wrote or concluded that day can help when you look back. If the details are in another note, write “See” followed by **the note ID in red**.
 
 | Sheet | Upper-left entry |
 | --- | --- |
 | First sheet for the day | `2026 10 02` |
 | Second sheet for the same day | `2026 10 02 2` |
+
+> **2026 10 02**
+>
+> Today I wrote down how to make a Topic Index. For details, see `1f2`.
+>
+> I decided to collect short items in Fragment Notes. The first sheet is `5`.
 
 Use **one page per day** as a default, even for a short entry. If you need another sheet, put the date and page number at the upper left, as in `2026 10 02 2`. Give the diary its own A4 clear folder.
 
@@ -237,7 +243,7 @@ In the overall study progress note, add a short review of the day and the IDs fo
 
 ### 13. Collect short items in Fragment Notes
 
-Add trivia or a one-line discovery to the A4 sheet at `5`. Register it as **`Fragment Notes 5`** in the Global Index.
+Add trivia and one-line discoveries to a single A4 sheet. In the Global Index, write **“Fragment Notes” followed by the ID you gave the first sheet**. If the first sheet has ID `5`, write `Fragment Notes 5`.
 
 | Sheet | Use |
 | --- | --- |
@@ -245,7 +251,7 @@ Add trivia or a one-line discovery to the A4 sheet at `5`. Register it as **`Fra
 | `5a` | Use once 5 fills up |
 | `5b` | Use once 5a fills up |
 
-When the sheet fills up, use `5a`, then `5b`. You can keep unrelated short items on one sheet. To refer to a particular entry later, add a marker such as `(1)` at that spot and refer to it as `5(1)`.
+In this example, when the sheet fills up, use `5a`, then `5b`. You can keep unrelated short items on one sheet. To refer to a particular entry later, add a marker such as `(1)` at that spot and refer to it as `5(1)`.
 
 ### 14. Review the whole workflow
 
@@ -282,6 +288,6 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 | Dots and stars | When a keyword lists two or more IDs and has a Topic Index, put a red dot directly above the ID for that index. Start an entry with a hand-drawn star to point to a related Topic Index. |
 | Making an index | One Topic Index per ID. Before making one, check the Global Index and related Topic Indexes. If an index already covers the same subject, add entries there. |
 | Pages and filing | Label the next page of an index `1-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1b, 2, 3. Use tabs at the top for numeric IDs or topics with many notes. |
-| Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. |
+| Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. Write referenced note IDs in red. |
 | Summaries and progress | Start with smaller topics. Write the main points in the overview and link to the subject notes. Index dated updates so you can find them again. |
-| Fragment Notes | Add “Fragment Notes 5” to the Global Index. Keep adding short items to one sheet. When it fills up, continue on 5a, then 5b. |
+| Fragment Notes | In the Global Index, write “Fragment Notes” with the first sheet’s ID. Add short items to the same sheet until it fills up, then start a continuation sheet. |
