@@ -21,7 +21,7 @@ Put an A4 sheet in **portrait orientation** and leave some space at the top. Sta
 | Start writing | Leave clear | Leave room for the date |
 | After choosing a position | Write the ID | Write the date, e.g. `2026 10 02` |
 
-I use a **red ballpoint pen for IDs that refer to other notes and a blue one for everything else**. That makes IDs in indexes, citations, and continuation links easy to spot. When I list several IDs in an index, I write the commas between them in red, too. I use **non-erasable ballpoint pens** in both colors.
+I use a **red ballpoint pen for referenced IDs and a blue one for the note text**. That makes IDs in indexes, citations, and continuation links easy to spot. When I list several IDs in an index, I write the commas between them in red, too. I also use red for the dot marking an entry to a Topic Index. I use **non-erasable ballpoint pens** in both colors.
 
 Put the date at the upper right. When writing it by hand, use **`2026 10 02`**, with spaces between the year, month, and day. The **COLOP Mini Dater S 120 with a numeric month (CLP120B2)** stamps the date in year–month–day order. [Sample imprint from the Japanese distributor](https://item.rakuten.co.jp/thewind/513526/)
 
@@ -99,7 +99,7 @@ When you have several notes about PKM, take a separate portrait A4 sheet and wri
 | --- | --- | --- | --- |
 | Paper PKM | `1a` | Zettelkasten | `1c, 1c1` |
 | Arranging notes | `1a1` | Branching notes | `1c2` |
-| Pens | `1a2` | Citations | `1c3` |
+| Pens | `1a2` | Passage references | `1c3` |
 | Clear folders | `1a3` | Continuations | `1c4` |
 | Sticky tabs | `1a4` | Brainstorming | `1e` |
 | Filing notes | `1a5` | Summary | `1g` |
@@ -112,9 +112,27 @@ When you have several notes about PKM, take a separate portrait A4 sheet and wri
 
 For example, look up “PKM” in the Global Index and open the A4 sheet marked `1-PKM`. Find “Paper PKM `1a`” there, then read note `1a`. A brainstorming sheet is just as easy to find once you add a keyword you will remember and its ID.
 
+#### Choose where to put an entry
+
+**If you would start by looking up the broader topic, add the entry to its Topic Index. If you would start with this term itself, add an entry point to the Global Index as well.**
+
+A general subject heading, such as “KJ method,” can be looked up on its own. A local heading, such as “Write reference IDs in red,” is useful once you have opened the relevant topic. A term can make sense on its own and still be easy to find through a broader Topic Index.
+
+| What you might remember later | What to write and where |
+| --- | --- |
+| Which color did I use for reference IDs in paper PKM? | Write `Write reference IDs in red 1c5` in `1-PKM`. |
+| How did I refer to part of a passage in paper PKM? | Write `Passage references 1c3` in `1-PKM`. |
+| What did I write about the KJ method? | Write `KJ method 3a1` in the Global Index and link to it from relevant Topic Indexes. |
+
+When unsure, start with the Topic Index you would naturally look through. If you later want to look up “Passage references” directly while writing a report, add it to the Global Index then. If there is no suitable Topic Index yet, add one term you are likely to remember to the Global Index.
+
+If you use both “Passage references” and “In-text references” and might look under either term, you can list both in the Global Index. Within a Topic Index, usually pick one wording. When the wording changes, keep an older heading if you still use it to find the entry, or remove it when you no longer need it.
+
+A sheet that touches on several subjects can appear under the same note ID in several Topic Indexes. In the indexes, write the note ID. Use markers such as `(1)` when referring to a specific passage from the body of a note.
+
 ### 7. Add a dot when both conditions apply
 
-**Add a dot only when one keyword lists two or more IDs and you have made a Topic Index for that keyword.** Put a blue dot directly above the ID you used for the Topic Index. The rule applies to both Global Index slips and entries in a Topic Index.
+**Add a dot only when one keyword lists two or more IDs and you have made a Topic Index for that keyword.** Put a red dot directly above the ID you used for the Topic Index. The rule applies to both Global Index slips and entries in a Topic Index.
 
 | IDs for one keyword | Topic Index | Dot |
 | --- | --- | --- |
@@ -123,9 +141,27 @@ For example, look up “PKM” in the Global Index and open the A4 sheet marked 
 | Digital PKM `1b, 1b1` | `1b-Digital PKM` | **Directly above `1b`** |
 | Zettelkasten `1, 1c1` | `1c1-Zettelkasten` | **Directly above `1c1`** |
 
-For example, if “Zettelkasten” lists `1, 1c1`, put the blue dot **directly above `1c1`** once you make `1c1-Zettelkasten`. You can still go to `1` to read the note itself.
+For example, if “Zettelkasten” lists `1, 1c1`, put the red dot **directly above `1c1`** once you make `1c1-Zettelkasten`. You can still go to `1` to read the note itself.
 
 A keyword with only one ID gets no dot, even if it has an index. A keyword with several IDs gets no dot while its index is still unmade.
+
+#### Make a dedicated Topic Index and add to it
+
+Two or three notes under one heading can be a good time to make a dedicated Topic Index if you want to see several aspects of the subject together. The count is a guideline. Keep using the same entry as long as it is easy to find what you need.
+
+**Choose an entry ID that makes the subject easy to follow.** Consider a note with many connections to related notes, a note that gives an organized overview, or an early ID that is easy to reach when flipping through the folder. Each ID can have one Topic Index.
+
+Say “Passage references” in `1-PKM` lists `1c3, 1c6, 1c8`, and `1c6` gives the overview. Make `1c6-Passage references` and put a red dot directly above `1c6` in the original entry. List all three existing notes in the dedicated index as well.
+
+| Where | What to write |
+| --- | --- |
+| Original `1-PKM` | Passage references `1c3, 1c6, 1c8` (red dot directly above `1c6`) |
+| Dedicated `1c6-Passage references` | First notes `1c3` |
+|  | Basics of passage references `1c6` |
+|  | An example from practice `1c8` |
+|  | How to refer to part of a diagram `1c9` (added later) |
+
+Add the fourth note, `1c9`, to the dedicated index first. You can already get there through `1-PKM`. If you also want to find it while working on reports, list the same `1c9` in the reports Topic Index. Add a Global Index entry when it would help you start directly from that term.
 
 ### 8. Add index pages and links to related topics
 
@@ -155,6 +191,8 @@ Use a **permanent marker to number the front of each folder `1`, `2`, and so on*
 Start at the **front face of the clear folder**. Stack the notes in order from front to back, for example `1`, `1a`, `1b`, `2`, `3`. Put lower-numbered series first and keep their branches together.
 
 For a topic with lots of notes, or a note with a numeric ID such as `1` or `2`, put a **sticky tab with the ID** near the top so you can find it while flipping through.
+
+Keep a Topic Index and the note with the same ID together in one clear folder. For example, put `1-PKM` in front, with note `1` immediately behind it. You can find both even when the entry lists only one ID and has no dot.
 
 ### 10. Keep the diary in a separate clear folder
 
@@ -235,12 +273,13 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 | Item | Rule |
 | --- | --- |
 | Notes | Use portrait A4. Leave the top clear and write the body first. Assign the ID later and write it at the upper left. Put the date at the upper right. Keep sheets with unfinished thoughts, too. |
-| Pens | Write referenced IDs and the commas between them in red. Use blue for the index dot and the rest of the writing. Use non-erasable ballpoint pens for both. |
+| Pens | Write referenced IDs, the commas between them, and the index dot in red. Use blue for note text and headings. Use non-erasable ballpoint pens for both. |
 | Citations and continuations | Mark the end of a passage with `(1)` or `(2)`. Refer to it as `(1):Like this` on the same sheet or `1a(1)` from a different sheet. Use `ID:` for a citation and `:ID` for a continuation. |
 | Global Index | Look up keywords across the collection. Sort paper slips by kana reading or alphabetically. Use a spreadsheet to work out the order before rearranging the slips. |
+| Choosing an index | Use the Topic Index when you would start from the broader topic. Add a Global Index entry if you would look up the term directly. |
 | Topic Index | Write “ID-Topic” at the upper left of a portrait A4 sheet. List keyword–ID pairs in two columns, omitting headings and lines. A keyword can have more than one ID. |
-| Dots and stars | When a keyword lists two or more IDs and has a Topic Index, put a blue dot directly above the ID for that index. Start an entry with a hand-drawn star to point to a related Topic Index. |
-| Making an index | One Topic Index per ID. Before making one, look for the subject and its other names in the Global Index. If an index already covers the same subject, add entries there. |
+| Dots and stars | When a keyword lists two or more IDs and has a Topic Index, put a red dot directly above the ID for that index. Start an entry with a hand-drawn star to point to a related Topic Index. |
+| Making an index | One Topic Index per ID. Before making one, check the Global Index and related Topic Indexes. If an index already covers the same subject, add entries there. |
 | Pages and filing | Label the next page of an index `1-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1b, 2, 3. Use tabs at the top for numeric IDs or topics with many notes. |
 | Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. |
 | Summaries and progress | Start with smaller topics. Write the main points in the overview and link to the subject notes. Index dated updates so you can find them again. |
