@@ -23,7 +23,7 @@ Put an A4 sheet in **portrait orientation** and leave some space at the top. Sta
 | Start writing | Leave clear | Leave room for the date |
 | After choosing a position | Write the ID | Write the date, e.g. `2026 10 02` |
 
-I use a **red ballpoint pen for referenced IDs and a blue one for the note text**. That makes IDs in indexes, citations, and continuation links easy to spot. When I list several IDs in an index, I write the commas between them in red, too. I also use red for the dot marking an entry to a Topic Index. I use **non-erasable ballpoint pens** in both colors.
+I use a **blue ballpoint pen for the note text and the sheet’s own ID, and a red one for references**. That makes IDs in indexes, citations, and continuation links easy to spot. When I list several IDs in an index, I write the commas between them in red, too. I also use red for the dot marking an entry to a Topic Index. I use **non-erasable ballpoint pens** in both colors.
 
 Put the date at the upper right. When writing it by hand, use **`2026 10 02`**, with spaces between the year, month, and day. The **COLOP Mini Dater S 120 with a numeric month (CLP120B2)** stamps the date in year–month–day order. [Sample imprint from the Japanese distributor](https://item.rakuten.co.jp/thewind/513526/)
 
@@ -52,17 +52,28 @@ As the sheets pile up, add the words you are likely to remember when looking for
 
 Place the new note under the note whose subject it **deepens or broadens**, or under a note it **relates to**.
 
-```mermaid
-flowchart TD
-A["1 PKM overview"] --> B["1a Paper PKM"]
-  A --> C["1b Digital PKM"]
-  B --> D["1a1 Arranging paper notes"]
-  C --> E["1b1 Title search"]
-```
+| Numeric ID | First branch level | Second branch level |
+|---|---|---|
+| `1` PKM overview | | |
+| | `1a` Paper PKM | |
+| | | `1a1` Arranging paper notes |
+| | `1b` Digital PKM | |
+| | | `1b1` Title search |
+| `2` Goals | | |
+| `3` Series containing the KJ Method note | | |
+
+**Actual filing order (front to back)**　`1 → 1a → 1a1 → 1b → 1b1 → 2 → 3`.
+
+[See the branching and filing diagrams](https://yurii7812.github.io/homepage/en/paper-pkm/#branch-layout).
 
 #### Why branching on every continuation makes IDs grow
 
 If every follow-up goes under the note you just wrote, the IDs keep getting longer, as in `1 → 1a → 1a1 → 1a1a → 1a1a1 → …`. Even when the subject has broadened, the sequence makes each note look like a closer examination of the one immediately before it.
+
+```mermaid
+flowchart LR
+  A["1"] --> B["1a"] --> C["1a1"] --> D["1a1a"] --> E["1a1a1 …"]
+```
 
 **Ask which note the new one deepens, broadens, or relates to.** If a follow-up to `1a`, “Paper PKM,” goes into arranging paper notes, put it at `1a1`. If it introduces Digital PKM, it broadens `1`, “PKM overview,” in a different direction. Give it `1b`, alongside `1a`. A note that goes deeper into the arrangement described at `1a1` can still go under it at `1a1a`.
 
@@ -82,7 +93,9 @@ Write `(1)` or `(2)` **at the end of a passage** you may want to cite. For examp
 
 To refer to that passage on the same sheet, write **`(1):Like this`**. To point to it from another note, write **`1a(1)`**. In the Search comparison note `1d`, you could write `1a(1):Compare this with digital search.`
 
-To cite a whole note, write **`ID:`** (for example, `1a:`). To point to the continuation, write **`:ID`** (for example, `:1a1`). Put the colon right next to the ID. Write the referenced ID in red.
+To cite a whole note, write **`ID:`** (for example, `1a:`). To point to the continuation, write **`:ID`** (for example, `:1a1`). Put the colon right next to the ID. Write the full citation or continuation mark in red, including parentheses, numbers, and colons. Write the note’s own ID in blue at the upper left.
+
+[See the A4 notes written in red and blue](https://yurii7812.github.io/homepage/en/paper-pkm/#reference-ink).
 
 ### 5. Find a keyword in the Global Index
 
@@ -216,7 +229,7 @@ Put the notes and A4 Topic Index sheets into **A4 clear folders**. Start another
 
 Use a **permanent marker to number the front of each folder `1`, `2`, and so on**. The number tells you where the folder goes in the sequence. Note IDs identify the sheets inside.
 
-Start at the **front face of the clear folder**. Stack the notes in order from front to back, for example `1`, `1a`, `1b`, `2`, `3`. Put lower-numbered series first and keep their branches together.
+Start at the **front face of the clear folder**. Stack the notes in order from front to back, for example `1`, `1a`, `1a1`, `1b`, `1b1`, `2`, `3`. Put lower-numbered series first and keep their branches together.
 
 For a topic with lots of notes, or a note with a numeric ID such as `1` or `2`, put a **sticky tab with the ID** near the top so you can find it while flipping through.
 
@@ -309,14 +322,14 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 | Item | Rule |
 | --- | --- |
 | Notes | Use portrait A4. Leave the top clear and write the body first. Assign the ID later and write it at the upper left. Put the date at the upper right. Keep sheets with unfinished thoughts, too. |
-| Pens | Write referenced IDs, the commas between them, and the index dot in red. Use blue for note text and headings. Use non-erasable ballpoint pens for both. |
+| Pens | Use red for the full citation and continuation marks, including parentheses and colons, and for index commas and dots. Use blue for note text, headings, and the sheet’s own ID at the upper left. Use non-erasable ballpoint pens for both. |
 | Citations and continuations | Mark the end of a passage with `(1)` or `(2)`. Refer to it as `(1):Like this` on the same sheet or `1a(1)` from a different sheet. Use `ID:` for a citation and `:ID` for a continuation. |
 | Global Index | Look up keywords across the collection. Sort paper slips by kana reading or alphabetically. Use a spreadsheet to work out the order before rearranging the slips. |
 | Choosing an index | Use the Topic Index when you would start from the broader topic. Add a Global Index entry if you would look up the term directly. |
 | Topic Index | Write “ID-Topic” at the upper left of a portrait A4 sheet. List keyword–ID pairs in two columns, omitting headings and lines. A keyword can have more than one ID. |
 | Dots and stars | When a keyword lists two or more IDs and has a Topic Index, put a red dot directly above the ID for that index. Start an entry with a hand-drawn star to point to a related Topic Index. |
 | Making an index | One Topic Index per ID. Before making one, check the Global Index and related Topic Indexes. If an index already covers the same subject, add entries there. |
-| Pages and filing | Label the next page of an index `1-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1b, 2, 3. Use tabs at the top for numeric IDs or topics with many notes. |
+| Pages and filing | Label the next page of an index `1-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1a1, 1b, 1b1, 2, 3. Use tabs at the top for numeric IDs or topics with many notes. |
 | Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. Write referenced note IDs in red. |
 | Summaries and progress | Start with smaller topics. Write the main points in the overview and link to the subject notes. Index dated updates so you can find them again. |
 | Fragment Notes | In the Global Index, write “Fragment Notes” with the first sheet’s ID. Add short items to the same sheet until it fills up, then start a continuation sheet. |
