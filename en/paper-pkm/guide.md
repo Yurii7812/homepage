@@ -58,18 +58,47 @@ Later I write, “With a pour-over and a French press, the grounds spend differe
 
 Next I write about how long to steep the grounds in a French press. That develops a different part of the brewing note `1a`, so I give it `1a2`, alongside the pour-over note `1a1`. If I write, “Using the same brewing method, I found the darker roast more bitter,” I’m following up on what I wrote about the beans in `1`. That note goes at `1b`, alongside `1a`. Later, I reread what I wrote about brewing and beans and start pulling my observations together on one sheet. I file that sheet at `1c`, another branch of `1`.
 
+**How the Folgezettel IDs branch**
+
+```text
+1  The same beans taste different depending on how I brew them
+├── 1a  The grounds spend different amounts of time in water in a pour-over and a French press
+│   ├── 1a1  Does the amount of water in each pour change the taste?
+│   │   └── 1a1a  Compare by changing only the amount in each pour
+│   └── 1a2  How long to steep the grounds in a French press
+├── 1b  With the same brewing method, the darker roast tasted more bitter
+│   ├── 1b1  Compare light and dark roasts using the same method
+│   └── 1b2  Record taste and days since opening the bag
+└── 1c  Summary of what I tried with brewing and beans
+    ├── 1c1  Version 1, continued
+    │   └── 1c1a  Supplement to 1c1
+    ├── 1c2  Version 1, continued
+    ├── 1c3  Last sheet of version 1
+    └── 1c4  First sheet of version 2
+```
+
+Beside each ID is an excerpt or a short description of the note. Notes 1a, 1b, and 1c all branch from 1.
+
 **Actual filing order (front to back)**　`1 → 1a → 1a1 → 1a1a → 1a2 → 1b → 1b1 → 1b2 → 1c → 1c1 → 1c1a → 1c2 → 1c3 → 1c4 → 2 → 3`.
 
 [See how the A4 sheets are stacked in the folder](https://yurii7812.github.io/homepage/en/paper-pkm/#filing-stack).
 
 #### Why branching on every continuation makes IDs grow
 
-If every follow-up goes under the note you just wrote, the IDs keep getting longer, as in `1 → 1a → 1a1 → 1a1a → 1a1a1 → …`. Even when the subject has broadened, the sequence makes each note look like a closer examination of the one immediately before it.
+If every follow-up goes under the note you just wrote, the IDs keep getting longer. Even when the subject has broadened, the sequence makes each note look like a closer examination of the one immediately before it.
 
-```mermaid
-flowchart LR
-  A["1"] --> B["1a"] --> C["1a1"] --> D["1a1a"] --> E["1a1a1 …"]
+**What happens if every follow-up goes one level deeper**
+
+```text
+1
+└── 1a
+    └── 1a1
+        └── 1a1a
+            └── 1a1a1
+                └── …
 ```
+
+Each new note sits under the previous one, adding another level and making the ID longer.
 
 To suggest what to read next, add a continuation link such as `:1b` in the note itself. You can choose the reading order separately from the branches you assign.
 
