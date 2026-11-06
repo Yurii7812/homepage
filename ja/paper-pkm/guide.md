@@ -1,6 +1,6 @@
 # 図でわかる 紙のPKM
 
-[図解ガイド](./) · [English](../../en/paper-pkm/guide.md)
+[図解ガイド](https://yurii7812.github.io/homepage/ja/paper-pkm/) · [English](https://github.com/Yurii7812/homepage/blob/main/en/paper-pkm/guide.md)
 
 ## 第1部　実際に使いながら覚える
 

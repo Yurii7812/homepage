@@ -1,6 +1,6 @@
 # Paper PKM, Illustrated
 
-[Illustrated guide](./) · [日本語](../../ja/paper-pkm/guide.md)
+[Illustrated guide](https://yurii7812.github.io/homepage/en/paper-pkm/) · [日本語](https://github.com/Yurii7812/homepage/blob/main/ja/paper-pkm/guide.md)
 
 ## Part 1 · Learn by using it
 
