@@ -50,7 +50,7 @@ As the sheets pile up, add the words you are likely to remember when looking for
 
 ### 3. Assign an ID based on how the ideas relate
 
-Place the new note under the note whose subject it **deepens or broadens**, or under a note it **relates to**.
+Give a new note its own branch under an existing note when it **broadens, deepens, or relates to** what you wrote there. Similarity is enough to make a branch. If several placements make sense, choose the one that makes the connection easiest to see when you reread the notes.
 
 Suppose I write on an A4 sheet, “The same beans taste different depending on how I brew them. The beans’ condition and the equipment may matter.” I give the sheet the ID `1`.
 
@@ -58,26 +58,42 @@ Later I write, “With a pour-over and a French press, the grounds spend differe
 
 Next I write about how long to steep the grounds in a French press. That develops a different part of the brewing note `1a`, so I give it `1a2`, alongside the pour-over note `1a1`. If I write, “Using the same brewing method, I found the darker roast more bitter,” I’m following up on what I wrote about the beans in `1`. That note goes at `1b`, alongside `1a`. Later, I reread what I wrote about brewing and beans and start pulling my observations together on one sheet. I file that sheet at `1c`, another branch of `1`.
 
+Suppose I write, “With the same brewing method, the more heavily roasted hojicha tasted more bitter.” I noticed a similar connection between roasting and bitterness in my coffee note `1b`. I can give the tea note the ID `1b2` and file it under `1b` because of that similarity.
+
 **How the Folgezettel IDs branch**
 
 ```text
 1  The same beans taste different depending on how I brew them
+      (The first note about coffee. This is where the example starts.)
 ├── 1a  The grounds spend different amounts of time in water in a pour-over and a French press
+│     (Expands on how brewing affects taste, a point raised in 1.)
 │   ├── 1a1  Does the amount of water in each pour change the taste?
+│   │     (Explores the pour-over method mentioned in 1a in more detail.)
 │   │   └── 1a1a  Compare by changing only the amount in each pour
+│   │         (Sets out a way to test the question in 1a1.)
 │   └── 1a2  How long to steep the grounds in a French press
+│         (Explores the other brewing method mentioned in 1a.)
 ├── 1b  With the same brewing method, the darker roast tasted more bitter
+│     (Looks more closely at the beans, another point raised in 1.)
 │   ├── 1b1  Compare light and dark roasts using the same method
-│   └── 1b2  Record taste and days since opening the bag
+│   │     (Tests the difference noticed in 1b under the same brewing conditions.)
+│   └── 1b2  Darker-roasted hojicha tasted more bitter
+│         (The observation about tea resembles the one about coffee in 1b.)
 └── 1c  Summary of what I tried with brewing and beans
+      (Brings together the brewing and bean notes that grew out of 1.)
     ├── 1c1  Version 1, continued
+    │     (The second sheet of the first version begun at 1c.)
     │   └── 1c1a  Supplement to 1c1
+    │         (A separate sheet supplementing 1c1, filed under that note.)
     ├── 1c2  Version 1, continued
+    │     (The third sheet of version 1, filed after 1c1 at the same level under 1c.)
     ├── 1c3  Last sheet of version 1
+    │     (The fourth sheet of version 1, filed after 1c2 at the same level under 1c.)
     └── 1c4  First sheet of version 2
+          (Version 2 starts at the next available ID under 1c.)
 ```
 
-Beside each ID is an excerpt or a short description of the note. Notes 1a, 1b, and 1c all branch from 1.
+Beside each ID is an excerpt or a short description. Below it is the reason for placing the note there.
 
 **Actual filing order (front to back)**　`1 → 1a → 1a1 → 1a1a → 1a2 → 1b → 1b1 → 1b2 → 1c → 1c1 → 1c1a → 1c2 → 1c3 → 1c4 → 2 → 3`.
 
@@ -365,6 +381,7 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 | Item | Rule |
 | --- | --- |
 | Notes | Use portrait A4. Leave the top clear and write the body first. Assign the ID later and write it at the upper left. Put the date at the upper right. Keep sheets with unfinished thoughts, too. |
+| Branching | Branch from a note whose subject the new note broadens, deepens, or relates to. Similarity is enough. Choose a place that makes the connection easy to find. |
 | Pens | Use red for the full citation and continuation marks, including parentheses and colons, and for index commas and dots. Use blue for note text, headings, and the sheet’s own ID at the upper left. Use non-erasable ballpoint pens for both. |
 | Citations and continuations | Mark the end of a passage with `(1)` or `(2)`. Refer to it as `(1):Like this` on the same sheet or `7a(1)` from a different sheet. Use `ID:` for a citation and `:ID` for a continuation. |
 | Global Index | Look up keywords across the collection. Sort paper slips by kana reading or alphabetically. Use a spreadsheet to work out the order before rearranging the slips. |
@@ -372,7 +389,7 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 | Topic Index | Write “ID-Topic” at the upper left of a portrait A4 sheet. List keyword–ID pairs in two columns, omitting headings and lines. A keyword can have more than one ID. |
 | Dots and stars | When a keyword lists two or more IDs and has a Topic Index, put a red dot directly above the ID for that index. Start an entry with a hand-drawn star to point to a related Topic Index. |
 | Making an index | One Topic Index per ID. Before making one, check the Global Index and related Topic Indexes. If an index already covers the same subject, add entries there. |
-| Pages and filing | Label the next page of an index `7-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 7a, 7a1, 7a1a, 7a2, and so on. Use tabs at the top for numeric IDs or topics with many notes. |
+| Pages and filing | Label the next page of an index `7-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1a1, 1a1a, 1a2, and so on. Use tabs at the top for numeric IDs or topics with many notes. |
 | Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. Write referenced note IDs in red. |
 | Summaries and progress | Start with smaller topics. Write the main points in the overview and link to the subject notes. Index each summary version by its first sheet, and use dates to find progress updates. |
 | Fragment Notes | In the Global Index, write “Fragment Notes” with the first sheet’s ID. Add short items to the same sheet until it fills up, then start a continuation sheet. |
