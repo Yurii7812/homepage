@@ -1,4 +1,4 @@
-# Paper PKM, Illustrated
+# An Illustrated Guide to Managing Knowledge on Paper
 
 [Illustrated guide](https://yurii7812.github.io/homepage/en/paper-pkm/) · [日本語](https://github.com/Yurii7812/homepage/blob/main/ja/paper-pkm/guide.md)
 
@@ -9,7 +9,7 @@ The system builds on Niklas Luhmann’s Zettelkasten and uses branching **Folgez
 - **A4 is practical at university and in libraries.** I can carry A4 sheets with my usual supplies, which is easier than carrying a box of A6 cards. The larger page gives me room for long passages and diagrams.
 - **I can write the way I would in an ordinary notebook.** I skip atomic notes so I can follow a train of thought across the page without stopping to put each idea on a separate sheet. I file fleeting notes, brainstorming sheets, and more developed writing the same way.
 - **The context and nuance stay on the page.** Compressing a complex thought into a short, self-contained note can obscure how it connects to the surrounding ideas and why I chose particular words. Keeping the original brainstorming sheet lets me retrace how I reached a conclusion.
-- **I can cite a specific passage in a longer note.** If I mark a passage with `(1)`, I can point to it from another note using `1a(1)`. The passage stays where I wrote it, with its surrounding context.
+- **I can cite a specific passage in a longer note.** If I mark a passage with `(1)`, I can point to it from another note using `7a(1)`. The passage stays where I wrote it, with its surrounding context.
 - **Notes stay easy to find as the collection grows.** The Global Index gives me an entry point for a topic across the collection. The Topic Index leads me to what I need within that topic, even as longer notes and brainstorming sheets accumulate.
 
 ## Part 1 · Learn by using it
@@ -52,25 +52,15 @@ As the sheets pile up, add the words you are likely to remember when looking for
 
 Place the new note under the note whose subject it **deepens or broadens**, or under a note it **relates to**.
 
-| Numeric ID | First branch level | Second branch level | Third branch level |
-|---|---|---|---|
-| `1` PKM overview |  |  |  |
-|  | `1a` Paper PKM |  |  |
-|  |  | `1a1` Arranging paper notes |  |
-|  |  |  | `1a1a` Filing example |
-|  |  | `1a2` Pens |  |
-|  | `1b` Digital PKM |  |  |
-|  |  | `1b1` Title search |  |
-|  |  | `1b2` Full-text search |  |
-|  | `1c` Zettelkasten |  |  |
-|  |  | `1c1` Zettelkasten index |  |
-|  |  | `1c2` Branching notes |  |
-| `2` Goals |  |  |  |
-| `3` |  |  |  |
+Suppose I write on an A4 sheet, “The same beans taste different depending on how I brew them. The beans’ condition and the equipment may matter.” I give the sheet the ID `1`.
 
-**Actual filing order (front to back)**　`1 → 1a → 1a1 → 1a1a → 1a2 → 1b → 1b1 → 1b2 → 1c → 1c1 → 1c2 → 2 → 3`.
+Later I write, “With a pour-over and a French press, the grounds spend different amounts of time in contact with the water.” I file that note at `1a` because it develops what I wrote about brewing in `1`. Then I write, “Would the taste change if I poured more water at a time in a pour-over?” That follows up on `1a`, so I file it under `1a` at `1a1`. A note on how to run the comparison while changing only the amount in each pour can go one level deeper, at `1a1a`.
 
-[See the branching and filing diagrams](https://yurii7812.github.io/homepage/en/paper-pkm/#branch-layout).
+Next I write about how long to steep the grounds in a French press. That develops a different part of the brewing note `1a`, so I give it `1a2`, alongside the pour-over note `1a1`. If I write, “Using the same brewing method, I found the darker roast more bitter,” I’m following up on what I wrote about the beans in `1`. That note goes at `1b`, alongside `1a`. Later, I reread what I wrote about brewing and beans and start pulling my observations together on one sheet. I file that sheet at `1c`, another branch of `1`.
+
+**Actual filing order (front to back)**　`1 → 1a → 1a1 → 1a1a → 1a2 → 1b → 1b1 → 1b2 → 1c → 1c1 → 1c1a → 1c2 → 1c3 → 1c4 → 2 → 3`.
+
+[See how the A4 sheets are stacked in the folder](https://yurii7812.github.io/homepage/en/paper-pkm/#filing-stack).
 
 #### Why branching on every continuation makes IDs grow
 
@@ -81,25 +71,23 @@ flowchart LR
   A["1"] --> B["1a"] --> C["1a1"] --> D["1a1a"] --> E["1a1a1 …"]
 ```
 
-**Ask which note the new one deepens, broadens, or relates to.** If a follow-up to `1a`, “Paper PKM,” goes into arranging paper notes, put it at `1a1`. If it introduces Digital PKM, it broadens `1`, “PKM overview,” in a different direction. Give it `1b`, alongside `1a`. A note that goes deeper into the arrangement described at `1a1` can still go under it at `1a1a`.
-
 To suggest what to read next, add a continuation link such as `:1b` in the note itself. You can choose the reading order separately from the branches you assign.
 
 ### 4. Mark sources and continuations
 
-Write `(1)` or `(2)` **at the end of a passage** you may want to cite. For example, the Paper PKM note `1a` could say “Where you put a paper note can help you find it.  (1)”.
+Write `(1)` or `(2)` **at the end of a passage** you may want to cite. For example, the Paper PKM note `7a` could say “Where you put a paper note can help you find it.  (1)”.
 
 | Situation | Notation |
 | --- | --- |
 | Mark the end of a passage | `Text  (1)` |
 | Cite it within the same note | `(1):Like this` |
-| Refer to a passage in another note | `1a(1)` |
-| Cite a whole note | `1a:` |
-| Point to a continuation | `:1a1` |
+| Refer to a passage in another note | `7a(1)` |
+| Cite a whole note | `7a:` |
+| Point to a continuation | `:7a1` |
 
-To refer to that passage on the same sheet, write **`(1):Like this`**. To point to it from another note, write **`1a(1)`**. In the Search comparison note `1d`, you could write `1a(1):Compare this with digital search.`
+To refer to that passage on the same sheet, write **`(1):Like this`**. To point to it from another note, write **`7a(1)`**. In the Search comparison note `7d`, you could write `7a(1):Compare this with digital search.`
 
-To cite a whole note, write **`ID:`** (for example, `1a:`). To point to the continuation, write **`:ID`** (for example, `:1a1`). Put the colon right next to the ID. Write the full citation or continuation mark in red, including parentheses, numbers, and colons. Write the note’s own ID in blue at the upper left.
+To cite a whole note, write **`ID:`** (for example, `7a:`). To point to the continuation, write **`:ID`** (for example, `:7a1`). Put the colon right next to the ID. Write the full citation or continuation mark in red, including parentheses, numbers, and colons. Write the note’s own ID in blue at the upper left.
 
 [See the A4 notes written in red and blue](https://yurii7812.github.io/homepage/en/paper-pkm/#reference-ink).
 
@@ -109,36 +97,37 @@ Fold an A8 sheet in half with the **crease parallel to the long edge**. With the
 
 | Keyword | Sort key | ID |
 | --- | --- | --- |
-| Personal knowledge management | personal knowledge management | `1` |
-| PKM | pkm | `1` |
+| Coffee | coffee | `1` |
+| Personal knowledge management | personal knowledge management | `7` |
+| PKM | pkm | `7` |
 | Village design | village design | `6` |
 
-Write one keyword per slip, with its associated IDs. The slips for “Personal knowledge management” and “PKM” can both list `1`. Sort the slips by the reading of the keyword, in **Japanese kana order** or alphabetically for English keywords.
+Write one keyword per slip, with its associated IDs. The slips for “Personal knowledge management” and “PKM” can both list `7`. Sort the slips by the reading of the keyword, in **Japanese kana order** or alphabetically for English keywords.
 
 **A spreadsheet makes it easier to reorder the paper slips.** Enter the keywords, readings, and IDs, then sort by reading or alphabetically. Use that order to rearrange the slips on the ring.
 
 ### 6. Find a note within a topic
 
-When you have several notes about PKM, take a separate portrait A4 sheet and write **`1-PKM`** at the upper left. Write keyword–ID pairs in **two columns**, one on each side. Leave out column headings and grid lines.
+When you have several notes about PKM, take a separate portrait A4 sheet and write **`7-PKM`** at the upper left. Write keyword–ID pairs in **two columns**, one on each side. Leave out column headings and grid lines.
 
-**1-PKM**
+**7-PKM**
 
 |  |  |  |  |
 | --- | --- | --- | --- |
-| Paper PKM | `1a` | Zettelkasten | `1c, 1c1` |
-| Arranging notes | `1a1` | Branching notes | `1c2` |
-| Pens | `1a2` | Passage references | `1c3` |
-| Clear folders | `1a3` | Continuations | `1c4` |
-| Sticky tabs | `1a4` | Write reference IDs in red | `1c5` |
-| Filing notes | `1a5` | Summary | `1g` |
-| Digital PKM | `1b, 1b1` | Double Index | `1f` |
-| Title search | `1b1` | Global Index | `1f1` |
-| Full-text search | `1b2` | Topic Index | `1f2` |
-| Sort by reading | `1b3` | Adding indexes | `1f3` |
-| Search comparison | `1d` | Progress | `1h` |
-| Scanning paper | `1b4` | ★KJ method | `3a1` |
+| Paper PKM | `7a` | Zettelkasten | `7c, 7c1` |
+| Arranging notes | `7a1` | Branching notes | `7c2` |
+| Pens | `7a2` | Passage references | `7c3` |
+| Clear folders | `7a3` | Continuations | `7c4` |
+| Sticky tabs | `7a4` | Write reference IDs in red | `7c5` |
+| Filing notes | `7a5` | Summary | `7g` |
+| Digital PKM | `7b, 7b1` | Double Index | `7f` |
+| Title search | `7b1` | Global Index | `7f1` |
+| Full-text search | `7b2` | Topic Index | `7f2` |
+| Sort by reading | `7b3` | Adding indexes | `7f3` |
+| Search comparison | `7d` | Progress | `7h` |
+| Scanning paper | `7b4` | ★KJ method | `3a1` |
 
-For example, look up “PKM” in the Global Index and open the A4 sheet marked `1-PKM`. Find “Paper PKM `1a`” there, then read note `1a`. To find the village brainstorm, start from “Village design `6`” in the Global Index. Open `6-Village design` and look up “Village life `6a`”.
+For example, look up “PKM” in the Global Index and open the A4 sheet marked `7-PKM`. Find “Paper PKM `7a`” there, then read note `7a`. To find the village brainstorm, start from “Village design `6`” in the Global Index. Open `6-Village design` and look up “Village life `6a`”.
 
 #### Choose where to put an entry
 
@@ -148,8 +137,8 @@ A general subject heading, such as “KJ method,” can be looked up on its own.
 
 | What you might remember later | What to write and where |
 | --- | --- |
-| Which color did I use for reference IDs in paper PKM? | Write `Write reference IDs in red 1c5` in `1-PKM`. |
-| How did I refer to part of a passage in paper PKM? | Write `Passage references 1c3` in `1-PKM`. |
+| Which color did I use for reference IDs in paper PKM? | Write `Write reference IDs in red 7c5` in `7-PKM`. |
+| How did I refer to part of a passage in paper PKM? | Write `Passage references 7c3` in `7-PKM`. |
 | What did I write about the KJ method? | Write `KJ method 3a1` in the Global Index and link to it from relevant Topic Indexes. |
 
 When unsure, start with the Topic Index you would naturally look through. If you later want to look up “Passage references” directly while writing a report, add it to the Global Index then. If there is no suitable Topic Index yet, add one term you are likely to remember to the Global Index.
@@ -160,13 +149,13 @@ A sheet that touches on several subjects can appear under the same note ID in se
 
 #### Use a Topic Index to reach a more specific Topic Index
 
-As notes on Digital PKM accumulate, you can make `1b-Digital PKM` using its entry ID, `1b`. If the notes on title search grow into a subject of their own, use the same pattern to make `1b1-Title search`.
+As notes on Digital PKM accumulate, you can make `7b-Digital PKM` using its entry ID, `7b`. If the notes on title search grow into a subject of their own, use the same pattern to make `7b1-Title search`.
 
 | Index you have open | Entry to look for | Topic Index you can open next |
 | --- | --- | --- |
-| Global Index | PKM `1` | `1-PKM` |
-| `1-PKM` | Digital PKM `1b, 1b1` | `1b-Digital PKM` |
-| `1b-Digital PKM` | Title search `1b1` | `1b1-Title search` |
+| Global Index | PKM `7` | `7-PKM` |
+| `7-PKM` | Digital PKM `7b, 7b1` | `7b-Digital PKM` |
+| `7b-Digital PKM` | Title search `7b1` | `7b1-Title search` |
 
 Repeat the pattern at any depth where it helps. Each broader index gives you an entry point, and each narrower index holds the detailed entries for its subject.
 
@@ -176,13 +165,13 @@ Repeat the pattern at any depth where it helps. Each broader index gives you an 
 
 | IDs for one keyword | Topic Index | Dot |
 | --- | --- | --- |
-| PKM `1` | `1-PKM` | None (one ID) |
-| Digital PKM `1b, 1b1` | Not yet made | None |
-| Digital PKM `1b, 1b1` | `1b-Digital PKM` | **Directly above `1b`** |
-| Zettelkasten `1c, 1c1` | Not yet made | None |
-| Zettelkasten `1c, 1c1` | `1c1-Zettelkasten` | **Directly above `1c1`** |
+| PKM `7` | `7-PKM` | None (one ID) |
+| Digital PKM `7b, 7b1` | Not yet made | None |
+| Digital PKM `7b, 7b1` | `7b-Digital PKM` | **Directly above `7b`** |
+| Zettelkasten `7c, 7c1` | Not yet made | None |
+| Zettelkasten `7c, 7c1` | `7c1-Zettelkasten` | **Directly above `7c1`** |
 
-Say the Global Index slip reads “Zettelkasten `1c, 1c1`.” Once you make `1c1-Zettelkasten`, **add one red dot directly above `1c1`**. Keep the heading and the original list, `1c, 1c1`, as written. To read the overview, go to note `1c`. To see the notes gathered under this subject, follow the dot to `1c1-Zettelkasten`.
+Say the Global Index slip reads “Zettelkasten `7c, 7c1`.” Once you make `7c1-Zettelkasten`, **add one red dot directly above `7c1`**. Keep the heading and the original list, `7c, 7c1`, as written. To read the overview, go to note `7c`. To see the notes gathered under this subject, follow the dot to `7c1-Zettelkasten`.
 
 A keyword with only one ID gets no dot, even if it has an index. A keyword with several IDs gets no dot while its index is still unmade.
 
@@ -192,37 +181,37 @@ Two or three notes under one heading can be a good time to make a dedicated Topi
 
 **Choose an entry ID that makes the subject easy to follow.** Consider a note with many connections to related notes, a note that gives an organized overview, or an early ID that is easy to reach when flipping through the folder. Each ID can have one Topic Index.
 
-Say “Passage references” in `1-PKM` lists `1c3, 1c6, 1c8`, and `1c6` gives the overview. Make `1c6-Passage references` and put a red dot directly above `1c6` in the original entry. List all three existing notes in the dedicated index as well.
+Say “Passage references” in `7-PKM` lists `7c3, 7c6, 7c8`, and `7c6` gives the overview. Make `7c6-Passage references` and put a red dot directly above `7c6` in the original entry. List all three existing notes in the dedicated index as well.
 
 | Where | What to write |
 | --- | --- |
-| Original `1-PKM` | Passage references `1c3, 1c6, 1c8` (red dot directly above `1c6`) |
-| Dedicated `1c6-Passage references` | First notes `1c3` |
-|  | Basics of passage references `1c6` |
-|  | An example from practice `1c8` |
-|  | How to refer to part of a diagram `1c9` (added later) |
+| Original `7-PKM` | Passage references `7c3, 7c6, 7c8` (red dot directly above `7c6`) |
+| Dedicated `7c6-Passage references` | First notes `7c3` |
+|  | Basics of passage references `7c6` |
+|  | An example from practice `7c8` |
+|  | How to refer to part of a diagram `7c9` (added later) |
 
-Add the fourth note, `1c9`, to the dedicated index first. You can already get there through `1-PKM`. If you also want to find it while working on reports, list the same `1c9` in the reports Topic Index. Add a Global Index entry when it would help you start directly from that term.
+Add the fourth note, `7c9`, to the dedicated index first. You can already get there through `7-PKM`. If you also want to find it while working on reports, list the same `7c9` in the reports Topic Index. Add a Global Index entry when it would help you start directly from that term.
 
 #### Keep one Topic Index for the same subject
 
-**Give each ID one Topic Index.** Several indexes at the same ID would leave you unsure which one to open. For example, “PKM” and “Personal knowledge management” both point to `1` and lead to `1-PKM`. To index Zettelkasten as its own subject, make `1c1-Zettelkasten` at the ID for that subject, `1c1`.
+**Give each ID one Topic Index.** Several indexes at the same ID would leave you unsure which one to open. For example, “PKM” and “Personal knowledge management” both point to `7` and lead to `7-PKM`. To index Zettelkasten as its own subject, make `7c1-Zettelkasten` at the ID for that subject, `7c1`.
 
-**Keep one index for each subject at the same scope.** If `1c1-Zettelkasten` already exists and you make another index at `1c` with the same scope, entries can end up split between the two. It becomes harder to tell where to find the full list. Before making an index, check other names for the subject in the Global Index and look through related Topic Indexes. Add entries to the existing index if it already covers the subject, and use `★` links to reach it from related subjects.
+**Keep one index for each subject at the same scope.** If `7c1-Zettelkasten` already exists and you make another index at `7c` with the same scope, entries can end up split between the two. It becomes harder to tell where to find the full list. Before making an index, check other names for the subject in the Global Index and look through related Topic Indexes. Add entries to the existing index if it already covers the subject, and use `★` links to reach it from related subjects.
 
 ### 8. Add index pages and links to related topics
 
-When `1-PKM` fills up, write `1-PKM 2` at the upper left of the next A4 sheet and keep adding entries. The final 2 is the sheet number. The entry ID is still `1`.
+When `7-PKM` fills up, write `7-PKM 2` at the upper left of the next A4 sheet and keep adding entries. The final 2 is the sheet number. The entry ID is still `7`.
 
 ```mermaid
 flowchart TD
-A["1c1-Zettelkasten"] -->|"★PKM 1"| B["1-PKM"]
+A["7c1-Zettelkasten"] -->|"★PKM 7"| B["7-PKM"]
   A -->|"★KJ method 3a1"| C["3a1-KJ method"]
 ```
 
-Draw a **one-stroke star** at the start of an entry that points to another, related Topic Index. In `1c1-Zettelkasten`, for example, write `★PKM 1` or `★KJ method 3a1`.
+Draw a **one-stroke star** at the start of an entry that points to another, related Topic Index. In `7c1-Zettelkasten`, for example, write `★PKM 7` or `★KJ method 3a1`.
 
-You can list the same note in different indexes. If `1d` compares finding things on paper and digitally, you can list it in both `1-PKM` and `1b-Digital PKM`.
+You can list the same note in different indexes. If `7d` compares finding things on paper and digitally, you can list it in both `7-PKM` and `7b-Digital PKM`.
 
 ### 9. File the sheets in A4 clear folders
 
@@ -241,7 +230,7 @@ Start at the **front face of the clear folder**. Stack the notes in order from f
 
 For a topic with lots of notes, or a note with a numeric ID such as `1` or `2`, put a **sticky tab with the ID** near the top so you can find it while flipping through.
 
-Keep a Topic Index and the note with the same ID together in one clear folder. For example, put `1-PKM` in front, with note `1` immediately behind it. You can find both even when the entry lists only one ID and has no dot.
+Keep a Topic Index and the note with the same ID together in one clear folder. For example, put `1-Coffee` in front, with note `1` immediately behind it. You can find both even when the entry lists only one ID and has no dot.
 
 ### 10. Keep the diary in a separate clear folder
 
@@ -254,13 +243,30 @@ Write the **date** at the upper left using the same format as the notes, for exa
 
 > **2026 10 02**
 >
-> Today I wrote down how to make a Topic Index. For details, see `1f2`.
+> Today I wrote down how to make a Topic Index. For details, see `7f2`.
 >
 > I decided to collect short items in Fragment Notes. The first sheet is `5`.
 
 Use **one page per day** as a default, even for a short entry. If you need another sheet, put the date and page number at the upper left, as in `2026 10 02 2`. Give the diary its own A4 clear folder.
 
-### 11. Build an overview from smaller summaries
+### 11. Write a summary and track its versions
+
+Suppose I reread my coffee notes and write, “In the batches I tried, changing the brewing method changed the taste even with the same beans. With the same method, the darker roast tasted more bitter to me.” I give the first sheet of the summary the ID `1c`.
+
+If the first version takes several sheets, I use `1c`, `1c1`, `1c2`, and `1c3` in order. To point to the next sheet, I can write `:1c1`, `:1c2`, and `:1c3` in red at the ends of the respective sheets. A separate note expanding on something in `1c1` goes at `1c1a`.
+
+If I revisit the summary after my thinking has changed, I start version 2 at the next available ID, `1c4` in this example. I make a Topic Index using the first ID, `1c-Coffee summary`, so I can find the opening sheet of either version.
+
+**`1c-Coffee summary`**
+
+|  |  |
+|---|---|
+| Summary 1 | `1c` |
+| Summary 2 | `1c4` |
+
+Each entry in this index gives the ID of the first sheet of that version. I read version 1 from `1c` through `1c3` and start version 2 at `1c4`.
+
+#### Build an overview from smaller summaries
 
 A Topic Index can have an entry called “Summary.” In the Goals index it covers all your goals. In the Finances index it covers your financial goals. Write both summaries as ordinary notes.
 
@@ -268,12 +274,12 @@ A Topic Index can have an entry called “Summary.” In the Goals index it cove
 | --- | --- |
 | `2-Goals` | `Finances 2a`, `Mysticism 2b`, `Summary 2d` |
 | `2a-Finances` | `Summary 2a1` |
-| `2a1-Summary` (Finances) | `Summary 1 2a1a`, `Summary 2 2a1b` |
-| `2d-Summary` (All goals) | `Summary 1 2d1`, `Summary 2 2d2` |
+| `2a1-Summary` (Finances) | `Summary 1 2a1`, `Summary 2 2a1b` |
+| `2d-Summary` (All goals) | `Summary 1 2d`, `Summary 2 2d2` |
 
 Start with smaller subjects, such as financial goals, goals related to mysticism, or recent goals. In the overall summary, write a short account of what matters now in each area and link to the smaller summaries for details. When you update the overview, you can reuse those summaries without copying every detail again.
 
-In the Finances Topic Index at `2a`, the summary has **one entry, `Summary 2a1`**. Put the versions, `Summary 1 2a1a` and `Summary 2 2a1b`, in **the Topic Index at `2a1`**. Their note titles can be `Summary-2026 10 01` and `Summary-2026 10 02`. Do the same for the overall summary. Put `Summary 2d` in the Goals index and list the versions in the Topic Index at `2d`.
+In the Finances Topic Index at `2a`, the summary has **one entry, `Summary 2a1`**. Put the versions, `Summary 1 2a1` and `Summary 2 2a1b`, in **the Topic Index at `2a1`**. Their note titles can be `Summary-2026 10 01` and `Summary-2026 10 02`. Do the same for the overall summary. Put `Summary 2d` in the Goals index and list the versions in the Topic Index at `2d`.
 
 Digitally, open “Finances” from the Goals Topic Index. In that note’s `BranchGroup/Group`, open “Summary.” The Summary note has its own `BranchGroup/Group`, where you find the dated summaries. On paper, follow the same route using the IDs written in the indexes.
 
@@ -331,13 +337,13 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 | --- | --- |
 | Notes | Use portrait A4. Leave the top clear and write the body first. Assign the ID later and write it at the upper left. Put the date at the upper right. Keep sheets with unfinished thoughts, too. |
 | Pens | Use red for the full citation and continuation marks, including parentheses and colons, and for index commas and dots. Use blue for note text, headings, and the sheet’s own ID at the upper left. Use non-erasable ballpoint pens for both. |
-| Citations and continuations | Mark the end of a passage with `(1)` or `(2)`. Refer to it as `(1):Like this` on the same sheet or `1a(1)` from a different sheet. Use `ID:` for a citation and `:ID` for a continuation. |
+| Citations and continuations | Mark the end of a passage with `(1)` or `(2)`. Refer to it as `(1):Like this` on the same sheet or `7a(1)` from a different sheet. Use `ID:` for a citation and `:ID` for a continuation. |
 | Global Index | Look up keywords across the collection. Sort paper slips by kana reading or alphabetically. Use a spreadsheet to work out the order before rearranging the slips. |
 | Choosing an index | Use the Topic Index when you would start from the broader topic. Add a Global Index entry if you would look up the term directly. |
 | Topic Index | Write “ID-Topic” at the upper left of a portrait A4 sheet. List keyword–ID pairs in two columns, omitting headings and lines. A keyword can have more than one ID. |
 | Dots and stars | When a keyword lists two or more IDs and has a Topic Index, put a red dot directly above the ID for that index. Start an entry with a hand-drawn star to point to a related Topic Index. |
 | Making an index | One Topic Index per ID. Before making one, check the Global Index and related Topic Indexes. If an index already covers the same subject, add entries there. |
-| Pages and filing | Label the next page of an index `1-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1a1, 1a1a, 1a2, and so on. Use tabs at the top for numeric IDs or topics with many notes. |
+| Pages and filing | Label the next page of an index `7-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 7a, 7a1, 7a1a, 7a2, and so on. Use tabs at the top for numeric IDs or topics with many notes. |
 | Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. Write referenced note IDs in red. |
-| Summaries and progress | Start with smaller topics. Write the main points in the overview and link to the subject notes. Index dated updates so you can find them again. |
+| Summaries and progress | Start with smaller topics. Write the main points in the overview and link to the subject notes. Index each summary version by its first sheet, and use dates to find progress updates. |
 | Fragment Notes | In the Global Index, write “Fragment Notes” with the first sheet’s ID. Add short items to the same sheet until it fills up, then start a continuation sheet. |
