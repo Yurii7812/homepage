@@ -176,21 +176,23 @@ For example, look up “PKM” in the Global Index and open the A4 sheet marked 
 
 #### Choose where to put an entry
 
-**If you would start by looking up the broader topic, add the entry to its Topic Index. If you would start with this term itself, add an entry point to the Global Index as well.**
+**When a note discusses a subject itself, give that subject an entry in the Global Index. When it discusses that subject within a particular context, list it in the Topic Index for that context.**
 
-A general subject heading, such as “KJ method,” can be looked up on its own. A local heading, such as “Write reference IDs in red,” is useful once you have opened the relevant topic. A term can make sense on its own and still be easy to find through a broader Topic Index.
+For example, a note about GUI principles or usability in general belongs under “GUI” in the Global Index. A note about how to design the GUI of your PKM app belongs under “GUI” in the PKM Topic Index. When a term appears in a note, consider what the note is actually discussing before choosing where to index it.
 
-| What you might remember later | What to write and where |
-| --- | --- |
-| Which color did I use for reference IDs in paper PKM? | Write `Write reference IDs in red 7c5` in `7-PKM`. |
-| How did I refer to part of a passage in paper PKM? | Write `Passage references 7c3` in `7-PKM`. |
-| What did I write about the KJ method? | Write `KJ method 3a1` in the Global Index and link to it from relevant Topic Indexes. |
+| What the note discusses | Where to index it |
+|---|---|
+| GUI concepts or design principles in general | “GUI” in the Global Index |
+| How to design the GUI of this PKM app | “GUI” in the PKM Topic Index |
+| Which color to use for references in paper PKM | `Write reference IDs in red 7c5` in `7-PKM` |
+| Passage referencing as a subject in its own right | “Passage references” in the Global Index |
+| Thoughts about the KJ method itself | `KJ method 3a1` in the Global Index |
 
-When unsure, start with the Topic Index you would naturally look through. If you later want to look up “Passage references” directly while writing a report, add it to the Global Index then. If there is no suitable Topic Index yet, add one term you are likely to remember to the Global Index.
+If thinking about a particular app leads you to write something about GUIs in general, you can also list that note under “GUI” in the Global Index. A sheet covering several subjects can have entries appropriate to each. If there is no suitable Topic Index yet, first give the contextual subject its own Global Index entry and make a Topic Index when needed.
 
-If you use both “Passage references” and “In-text references” and might look under either term, you can list both in the Global Index. Within a Topic Index, usually pick one wording. When the wording changes, keep an older heading if you still use it to find the entry, or remove it when you no longer need it.
+If you use both “Passage references” and “In-text references,” both can lead to notes about that subject itself in the Global Index. Within a Topic Index, usually choose one wording. Tidy up headings as they fall out of use.
 
-A sheet that touches on several subjects can appear under the same note ID in several Topic Indexes. In the indexes, write the note ID. Use markers such as `(1)` when referring to a specific passage from the body of a note.
+Use note IDs in indexes. Use markers such as `(1)` when referring to a specific passage from the body of a note.
 
 #### Use a Topic Index to reach a more specific Topic Index
 
@@ -236,7 +238,7 @@ Say “Passage references” in `7-PKM` lists `7c3, 7c6, 7c8`, and `7c6` gives t
 |  | An example from practice `7c8` |
 |  | How to refer to part of a diagram `7c9` (added later) |
 
-Add the fourth note, `7c9`, to the dedicated index first. You can already get there through `7-PKM`. If you also want to find it while working on reports, list the same `7c9` in the reports Topic Index. Add a Global Index entry when it would help you start directly from that term.
+Add the fourth note, `7c9`, to the dedicated index first. You can already get there through `7-PKM`. If you also want to find it while working on reports, list the same `7c9` in the reports Topic Index. If a note develops thoughts about passage referencing itself, you can also list it under “Passage references” in the Global Index.
 
 #### Keep one Topic Index for the same subject
 
@@ -244,32 +246,25 @@ Add the fourth note, `7c9`, to the dedicated index first. You can already get th
 
 **Keep one index for each subject at the same scope.** If `7c1-Zettelkasten` already exists and you make another index at `7c` with the same scope, entries can end up split between the two. It becomes harder to tell where to find the full list. Before making an index, check other names for the subject in the Global Index and look through related Topic Indexes. Add entries to the existing index if it already covers the subject, and use `★` links to reach it from related subjects.
 
-#### When the same keyword appears in different contexts
+#### Index GUI itself and GUI within PKM in their own contexts
 
-Suppose note `8` discusses the GUI of a PKM app, note `9` describes implementing a GUI, and note `10` records thoughts about usability. The Global Index can list `GUI 8,9,10`. These IDs are chosen just for the example.
+Suppose note `8` discusses GUI design principles, note `7b5` discusses the layout of a PKM app, and note `7b6` discusses how to operate that app. These IDs are examples.
 
-If you would look up all of these notes using “GUI,” you can put their IDs under that keyword. When you want one place to reach the GUI notes across those contexts, make a Topic Index that gathers them. If an existing index already covers that scope, add to it.
+Write `GUI 8` in the Global Index and `GUI 7b5,7b6` in the PKM Topic Index, `7-PKM`. To find the app-specific notes, start at “PKM” in the Global Index and open `7-PKM`.
 
-**Use an existing ID as the hub**
+**Why use this approach?**
 
-For example, choose `10` and make `10-GUI`. List entries leading to `8`, `9`, and `10` there. Keep `GUI 8,9,10` in the Global Index and put a red dot directly above `10`. Add subsequent entries for this GUI topic to `10-GUI` as needed.
+Collecting every occurrence of “GUI” in the Global Index mixes discussions about PKM, other apps, and programming. Each new context can force you to reconsider the scope of the GUI hub or gather its entries again.
 
-**`10-GUI`**
+Collecting notes about GUI itself under the global “GUI” entry makes its scope easier to understand. Discussions about GUI within particular contexts remain accessible through their respective topics. Adding a new context is less likely to require rebuilding the hub.
 
-|  |  |
-|---|---|
-| PKM app interface | `8` |
-| Implementing a GUI | `9` |
-| Usability | `10` |
-| ★PKM | `7` |
+**Make a Topic Index within the shared context**
 
-**Rewrite the slip with a new hub**
+The notes in the PKM index’s “GUI” entry discuss the same app, so they are straightforward to gather. As they accumulate, make `7b5-PKM GUI` with entries such as `Layout 7b5` and `Operating steps 7b6`. Keep `GUI 7b5,7b6` in `7-PKM` and put a red dot directly above `7b5`. Add further references about that app’s GUI to the dedicated index.
 
-If the slip is running out of room, or a new hub is easier to use, you can rewrite it. For example, make `11-GUI` and gather the existing references there. Rewrite the Global Index slip as `GUI 11`. This entry has only one ID, so it takes no dot.
+As notes about GUI itself accumulate, make `8-GUI` to gather entries such as `Design principles 8` and `Thoughts on usability 8a`. Develop each index according to its own subject and context.
 
-Choose whichever approach is easier to use. When moving an existing hub, leave a reference to the new index at the old one. You can also add continuation sheets to an index.
-
-Set the scope of a Topic Index as the need arises. You can begin by collecting GUI notes in a PKM context and later make a hub that covers GUI notes across several contexts.
+When an index sheet fills up, add a continuation sheet. If a hub needs to move, gather its references in the new index and leave a reference to it at the old hub. If you rewrite a Global Index slip with only the new entry ID, that row takes no dot.
 
 ### 8. Add index pages and links to related topics
 
@@ -412,10 +407,10 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 | Pens | Use red for the full citation and continuation marks, including parentheses and colons, and for index commas and dots. Use blue for note text, headings, and the sheet’s own ID at the upper left. Use non-erasable ballpoint pens for both. |
 | Citations and continuations | Mark the end of a passage with `(1)` or `(2)`. Refer to it as `(1):Like this` on the same sheet or `7a(1)` from a different sheet. Use `ID:` for a citation and `:ID` for a continuation. |
 | Global Index | Look up keywords across the collection. Sort paper slips by kana reading or alphabetically. Use a spreadsheet to work out the order before rearranging the slips. |
-| Choosing an index | Use the Topic Index when you would start from the broader topic. Add a Global Index entry if you would look up the term directly. |
+| Choosing an index | Use the Global Index for a subject itself and the relevant Topic Index for that subject within a particular context. A note developing general ideas from that context can also be indexed globally. |
 | Topic Index | Write “ID-Topic” at the upper left of a portrait A4 sheet. List keyword–ID pairs in two columns, omitting headings and lines. A keyword can have more than one ID. |
 | Dots and stars | When a keyword lists two or more IDs and has a Topic Index, put a red dot directly above the ID for that index. Start an entry with a hand-drawn star to point to a related Topic Index. |
-| Topic hubs | One keyword can lead to notes in different contexts. When an existing ID becomes the hub, dot that ID in the multi-ID entry. If you rewrite the slip with only the new hub ID, use no dot. |
+| Topic hubs | Gather growing references within a shared context in a dedicated Topic Index. In a multi-ID entry, dot the ID where that index was made. A single-ID entry takes no dot. |
 | Making an index | One Topic Index per ID. Before making one, check the Global Index and related Topic Indexes. If an index already covers the same subject, add entries there. |
 | Pages and filing | Label the next page of an index `7-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1a1, 1a1a, 1a2, and so on. Use tabs at the top for numeric IDs or topics with many notes. |
 | Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. Write referenced note IDs in red. |
