@@ -244,6 +244,33 @@ Add the fourth note, `7c9`, to the dedicated index first. You can already get th
 
 **Keep one index for each subject at the same scope.** If `7c1-Zettelkasten` already exists and you make another index at `7c` with the same scope, entries can end up split between the two. It becomes harder to tell where to find the full list. Before making an index, check other names for the subject in the Global Index and look through related Topic Indexes. Add entries to the existing index if it already covers the subject, and use `★` links to reach it from related subjects.
 
+#### When the same keyword appears in different contexts
+
+Suppose note `8` discusses the GUI of a PKM app, note `9` describes implementing a GUI, and note `10` records thoughts about usability. The Global Index can list `GUI 8,9,10`. These IDs are chosen just for the example.
+
+If you would look up all of these notes using “GUI,” you can put their IDs under that keyword. When you want one place to reach the GUI notes across those contexts, make a Topic Index that gathers them. If an existing index already covers that scope, add to it.
+
+**Use an existing ID as the hub**
+
+For example, choose `10` and make `10-GUI`. List entries leading to `8`, `9`, and `10` there. Keep `GUI 8,9,10` in the Global Index and put a red dot directly above `10`. Add subsequent entries for this GUI topic to `10-GUI` as needed.
+
+**`10-GUI`**
+
+|  |  |
+|---|---|
+| PKM app interface | `8` |
+| Implementing a GUI | `9` |
+| Usability | `10` |
+| ★PKM | `7` |
+
+**Rewrite the slip with a new hub**
+
+If the slip is running out of room, or a new hub is easier to use, you can rewrite it. For example, make `11-GUI` and gather the existing references there. Rewrite the Global Index slip as `GUI 11`. This entry has only one ID, so it takes no dot.
+
+Choose whichever approach is easier to use. When moving an existing hub, leave a reference to the new index at the old one. You can also add continuation sheets to an index.
+
+Set the scope of a Topic Index as the need arises. You can begin by collecting GUI notes in a PKM context and later make a hub that covers GUI notes across several contexts.
+
 ### 8. Add index pages and links to related topics
 
 When `7-PKM` fills up, write `7-PKM 2` at the upper left of the next A4 sheet and keep adding entries. The final 2 is the sheet number. The entry ID is still `7`.
@@ -388,6 +415,7 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 | Choosing an index | Use the Topic Index when you would start from the broader topic. Add a Global Index entry if you would look up the term directly. |
 | Topic Index | Write “ID-Topic” at the upper left of a portrait A4 sheet. List keyword–ID pairs in two columns, omitting headings and lines. A keyword can have more than one ID. |
 | Dots and stars | When a keyword lists two or more IDs and has a Topic Index, put a red dot directly above the ID for that index. Start an entry with a hand-drawn star to point to a related Topic Index. |
+| Topic hubs | One keyword can lead to notes in different contexts. When an existing ID becomes the hub, dot that ID in the multi-ID entry. If you rewrite the slip with only the new hub ID, use no dot. |
 | Making an index | One Topic Index per ID. Before making one, check the Global Index and related Topic Indexes. If an index already covers the same subject, add entries there. |
 | Pages and filing | Label the next page of an index `7-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1a1, 1a1a, 1a2, and so on. Use tabs at the top for numeric IDs or topics with many notes. |
 | Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. Write referenced note IDs in red. |

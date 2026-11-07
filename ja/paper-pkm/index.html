@@ -144,6 +144,12 @@ dl{margin:0}dl div{display:grid;grid-template-columns:145px 1fr;gap:13px;border-
 <h4>同じ話題の索引が散らばるのを防ぐ</h4>
 <p><strong>一つのIDに置くトピックIndexは一つ。</strong> 同じIDに複数作ると、そのIDを見ても開く索引が決まらない。たとえば「PKM」と「個人の知識管理」は両方とも <code>7</code> を指し、同じ <code>7-PKM</code> を開く。ツェッテルカステンを独立した話題としてまとめるなら、その話題の入口 <code>7c1</code> に <code>7c1-ツェッテルカステン</code> を作る。</p>
 <p><strong>同じ範囲の話題を扱う索引も一つにまとめる。</strong> たとえば <code>7c1-ツェッテルカステン</code> があるのに、同じ範囲の索引を <code>7c</code> にも作ると、項目が二か所に分かれ、どちらを見れば全部そろうのか分かりにくくなる。新しく作る前に、グローバルIndexで別名を引き、関連するトピックIndexも確認する。同じ範囲の索引があればそこに追記し、別の話題からは <code>★</code> でその索引へ案内する。</p>
+<h4 id="gui-topic-hub">同じキーワードが複数の文脈に出てきたら</h4>
+<p>たとえばGUIについて、PKMアプリの画面を考えたノートが <code>8</code>、プログラミングでGUIを実装したノートが <code>9</code>、操作性について考えたノートが <code>10</code> にあるとする。グローバルIndexには <code>GUI 8,9,10</code> と書ける。この例の数字も、説明のために選んだID。</p>
+<p>文脈が違っても、「GUI」という言葉から読み返したいなら、同じキーワードの参照先に加えてよい。複数の文脈のGUIを一か所からたどりたくなったら、それらを集めるトピックIndexを作る。すでに同じ範囲を扱う索引があれば、そこに追記する。</p><h5>既存のIDを拠点にする</h5><p>たとえば <code>10</code> を拠点に選び、<code>10-GUI</code> を作る。そこに <code>8</code>・<code>9</code>・<code>10</code> への索引を集める。グローバルIndexの <code>GUI 8,9,10</code> は残し、<code>10</code> の真上に赤い点を打つ。以後、このGUIの話題の参照先は、基本的に <code>10-GUI</code> に書き足す。</p><figure class="narrow"><div class="written" style="max-width:260px;margin:0 auto 12px"><span>GUI</span>　<code class="red-ink">8,9,<span class="index-dot">10</span></code></div><div class="a4-paper a4-index"><div class="written-title"><code>10-GUI</code></div><div class="sheet-columns"><div class="topic-col"><ul><li><span>PKMアプリの画面</span><code>8</code></li><li><span>GUIの実装</span><code>9</code></li></ul></div><div class="topic-col"><ul><li><span>操作性</span><code>10</code></li><li><span><svg class="star-mark" viewBox="0 0 24 24" role="img" aria-label="Related topic"><path class="pen-star" d="M3 20L12 3L21 20L3 8L21 8Z"/></svg>PKM</span><code>7</code></li></ul></div></div></div><figcaption>既存の10を拠点にしたA4の見本。本文の保管場所が異なっていても、索引から各IDへ進める。</figcaption></figure><h5>新しいIDへ作り直す</h5>
+<p>書くスペースが足りないなどの理由で、紙片を作り直して新しい拠点に集め直してもよい。たとえば <code>11-GUI</code> を作り、これまでの参照先をそこに載せる。グローバルIndexの紙片も <code>GUI 11</code> に書き直す。この行はIDが一つなので、点は付けない。</p>
+<p>既存のIDを拠点にするか、新しいIDを使って作り直すかは、扱いやすいほうを選ぶ。すでに拠点があって移す場合は、古い拠点にも新しい索引への案内を残す。索引の続き用紙を足す方法も使える。</p>
+<p>トピックIndexが扱う範囲は、必要に応じて決められる。最初はPKMでのGUIだけを集めてもよいし、あとから複数の文脈を扱うGUIの拠点を作ってもよい。</p>
 </section>
 <section class="lesson"><h3><span class="step">08</span>索引に用紙や関連トピックを足す</h3>
 <p><code>7-PKM</code> が埋まったら、次のA4の左上に <code>7-PKM 2</code> と書いて追記する。末尾の2は用紙番号。入口のIDは引き続き <code>7</code>。</p>
@@ -202,6 +208,7 @@ dl{margin:0}dl div{display:grid;grid-template-columns:145px 1fr;gap:13px;border-
 <div><dt>索引の使い分け</dt><dd>上位の話題から探すならトピックIndex。その言葉で直接探し始めそうなら、グローバルIndexにも入口を作る。</dd></div>
 <div><dt>トピックIndex</dt><dd>縦向きA4の左上に「ID-主題」。左右の2列にキーワードとIDを記入。見出しや線は省く。一つのキーワードに複数のIDを書ける。</dd></div>
 <div><dt>点と★</dt><dd>赤い点は、同じキーワードにIDが2つ以上あり、そのキーワードのトピックIndexを作ったときだけ、そのIDの真上。★は関連する別のトピックIndexを指す行の先頭。</dd></div>
+<div><dt>トピックの拠点</dt><dd>同じキーワードで複数の文脈を引ける。既存IDを拠点にするなら、複数IDのうちそのIDの上に赤い点。新しい拠点へ集め直し、紙片を単一IDに書き直した場合は点なし。</dd></div>
 <div><dt>索引の作成</dt><dd>一つのIDにつき一つのトピックIndex。作る前にグローバルIndexと関係するトピックIndexを確認する。同じ範囲の索引があればそこに追記する。</dd></div>
 <div><dt>用紙と保管</dt><dd>索引の続きは「7-PKM 2」など。クリアファイルの表に順番を記し、表側から 1、1a、1a1、1a1a、1a2、…の順。上部の付箋は数字だけのIDやノートが多いトピックの目印。</dd></div>
 <div><dt>日記</dt><dd>別のクリアファイルに入れる。左上に日付、基本は一日一ページ。続きは日付の後ろに 2 など。参照先のノートIDは赤。</dd></div>
