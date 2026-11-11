@@ -33,3 +33,14 @@ These are source changes on a review branch. Neither this PR nor app PR #9 has b
 - https://yurii7812.github.io/homepage/en/paper-pkm/
 - https://yurii7812.github.io/homepage/ja/yuriinote/
 - https://yurii7812.github.io/homepage/en/yuriinote/
+
+## 2026-11-11 — Explain the design through problems
+
+- Added a progressive, bilingual illustrated introduction: one A4 sheet, eight problems and their solutions, then the combined Double Index System.
+- Added ten precise SVG diagrams per language. Branching appears first, cross-references next, Topic Index next, and Global Index after the reader encounters the need for it. The combined diagram is deliberately withheld until the end of the introduction.
+- Kept one consistent bag/shopping/travel example. Travel supplies use ID 27; appliance comparisons use 28 so one ID never changes meaning mid-example.
+- Moved the earlier benefits, diagram directory and ready-made overview after the practical guide.
+- Kept the detailed paper workflow; aligned the older red-dot text and tables with the newly stated meaning: a Topic Index exists for that ID. The red dot remains distinct from a summary/progress ●.
+- Presented gaps and index-creation timing as working conventions that can be refined through examples.
+- Archived the HTML/Markdown pages before this revision; updated both Markdown companions and both home-page summaries.
+- Verified local links, bilingual anchors, progressive diagram order, SVG parsing and raster rendering. Website/browser visual QA remains unverified as described above. Publication remains pending; this updates the existing review branch.
