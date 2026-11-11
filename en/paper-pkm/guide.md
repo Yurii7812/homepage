@@ -416,3 +416,29 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 | Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. Write referenced note IDs in red. |
 | Summaries and progress | Start with smaller topics. Write the main points in the overview and link to the subject notes. Index each summary version by its first sheet, and use dates to find progress updates. |
 | Fragment Notes | In the Global Index, write “Fragment Notes” with the first sheet’s ID. Add short items to the same sheet until it fills up, then start a continuation sheet. |
+
+
+## Grow topic indexes as your notes develop
+
+A Topic Index is not a special parent hierarchy or a table of contents that must exist from the beginning. It is a regular note with its own Folgezettel ID, combining thoughts about a subject with keywords, questions and referenced note IDs. When a topic deserves its own index, create a new branch such as 1a; that note can in turn develop into 1a1, 1a2 and beyond.
+
+- 1 — Did ancient Greek wrestlers experience erections while competing nude?
+- 1a — Ancient Greece [Topic Index]
+- 1a1 — Notes on Athenian democracy
+- 1b — Ancient Greek wrestling [another Topic Index]
+
+### Topic Index — 1b
+
+- ↑ Ancient Greece — 1a
+- Nudity and bodily responses — 1
+- ★ Competition rules — 1b1
+- ● Research summary and progress — 1b2
+
+- **↑**: Reference to a broader concept, not necessarily a Folgezettel parent.
+- **★**: Reference to another Topic Index.
+- **●**: Reference to a summary, progress report or status note.
+- **No mark**: Ordinary keyword or question reference.
+
+The Global Index contains entries such as “Ancient Greece → 1a”. Note 1 stays in its original ID position; the Topic Index at 1a points back to it. Write only the directly relevant Topic Index at the top of a note. Create broader indexes later, under their own IDs, when there is something to say about those subjects. Paper and YuriiNote use separate ID namespaces but share the same ↑, ★ and ● conventions.
+
+[Previous version (before 2026-11-11 update)](versions/2026-11-11-before-update/guide.md)
