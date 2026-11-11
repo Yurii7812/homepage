@@ -1,13 +1,218 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>YuriiNote 操作ガイド</title><link rel="stylesheet" href="../../style.css"><link rel="stylesheet" href="../../navigation.css"><style>main{max-width:850px;margin:35px auto;padding:0 20px;line-height:1.75}section{padding:12px 0;border-bottom:1px solid #ddd}h2{margin-bottom:5px}nav a{margin-right:16px}</style></head><body><main><nav><a href="../">ホーム</a><a href="../../en/yuriinote/">English</a><a href="https://github.com/Yurii7812/YuriiNote">GitHub</a></nav><h1>YuriiNote 操作ガイド</h1><p>実際の操作手順。アプリのバージョンによってボタン名や配置が異なる場合があります。PR #8の機能はまだ未統合です。</p><section><h2>はじめに</h2><p>初回起動で保存先（vault）を新規作成するか既存フォルダを開きます。右上のフォルダボタンで変更できます。内容は自動保存され、上部の保存状態を確認できます。</p></section>
-<section><h2>ノート</h2><p>「＋ 新規」→「ノート（IDなし）」で書き始めます。「IDを付ける」で直接指定、分岐、並列を選びます。IDはクリックでコピー。「⋯」→「IDを変更・解除」で変更できます。Ctrl+NでIDなし、Ctrl+Bで分岐、Ctrl+Hで並列を作成します。</p></section>
-<section><h2>紙ノート</h2><p>左の「紙」タブで紙ノートを表示します。「📷 スキャン取り込み」で画像に紙のIDを付けます。上の「表示・検索」から「紙のみ」を選ぶと一覧・検索を紙に限定します。Indexからキーワードを探して実物のIDを特定できます。</p></section>
-<section><h2>索引</h2><p>左のIndexタブでキーワードを探します。ノートの「＋キーワード」で登録し、「＋トピックIndex」で索引に追加または新規作成します。赤い点はそのIDに対応するトピックIndexの入口です。トピックIndexの「編集」で「キーワード ID」を1行ずつ書きます。参照種類は ^（上位概念）、+（別のトピックIndex）、=（まとめ）。種類はメニューからも選べます。編集欄で : を入力すると既存ノートを検索して追加できます（PR #8の開発中機能）。</p></section>
-<section><h2>検索とリンク</h2><p>上部の検索欄はIndex→トピックIndex→ノートの順で結果を示します。通常ノートでは : で参照候補を検索しEnterで前置、Shift+Enterで後置、Escでキャンセル。:1a は参照、1a: は全体参照、1a(1) はノート内の番号位置です。</p></section>
-<section><h2>チャットメモ</h2><p>左の吹き出しアイコンを押します。入力してEnterで送信、Shift+Enterで改行。トピックを選択・作成できます。メモを右クリックして返信・文脈リンク・編集・コピー・削除・ノート化を操作します。複数選択からもノート化できます。日記トピックの投稿は日記に反映されます。</p></section>
-<section><h2>日記と記録</h2><p>左の日記アイコンから「今日の日記」を開きます。日付を選んで過去の日も開けます。「＋ ⚙」で夢・仕事などの記録種類を追加・整理します。日付の切り替わりは朝5時。スキャン取り込みで紙の日記を登録することもできます。</p></section>
-<section><h2>なりきりチャット</h2><p>「＋ 新規」→「なりきりチャット」。役を追加し、入力欄上の役をクリックまたはTabで切り替えます。Enterで発言、↩で返信、@で役を指名。「❝ 引用」でノートや別会話の発言を引用できます。</p></section>
-<section><h2>キャンバス</h2><p>「＋ 新規」→「キャンバス」。空白をクリックして文字箱を作り、「↗ 線」で別の箱につなぎます。ドラッグで移動、Ctrl+ホイールで拡大縮小、線のダブルクリックでラベルを付けます。</p></section>
-<section><h2>グラフ・カード・曼荼羅</h2><p>左のグラフアイコンでノート間の親子・参照関係を見ます。カードアイコンでKeep風の一覧を表示し、その場で編集できます。曼荼羅アイコンで3×3／9×9の配置を使います。</p></section>
-<section><h2>添付とエクスポート</h2><p>ノートの「📎 添付」、ドラッグ＆ドロップ、貼り付けで画像やファイルを追加します。左の「☑ 選択」で複数ノートを選び、「エクスポート」から一時的なMarkdownを確認・コピーできます（ファイル保存はしません）。</p></section>
-<section><h2>タブ・編集・削除</h2><p>Ctrl+Tで新しいタブ、Ctrl+Wで閉じる。Ctrl+クリック／中クリックで別タブに開きます。Markdownの見出し・箇条書き・チェックボックス・表を編集できます。ノートの削除はゴミ箱に移動し、複数選択ではEscで選択解除できます。</p></section>
-<section><h2>スマホ・更新</h2><p>「⋯」→「スマホにアプリを入れる…（USB）」または「スマホのメモを取り込む…（USB）」を使います（ADBが必要）。更新は「⋯」→「更新を確認」またはターミナルの YuriiNote --update。</p></section><p><a href="https://github.com/Yurii7812/YuriiNote/blob/master/README.md">技術仕様と詳細（README）</a></p></main></body></html>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>YuriiNote 図解付き操作マニュアル</title><link rel="stylesheet" href="../../style.css"><link rel="stylesheet" href="../../assets/guides.css"><script defer src="../../assets/guide-zoom.js"></script></head><body><main class="manual"><nav><a href="../">ホーム</a> · <a href="../../en/yuriinote/">English</a> · <a href="https://github.com/Yurii7812/YuriiNote">GitHub</a> · <a href="../paper-pkm/">紙だけのPKM</a> · <a href="guide.md">Markdown</a></nav><header><p class="eyebrow">YURIINOTE / GUIDE / 2026-11-11</p><h1>YuriiNote 図解付き操作マニュアル</h1>
+<p>既存のYuriiNote 1.1.0と今回の開発ブランチを調べ、実際のElectron画面で主要操作を確認しました。画面は説明用のサンプルデータです。日本語UIのスクリーンショットを使っています。</p><aside class="status">開発版について：共通Index・表示フィルターの拡張・トピック検索と記号の改良は、作業ブランチの機能です。安定版への統合やインストーラーの公開とは別です。<br><a href="https://github.com/Yurii7812/YuriiNote/tree/feature/unified-index-guides-20261111">feature/unified-index-guides-20261111</a></aside></header><nav class="toc" aria-label="Contents"><ol>
+<li><a href="#start">インストール・初回起動・保存先</a></li>
+<li><a href="#layout">画面構成・タブ・保存状態</a></li>
+<li><a href="#notes">IDなしノートを作り、編集する</a></li>
+<li><a href="#folgezettel">IDの付与・変更・分岐・並列</a></li>
+<li><a href="#filter">全画面共通の表示フィルター</a></li>
+<li><a href="#global-index">共通Indexにキーワード・読み・IDを登録する</a></li>
+<li><a href="#topic-index">トピックIndexを作り、記号を選ぶ</a></li>
+<li><a href="#topic-search">トピックIndexに「:」で検索追加する</a></li>
+<li><a href="#references">通常ノートの参照・検索・バックリンク</a></li>
+<li><a href="#paper">紙ノート・スキャン・未取り込みID</a></li>
+<li><a href="#chat">チャットメモの送信・トピック・編集</a></li>
+<li><a href="#chat-notes">チャットの複数選択・ノート化・日記連携</a></li>
+<li><a href="#diary">今日・過去の日記と夢・仕事の記録</a></li>
+<li><a href="#characters">なりきり・キャラクター・返信と引用</a></li>
+<li><a href="#canvas">キャンバスに箱と線を配置する</a></li>
+<li><a href="#views">グラフ・カード・曼荼羅・似たノート</a></li>
+<li><a href="#files">添付・複数選択・エクスポート・削除と復元</a></li>
+<li><a href="#phone-update">スマートフォン連携・アプリ更新</a></li>
+<li><a href="#shortcuts">キーボード操作の早見表</a></li>
+</ol></nav>
+<section id="start"><h2><span class="section-number">01</span> インストール・初回起動・保存先</h2><p>保存先（vault）は、ノート・索引・画像などを保存する普通のフォルダです。</p><ol class="steps">
+<li><a href="https://github.com/Yurii7812/YuriiNote/releases">Releases</a>で自分のOS用の配布ファイルを探し、Windowsはインストーラー、macOSはDMG、LinuxはAppImageを使います。開発ブランチの変更が含まれるとは限りません。</li>
+<li>開発版を試す場合はGitHubから対象ブランチを取得します。Node.jsとnpmを用意し、リポジトリ内で <code>npm ci</code> → <code>npm run build</code> → <code>npm start</code> の順に実行します。</li>
+<li>初回画面の「フォルダを選ぶ」で既存のvaultを開くか、新しい場所を選びます。見つかったvaultがあれば、その候補を押して開けます。</li>
+<li>起動後は左下の⚙️「設定」→「保存先（vault）」の「変える…」で変更します。保存中の処理が完了してから切り替わります。</li>
+<li>「言語」で日本語・Englishを選びます。文字が小さければ「画面全体の大きさ」「本文の文字の大きさ」を調整します。</li>
+</ol>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/settings.png" width="1200" height="800" loading="lazy" alt="設定。①言語 ②保存先 ③日付が変わる時刻 ④スマホ連携。"><span class="pin" style="left:41.167%;top:18.750%">1</span><span class="pin" style="left:66.750%;top:23.875%">2</span><span class="pin" style="left:40.417%;top:29.250%">3</span><span class="pin" style="left:36.833%;top:83.625%">4</span></div><figcaption>設定。①言語 ②保存先 ③日付が変わる時刻 ④スマホ連携。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/main.js">main.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/package.json">package.json</a></li></ul></details></section>
+<section id="layout"><h2><span class="section-number">02</span> 画面構成・タブ・保存状態</h2><p>左の縦列で機能を選び、左一覧から項目を開き、中央で読み書きします。右欄には関係する情報が出ます。</p><ol class="steps">
+<li>📝でノート、📔で日記、💬でチャットメモ、🗂で共通Index、🕸でグラフ、❖で曼荼羅、🗒でカードを開きます。</li>
+<li>ノートを左一覧で押すと中央に開きます。右欄のキーワード→自トピック→トピック→親→子→バックリンクをたどれます。</li>
+<li>上部の＋で新規作成メニュー、検索欄で検索、左右の矢印で移動履歴を操作します。</li>
+<li>Ctrl+Tで空のタブ、Ctrl+Wでタブを閉じます。Ctrl+Tab／Ctrl+Shift+Tabでタブ移動、中クリックで背景タブに開けます。</li>
+<li>入力後、上の「保存中…」が「保存済み」になることを確認します。保存エラー表示を押すと再試行します。</li>
+</ol>
+<p class="note">画面図は日本語UIです。タブと本文を含む編集中の内容は、表示フィルターで対象外になっても保持します。</p>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/note.png" width="1200" height="800" loading="lazy" alt="①機能列 ②表示フィルター ③検索 ④保存状態 ⑤新規作成 ⑥関係パネル。"><span class="pin" style="left:2.250%;top:16.250%">1</span><span class="pin" style="left:17.750%;top:8.625%">2</span><span class="pin" style="left:79.333%;top:3.625%">3</span><span class="pin" style="left:66.167%;top:3.625%">4</span><span class="pin" style="left:94.000%;top:3.625%">5</span><span class="pin" style="left:96.333%;top:38.625%">6</span></div><figcaption>①機能列 ②表示フィルター ③検索 ④保存状態 ⑤新規作成 ⑥関係パネル。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li></ul></details></section>
+<section id="notes"><h2><span class="section-number">03</span> IDなしノートを作り、編集する</h2><p>まず書いてから整理できます。タイトルと本文は別々に編集します。</p><ol class="steps">
+<li>ノート画面で右上の＋を押し、「📝 ノート」を選びます。IDなしのノートが開きます。</li>
+<li>「タイトル」を押して題を入力します。本文欄を押し、普通の文章やMarkdownを書きます。</li>
+<li>見出し・箇条書き・チェックボックスを入力できます。「表」ボタンは表のひな形を挿入します。</li>
+<li>本文のCtrl+ZでUndo、Ctrl+Shift+ZまたはCtrl+YでRedoを行います。保存状態を確認してから別のノートへ移れます。</li>
+<li>IDなしのノートは左の未整理（📥）タブで探せます。IDを付けるまで、そのまま書き続けても構いません。</li>
+</ol>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/new.png" width="1200" height="800" loading="lazy" alt="＋メニュー。①ノート ②リンク ③キャンバス ④紙スキャン。"><span class="pin" style="left:85.167%;top:9.125%">1</span><span class="pin" style="left:85.250%;top:13.875%">2</span><span class="pin" style="left:85.250%;top:23.375%">3</span><span class="pin" style="left:85.500%;top:28.125%">4</span></div><figcaption>＋メニュー。①ノート ②リンク ③キャンバス ④紙スキャン。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li></ul></details></section>
+<section id="folgezettel"><h2><span class="section-number">04</span> IDの付与・変更・分岐・並列</h2><p>紙とデジタルの番号は別体系です。同じ1aが両方にあっても別ノートです。</p><ol class="steps">
+<li>IDなしノート上部の「IDを付ける」を押します。ID探索画面でノートを探し、基準となる位置を選びます。</li>
+<li>直接指定・分岐・並列から番号の付け方を選び、候補と区分を確認して決定します。紙とデジタルを同一視しないでください。</li>
+<li>番号付きノート上部の「＋ 分岐」で子側へ、「＋ 並列」で同じ段の次へ新しいノートを作れます。1→1a、1a→1a1が分岐、1a→1bが並列の例です。</li>
+<li>ID自体を押すとコピーします。番号を変更・解除するときはノートの「⋯」メニューの「IDを変更・解除」から明示的に操作します。</li>
+<li>右欄の親・子を押すと移動します。本文に参照を書いた別ノートは参照先のバックリンクに現れます。</li>
+</ol>
+<p class="note">番号は内容の関係から決めます。「次のページだから」という理由だけで、毎回IDを深くしません。</p>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/note.png" width="1200" height="800" loading="lazy" alt="①クリックでIDコピー ②並列 ③分岐 ④子ノートへの移動。"><span class="pin" style="left:29.667%;top:18.875%">1</span><span class="pin" style="left:55.917%;top:18.750%">2</span><span class="pin" style="left:63.500%;top:18.750%">3</span><span class="pin" style="left:83.333%;top:54.375%">4</span></div><figcaption>①クリックでIDコピー ②並列 ③分岐 ④子ノートへの移動。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/id-explorer.js">src/id-explorer.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/folgezettel.js">folgezettel.js</a></li></ul></details></section>
+<section id="filter"><h2><span class="section-number">05</span> 全画面共通の表示フィルター</h2><p>検索欄とは独立した表示設定です。元データを消したり移動したりしません。</p><ol class="steps">
+<li>左上の「表示フィルター」を開きます。</li>
+<li>「すべて」「紙のみ」「デジタルのみ」を選びます。例えば共有キーワードに1a(p)と1a(d)があれば、紙のみでは1a(p)だけ表示します。</li>
+<li>Index・トピックIndexの参照・検索候補・親子・バックリンク・似たノート・グラフ・カード・曼荼羅を確認します。各ビュー固有の絞り込みも重ねて適用されます。</li>
+<li>対象外のノートを編集中だった場合、本文を保持したまま非表示になります。フィルターを戻すと同じ編集状態に戻れます。トピックIndexの編集欄は保存対象の原文を扱います。</li>
+<li>アプリを再起動しても最後の選択を復元します。チャットメモ・通常の日記本文・単独ファイルはデジタルとして扱います。紙のみの日記表示では、取り込んだ紙の日記画像だけを表示し、デジタル本文は保持したまま隠します。</li>
+</ol>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/filter-paper.png" width="1200" height="800" loading="lazy" alt="①紙のみ ②紙のノート一覧 ③カードも紙だけになります。"><span class="pin" style="left:17.417%;top:8.625%">1</span><span class="pin" style="left:13.833%;top:21.875%">2</span><span class="pin" style="left:43.250%;top:43.000%">3</span></div><figcaption>①紙のみ ②紙のノート一覧 ③カードも紙だけになります。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/display-scope.js">display-scope.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/reference-picker.js">src/reference-picker.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/linked-content.js">src/linked-content.js</a></li></ul></details></section>
+<section id="global-index"><h2><span class="section-number">06</span> 共通Indexにキーワード・読み・IDを登録する</h2><p>キーワードから紙・デジタル両方のIDを引けます。未取り込みの紙IDも登録できます。</p><ol class="steps">
+<li>左の🗂またはIndex（🔖）タブで共通Indexを開きます。キーワードは読み仮名のあいうえお順でまとまります。</li>
+<li>一覧上の「＋」を押します。「キーワード」「読み仮名」を入力します。自動候補の読みが違えば直します。</li>
+<li>「ノートを検索」にタイトル・ID・本文の語を入れ、候補を押してIDを追加します。候補には紙／デジタルが表示されます。</li>
+<li>「対応するID」欄では手入力もできます。紙の未スキャンIDは <code>9a(p)</code>、既存デジタルは <code>1(d)</code> のように書き、空白で区切ります。区分省略は紙です。</li>
+<li>並び位置のプレビューを確認し、「保存」を押します。読みとIDが共通Indexに現れます。</li>
+<li>キーワード部分を右クリック→「Indexを編集」で読み・対応ID・名前を変更できます。「キーワードを削除」は索引からの登録解除で、ノート本体は残ります。</li>
+<li>検索結果のキーワード文字を押すと、絞り込みを外して共通Indexのその位置へ移動し、前後の語を確認できます。</li>
+</ol>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/index.png" width="1200" height="800" loading="lazy" alt="共通Index。①追加 ②未取り込みの紙ID ③同じ番号の紙・デジタル。"><span class="pin" style="left:6.667%;top:13.500%">1</span><span class="pin" style="left:15.667%;top:29.500%">2</span><span class="pin" style="left:14.750%;top:43.750%">3</span></div><figcaption>共通Index。①追加 ②未取り込みの紙ID ③同じ番号の紙・デジタル。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/index-add.png" width="1200" height="800" loading="lazy" alt="①キーワード ②読み ③検索・候補 ④手入力ID ⑤保存。"><span class="pin" style="left:50.417%;top:24.000%">1</span><span class="pin" style="left:50.500%;top:33.500%">2</span><span class="pin" style="left:50.333%;top:43.000%">3</span><span class="pin" style="left:50.333%;top:67.750%">4</span><span class="pin" style="left:34.917%;top:82.875%">5</span></div><figcaption>①キーワード ②読み ③検索・候補 ④手入力ID ⑤保存。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/display-scope.js">display-scope.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/pindex.js">src/pindex.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/store.js">store.js</a></li></ul></details></section>
+<section id="topic-index"><h2><span class="section-number">07</span> トピックIndexを作り、記号を選ぶ</h2><p>グローバルIndexは全体の入口、トピックIndexは特定の話題の参照先を整理する場所です。</p><ol class="steps">
+<li>番号付きノートを開き、右欄の「トピック」の＋を押します。</li>
+<li>既存の索引を検索して選ぶか、名前欄横の＋から新しい索引名を入力して作ります。入口のIDと紙／デジタル区分を確認します。</li>
+<li>索引を開き「編集」を押します。1行に <code>コーヒー 1a 2(p)</code> のようにキーワードとIDを書きます。区分を省略したIDは索引の入口と同じ側です。</li>
+<li>行頭に <code>^</code>、<code>+</code>、<code>=</code> を書くか、その行にカーソルを置いて「参照の種類」を選び「カーソル行に適用」を押します。</li>
+<li>「完了」で表示に戻り、↑・★・●が期待した意味で表示されることを確認します。「名前・親」で索引名と入口を確認・変更できます。</li>
+</ol>
+<p class="note">赤い点はIDに対応するトピックIndexがある印です。行頭の●（まとめ・進捗）とは違います。1つのIDに対応するトピックIndexは1つで、紙とデジタルの同一IDは別々です。</p>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/topic.png" width="1200" height="800" loading="lazy" alt="①編集 ②上位概念↑ ③別トピック★ ④まとめ●。"><span class="pin" style="left:94.417%;top:17.375%">1</span><span class="pin" style="left:38.000%;top:35.000%">2</span><span class="pin" style="left:38.000%;top:40.750%">3</span><span class="pin" style="left:38.000%;top:46.250%">4</span></div><figcaption>①編集 ②上位概念↑ ③別トピック★ ④まとめ●。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/topic-edit.png" width="1200" height="800" loading="lazy" alt="①行にカーソルを置く ②種類を選択 ③適用 ④完了。"><span class="pin" style="left:37.583%;top:41.250%">1</span><span class="pin" style="left:47.083%;top:32.625%">2</span><span class="pin" style="left:62.750%;top:32.625%">3</span><span class="pin" style="left:94.000%;top:17.250%">4</span></div><figcaption>①行にカーソルを置く ②種類を選択 ③適用 ④完了。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<div class="table-scroll"><table><thead><tr><th>入力</th><th>表示</th><th>意味</th></tr></thead><tbody>
+<tr><td><code>^</code></td><td>↑</td><td>上位概念</td></tr>
+<tr><td><code>+</code></td><td>★</td><td>別のトピックIndex</td></tr>
+<tr><td><code>=</code></td><td>●</td><td>まとめ・進捗</td></tr>
+<tr><td>なし</td><td>なし</td><td>通常の項目</td></tr>
+</tbody></table></div>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/lib.js">lib.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/store.js">store.js</a></li></ul></details></section>
+<section id="topic-search"><h2><span class="section-number">08</span> トピックIndexに「:」で検索追加する</h2><p>通常本文のリンク形式と、索引の「キーワード ID」形式を使い分けます。</p><ol class="steps">
+<li>トピックIndexを開き「編集」を押します。追加したい位置に新しい行を作ります。</li>
+<li>半角 <code>:</code> を入力します。続けてタイトルやIDの検索語を入力すると候補が絞られます。</li>
+<li>タイトル・ID・紙／デジタル区分を見て、↑↓で候補を選びEnter、または候補をクリックします。</li>
+<li>索引には <code>紙で考える 1(p)</code> のような行が挿入されます。通常本文の <code>:1(p)</code> 形式とは異なります。</li>
+<li>必要なら同じ行で参照種類を指定します。Escは検索を中止して入力済みの文字を残します。Ctrl+Z／Redoで挿入を戻す・やり直すこともできます。</li>
+<li>「完了」で行とリンク先を確認します。フィルターが紙のみなら、候補も紙だけになります。</li>
+</ol>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/topic-edit.png" width="1200" height="800" loading="lazy" alt="手順1–2：編集し、追加する行を用意します。"><span class="pin" style="left:94.000%;top:17.250%">1</span><span class="pin" style="left:35.167%;top:52.750%">2</span></div><figcaption>手順1–2：編集し、追加する行を用意します。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/topic-search.png" width="1200" height="800" loading="lazy" alt="手順3：候補の区分とIDを確認して選びます。"><span class="pin" style="left:47.667%;top:65.875%">3</span></div><figcaption>手順3：候補の区分とIDを確認して選びます。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/topic-inserted.png" width="1200" height="800" loading="lazy" alt="手順4–6：索引項目として追加され、種類を変更できます。"><span class="pin" style="left:37.167%;top:52.750%">4</span><span class="pin" style="left:46.917%;top:32.750%">5</span><span class="pin" style="left:93.917%;top:17.250%">6</span></div><figcaption>手順4–6：索引項目として追加され、種類を変更できます。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/reference-picker.js">src/reference-picker.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/reference-search.js">reference-search.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/display-scope.js">display-scope.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li></ul></details></section>
+<section id="references"><h2><span class="section-number">09</span> 通常ノートの参照・検索・バックリンク</h2><p>検索結果と参照候補は別の操作です。通常ノートでのコロン検索は従来のリンク形式を維持します。</p><ol class="steps">
+<li>上部検索欄に文字を入れます。Index→トピックIndex→ノートのまとまりで結果が出ます。Escで検索を終了できます。</li>
+<li>本文で <code>:</code> を入力し、語を入力して候補を選びます。Enterは前置参照、Shift+Enterは後置参照です。</li>
+<li>手入力なら <code>:1a</code> は続きへの参照、<code>1a:</code> は引用元のノート、<code>1a(1)</code> は別ノートの番号箇所を示します。紙なら <code>:1a(p)</code>、デジタルなら <code>:1a(d)</code> と明示できます。</li>
+<li>同じ本文の <code>(1)</code> を目印にし、<code>(1):</code> でその箇所を受けた文章を書けます。リンクを押して移動し、戻る矢印で戻ります。</li>
+<li>参照先ノートの右欄「バックリンク」で、こちらを参照するノートと文脈を読みます。関連ノートは「≈ 似たノート」からも探せます。</li>
+</ol>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/lib.js">lib.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/reference-search.js">reference-search.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/linked-content.js">src/linked-content.js</a></li></ul></details></section>
+<section id="paper"><h2><span class="section-number">10</span> 紙ノート・スキャン・未取り込みID</h2><p>紙ノートは実物のIDを維持して取り込みます。取り込み前でもIndexから実物を探せます。</p><ol class="steps">
+<li>ノート画面の＋→「スキャンを取り込む（紙）」を選び、取り込む画像を選択します。</li>
+<li>スキャン画面で画像を確認し、紙IDと必要なキーワードを入力して登録します。紙側に同じIDがすでにある場合は重複として止まります。</li>
+<li>左の紙（📜）タブからノートを開きます。中央に紙画像と編集欄が表示されます。検索用の文字や題を入力できます。</li>
+<li>「表示フィルター」→「紙のみ」を選び、Indexや検索から目的の紙IDを探します。画像をまだ取り込んでいないIDは淡い欠損表示になります。</li>
+<li>スキャン前のIDは共通Indexの＋から <code>9a(p)</code> のように登録できます。後で同じ紙IDを取り込むと関連付けられます。</li>
+<li>紙の日記はスキャン画面の日付を指定し、「日記」として取り込みます。Folgezettel IDではなく、その日の日記に画像が入ります。</li>
+</ol>
+<p class="note">紙の日記画像は日記レコード内に保存します。「紙のみ」で日記を開くとスキャン画像だけを表示できます。通常のFolgezettel紙ノートとは別の、日付で探す記録です。</p>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/new.png" width="1200" height="800" loading="lazy" alt="①ノート画面の＋ ②紙スキャンの入口。OSの画像選択画面は環境で異なります。"><span class="pin" style="left:94.000%;top:3.625%">1</span><span class="pin" style="left:86.500%;top:28.125%">2</span></div><figcaption>①ノート画面の＋ ②紙スキャンの入口。OSの画像選択画面は環境で異なります。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/store.js">store.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/index.html">index.html</a></li></ul></details></section>
+<section id="chat"><h2><span class="section-number">11</span> チャットメモの送信・トピック・編集</h2><p>短い文章を吹き出しとして残し、後からノートに整理できます。</p><ol class="steps">
+<li>左の💬を押し、一覧のトピックを選びます。新しいトピックは一覧上の＋→名前入力→「作る」またはEnterで作成します。</li>
+<li>下の入力欄に書き、Enterで送信します。Shift+Enterは改行です。入力中の日本語変換のEnterと送信は区別されます。</li>
+<li>一覧で別のトピックを押すと切り替わります。下の💬操作から「新しい下位トピックを作成」を選べます。以後の投稿にはそのトピックの上位設定を引き継ぎます。</li>
+<li>吹き出しを右クリック→「編集」で書き直し、Enterで完了、Escで中止します。</li>
+<li>吹き出しの↩で返信先を選び、入力して送信します。「⇆」で既存の返信先を追加・解除できます。本文の「:」検索や@からメモ・ノートへの参照／言及を追加できます。</li>
+<li>右下の📎で添付を追加するか、チャットへファイルをドラッグします。メモ内のリンクから添付を開けます。</li>
+</ol>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/chat.png" width="1200" height="800" loading="lazy" alt="①トピック作成 ②切り替え ③入力 ④文脈・下位トピック ⑤添付 ⑥表示メニュー。"><span class="pin" style="left:6.833%;top:11.750%">1</span><span class="pin" style="left:11.917%;top:26.125%">2</span><span class="pin" style="left:58.250%;top:94.875%">3</span><span class="pin" style="left:92.583%;top:94.875%">4</span><span class="pin" style="left:96.417%;top:94.875%">5</span><span class="pin" style="left:96.500%;top:16.750%">6</span></div><figcaption>①トピック作成 ②切り替え ③入力 ④文脈・下位トピック ⑤添付 ⑥表示メニュー。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/chat.js">src/chat.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/chat-relations.js">chat-relations.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/chat-topic-preferences.js">chat-topic-preferences.js</a></li></ul></details></section>
+<section id="chat-notes"><h2><span class="section-number">12</span> チャットの複数選択・ノート化・日記連携</h2><p>ノート化は元のメモを残し、通常の編集可能なノートから参照できるようにする操作です。</p><ol class="steps">
+<li>チャット右上の⋮→「複数選択」を選び、必要な吹き出しを選択します。右クリック→「選択」でも開始できます。</li>
+<li>下の「ノート化」を押し、タイトルや整理先の設定を確認して作成します。1件だけなら右クリック→「ノート化」でも行えます。</li>
+<li>作成された通常ノートで文章を追記します。展開された元メモを編集すると表示も追随します。元の吹き出しの📝からノートへ戻れます。</li>
+<li>「リンクを作成」では複数のノートやメモをまとめ、タイトル・順序・参照範囲を指定できます。元データのコピーと参照を混同しないでください。</li>
+<li>チャットの「日記」や記録用トピックを選んで投稿すると、その日の記録にも時刻付きで反映されます。右上の⋮→「日ごと」で日付を指定して確認できます。</li>
+</ol>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/chat-menu.png" width="1200" height="800" loading="lazy" alt="①日ごと表示 ②投稿キャラ ③複数選択 ④キャラクター管理。"><span class="pin" style="left:89.250%;top:26.500%">1</span><span class="pin" style="left:88.167%;top:33.250%">2</span><span class="pin" style="left:84.583%;top:42.000%">3</span><span class="pin" style="left:84.583%;top:46.875%">4</span></div><figcaption>①日ごと表示 ②投稿キャラ ③複数選択 ④キャラクター管理。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/chat.js">src/chat.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/linked-content.js">src/linked-content.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/memo-group.js">memo-group.js</a></li></ul></details></section>
+<section id="diary"><h2><span class="section-number">13</span> 今日・過去の日記と夢・仕事の記録</h2><p>日記は日付と記録の種類で管理します。Folgezettelの番号付きノートとは分けて扱います。</p><ol class="steps">
+<li>左の📔を押し「今日の日記」を押します。今日の日付の本文が開きます。</li>
+<li>過去の日は左の日付欄に日付を指定して「開く」、または一覧の日付を押します。本文右上の←→でも前後の日へ移れます。</li>
+<li>上部のタイトルは任意です。本文を書き、保存状態を確認します。「今日のノート」から、その日に作ったノートを参照できます。</li>
+<li>左の「＋ ⚙」で記録の種類を追加・整理し、「夢」「仕事」などを作ります。記録の上位関係も設定でき、複数の上位に属する記録も扱えます。</li>
+<li>種類を選び直して、その種類の日付を開きます。日付が変わる時刻は設定で変更でき、初期値は朝5時です。</li>
+<li>紙の日記画像を取り込む場合は＋のスキャン操作で日付を指定して日記に登録します。本文の「紙の日記」から画像を読めます。</li>
+</ol>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/diary.png" width="1200" height="800" loading="lazy" alt="①今日の日記 ②日付を指定して開く ③記録の種類 ④前日・翌日 ⑤今日作成したノート。"><span class="pin" style="left:9.667%;top:11.500%">1</span><span class="pin" style="left:20.417%;top:11.500%">2</span><span class="pin" style="left:12.250%;top:6.250%">3</span><span class="pin" style="left:74.500%;top:17.125%">4</span><span class="pin" style="left:41.083%;top:57.125%">5</span></div><figcaption>①今日の日記 ②日付を指定して開く ③記録の種類 ④前日・翌日 ⑤今日作成したノート。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/chat.js">src/chat.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/store.js">store.js</a></li></ul></details></section>
+<section id="characters"><h2><span class="section-number">14</span> なりきり・キャラクター・返信と引用</h2><p>現在の実装ではキャラクターはチャットメモに統合されています。旧ガイドの「＋→なりきりチャット」という新規作成手順は現行メニューにありません。</p><ol class="steps">
+<li>💬でチャットを開き、右上の⋮→「キャラクター管理」を押します。</li>
+<li>「新しいキャラクター」に名前を入れて「保存」を押します。既存キャラの名前変更や「一覧から非表示」もこの画面で行います。</li>
+<li>⋮の「表示・投稿キャラ」でキャラを選び、下の入力欄から投稿します。別の役で書くときは同じ選択欄を切り替えます。</li>
+<li>発言の↩で返信し、@や「:」検索で別の発言・ノートを参照します。引用した文章はリンク先とともに確認します。</li>
+<li>旧なりきりデータは保持したままチャットへ移行する処理があります。旧データを直接開いた場合は旧専用画面の「❝ 引用」や役の切替UIが残ります。現行チャットの手順と区別してください。</li>
+</ol>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/characters.png" width="1200" height="800" loading="lazy" alt="①自分の表示名 ②新しいキャラクター名 ③保存。"><span class="pin" style="left:50.750%;top:42.625%">1</span><span class="pin" style="left:54.667%;top:55.750%">2</span><span class="pin" style="left:35.667%;top:61.375%">3</span></div><figcaption>①自分の表示名 ②新しいキャラクター名 ③保存。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/chat.js">src/chat.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/migrate-roleplay.js">migrate-roleplay.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/roleplay.js">src/roleplay.js</a></li></ul></details></section>
+<section id="canvas"><h2><span class="section-number">15</span> キャンバスに箱と線を配置する</h2><p>キャンバスはノートの一種で、IDなしから作れます。</p><ol class="steps">
+<li>ノート画面の＋→「キャンバス」を選びます。タイトルを入力します。</li>
+<li>点線のある空白をクリックし、文字を入力します。編集を終えるには欄の外を押します。</li>
+<li>箱を選択して「↗ 線」を押し、つなぎたい相手の箱をクリックします。箱はドラッグで移動します。</li>
+<li>「＋ ノート」で既存ノートを検索して引用し、「＋ 画像」で画像を追加できます。</li>
+<li>線をダブルクリックしてラベルを付けます。Ctrl+ホイールや＋／−で拡大縮小、「全体」で全体を表示します。</li>
+<li>箱や線を選びDeleteで削除します。Escで選択・接続操作を解除できます。</li>
+</ol>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/canvas.png" width="1200" height="800" loading="lazy" alt="①IDを付ける ②線 ③ノート引用 ④画像 ⑤表示倍率 ⑥クリックして文字を書く。"><span class="pin" style="left:39.083%;top:18.500%">1</span><span class="pin" style="left:33.417%;top:31.375%">2</span><span class="pin" style="left:40.167%;top:31.375%">3</span><span class="pin" style="left:48.167%;top:31.375%">4</span><span class="pin" style="left:64.167%;top:31.375%">5</span><span class="pin" style="left:46.083%;top:49.250%">6</span></div><figcaption>①IDを付ける ②線 ③ノート引用 ④画像 ⑤表示倍率 ⑥クリックして文字を書く。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/canvas.js">src/canvas.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li></ul></details></section>
+<section id="views"><h2><span class="section-number">16</span> グラフ・カード・曼荼羅・似たノート</h2><p>同じノートを、関係・見た目・近さで探せます。表示変更でノートのIDは変わりません。</p><ol class="steps">
+<li>左の🕸でグラフを開きます。右上のリンク図／木の図を切り替え、⚙️で表示条件を調整します。点を選んで内容を確認し、ダブルクリックで開きます。</li>
+<li>グラフ内の紙表示・孤立ノートなどの条件と、全体の表示フィルターは両方適用されます。見つからないときは双方を確認します。</li>
+<li>左の🗒でカードを開きます。カードを押すとその場で編集でき、外を押すかEscで閉じます。画面内の種類・検索・並び順も指定できます。</li>
+<li>左の❖で曼荼羅を開きます。中心と周囲のノートを見て、項目を選んで移動します。「9×9」で広く表示し、「プレビュー」で本文を確認できます。</li>
+<li>ノートを開き一覧の「≈」、または文字入力していないときのsキーで「似たノート」を開きます。本文・キーワード・リンク・索引の基準を選んで候補を比べます。</li>
+</ol>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/graph.png" width="1200" height="800" loading="lazy" alt="①図の切替・設定 ②ノード選択 ③拡大縮小。"><span class="pin" style="left:91.667%;top:19.125%">1</span><span class="pin" style="left:74.833%;top:50.250%">2</span><span class="pin" style="left:92.250%;top:94.125%">3</span></div><figcaption>①図の切替・設定 ②ノード選択 ③拡大縮小。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/cards.png" width="1200" height="800" loading="lazy" alt="①カード検索 ②種類 ③カードを押して編集。"><span class="pin" style="left:45.917%;top:18.625%">1</span><span class="pin" style="left:77.583%;top:18.750%">2</span><span class="pin" style="left:43.417%;top:42.750%">3</span></div><figcaption>①カード検索 ②種類 ③カードを押して編集。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/mandala.png" width="1200" height="800" loading="lazy" alt="①関係の種類 ②9×9 ③プレビュー ④中心 ⑤関連ノート。"><span class="pin" style="left:49.833%;top:20.625%">1</span><span class="pin" style="left:82.333%;top:20.625%">2</span><span class="pin" style="left:89.083%;top:20.625%">3</span><span class="pin" style="left:49.333%;top:60.750%">4</span><span class="pin" style="left:49.333%;top:43.375%">5</span></div><figcaption>①関係の種類 ②9×9 ③プレビュー ④中心 ⑤関連ノート。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/graph.js">src/graph.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/mandala.js">src/mandala.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/similar.js">src/similar.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li></ul></details></section>
+<section id="files"><h2><span class="section-number">17</span> 添付・複数選択・エクスポート・削除と復元</h2><p>操作の対象を確認してから、一括操作を行います。エクスポートは一時的なMarkdownの確認・コピーです。</p><ol class="steps">
+<li>ノートの「📎 添付」でファイルを選びます。ノートへドラッグ、画像の貼り付けでも追加できます。画像は本文中、その他はリンクとして表示されます。</li>
+<li>左のファイル（📎）タブで取り込み済みファイルを探し、題や説明を付けられます。</li>
+<li>ノート一覧の「☑ 選択」を押し、対象を複数選びます。「全部」「コピー」「リンクを作成」「≈ 似たノート」などを選べます。Escまたは「やめる」で選択を終了します。</li>
+<li>「エクスポート」で対象を確認し、必要なら関連先や番号範囲を加え、「一時タブで確認」または「コピー」を押します。必要なファイル保存は自分で行います。</li>
+<li>「削除」は確認後にノートを.trashへ移します。復元はカード画面の🗑を選び、対象の「戻す」を押します。</li>
+<li>元データの控えを取りたいときは保存先フォルダ全体をコピーします。表示フィルターはバックアップやデータ移行の代わりではありません。</li>
+</ol>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/store.js">store.js</a></li></ul></details></section>
+<section id="phone-update"><h2><span class="section-number">18</span> スマートフォン連携・アプリ更新</h2><p>スマホ連携はUSBとADBを使います。クラウド同期として説明しないでください。</p><ol class="steps">
+<li>Android端末でUSBデバッグを用意し、PCへUSB接続します。PC側でADBから端末が認識され、端末で接続を許可している必要があります。</li>
+<li>設定→「スマホにアプリを入れる…（USB）」を押し、案内に従います。対応APKの同梱・取得状況は配布物によります。</li>
+<li>スマホで記録した後、PCの⋯メニュー→「スマホのメモを取り込む…（USB）」を使うか、設定の自動取り込みを使います。</li>
+<li>未整理メモ・日記／記録トピック・番号付き紙スキャンなど、内容に応じてPCの保存先へ入ります。実機で取り込み結果を確認してください。</li>
+<li>アプリ更新は設定の「更新を確認」から行います。Git版・AppImage・インストーラー版で更新方法が異なり、案内が出たら保存完了後に進めます。</li>
+<li>作業ブランチの機能を試す場合は、ブランチを明示してソースから起動します。更新ボタンだけで未統合のPRが入るわけではありません。</li>
+</ol>
+<p class="note">この文書の実画面確認はLinux上の開発版です。Windows/macOSのインストーラー、USB実機転送、配布版の自己更新は今回実機検証していません。</p>
+<figure class="screen" data-zoom><div class="screen-wrap"><img src="../../assets/yuriinote/settings.png" width="1200" height="800" loading="lazy" alt="①保存先 ②日付境界 ③自動連携 ④スマホへのインストール。下へスクロールすると更新確認があります。"><span class="pin" style="left:66.500%;top:24.000%">1</span><span class="pin" style="left:40.333%;top:29.250%">2</span><span class="pin" style="left:70.083%;top:79.750%">3</span><span class="pin" style="left:37.333%;top:83.625%">4</span></div><figcaption>①保存先 ②日付境界 ③自動連携 ④スマホへのインストール。下へスクロールすると更新確認があります。 <span>(クリック・タップで拡大)</span></figcaption></figure>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/phone.js">phone.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/update.js">update.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/main.js">main.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li></ul></details></section>
+<section id="shortcuts"><h2><span class="section-number">19</span> キーボード操作の早見表</h2><p>ショートカットは入力欄・一覧・専用ビューなどのフォーカスによって役割が変わります。</p><ol class="steps">
+<li>Ctrl+Fで検索欄へ移動します。Escで検索を終了します。</li>
+<li>通常ノートではCtrl+NでIDなしノートを作れます。番号付きノートのCtrl+B／Ctrl+Hは分岐／並列です。</li>
+<li>本文ではCtrl+ZでUndo、Ctrl+Shift+Z／Ctrl+YでRedo。候補表示中は↑↓・Enter・Escを使います。</li>
+<li>一覧を操作しているときは↑↓またはj/k、←→またはh/lで移動します。iは編集欄、sは似たノートを開きます。</li>
+<li>タブ操作はCtrl+T、Ctrl+W、Ctrl+Tabです。チャット入力ではEnterが送信、Shift+Enterが改行です。</li>
+</ol>
+<p class="note">メニューやボタンの表示を優先してください。OSで予約されたキーや日本語入力中には、同じ操作が使えない場合があります。</p>
+<details class="source"><summary>実装の参照先</summary><ul><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/app.js">src/app.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/reference-picker.js">src/reference-picker.js</a></li><li><a href="https://github.com/Yurii7812/YuriiNote/blob/feature/unified-index-guides-20261111/src/chat.js">src/chat.js</a></li></ul></details></section>
+<footer><p>図の番号は、その図の操作対象を示します。OSによるファイル選択・USB実機連携・配布版の更新は環境に依存し、すべての組み合わせを実機検証したものではありません。</p><a href="versions/2026-11-11-before-integrated-guides/index.html">更新前のページ</a> · <a href="../../docs/integrated-guides-changelog.md">Changelog</a></footer></main></body></html>

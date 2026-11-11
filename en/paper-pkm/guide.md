@@ -1,3 +1,96 @@
+# Why the Double Index System?
+
+What becomes difficult as notes accumulate? Start with one A4 sheet about choosing a bag, then add a tool whenever a new problem appears. You do not need to memorize a finished system first.
+
+## 0. One sheet is easy to find
+You are thinking about buying a bag and write observations on A4. For now, you only need somewhere to think on paper.
+
+Write “lightweight” and “may get wet in the rain.” You do not need to invent categories or indexes before you begin.
+
+![One sheet is easy to find](../../assets/paper-pkm-story/en-00.svg)
+
+## 1. Where do related notes belong?
+You investigate materials, candidates and durability. Separate independent numbers identify the notes, but do not reveal how they grew from the bag investigation.
+
+Use Folgezettel branches: 1a for materials, 1b for candidates, and 1a1 for durability developed from the materials note. A branch can deepen an idea or extend it to a related subject; it is not a rigid classification hierarchy.
+
+![Where do related notes belong?](../../assets/paper-pkm-story/en-01.svg)
+
+## 2. What if a connection crosses the branches?
+An earlier note, 27 “Travel supplies,” turns out to be relevant to materials in 1a. Moving or renumbering notes whenever a relationship appears creates extra work.
+
+Write the other ID in the text, and add a return reference when useful. Folgezettel preserves relationships through placement; cross-references add connections across distant locations.
+
+![What if a connection crosses the branches?](../../assets/paper-pkm-story/en-02.svg)
+
+## 3. How do you see the whole shopping project?
+Following links from 1 reaches materials and travel supplies. But seeing the purchase research for bags, shoes and appliances together requires a lot of navigation.
+
+Create 2–Shopping as a Topic Index, with keywords and IDs. It collects 1, 1b, 15 and 28 from different branches. A note can appear in more than one Topic Index.
+
+![How do you see the whole shopping project?](../../assets/paper-pkm-story/en-03.svg)
+
+## 4. How do you find the indexes themselves?
+As Shopping, Travel, Technology and other indexes accumulate, remembering where each index starts becomes another problem.
+
+Make one small slip per keyword and file the slips on a ring in reading/alphabetical order as the Global Index. Shopping leads to 2–Shopping; Bags can also lead straight to content note 1.
+
+![How do you find the indexes themselves?](../../assets/paper-pkm-story/en-04.svg)
+
+## 5. Must the numbers be made consecutive?
+A sequence such as 1, 1a, 1a1, 1c, 2, 5, 5b, 12 has gaps. Renumbering it to look complete also creates references that need updating.
+
+In this working example, leave the gaps. An ID identifies a note and records a relationship; it is not a consecutive page number. Use the indexes to find notes and file the sheets that actually exist in ID order.
+
+![Must the numbers be made consecutive?](../../assets/paper-pkm-story/en-05.svg)
+
+## 6. Does every note need a Topic Index?
+Creating a dedicated index for every new sheet can make maintaining the collection more work than thinking.
+
+Make a Topic Index where it is useful. Here, Shopping 2 has one while Bags 1 remains a content note. Put a red dot above 2 to indicate its index. Each ID has at most one Topic Index, which may occupy several sheets.
+
+![Does every note need a Topic Index?](../../assets/paper-pkm-story/en-06.svg)
+
+## 7. Must you classify a note before writing?
+A bag belongs to both shopping and travel. Choosing a category first can interrupt the idea before it reaches the page.
+
+Write first, choose an ID from the content, then add useful keywords and index entries. If a travel connection appears later, add an index entry or cross-reference. The existing note keeps its ID.
+
+![Must you classify a note before writing?](../../assets/paper-pkm-story/en-07.svg)
+
+## 8. Can you still find it without an app?
+If all searching and linking depends on software, losing access to that software can block access to the collection.
+
+Keyword slips, A4 Topic Indexes, written ID references and clear folders in ID order provide the entire route on paper. Digital tools such as YuriiNote can be designed as a separate workflow; they are not a prerequisite.
+
+![Can you still find it without an app?](../../assets/paper-pkm-story/en-08.svg)
+
+## 9. Only now, look at the whole system
+Each tool was added to solve a different difficulty. Combining the Global Index and Topic Index is the Double Index System.
+
+For a bag note, go directly from its keyword slip to 1. For the shopping project, go through 2–Shopping to 1, 1b, 15 and 28. Follow branches or cross-references as needed, then return the sheets to ID order.
+
+![Only now, look at the whole system](../../assets/paper-pkm-story/en-09.svg)
+
+---
+
+## Detailed writing and filing instructions
+
+# Diagram directory
+
+1. [Overall structure](index.html#paper-overview)
+2. [An A4 note](index.html#paper-figure-1)
+3. [ID branches](index.html#folgezettel-tree)
+4. [Global Index](index.html#paper-figure-7)
+5. [Red dot above an ID](index.html#paper-figure-10)
+6. [Topic Index](index.html#paper-figure-8)
+7. [Global to Topic Index](index.html#paper-navigation)
+8. [Topic Index to note](index.html#paper-navigation)
+9. [References between notes](index.html#reference-ink)
+10. [Physical filing](index.html#paper-figure-16)
+11. [Adding a new note](index.html#paper-figure-23)
+12. [Worked coffee example](index.html#paper-worked-example)
+
 # An Illustrated Guide to Managing Knowledge on Paper
 
 [Illustrated guide](https://yurii7812.github.io/homepage/en/paper-pkm/) · [日本語](https://github.com/Yurii7812/homepage/blob/main/ja/paper-pkm/guide.md)
@@ -206,13 +299,13 @@ As notes on Digital PKM accumulate, you can make `7b-Digital PKM` using its entr
 
 Repeat the pattern at any depth where it helps. Each broader index gives you an entry point, and each narrower index holds the detailed entries for its subject.
 
-### 7. Add a dot when both conditions apply
+### 7. Mark an entry to a Topic Index with a red dot
 
-**Add a dot only when one keyword lists two or more IDs and you have made a Topic Index for that keyword.** Put a red dot directly above the ID you used for the Topic Index. The rule applies to both Global Index slips and entries in a Topic Index. **Keep the IDs already written.** The dot identifies the ID whose Topic Index gathers the notes on that subject, so you can add the index without rewriting the original list.
+**Put a dot above an ID when its Topic Index exists.** Put a red dot directly above the ID you used for the Topic Index. The rule applies to both Global Index slips and entries in a Topic Index. **Keep the IDs already written.** The dot identifies the ID whose Topic Index gathers the notes on that subject, so you can add the index without rewriting the original list.
 
 | IDs for one keyword | Topic Index | Dot |
 | --- | --- | --- |
-| PKM `7` | `7-PKM` | None (one ID) |
+| PKM `7` | `7-PKM` | Above 7 |
 | Digital PKM `7b, 7b1` | Not yet made | None |
 | Digital PKM `7b, 7b1` | `7b-Digital PKM` | **Directly above `7b`** |
 | Zettelkasten `7c, 7c1` | Not yet made | None |
@@ -220,7 +313,7 @@ Repeat the pattern at any depth where it helps. Each broader index gives you an 
 
 Say the Global Index slip reads “Zettelkasten `7c, 7c1`.” Once you make `7c1-Zettelkasten`, **add one red dot directly above `7c1`**. Keep the heading and the original list, `7c, 7c1`, as written. To read the overview, go to note `7c`. To see the notes gathered under this subject, follow the dot to `7c1-Zettelkasten`.
 
-A keyword with only one ID gets no dot, even if it has an index. A keyword with several IDs gets no dot while its index is still unmade.
+The dot indicates an existing Topic Index, regardless of the number of IDs.
 
 #### Make a dedicated Topic Index and add to it
 
@@ -264,7 +357,7 @@ The notes in the PKM index’s “GUI” entry discuss the same app, so they are
 
 As notes about GUI itself accumulate, make `8-GUI` to gather entries such as `Design principles 8` and `Thoughts on usability 8a`. Develop each index according to its own subject and context.
 
-When an index sheet fills up, add a continuation sheet. If a hub needs to move, gather its references in the new index and leave a reference to it at the old hub. If you rewrite a Global Index slip with only the new entry ID, that row takes no dot.
+When an index sheet fills up, add a continuation sheet. If a hub needs to move, gather its references in the new index and leave a reference to it at the old hub. If you change the entry ID, dot the new ID to indicate its Topic Index.
 
 ### 8. Add index pages and links to related topics
 
@@ -297,7 +390,7 @@ Start at the **front face of the clear folder**. Stack the notes in order from f
 
 For a topic with lots of notes, or a note with a numeric ID such as `1` or `2`, put a **sticky tab with the ID** near the top so you can find it while flipping through.
 
-Keep a Topic Index and the note with the same ID together in one clear folder. For example, put `1-Coffee` in front, with note `1` immediately behind it. You can find both even when the entry lists only one ID and has no dot.
+Keep a Topic Index and the note with the same ID together in one clear folder. For example, put `1-Coffee` in front, with note `1` immediately behind it. Dot the entry ID for its Topic Index; the filing order keeps the content note nearby.
 
 ### 10. Keep the diary in a separate clear folder
 
@@ -348,7 +441,6 @@ Start with smaller subjects, such as financial goals, goals related to mysticism
 
 In the Finances Topic Index at `2a`, the summary has **one entry, `Summary 2a1`**. Put the versions, `Summary 1 2a1` and `Summary 2 2a1b`, in **the Topic Index at `2a1`**. Their note titles can be `Summary-2026 10 01` and `Summary-2026 10 02`. Do the same for the overall summary. Put `Summary 2d` in the Goals index and list the versions in the Topic Index at `2d`.
 
-Digitally, open “Finances” from the Goals Topic Index. In that note’s `BranchGroup/Group`, open “Summary.” The Summary note has its own `BranchGroup/Group`, where you find the dated summaries. On paper, follow the same route using the IDs written in the indexes.
 
 ### 12. Link subject-by-subject progress to a daily overview
 
@@ -409,8 +501,8 @@ A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelk
 | Global Index | Look up keywords across the collection. Sort paper slips by kana reading or alphabetically. Use a spreadsheet to work out the order before rearranging the slips. |
 | Choosing an index | Use the Global Index for a subject itself and the relevant Topic Index for that subject within a particular context. A note developing general ideas from that context can also be indexed globally. |
 | Topic Index | Write “ID-Topic” at the upper left of a portrait A4 sheet. List keyword–ID pairs in two columns, omitting headings and lines. A keyword can have more than one ID. |
-| Dots and stars | When a keyword lists two or more IDs and has a Topic Index, put a red dot directly above the ID for that index. Start an entry with a hand-drawn star to point to a related Topic Index. |
-| Topic hubs | Gather growing references within a shared context in a dedicated Topic Index. In a multi-ID entry, dot the ID where that index was made. A single-ID entry takes no dot. |
+| Dots and stars | When a Topic Index exists for an ID, put a red dot directly above that ID. Start an entry with a hand-drawn star to point to a related Topic Index. |
+| Topic hubs | Gather growing references within a shared context in a dedicated Topic Index. Dot the ID where the Topic Index was made, regardless of how many IDs are listed. |
 | Making an index | One Topic Index per ID. Before making one, check the Global Index and related Topic Indexes. If an index already covers the same subject, add entries there. |
 | Pages and filing | Label the next page of an index `7-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1a1, 1a1a, 1a2, and so on. Use tabs at the top for numeric IDs or topics with many notes. |
 | Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. Write referenced note IDs in red. |
