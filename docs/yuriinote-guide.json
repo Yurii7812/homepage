@@ -1,0 +1,1293 @@
+[
+  {
+    "id": "start",
+    "ja": {
+      "title": "インストール・初回起動・保存先",
+      "intro": "保存先（vault）は、ノート・索引・画像などを保存する普通のフォルダです。",
+      "steps": [
+        "<a href=\"https://github.com/Yurii7812/YuriiNote/releases\">Releases</a>で自分のOS用の配布ファイルを探し、Windowsはインストーラー、macOSはDMG、LinuxはAppImageを使います。開発ブランチの変更が含まれるとは限りません。",
+        "開発版を試す場合はGitHubから対象ブランチを取得します。Node.jsとnpmを用意し、リポジトリ内で <code>npm ci</code> → <code>npm run build</code> → <code>npm start</code> の順に実行します。",
+        "初回画面の「フォルダを選ぶ」で既存のvaultを開くか、新しい場所を選びます。見つかったvaultがあれば、その候補を押して開けます。",
+        "起動後は左下の⚙️「設定」→「保存先（vault）」の「変える…」で変更します。保存中の処理が完了してから切り替わります。",
+        "「言語」で日本語・Englishを選びます。文字が小さければ「画面全体の大きさ」「本文の文字の大きさ」を調整します。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Installation, first launch and vault",
+      "intro": "A vault is an ordinary folder containing your notes, indexes and images.",
+      "steps": [
+        "Find a file for your OS on <a href=\"https://github.com/Yurii7812/YuriiNote/releases\">Releases</a>: Windows installer, macOS DMG or Linux AppImage. A released binary may not include changes from the development branch.",
+        "To try the development source, check out the specified GitHub branch. With Node.js and npm installed, run <code>npm ci</code>, <code>npm run build</code>, then <code>npm start</code> in the repository.",
+        "On first launch, choose the folder option to open an existing vault or select a new location. You can also open a detected vault from the listed candidates.",
+        "After launch, open ⚙️ Settings at the lower left, find Vault and press Change. Pending saves finish before switching folders.",
+        "Select Japanese or English under Language. Adjust the interface scale and body text size if necessary."
+      ],
+      "note": ""
+    },
+    "figures": [
+      {
+        "file": "settings",
+        "ja": "設定。①言語 ②保存先 ③日付が変わる時刻 ④スマホ連携。",
+        "en": "Settings: 1 language, 2 vault, 3 day boundary, 4 phone integration.",
+        "pins": [
+          [
+            1,
+            494,
+            150
+          ],
+          [
+            2,
+            801,
+            191
+          ],
+          [
+            3,
+            485,
+            234
+          ],
+          [
+            4,
+            442,
+            669
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "main.js",
+      "src/app.js",
+      "package.json"
+    ]
+  },
+  {
+    "id": "layout",
+    "ja": {
+      "title": "画面構成・タブ・保存状態",
+      "intro": "左の縦列で機能を選び、左一覧から項目を開き、中央で読み書きします。右欄には関係する情報が出ます。",
+      "steps": [
+        "📝でノート、📔で日記、💬でチャットメモ、🗂で共通Index、🕸でグラフ、❖で曼荼羅、🗒でカードを開きます。",
+        "ノートを左一覧で押すと中央に開きます。右欄のキーワード→自トピック→トピック→親→子→バックリンクをたどれます。",
+        "上部の＋で新規作成メニュー、検索欄で検索、左右の矢印で移動履歴を操作します。",
+        "Ctrl+Tで空のタブ、Ctrl+Wでタブを閉じます。Ctrl+Tab／Ctrl+Shift+Tabでタブ移動、中クリックで背景タブに開けます。",
+        "入力後、上の「保存中…」が「保存済み」になることを確認します。保存エラー表示を押すと再試行します。"
+      ],
+      "note": "画面図は日本語UIです。タブと本文を含む編集中の内容は、表示フィルターで対象外になっても保持します。"
+    },
+    "en": {
+      "title": "Layout, tabs and save status",
+      "intro": "Use the vertical rail to select a feature, open an item from the left list, and work in the center. Related information appears on the right.",
+      "steps": [
+        "The rail opens Notes 📝, Diary 📔, Chat memos 💬, unified Index 🗂, Graph 🕸, Mandala ❖ and Cards 🗒.",
+        "Click a note in the left list to open it. Follow Keywords, Own topic, Topics, Parent, Children and Backlinks in the right column.",
+        "Use the top plus button for the creation menu, the search box to search, and the arrow buttons for navigation history.",
+        "Ctrl+T opens an empty tab; Ctrl+W closes a tab. Ctrl+Tab / Ctrl+Shift+Tab switches tabs. Middle-click a reference to open it in a background tab.",
+        "After editing, wait for Saving to become Saved. Click a save-error status to retry."
+      ],
+      "note": "Screenshots use the Japanese UI. An out-of-scope editor remains mounted so its draft and undo history are retained."
+    },
+    "figures": [
+      {
+        "file": "note",
+        "ja": "①機能列 ②表示フィルター ③検索 ④保存状態 ⑤新規作成 ⑥関係パネル。",
+        "en": "1 feature rail, 2 display filter, 3 search, 4 save status, 5 new item, 6 relations.",
+        "pins": [
+          [
+            1,
+            27,
+            130
+          ],
+          [
+            2,
+            213,
+            69
+          ],
+          [
+            3,
+            952,
+            29
+          ],
+          [
+            4,
+            794,
+            29
+          ],
+          [
+            5,
+            1128,
+            29
+          ],
+          [
+            6,
+            1156,
+            309
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/app.js"
+    ]
+  },
+  {
+    "id": "notes",
+    "ja": {
+      "title": "IDなしノートを作り、編集する",
+      "intro": "まず書いてから整理できます。タイトルと本文は別々に編集します。",
+      "steps": [
+        "ノート画面で右上の＋を押し、「📝 ノート」を選びます。IDなしのノートが開きます。",
+        "「タイトル」を押して題を入力します。本文欄を押し、普通の文章やMarkdownを書きます。",
+        "見出し・箇条書き・チェックボックスを入力できます。「表」ボタンは表のひな形を挿入します。",
+        "本文のCtrl+ZでUndo、Ctrl+Shift+ZまたはCtrl+YでRedoを行います。保存状態を確認してから別のノートへ移れます。",
+        "IDなしのノートは左の未整理（📥）タブで探せます。IDを付けるまで、そのまま書き続けても構いません。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Create and edit an unnumbered note",
+      "intro": "Write first and organize later. Title and body are separate editable fields.",
+      "steps": [
+        "In the Notes view, press the top-right plus and choose 📝 Note. An unnumbered note opens.",
+        "Click Title to enter a title. Click the body and write prose or Markdown.",
+        "Use headings, lists and checkboxes. The Table button inserts a table template.",
+        "Ctrl+Z undoes a body edit; Ctrl+Shift+Z or Ctrl+Y redoes it. Check the save status when moving to another note.",
+        "Find unnumbered notes under Inbox / Unorganized (📥). You can keep writing before assigning an ID."
+      ],
+      "note": ""
+    },
+    "figures": [
+      {
+        "file": "new",
+        "ja": "＋メニュー。①ノート ②リンク ③キャンバス ④紙スキャン。",
+        "en": "Plus menu: 1 note, 2 link, 3 canvas, 4 paper scan.",
+        "pins": [
+          [
+            1,
+            1022,
+            73
+          ],
+          [
+            2,
+            1023,
+            111
+          ],
+          [
+            3,
+            1023,
+            187
+          ],
+          [
+            4,
+            1026,
+            225
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/app.js"
+    ]
+  },
+  {
+    "id": "folgezettel",
+    "ja": {
+      "title": "IDの付与・変更・分岐・並列",
+      "intro": "紙とデジタルの番号は別体系です。同じ1aが両方にあっても別ノートです。",
+      "steps": [
+        "IDなしノート上部の「IDを付ける」を押します。ID探索画面でノートを探し、基準となる位置を選びます。",
+        "直接指定・分岐・並列から番号の付け方を選び、候補と区分を確認して決定します。紙とデジタルを同一視しないでください。",
+        "番号付きノート上部の「＋ 分岐」で子側へ、「＋ 並列」で同じ段の次へ新しいノートを作れます。1→1a、1a→1a1が分岐、1a→1bが並列の例です。",
+        "ID自体を押すとコピーします。番号を変更・解除するときはノートの「⋯」メニューの「IDを変更・解除」から明示的に操作します。",
+        "右欄の親・子を押すと移動します。本文に参照を書いた別ノートは参照先のバックリンクに現れます。"
+      ],
+      "note": "番号は内容の関係から決めます。「次のページだから」という理由だけで、毎回IDを深くしません。"
+    },
+    "en": {
+      "title": "Assign, change, branch and create sibling IDs",
+      "intro": "Paper and digital IDs use independent namespaces. Paper 1a and digital 1a are different notes.",
+      "steps": [
+        "Press Assign ID at the top of an unnumbered note. In the ID explorer, search and select a reference position.",
+        "Choose direct assignment, branch or sibling, check the proposed ID and namespace, then confirm. Keep paper and digital IDs distinct.",
+        "On a numbered note, + Branch creates a child and + Sibling creates the next item at that level. Branch examples: 1 → 1a → 1a1. A sibling of 1a is 1b.",
+        "Click the displayed ID to copy it. To change or clear it, use the note’s ⋯ menu and the explicit Change / clear ID action.",
+        "Follow Parent and Children in the right panel. Notes containing references to this note appear in its backlinks."
+      ],
+      "note": "Choose placement from the relationship between ideas. Do not deepen the ID merely because a page comes next."
+    },
+    "figures": [
+      {
+        "file": "note",
+        "ja": "①クリックでIDコピー ②並列 ③分岐 ④子ノートへの移動。",
+        "en": "1 click ID to copy, 2 sibling, 3 branch, 4 child note.",
+        "pins": [
+          [
+            1,
+            356,
+            151
+          ],
+          [
+            2,
+            671,
+            150
+          ],
+          [
+            3,
+            762,
+            150
+          ],
+          [
+            4,
+            1000,
+            435
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/app.js",
+      "src/id-explorer.js",
+      "folgezettel.js"
+    ]
+  },
+  {
+    "id": "filter",
+    "ja": {
+      "title": "全画面共通の表示フィルター",
+      "intro": "検索欄とは独立した表示設定です。元データを消したり移動したりしません。",
+      "steps": [
+        "左上の「表示フィルター」を開きます。",
+        "「すべて」「紙のみ」「デジタルのみ」を選びます。例えば共有キーワードに1a(p)と1a(d)があれば、紙のみでは1a(p)だけ表示します。",
+        "Index・トピックIndexの参照・検索候補・親子・バックリンク・似たノート・グラフ・カード・曼荼羅を確認します。各ビュー固有の絞り込みも重ねて適用されます。",
+        "対象外のノートを編集中だった場合、本文を保持したまま非表示になります。フィルターを戻すと同じ編集状態に戻れます。トピックIndexの編集欄は保存対象の原文を扱います。",
+        "アプリを再起動しても最後の選択を復元します。チャットメモ・通常の日記本文・単独ファイルはデジタルとして扱います。紙のみの日記表示では、取り込んだ紙の日記画像だけを表示し、デジタル本文は保持したまま隠します。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Global display filter",
+      "intro": "This display setting is independent of the search query. It does not delete or move source data.",
+      "steps": [
+        "Open Display filter at the upper left.",
+        "Choose All, Paper only or Digital only. If a shared keyword has 1a(p) and 1a(d), Paper only shows just 1a(p).",
+        "Check the Index, Topic Index references, search candidates, relationships, backlinks, similar notes, graph, cards and mandala. View-specific filters still narrow the result further.",
+        "If the active note is excluded, its editor is hidden while keeping the draft. Switch back to restore it. The Topic Index editor works with the full source text that will be saved.",
+        "The selection is restored after restart. Chat memos, ordinary diary prose and standalone files are digital. In paper-only diary view, only the imported paper diary images are shown; digital prose stays preserved and hidden."
+      ],
+      "note": ""
+    },
+    "figures": [
+      {
+        "file": "filter-paper",
+        "ja": "①紙のみ ②紙のノート一覧 ③カードも紙だけになります。",
+        "en": "1 Paper only, 2 paper note list, 3 paper-only cards.",
+        "pins": [
+          [
+            1,
+            209,
+            69
+          ],
+          [
+            2,
+            166,
+            175
+          ],
+          [
+            3,
+            519,
+            344
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "display-scope.js",
+      "src/app.js",
+      "src/reference-picker.js",
+      "src/linked-content.js"
+    ]
+  },
+  {
+    "id": "global-index",
+    "ja": {
+      "title": "共通Indexにキーワード・読み・IDを登録する",
+      "intro": "キーワードから紙・デジタル両方のIDを引けます。未取り込みの紙IDも登録できます。",
+      "steps": [
+        "左の🗂またはIndex（🔖）タブで共通Indexを開きます。キーワードは読み仮名のあいうえお順でまとまります。",
+        "一覧上の「＋」を押します。「キーワード」「読み仮名」を入力します。自動候補の読みが違えば直します。",
+        "「ノートを検索」にタイトル・ID・本文の語を入れ、候補を押してIDを追加します。候補には紙／デジタルが表示されます。",
+        "「対応するID」欄では手入力もできます。紙の未スキャンIDは <code>9a(p)</code>、既存デジタルは <code>1(d)</code> のように書き、空白で区切ります。区分省略は紙です。",
+        "並び位置のプレビューを確認し、「保存」を押します。読みとIDが共通Indexに現れます。",
+        "キーワード部分を右クリック→「Indexを編集」で読み・対応ID・名前を変更できます。「キーワードを削除」は索引からの登録解除で、ノート本体は残ります。",
+        "検索結果のキーワード文字を押すと、絞り込みを外して共通Indexのその位置へ移動し、前後の語を確認できます。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Register keywords, readings and IDs in the unified Index",
+      "intro": "Look up paper and digital IDs by keyword, including paper IDs that have not been scanned.",
+      "steps": [
+        "Open the unified Index using 🗂 in the rail or the Index (🔖) tab. Keywords are grouped in Japanese reading order.",
+        "Press + above the list. Enter Keyword and Reading; correct an automatically suggested reading if necessary.",
+        "Search notes by title, ID or body, then click a candidate to add its ID. Candidates identify paper or digital.",
+        "You may also type IDs in Associated IDs. Enter an unscanned paper ID as <code>9a(p)</code> and an existing digital ID as <code>1(d)</code>, separated by spaces. An omitted namespace means paper.",
+        "Check the neighboring-keyword preview and press Save. The reading and IDs appear in the unified Index.",
+        "Right-click the keyword text and choose Edit Index to change the name, reading or IDs. Remove keyword unregisters the index association while keeping the notes.",
+        "Click a keyword label in search results to clear the query and locate that keyword among its neighbors in the unified Index."
+      ],
+      "note": ""
+    },
+    "figures": [
+      {
+        "file": "index",
+        "ja": "共通Index。①追加 ②未取り込みの紙ID ③同じ番号の紙・デジタル。",
+        "en": "Unified Index: 1 add, 2 unscanned paper ID, 3 same ID in separate namespaces.",
+        "pins": [
+          [
+            1,
+            80,
+            108
+          ],
+          [
+            2,
+            188,
+            236
+          ],
+          [
+            3,
+            177,
+            350
+          ]
+        ]
+      },
+      {
+        "file": "index-add",
+        "ja": "①キーワード ②読み ③検索・候補 ④手入力ID ⑤保存。",
+        "en": "1 keyword, 2 reading, 3 search and candidates, 4 typed IDs, 5 save.",
+        "pins": [
+          [
+            1,
+            605,
+            192
+          ],
+          [
+            2,
+            606,
+            268
+          ],
+          [
+            3,
+            604,
+            344
+          ],
+          [
+            4,
+            604,
+            542
+          ],
+          [
+            5,
+            419,
+            663
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/app.js",
+      "display-scope.js",
+      "src/pindex.js",
+      "store.js"
+    ]
+  },
+  {
+    "id": "topic-index",
+    "ja": {
+      "title": "トピックIndexを作り、記号を選ぶ",
+      "intro": "グローバルIndexは全体の入口、トピックIndexは特定の話題の参照先を整理する場所です。",
+      "steps": [
+        "番号付きノートを開き、右欄の「トピック」の＋を押します。",
+        "既存の索引を検索して選ぶか、名前欄横の＋から新しい索引名を入力して作ります。入口のIDと紙／デジタル区分を確認します。",
+        "索引を開き「編集」を押します。1行に <code>コーヒー 1a 2(p)</code> のようにキーワードとIDを書きます。区分を省略したIDは索引の入口と同じ側です。",
+        "行頭に <code>^</code>、<code>+</code>、<code>=</code> を書くか、その行にカーソルを置いて「参照の種類」を選び「カーソル行に適用」を押します。",
+        "「完了」で表示に戻り、↑・★・●が期待した意味で表示されることを確認します。「名前・親」で索引名と入口を確認・変更できます。"
+      ],
+      "note": "赤い点はIDに対応するトピックIndexがある印です。行頭の●（まとめ・進捗）とは違います。1つのIDに対応するトピックIndexは1つで、紙とデジタルの同一IDは別々です。"
+    },
+    "en": {
+      "title": "Create a Topic Index and select markers",
+      "intro": "The global Index gives entry points across the collection; a Topic Index organizes references within a subject.",
+      "steps": [
+        "Open a numbered note and press + beside Topics in the right column.",
+        "Search for an existing index, or use the plus beside the name field to enter a new index name. Check its entry ID and namespace.",
+        "Open the index and press Edit. Write a keyword and IDs on each line, such as <code>Coffee 1a 2(p)</code>. An unqualified ID uses the namespace of the index entry.",
+        "Type <code>^</code>, <code>+</code> or <code>=</code> at the start of a line. Alternatively place the cursor on the line, choose Reference type and press Apply to current line.",
+        "Press Done to return to the rendered view and check ↑, ★ and ●. Name / entry lets you inspect or change the name and entry."
+      ],
+      "note": "A red dot above an ID indicates an associated Topic Index. It is different from a leading ● for summary / progress. One ID has one Topic Index; identical paper and digital IDs remain separate."
+    },
+    "figures": [
+      {
+        "file": "topic",
+        "ja": "①編集 ②上位概念↑ ③別トピック★ ④まとめ●。",
+        "en": "1 edit, 2 broader concept ↑, 3 another Topic Index ★, 4 summary ●.",
+        "pins": [
+          [
+            1,
+            1133,
+            139
+          ],
+          [
+            2,
+            456,
+            280
+          ],
+          [
+            3,
+            456,
+            326
+          ],
+          [
+            4,
+            456,
+            370
+          ]
+        ]
+      },
+      {
+        "file": "topic-edit",
+        "ja": "①行にカーソルを置く ②種類を選択 ③適用 ④完了。",
+        "en": "1 place cursor on a line, 2 choose type, 3 apply, 4 done.",
+        "pins": [
+          [
+            1,
+            451,
+            330
+          ],
+          [
+            2,
+            565,
+            261
+          ],
+          [
+            3,
+            753,
+            261
+          ],
+          [
+            4,
+            1128,
+            138
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/app.js",
+      "lib.js",
+      "store.js"
+    ],
+    "table": {
+      "ja": [
+        [
+          "入力",
+          "表示",
+          "意味"
+        ],
+        [
+          "<code>^</code>",
+          "↑",
+          "上位概念"
+        ],
+        [
+          "<code>+</code>",
+          "★",
+          "別のトピックIndex"
+        ],
+        [
+          "<code>=</code>",
+          "●",
+          "まとめ・進捗"
+        ],
+        [
+          "なし",
+          "なし",
+          "通常の項目"
+        ]
+      ],
+      "en": [
+        [
+          "Input",
+          "Display",
+          "Meaning"
+        ],
+        [
+          "<code>^</code>",
+          "↑",
+          "Broader concept"
+        ],
+        [
+          "<code>+</code>",
+          "★",
+          "Another Topic Index"
+        ],
+        [
+          "<code>=</code>",
+          "●",
+          "Summary / progress"
+        ],
+        [
+          "None",
+          "None",
+          "Ordinary item"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "topic-search",
+    "ja": {
+      "title": "トピックIndexに「:」で検索追加する",
+      "intro": "通常本文のリンク形式と、索引の「キーワード ID」形式を使い分けます。",
+      "steps": [
+        "トピックIndexを開き「編集」を押します。追加したい位置に新しい行を作ります。",
+        "半角 <code>:</code> を入力します。続けてタイトルやIDの検索語を入力すると候補が絞られます。",
+        "タイトル・ID・紙／デジタル区分を見て、↑↓で候補を選びEnter、または候補をクリックします。",
+        "索引には <code>紙で考える 1(p)</code> のような行が挿入されます。通常本文の <code>:1(p)</code> 形式とは異なります。",
+        "必要なら同じ行で参照種類を指定します。Escは検索を中止して入力済みの文字を残します。Ctrl+Z／Redoで挿入を戻す・やり直すこともできます。",
+        "「完了」で行とリンク先を確認します。フィルターが紙のみなら、候補も紙だけになります。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Add a Topic Index item with colon search",
+      "intro": "Completion uses a keyword–ID row in an index and a reference link in ordinary prose.",
+      "steps": [
+        "Open the Topic Index and press Edit. Make a new line at the intended insertion point.",
+        "Type an ASCII <code>:</code>. Continue with a title or ID query to narrow the candidates.",
+        "Check the title, ID and paper/digital label. Use Up/Down and Enter, or click a candidate.",
+        "The index receives a row such as <code>Paper thinking 1(p)</code>, rather than the ordinary prose link <code>:1(p)</code>.",
+        "Apply a marker to the line if needed. Escape cancels completion and leaves the typed text. Undo / Redo reverses or reapplies the insertion.",
+        "Press Done and check the row and its target. With Paper only selected, completion offers paper notes only."
+      ],
+      "note": ""
+    },
+    "figures": [
+      {
+        "file": "topic-edit",
+        "ja": "手順1–2：編集し、追加する行を用意します。",
+        "en": "Steps 1–2: edit the index and prepare a line.",
+        "pins": [
+          [
+            1,
+            1128,
+            138
+          ],
+          [
+            2,
+            422,
+            422
+          ]
+        ]
+      },
+      {
+        "file": "topic-search",
+        "ja": "手順3：候補の区分とIDを確認して選びます。",
+        "en": "Step 3: inspect candidate namespace and ID, then choose.",
+        "pins": [
+          [
+            3,
+            572,
+            527
+          ]
+        ]
+      },
+      {
+        "file": "topic-inserted",
+        "ja": "手順4–6：索引項目として追加され、種類を変更できます。",
+        "en": "Steps 4–6: a new index item appears; its type can be changed.",
+        "pins": [
+          [
+            4,
+            446,
+            422
+          ],
+          [
+            5,
+            563,
+            262
+          ],
+          [
+            6,
+            1127,
+            138
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/reference-picker.js",
+      "reference-search.js",
+      "display-scope.js",
+      "src/app.js"
+    ]
+  },
+  {
+    "id": "references",
+    "ja": {
+      "title": "通常ノートの参照・検索・バックリンク",
+      "intro": "検索結果と参照候補は別の操作です。通常ノートでのコロン検索は従来のリンク形式を維持します。",
+      "steps": [
+        "上部検索欄に文字を入れます。Index→トピックIndex→ノートのまとまりで結果が出ます。Escで検索を終了できます。",
+        "本文で <code>:</code> を入力し、語を入力して候補を選びます。Enterは前置参照、Shift+Enterは後置参照です。",
+        "手入力なら <code>:1a</code> は続きへの参照、<code>1a:</code> は引用元のノート、<code>1a(1)</code> は別ノートの番号箇所を示します。紙なら <code>:1a(p)</code>、デジタルなら <code>:1a(d)</code> と明示できます。",
+        "同じ本文の <code>(1)</code> を目印にし、<code>(1):</code> でその箇所を受けた文章を書けます。リンクを押して移動し、戻る矢印で戻ります。",
+        "参照先ノートの右欄「バックリンク」で、こちらを参照するノートと文脈を読みます。関連ノートは「≈ 似たノート」からも探せます。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Prose references, search and backlinks",
+      "intro": "Global search and inline reference completion are different actions. Ordinary-note completion retains the existing link syntax.",
+      "steps": [
+        "Type in the top search box. Results are grouped as global Index, Topic Index and notes. Escape clears/exits search.",
+        "In prose, type <code>:</code>, enter a query and choose a candidate. Enter inserts a prefix reference; Shift+Enter inserts a postfix reference.",
+        "When typing manually, <code>:1a</code> points to a continuation, <code>1a:</code> introduces a source note, and <code>1a(1)</code> identifies a numbered passage. Use <code>:1a(p)</code> for paper or <code>:1a(d)</code> for digital explicitly.",
+        "Mark a passage with <code>(1)</code> and use <code>(1):</code> to comment on that passage in the same note. Click a link to navigate and use Back to return.",
+        "In the target note’s Backlinks panel, read referring notes and their context. Use ≈ Similar notes to find related material too."
+      ],
+      "note": ""
+    },
+    "figures": [],
+    "sources": [
+      "src/app.js",
+      "lib.js",
+      "reference-search.js",
+      "src/linked-content.js"
+    ]
+  },
+  {
+    "id": "paper",
+    "ja": {
+      "title": "紙ノート・スキャン・未取り込みID",
+      "intro": "紙ノートは実物のIDを維持して取り込みます。取り込み前でもIndexから実物を探せます。",
+      "steps": [
+        "ノート画面の＋→「スキャンを取り込む（紙）」を選び、取り込む画像を選択します。",
+        "スキャン画面で画像を確認し、紙IDと必要なキーワードを入力して登録します。紙側に同じIDがすでにある場合は重複として止まります。",
+        "左の紙（📜）タブからノートを開きます。中央に紙画像と編集欄が表示されます。検索用の文字や題を入力できます。",
+        "「表示フィルター」→「紙のみ」を選び、Indexや検索から目的の紙IDを探します。画像をまだ取り込んでいないIDは淡い欠損表示になります。",
+        "スキャン前のIDは共通Indexの＋から <code>9a(p)</code> のように登録できます。後で同じ紙IDを取り込むと関連付けられます。",
+        "紙の日記はスキャン画面の日付を指定し、「日記」として取り込みます。Folgezettel IDではなく、その日の日記に画像が入ります。"
+      ],
+      "note": "紙の日記画像は日記レコード内に保存します。「紙のみ」で日記を開くとスキャン画像だけを表示できます。通常のFolgezettel紙ノートとは別の、日付で探す記録です。"
+    },
+    "en": {
+      "title": "Paper notes, scans and unscanned IDs",
+      "intro": "Import paper notes using their physical IDs. The Index can locate physical notes before a scan exists.",
+      "steps": [
+        "In the Notes view, choose Plus → Import scan (paper), then select image files.",
+        "Review the image in the scan screen, enter the paper ID and optional keywords, and register it. An existing ID in the paper namespace is rejected as a duplicate.",
+        "Open the note from the Paper (📜) tab. Its image and an editable text area appear. Add a title or searchable transcription.",
+        "Choose Display filter → Paper only, then use the Index or search to locate the paper ID. An ID without a scanned note appears as a missing/placeholder reference.",
+        "Before scanning, register an ID such as <code>9a(p)</code> through + in the unified Index. A later scan with that paper ID connects to it.",
+        "For a paper diary, choose a date in the scan screen and import it as Diary. The image goes into that day’s diary rather than receiving a Folgezettel ID."
+      ],
+      "note": "Paper diary images are stored inside diary records. Open the diary with Paper only selected to view just the scanned pages. These are dated records, separate from Folgezettel paper notes."
+    },
+    "figures": [
+      {
+        "file": "new",
+        "ja": "①ノート画面の＋ ②紙スキャンの入口。OSの画像選択画面は環境で異なります。",
+        "en": "1 plus in Notes, 2 scan entry. The OS image picker varies by platform.",
+        "pins": [
+          [
+            1,
+            1128,
+            29
+          ],
+          [
+            2,
+            1038,
+            225
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/app.js",
+      "store.js",
+      "index.html"
+    ]
+  },
+  {
+    "id": "chat",
+    "ja": {
+      "title": "チャットメモの送信・トピック・編集",
+      "intro": "短い文章を吹き出しとして残し、後からノートに整理できます。",
+      "steps": [
+        "左の💬を押し、一覧のトピックを選びます。新しいトピックは一覧上の＋→名前入力→「作る」またはEnterで作成します。",
+        "下の入力欄に書き、Enterで送信します。Shift+Enterは改行です。入力中の日本語変換のEnterと送信は区別されます。",
+        "一覧で別のトピックを押すと切り替わります。下の💬操作から「新しい下位トピックを作成」を選べます。以後の投稿にはそのトピックの上位設定を引き継ぎます。",
+        "吹き出しを右クリック→「編集」で書き直し、Enterで完了、Escで中止します。",
+        "吹き出しの↩で返信先を選び、入力して送信します。「⇆」で既存の返信先を追加・解除できます。本文の「:」検索や@からメモ・ノートへの参照／言及を追加できます。",
+        "右下の📎で添付を追加するか、チャットへファイルをドラッグします。メモ内のリンクから添付を開けます。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Chat memos: send, organize and edit",
+      "intro": "Capture short messages as bubbles and organize them into notes later.",
+      "steps": [
+        "Click 💬 in the rail and select a topic. To create one, press + above the topic list, enter a name, then Create or Enter.",
+        "Write in the bottom input and press Enter to send. Shift+Enter inserts a newline. Enter used to confirm IME composition does not send the message.",
+        "Click a different topic in the list to switch. Use the bottom 💬 control and Create child topic to branch the topic context; subsequent posts inherit its upper-topic settings.",
+        "Right-click a bubble and choose Edit. Enter finishes editing; Escape cancels.",
+        "Use ↩ on a bubble to choose a reply target, then write and send. Use ⇆ to edit existing reply targets. Colon search or @ can add references/mentions to notes and memos.",
+        "Use 📎 at the bottom right or drag files into the chat. Open an attachment through its message link."
+      ],
+      "note": ""
+    },
+    "figures": [
+      {
+        "file": "chat",
+        "ja": "①トピック作成 ②切り替え ③入力 ④文脈・下位トピック ⑤添付 ⑥表示メニュー。",
+        "en": "1 create topic, 2 switch topic, 3 input, 4 context / child topic, 5 attachment, 6 view menu.",
+        "pins": [
+          [
+            1,
+            82,
+            94
+          ],
+          [
+            2,
+            143,
+            209
+          ],
+          [
+            3,
+            699,
+            759
+          ],
+          [
+            4,
+            1111,
+            759
+          ],
+          [
+            5,
+            1157,
+            759
+          ],
+          [
+            6,
+            1158,
+            134
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/chat.js",
+      "chat-relations.js",
+      "chat-topic-preferences.js"
+    ]
+  },
+  {
+    "id": "chat-notes",
+    "ja": {
+      "title": "チャットの複数選択・ノート化・日記連携",
+      "intro": "ノート化は元のメモを残し、通常の編集可能なノートから参照できるようにする操作です。",
+      "steps": [
+        "チャット右上の⋮→「複数選択」を選び、必要な吹き出しを選択します。右クリック→「選択」でも開始できます。",
+        "下の「ノート化」を押し、タイトルや整理先の設定を確認して作成します。1件だけなら右クリック→「ノート化」でも行えます。",
+        "作成された通常ノートで文章を追記します。展開された元メモを編集すると表示も追随します。元の吹き出しの📝からノートへ戻れます。",
+        "「リンクを作成」では複数のノートやメモをまとめ、タイトル・順序・参照範囲を指定できます。元データのコピーと参照を混同しないでください。",
+        "チャットの「日記」や記録用トピックを選んで投稿すると、その日の記録にも時刻付きで反映されます。右上の⋮→「日ごと」で日付を指定して確認できます。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Select chat memos, make notes and connect diaries",
+      "intro": "Making a note keeps the original memos and creates an ordinary editable note that refers to them.",
+      "steps": [
+        "Choose ⋮ → Multiple selection at the top right of a chat, then select bubbles. Right-click → Select also starts selection.",
+        "Press Make note in the selection bar, inspect the title and destination settings, then create it. For one memo, use its right-click Make note action.",
+        "Add your own prose to the new ordinary note. Expanded source memos follow edits to their originals. A 📝 chip on a source bubble opens the resulting note.",
+        "Create link can group multiple notes/memos with a title, order and selected source range. A live reference is different from copying source text.",
+        "Posting to Diary or a record-type topic also adds timestamped content to that day’s record. Use ⋮ → By day to inspect a specific date."
+      ],
+      "note": ""
+    },
+    "figures": [
+      {
+        "file": "chat-menu",
+        "ja": "①日ごと表示 ②投稿キャラ ③複数選択 ④キャラクター管理。",
+        "en": "1 by-day view, 2 posting character, 3 multiple selection, 4 character manager.",
+        "pins": [
+          [
+            1,
+            1071,
+            212
+          ],
+          [
+            2,
+            1058,
+            266
+          ],
+          [
+            3,
+            1015,
+            336
+          ],
+          [
+            4,
+            1015,
+            375
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/chat.js",
+      "src/linked-content.js",
+      "memo-group.js"
+    ]
+  },
+  {
+    "id": "diary",
+    "ja": {
+      "title": "今日・過去の日記と夢・仕事の記録",
+      "intro": "日記は日付と記録の種類で管理します。Folgezettelの番号付きノートとは分けて扱います。",
+      "steps": [
+        "左の📔を押し「今日の日記」を押します。今日の日付の本文が開きます。",
+        "過去の日は左の日付欄に日付を指定して「開く」、または一覧の日付を押します。本文右上の←→でも前後の日へ移れます。",
+        "上部のタイトルは任意です。本文を書き、保存状態を確認します。「今日のノート」から、その日に作ったノートを参照できます。",
+        "左の「＋ ⚙」で記録の種類を追加・整理し、「夢」「仕事」などを作ります。記録の上位関係も設定でき、複数の上位に属する記録も扱えます。",
+        "種類を選び直して、その種類の日付を開きます。日付が変わる時刻は設定で変更でき、初期値は朝5時です。",
+        "紙の日記画像を取り込む場合は＋のスキャン操作で日付を指定して日記に登録します。本文の「紙の日記」から画像を読めます。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Today, past diaries, dreams and work records",
+      "intro": "Diary entries are organized by date and record type, separately from Folgezettel notes.",
+      "steps": [
+        "Click 📔, then Today’s diary to open today’s entry.",
+        "For another day, enter a date on the left and press Open, or click an existing date. The ← / → buttons in the entry move between days.",
+        "The title is optional. Write in the body and check save status. Today’s notes links to notes created on that day.",
+        "Use + ⚙ beside the record types to create and organize types such as Dreams or Work. Configure parent relationships, including multiple upper record types.",
+        "Select a record type, then open its date. The day boundary is configurable in Settings and defaults to 05:00.",
+        "To import a paper diary image, use the scan workflow, select its date and register it as a diary. Read the image under Paper diary in the entry."
+      ],
+      "note": ""
+    },
+    "figures": [
+      {
+        "file": "diary",
+        "ja": "①今日の日記 ②日付を指定して開く ③記録の種類 ④前日・翌日 ⑤今日作成したノート。",
+        "en": "1 today, 2 choose date and open, 3 record types, 4 previous/next day, 5 notes created that day.",
+        "pins": [
+          [
+            1,
+            116,
+            92
+          ],
+          [
+            2,
+            245,
+            92
+          ],
+          [
+            3,
+            147,
+            50
+          ],
+          [
+            4,
+            894,
+            137
+          ],
+          [
+            5,
+            493,
+            457
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/app.js",
+      "src/chat.js",
+      "store.js"
+    ]
+  },
+  {
+    "id": "characters",
+    "ja": {
+      "title": "なりきり・キャラクター・返信と引用",
+      "intro": "現在の実装ではキャラクターはチャットメモに統合されています。旧ガイドの「＋→なりきりチャット」という新規作成手順は現行メニューにありません。",
+      "steps": [
+        "💬でチャットを開き、右上の⋮→「キャラクター管理」を押します。",
+        "「新しいキャラクター」に名前を入れて「保存」を押します。既存キャラの名前変更や「一覧から非表示」もこの画面で行います。",
+        "⋮の「表示・投稿キャラ」でキャラを選び、下の入力欄から投稿します。別の役で書くときは同じ選択欄を切り替えます。",
+        "発言の↩で返信し、@や「:」検索で別の発言・ノートを参照します。引用した文章はリンク先とともに確認します。",
+        "旧なりきりデータは保持したままチャットへ移行する処理があります。旧データを直接開いた場合は旧専用画面の「❝ 引用」や役の切替UIが残ります。現行チャットの手順と区別してください。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Roleplay, characters, replies and quotations",
+      "intro": "Characters are integrated into chat memos in the current implementation. The old “Plus → Roleplay chat” creation path is absent from the current menu.",
+      "steps": [
+        "Open a chat with 💬, then choose ⋮ → Character manager.",
+        "Enter a name in New character and press Save. Rename existing characters or hide them from the list in the same dialog.",
+        "Choose the character in the Display / posting character selector inside ⋮, then post from the input. Change that selector to write as another role.",
+        "Reply with ↩ and reference another utterance or note using @ or colon search. Check the source along with quoted text.",
+        "Legacy roleplay data is preserved during migration into chat. A directly opened legacy note can still show the old dedicated Quote button and role switcher. Keep those legacy controls separate from the current chat workflow."
+      ],
+      "note": ""
+    },
+    "figures": [
+      {
+        "file": "characters",
+        "ja": "①自分の表示名 ②新しいキャラクター名 ③保存。",
+        "en": "1 self display name, 2 new character name, 3 save.",
+        "pins": [
+          [
+            1,
+            609,
+            341
+          ],
+          [
+            2,
+            656,
+            446
+          ],
+          [
+            3,
+            428,
+            491
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/chat.js",
+      "migrate-roleplay.js",
+      "src/roleplay.js"
+    ]
+  },
+  {
+    "id": "canvas",
+    "ja": {
+      "title": "キャンバスに箱と線を配置する",
+      "intro": "キャンバスはノートの一種で、IDなしから作れます。",
+      "steps": [
+        "ノート画面の＋→「キャンバス」を選びます。タイトルを入力します。",
+        "点線のある空白をクリックし、文字を入力します。編集を終えるには欄の外を押します。",
+        "箱を選択して「↗ 線」を押し、つなぎたい相手の箱をクリックします。箱はドラッグで移動します。",
+        "「＋ ノート」で既存ノートを検索して引用し、「＋ 画像」で画像を追加できます。",
+        "線をダブルクリックしてラベルを付けます。Ctrl+ホイールや＋／−で拡大縮小、「全体」で全体を表示します。",
+        "箱や線を選びDeleteで削除します。Escで選択・接続操作を解除できます。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Place cards and connections on a canvas",
+      "intro": "A canvas is a note type and can begin without a Folgezettel ID.",
+      "steps": [
+        "In Notes, choose Plus → Canvas, then enter a title.",
+        "Click an empty area of the dotted board and enter text. Click outside the field to finish editing.",
+        "Select a box, press ↗ Line and click the destination box. Drag boxes to move them.",
+        "Use + Note to search and embed a note, or + Image to add an image.",
+        "Double-click a line to label it. Zoom using Ctrl+wheel or + / −; Fit shows the whole board.",
+        "Select a box or line and press Delete to remove it. Escape cancels selection or connection mode."
+      ],
+      "note": ""
+    },
+    "figures": [
+      {
+        "file": "canvas",
+        "ja": "①IDを付ける ②線 ③ノート引用 ④画像 ⑤表示倍率 ⑥クリックして文字を書く。",
+        "en": "1 assign ID, 2 connection, 3 embed note, 4 image, 5 zoom, 6 click to add text.",
+        "pins": [
+          [
+            1,
+            469,
+            148
+          ],
+          [
+            2,
+            401,
+            251
+          ],
+          [
+            3,
+            482,
+            251
+          ],
+          [
+            4,
+            578,
+            251
+          ],
+          [
+            5,
+            770,
+            251
+          ],
+          [
+            6,
+            553,
+            394
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/canvas.js",
+      "src/app.js"
+    ]
+  },
+  {
+    "id": "views",
+    "ja": {
+      "title": "グラフ・カード・曼荼羅・似たノート",
+      "intro": "同じノートを、関係・見た目・近さで探せます。表示変更でノートのIDは変わりません。",
+      "steps": [
+        "左の🕸でグラフを開きます。右上のリンク図／木の図を切り替え、⚙️で表示条件を調整します。点を選んで内容を確認し、ダブルクリックで開きます。",
+        "グラフ内の紙表示・孤立ノートなどの条件と、全体の表示フィルターは両方適用されます。見つからないときは双方を確認します。",
+        "左の🗒でカードを開きます。カードを押すとその場で編集でき、外を押すかEscで閉じます。画面内の種類・検索・並び順も指定できます。",
+        "左の❖で曼荼羅を開きます。中心と周囲のノートを見て、項目を選んで移動します。「9×9」で広く表示し、「プレビュー」で本文を確認できます。",
+        "ノートを開き一覧の「≈」、または文字入力していないときのsキーで「似たノート」を開きます。本文・キーワード・リンク・索引の基準を選んで候補を比べます。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Graph, cards, mandala and similar notes",
+      "intro": "Explore the same notes through relations, cards and similarity. Changing views does not change note IDs.",
+      "steps": [
+        "Open Graph with 🕸. Switch between the link map and tree map, and use ⚙️ to adjust visibility. Select a node to inspect it; double-click to open.",
+        "Graph options such as showing paper or orphan notes combine with the global display filter. Check both sets of filters if a note is missing.",
+        "Open Cards with 🗒. Click a card to edit in place; click outside or press Escape to close. Use its own type, search and sort controls too.",
+        "Open Mandala with ❖. Inspect a center note and its neighbors, then select items to navigate. Use 9×9 for a larger layout and Preview to read text.",
+        "Open a note, then press ≈ in the list toolbar, or s while not typing, to find Similar notes. Compare candidates using body, keywords, links and Topic Index criteria."
+      ],
+      "note": ""
+    },
+    "figures": [
+      {
+        "file": "graph",
+        "ja": "①図の切替・設定 ②ノード選択 ③拡大縮小。",
+        "en": "1 map type and settings, 2 select a node, 3 zoom.",
+        "pins": [
+          [
+            1,
+            1100,
+            153
+          ],
+          [
+            2,
+            898,
+            402
+          ],
+          [
+            3,
+            1107,
+            753
+          ]
+        ]
+      },
+      {
+        "file": "cards",
+        "ja": "①カード検索 ②種類 ③カードを押して編集。",
+        "en": "1 search cards, 2 card type, 3 click a card to edit.",
+        "pins": [
+          [
+            1,
+            551,
+            149
+          ],
+          [
+            2,
+            931,
+            150
+          ],
+          [
+            3,
+            521,
+            342
+          ]
+        ]
+      },
+      {
+        "file": "mandala",
+        "ja": "①関係の種類 ②9×9 ③プレビュー ④中心 ⑤関連ノート。",
+        "en": "1 relation type, 2 9×9, 3 preview, 4 center, 5 neighboring notes.",
+        "pins": [
+          [
+            1,
+            598,
+            165
+          ],
+          [
+            2,
+            988,
+            165
+          ],
+          [
+            3,
+            1069,
+            165
+          ],
+          [
+            4,
+            592,
+            486
+          ],
+          [
+            5,
+            592,
+            347
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "src/graph.js",
+      "src/mandala.js",
+      "src/similar.js",
+      "src/app.js"
+    ]
+  },
+  {
+    "id": "files",
+    "ja": {
+      "title": "添付・複数選択・エクスポート・削除と復元",
+      "intro": "操作の対象を確認してから、一括操作を行います。エクスポートは一時的なMarkdownの確認・コピーです。",
+      "steps": [
+        "ノートの「📎 添付」でファイルを選びます。ノートへドラッグ、画像の貼り付けでも追加できます。画像は本文中、その他はリンクとして表示されます。",
+        "左のファイル（📎）タブで取り込み済みファイルを探し、題や説明を付けられます。",
+        "ノート一覧の「☑ 選択」を押し、対象を複数選びます。「全部」「コピー」「リンクを作成」「≈ 似たノート」などを選べます。Escまたは「やめる」で選択を終了します。",
+        "「エクスポート」で対象を確認し、必要なら関連先や番号範囲を加え、「一時タブで確認」または「コピー」を押します。必要なファイル保存は自分で行います。",
+        "「削除」は確認後にノートを.trashへ移します。復元はカード画面の🗑を選び、対象の「戻す」を押します。",
+        "元データの控えを取りたいときは保存先フォルダ全体をコピーします。表示フィルターはバックアップやデータ移行の代わりではありません。"
+      ],
+      "note": ""
+    },
+    "en": {
+      "title": "Attachments, bulk selection, export and recovery",
+      "intro": "Check the selected items before a bulk action. Export provides temporary Markdown for inspection and copying.",
+      "steps": [
+        "Use 📎 Attach on a note to select files, drag files onto the note, or paste an image. Images appear in the body; other files appear as links.",
+        "Use the Files (📎) tab to find imported files and add a title or description.",
+        "Press ☑ Select in the note list and select items. Use All, Copy, Create link or Similar notes. Escape or Cancel exits selection.",
+        "Choose Export, inspect the selection, optionally add related notes or an ID range, then Preview in temporary tab or Copy. Save a file yourself if needed.",
+        "Delete moves confirmed notes to .trash. To restore one, open Cards → 🗑 and press Restore on the item.",
+        "For a backup, copy the entire vault folder. A display filter is not a backup or migration operation."
+      ],
+      "note": ""
+    },
+    "figures": [],
+    "sources": [
+      "src/app.js",
+      "store.js"
+    ]
+  },
+  {
+    "id": "phone-update",
+    "ja": {
+      "title": "スマートフォン連携・アプリ更新",
+      "intro": "スマホ連携はUSBとADBを使います。クラウド同期として説明しないでください。",
+      "steps": [
+        "Android端末でUSBデバッグを用意し、PCへUSB接続します。PC側でADBから端末が認識され、端末で接続を許可している必要があります。",
+        "設定→「スマホにアプリを入れる…（USB）」を押し、案内に従います。対応APKの同梱・取得状況は配布物によります。",
+        "スマホで記録した後、PCの⋯メニュー→「スマホのメモを取り込む…（USB）」を使うか、設定の自動取り込みを使います。",
+        "未整理メモ・日記／記録トピック・番号付き紙スキャンなど、内容に応じてPCの保存先へ入ります。実機で取り込み結果を確認してください。",
+        "アプリ更新は設定の「更新を確認」から行います。Git版・AppImage・インストーラー版で更新方法が異なり、案内が出たら保存完了後に進めます。",
+        "作業ブランチの機能を試す場合は、ブランチを明示してソースから起動します。更新ボタンだけで未統合のPRが入るわけではありません。"
+      ],
+      "note": "この文書の実画面確認はLinux上の開発版です。Windows/macOSのインストーラー、USB実機転送、配布版の自己更新は今回実機検証していません。"
+    },
+    "en": {
+      "title": "Phone integration and app updates",
+      "intro": "Phone transfer uses USB and ADB. It is not a cloud synchronization workflow.",
+      "steps": [
+        "Enable USB debugging on the Android device and connect it by USB. ADB on the PC must recognize the device, and the phone must authorize the connection.",
+        "Choose Settings → Install phone app (USB) and follow the prompts. Availability of the companion APK depends on the distribution.",
+        "After recording on the phone, use the PC’s ⋯ → Import phone memos (USB), or enable automatic import in Settings.",
+        "Items are routed according to type, including unorganized memos, diary/record topics and numbered paper scans. Verify the actual imported content on your device.",
+        "Use Check for updates in Settings. Git, AppImage and installer distributions follow different update paths. Finish saving before proceeding with the displayed instructions.",
+        "To try an unmerged feature, explicitly check out its source branch. The update button does not automatically install an unmerged PR."
+      ],
+      "note": "The screenshots and interactive checks used the development app on Linux. Windows/macOS installers, physical USB transfer and packaged self-updates were not exercised in this run."
+    },
+    "figures": [
+      {
+        "file": "settings",
+        "ja": "①保存先 ②日付境界 ③自動連携 ④スマホへのインストール。下へスクロールすると更新確認があります。",
+        "en": "1 vault, 2 day boundary, 3 automatic phone integration, 4 install companion. Scroll down for update checking.",
+        "pins": [
+          [
+            1,
+            798,
+            192
+          ],
+          [
+            2,
+            484,
+            234
+          ],
+          [
+            3,
+            841,
+            638
+          ],
+          [
+            4,
+            448,
+            669
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      "phone.js",
+      "update.js",
+      "main.js",
+      "src/app.js"
+    ]
+  },
+  {
+    "id": "shortcuts",
+    "ja": {
+      "title": "キーボード操作の早見表",
+      "intro": "ショートカットは入力欄・一覧・専用ビューなどのフォーカスによって役割が変わります。",
+      "steps": [
+        "Ctrl+Fで検索欄へ移動します。Escで検索を終了します。",
+        "通常ノートではCtrl+NでIDなしノートを作れます。番号付きノートのCtrl+B／Ctrl+Hは分岐／並列です。",
+        "本文ではCtrl+ZでUndo、Ctrl+Shift+Z／Ctrl+YでRedo。候補表示中は↑↓・Enter・Escを使います。",
+        "一覧を操作しているときは↑↓またはj/k、←→またはh/lで移動します。iは編集欄、sは似たノートを開きます。",
+        "タブ操作はCtrl+T、Ctrl+W、Ctrl+Tabです。チャット入力ではEnterが送信、Shift+Enterが改行です。"
+      ],
+      "note": "メニューやボタンの表示を優先してください。OSで予約されたキーや日本語入力中には、同じ操作が使えない場合があります。"
+    },
+    "en": {
+      "title": "Keyboard reference",
+      "intro": "Shortcuts depend on focus: text editor, list navigation and specialized views have different bindings.",
+      "steps": [
+        "Ctrl+F focuses search; Escape exits it.",
+        "Ctrl+N creates an unnumbered note. With a numbered note selected, Ctrl+B / Ctrl+H creates a branch / sibling.",
+        "In the editor use Ctrl+Z to undo and Ctrl+Shift+Z / Ctrl+Y to redo. In completion, use Up/Down, Enter and Escape.",
+        "When navigating the list, use Up/Down or j/k, and Left/Right or h/l. Use i to enter editing and s to open Similar notes.",
+        "Tab shortcuts are Ctrl+T, Ctrl+W and Ctrl+Tab. In chat input, Enter sends and Shift+Enter inserts a newline."
+      ],
+      "note": "Prefer the visible menu/button when a shortcut is intercepted by the OS or IME."
+    },
+    "figures": [],
+    "sources": [
+      "src/app.js",
+      "src/reference-picker.js",
+      "src/chat.js"
+    ]
+  }
+]

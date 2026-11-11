@@ -1,3 +1,18 @@
+# 図解の案内
+
+1. [全体構造](index.html#paper-overview)
+2. [A4ノートの記入](index.html#paper-figure-1)
+3. [IDの分岐](index.html#folgezettel-tree)
+4. [グローバルIndex](index.html#paper-figure-7)
+5. [ID上の赤い点](index.html#paper-figure-10)
+6. [トピックIndex](index.html#paper-figure-8)
+7. [Indexからトピックへ](index.html#paper-navigation)
+8. [トピックから本文へ](index.html#paper-navigation)
+9. [ノート間参照](index.html#reference-ink)
+10. [紙の保管](index.html#paper-figure-16)
+11. [新規追加の流れ](index.html#paper-figure-23)
+12. [完成例：コーヒー](index.html#paper-worked-example)
+
 # 図でわかる 紙の知識管理術
 
 [図解ガイド](https://yurii7812.github.io/homepage/ja/paper-pkm/) · [English](https://github.com/Yurii7812/homepage/blob/main/en/paper-pkm/guide.md)
@@ -349,7 +364,6 @@ flowchart TD
 
 「経済」のトピックIndex `2a` に書くまとめの入口は、**`まとめ 2a1` の一行**。版ごとの `まとめ1 2a1` と `まとめ2 2a1b` は、一つ先の **`2a1` のトピックIndex** に並べる。リンク先の本文は、たとえば `まとめ-2026 10 01` と `まとめ-2026 10 02`。全体のまとめも同じで、「目標」の索引に `まとめ 2d`、`2d` のトピックIndexに各版を書く。
 
-デジタルでは、「目標」のトピックIndexで「経済」を開き、そのノートの `BranchGroup/Group` から「まとめ」を開く。「まとめ」のノートにも `BranchGroup/Group` があり、そこに日付付きのまとめが並ぶ。紙では同じ道順を、索引に書いたIDでたどる。
 
 ### 12. 進捗も、分野別から一日の全体へ
 

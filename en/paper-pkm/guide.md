@@ -1,3 +1,18 @@
+# Diagram directory
+
+1. [Overall structure](index.html#paper-overview)
+2. [An A4 note](index.html#paper-figure-1)
+3. [ID branches](index.html#folgezettel-tree)
+4. [Global Index](index.html#paper-figure-7)
+5. [Red dot above an ID](index.html#paper-figure-10)
+6. [Topic Index](index.html#paper-figure-8)
+7. [Global to Topic Index](index.html#paper-navigation)
+8. [Topic Index to note](index.html#paper-navigation)
+9. [References between notes](index.html#reference-ink)
+10. [Physical filing](index.html#paper-figure-16)
+11. [Adding a new note](index.html#paper-figure-23)
+12. [Worked coffee example](index.html#paper-worked-example)
+
 # An Illustrated Guide to Managing Knowledge on Paper
 
 [Illustrated guide](https://yurii7812.github.io/homepage/en/paper-pkm/) · [日本語](https://github.com/Yurii7812/homepage/blob/main/ja/paper-pkm/guide.md)
@@ -348,7 +363,6 @@ Start with smaller subjects, such as financial goals, goals related to mysticism
 
 In the Finances Topic Index at `2a`, the summary has **one entry, `Summary 2a1`**. Put the versions, `Summary 1 2a1` and `Summary 2 2a1b`, in **the Topic Index at `2a1`**. Their note titles can be `Summary-2026 10 01` and `Summary-2026 10 02`. Do the same for the overall summary. Put `Summary 2d` in the Goals index and list the versions in the Topic Index at `2d`.
 
-Digitally, open “Finances” from the Goals Topic Index. In that note’s `BranchGroup/Group`, open “Summary.” The Summary note has its own `BranchGroup/Group`, where you find the dated summaries. On paper, follow the same route using the IDs written in the indexes.
 
 ### 12. Link subject-by-subject progress to a daily overview
 
