@@ -4,6 +4,8 @@
 
 The system builds on Niklas Luhmann’s Zettelkasten and uses branching **Folgezettel IDs** and links between notes. Write on A4, then assign an ID. Use the Global Index to find an entry point and the Topic Index to find notes within that subject. Together, the two indexes make up the Double Index System.
 
+**First write notes freely. Create Topic Indexes afterward, at a useful level of specificity. Their titles indicate where an inquiry began, not categories it must remain inside.**
+
 ## Why I use the Double Index System
 
 - **A4 is practical at university and in libraries.** I can carry A4 sheets with my usual supplies, which is easier than carrying a box of A6 cards. The larger page gives me room for long passages and diagrams.
@@ -118,6 +120,25 @@ Each new note sits under the previous one, adding another level and making the I
 
 To suggest what to read next, add a continuation link such as `:1b` in the note itself. You can choose the reading order separately from the branches you assign.
 
+#### Reading notes: keep the source book as the focus
+
+If I read Book A and make notes `1, 1a, 1b…`, those notes can stay focused on that book. When I read Book B, I start a new root, `2, 2a, 2b…`. I can compare Book A to psychology while explaining it, but if my interest becomes a sustained investigation of psychology itself, I give that inquiry a separate root and link back.
+
+```text
+1  Book A reading notes
+├─ 1a  Non-self as described in Book A
+├─ 1b  Comparison with psychology
+└─ 1c  Provisional summary
+
+2  Book B reading notes
+├─ 2a  Non-self as described in Book B
+└─ 2b  Comparison with Book A
+
+3  Psychology as an independent subject
+```
+
+Related thoughts need not be forced into the same branch. A summary can be followed by further thought. A gap or detour is not a defect in a record of thinking.
+
 ### 4. Mark sources and continuations
 
 Write `(1)` or `(2)` **at the end of a passage** you may want to cite. For example, the Paper PKM note `7a` could say “Where you put a paper note can help you find it.  (1)”.
@@ -151,134 +172,66 @@ Write one keyword per slip, with its associated IDs. The slips for “Personal k
 
 **A spreadsheet makes it easier to reorder the paper slips.** Enter the keywords, readings, and IDs, then sort by reading or alphabetically. Use that order to rearrange the slips on the ring.
 
-### 6. Find a note within a topic
+### 6. Build Topic Indexes after writing, at a useful level of detail
 
-When you have several notes about PKM, take a separate portrait A4 sheet and write **`7-PKM`** at the upper left. Write keyword–ID pairs in **two columns**, one on each side. Leave out column headings and grid lines.
+A Topic Index has an **independent ID** such as `0-1`, `0-2`, or `0-3`. These are not regular Folgezettel note IDs. The regular notes `1`, `1a`, `1b`… stay where they are.
 
-**7-PKM**
+**Write first; decide how to index later.** In reading notes, personal reflections, and open-ended projects, it is usually premature to decide on “Religion,” “Psychology,” or other broad categories. Let notes accumulate and build a Topic Index only when it helps you find the actual material, at a level close to those notes.
 
-|  |  |  |  |
-| --- | --- | --- | --- |
-| Paper PKM | `7a` | Zettelkasten | `7c, 7c1` |
-| Arranging notes | `7a1` | Branching notes | `7c2` |
-| Pens | `7a2` | Passage references | `7c3` |
-| Clear folders | `7a3` | Continuations | `7c4` |
-| Sticky tabs | `7a4` | Write reference IDs in red | `7c5` |
-| Filing notes | `7a5` | Summary | `7g` |
-| Digital PKM | `7b, 7b1` | Double Index | `7f` |
-| Title search | `7b1` | Global Index | `7f1` |
-| Full-text search | `7b2` | Topic Index | `7f2` |
-| Sort by reading | `7b3` | Adding indexes | `7f3` |
-| Search comparison | `7d` | Progress | `7h` |
-| Scanning paper | `7b4` | ★KJ method | `3a1` |
+Suppose I start at `1` by thinking about my present self and continue at `1a` (values), `1b` (relationships), `1c` (diet), and `1d` (future plans). When an overview becomes useful, I can create `0-1 — Thinking about my present self`.
 
-For example, look up “PKM” in the Global Index and open the A4 sheet marked `7-PKM`. Find “Paper PKM `7a`” there, then read note `7a`. To find the village brainstorm, start from “Village design `6`” in the Global Index. Open `6-Village design` and look up “Village life `6a`”.
+| Topic Index | Name, indicating a starting point | Notes it leads to |
+|---|---|---|
+| `0-1` | Thoughts begun with my present self | `1, 1a, 1b, 1c, 1d` |
+| `0-2` | Exploring my values | `1a, 1a1, 1a2` |
+| `0-3` | Notes comparing non-self across books | `1a, 2a, 2b` |
 
-#### Choose where to put an entry
+These are **possible indexes, not a template to create in advance**. I may need one, several over time, or none yet. A single note can be found through several indexes.
 
-**When a note discusses a subject itself, give that subject an entry in the Global Index. When it discusses that subject within a particular context, list it in the Topic Index for that context.**
+#### A name is the starting point, not a boundary
 
-For example, a note about GUI principles or usability in general belongs under “GUI” in the Global Index. A note about how to design the GUI of your PKM app belongs under “GUI” in the PKM Topic Index. When a term appears in a note, consider what the note is actually discussing before choosing where to index it.
+The words “Thinking about my present self” describe where inquiry began, not every subject it must contain. The line of thought can lead to psychology, relationships or economics. The title does not impose a classification.
 
-| What the note discusses | Where to index it |
+I do not need to create a “Religion” index just because Buddhism is a religion. A useful index is **specific enough to be near the actual notes, without splitting them so finely that finding things gets harder**.
+
+
+### 7. At most one Topic Index per starting note ID
+
+A Topic Index `0-1` may be associated with the thinking started at regular note `1`. If the line of thought beginning at `1a` later needs an overview of its own, I can create `0-2` for `1a`.
+
+**Each regular note ID can have zero or one associated Topic Index.** This is not a limit of one for an entire sequence. Notes `1`, `1a`, and `1a1` can each have an index when there is a practical reason. There is no need to attach multiple different indexes to the *same* starting ID merely because a subject can be classified from several angles.
+
+| Regular note starting point | Associated index | Status |
+|---|---|---|
+| `1` — Thinking about my present self | `0-1` | Created after writing |
+| `1a` — Exploring my values | `0-2` | Created after the branch grows |
+| `1b` — Relationships | None | No index needed yet |
+| `2` — Book B reading notes | None | Ordinary notes are enough |
+
+#### Global Index and the red dot
+
+The Global Index leads from a keyword to a regular note or Topic Index. An entry can mention both `1` (the note) and `0-1` (the index). If I mark `1` with a red dot, it means there is an associated Topic Index; I also write its independent number, `0-1`, so the destination is clear.
+
+**The red dot does not require two or more note IDs under the keyword.** Its meaning is simply that the relevant Topic Index exists. There is no dot when no index exists.
+
+
+### 8. Extend Topic Indexes and link them as needed
+
+Write a Topic Index on a portrait A4 sheet, with its number and starting-point title in the upper left, for example `0-1 — My present self`. Inside, write keyword–note ID pairs such as `Values 1a`, `Diet 1c`, and `Summary 1f`. You can use two columns without ruled lines.
+
+When the sheet fills, continue on `0-1 2`. The final number is the **page number**, not a new index.
+
+`★` points to a related Topic Index, such as `★Values → 0-2`. `↑` may point to a useful broader index. Do not build a hierarchy such as Religion → Buddhism → Non-self before you need it.
+
+| Symbol | Meaning |
 |---|---|
-| GUI concepts or design principles in general | “GUI” in the Global Index |
-| How to design the GUI of this PKM app | “GUI” in the PKM Topic Index |
-| Which color to use for references in paper PKM | `Write reference IDs in red 7c5` in `7-PKM` |
-| Passage referencing as a subject in its own right | “Passage references” in the Global Index |
-| Thoughts about the KJ method itself | `KJ method 3a1` in the Global Index |
+| `↑` | Direct broader Topic Index, if useful |
+| `★` | Another related Topic Index |
+| `＝` | Summary, reflection, or current-state note |
+| No symbol | Ordinary keyword or note reference |
 
-If thinking about a particular app leads you to write something about GUIs in general, you can also list that note under “GUI” in the Global Index. A sheet covering several subjects can have entries appropriate to each. If there is no suitable Topic Index yet, first give the contextual subject its own Global Index entry and make a Topic Index when needed.
+Keep Topic Index sheets separate from regular Folgezettel notes and order them by `0-1`, `0-2`… rather than filing one as a second sheet of regular note `1`.
 
-If you use both “Passage references” and “In-text references,” both can lead to notes about that subject itself in the Global Index. Within a Topic Index, usually choose one wording. Tidy up headings as they fall out of use.
-
-Use note IDs in indexes. Use markers such as `(1)` when referring to a specific passage from the body of a note.
-
-#### Use a Topic Index to reach a more specific Topic Index
-
-As notes on Digital PKM accumulate, you can make `7b-Digital PKM` using its entry ID, `7b`. If the notes on title search grow into a subject of their own, use the same pattern to make `7b1-Title search`.
-
-| Index you have open | Entry to look for | Topic Index you can open next |
-| --- | --- | --- |
-| Global Index | PKM `7` | `7-PKM` |
-| `7-PKM` | Digital PKM `7b, 7b1` | `7b-Digital PKM` |
-| `7b-Digital PKM` | Title search `7b1` | `7b1-Title search` |
-
-Repeat the pattern at any depth where it helps. Each broader index gives you an entry point, and each narrower index holds the detailed entries for its subject.
-
-### 7. Add a dot when both conditions apply
-
-**Add a dot only when one keyword lists two or more IDs and you have made a Topic Index for that keyword.** Put a red dot directly above the ID you used for the Topic Index. The rule applies to both Global Index slips and entries in a Topic Index. **Keep the IDs already written.** The dot identifies the ID whose Topic Index gathers the notes on that subject, so you can add the index without rewriting the original list.
-
-| IDs for one keyword | Topic Index | Dot |
-| --- | --- | --- |
-| PKM `7` | `7-PKM` | None (one ID) |
-| Digital PKM `7b, 7b1` | Not yet made | None |
-| Digital PKM `7b, 7b1` | `7b-Digital PKM` | **Directly above `7b`** |
-| Zettelkasten `7c, 7c1` | Not yet made | None |
-| Zettelkasten `7c, 7c1` | `7c1-Zettelkasten` | **Directly above `7c1`** |
-
-Say the Global Index slip reads “Zettelkasten `7c, 7c1`.” Once you make `7c1-Zettelkasten`, **add one red dot directly above `7c1`**. Keep the heading and the original list, `7c, 7c1`, as written. To read the overview, go to note `7c`. To see the notes gathered under this subject, follow the dot to `7c1-Zettelkasten`.
-
-A keyword with only one ID gets no dot, even if it has an index. A keyword with several IDs gets no dot while its index is still unmade.
-
-#### Make a dedicated Topic Index and add to it
-
-Two or three notes under one heading can be a good time to make a dedicated Topic Index if you want to see several aspects of the subject together. The count is a guideline. Keep using the same entry as long as it is easy to find what you need.
-
-**Choose an entry ID that makes the subject easy to follow.** Consider a note with many connections to related notes, a note that gives an organized overview, or an early ID that is easy to reach when flipping through the folder. Each ID can have one Topic Index.
-
-Say “Passage references” in `7-PKM` lists `7c3, 7c6, 7c8`, and `7c6` gives the overview. Make `7c6-Passage references` and put a red dot directly above `7c6` in the original entry. List all three existing notes in the dedicated index as well.
-
-| Where | What to write |
-| --- | --- |
-| Original `7-PKM` | Passage references `7c3, 7c6, 7c8` (red dot directly above `7c6`) |
-| Dedicated `7c6-Passage references` | First notes `7c3` |
-|  | Basics of passage references `7c6` |
-|  | An example from practice `7c8` |
-|  | How to refer to part of a diagram `7c9` (added later) |
-
-Add the fourth note, `7c9`, to the dedicated index first. You can already get there through `7-PKM`. If you also want to find it while working on reports, list the same `7c9` in the reports Topic Index. If a note develops thoughts about passage referencing itself, you can also list it under “Passage references” in the Global Index.
-
-#### Keep one Topic Index for the same subject
-
-**Give each ID one Topic Index.** Several indexes at the same ID would leave you unsure which one to open. For example, “PKM” and “Personal knowledge management” both point to `7` and lead to `7-PKM`. To index Zettelkasten as its own subject, make `7c1-Zettelkasten` at the ID for that subject, `7c1`.
-
-**Keep one index for each subject at the same scope.** If `7c1-Zettelkasten` already exists and you make another index at `7c` with the same scope, entries can end up split between the two. It becomes harder to tell where to find the full list. Before making an index, check other names for the subject in the Global Index and look through related Topic Indexes. Add entries to the existing index if it already covers the subject, and use `★` links to reach it from related subjects.
-
-#### Index GUI itself and GUI within PKM in their own contexts
-
-Suppose note `8` discusses GUI design principles, note `7b5` discusses the layout of a PKM app, and note `7b6` discusses how to operate that app. These IDs are examples.
-
-Write `GUI 8` in the Global Index and `GUI 7b5,7b6` in the PKM Topic Index, `7-PKM`. To find the app-specific notes, start at “PKM” in the Global Index and open `7-PKM`.
-
-**Why use this approach?**
-
-Collecting every occurrence of “GUI” in the Global Index mixes discussions about PKM, other apps, and programming. Each new context can force you to reconsider the scope of the GUI hub or gather its entries again.
-
-Collecting notes about GUI itself under the global “GUI” entry makes its scope easier to understand. Discussions about GUI within particular contexts remain accessible through their respective topics. Adding a new context is less likely to require rebuilding the hub.
-
-**Make a Topic Index within the shared context**
-
-The notes in the PKM index’s “GUI” entry discuss the same app, so they are straightforward to gather. As they accumulate, make `7b5-PKM GUI` with entries such as `Layout 7b5` and `Operating steps 7b6`. Keep `GUI 7b5,7b6` in `7-PKM` and put a red dot directly above `7b5`. Add further references about that app’s GUI to the dedicated index.
-
-As notes about GUI itself accumulate, make `8-GUI` to gather entries such as `Design principles 8` and `Thoughts on usability 8a`. Develop each index according to its own subject and context.
-
-When an index sheet fills up, add a continuation sheet. If a hub needs to move, gather its references in the new index and leave a reference to it at the old hub. If you rewrite a Global Index slip with only the new entry ID, that row takes no dot.
-
-### 8. Add index pages and links to related topics
-
-When `7-PKM` fills up, write `7-PKM 2` at the upper left of the next A4 sheet and keep adding entries. The final 2 is the sheet number. The entry ID is still `7`.
-
-```mermaid
-flowchart TD
-A["7c1-Zettelkasten"] -->|"★PKM 7"| B["7-PKM"]
-  A -->|"★KJ method 3a1"| C["3a1-KJ method"]
-```
-
-Draw a **one-stroke star** at the start of an entry that points to another, related Topic Index. In `7c1-Zettelkasten`, for example, write `★PKM 7` or `★KJ method 3a1`.
-
-You can list the same note in different indexes. If `7d` compares finding things on paper and digitally, you can list it in both `7-PKM` and `7b-Digital PKM`.
 
 ### 9. File the sheets in A4 clear folders
 
@@ -316,53 +269,42 @@ Write the **date** at the upper left using the same format as the notes, for exa
 
 Use **one page per day** as a default, even for a short entry. If you need another sheet, put the date and page number at the upper left, as in `2026 10 02 2`. Give the diary its own A4 clear folder.
 
-### 11. Write a summary and track its versions
+### 11. A summary can be provisional
 
-Suppose I reread my coffee notes and write, “In the batches I tried, changing the brewing method changed the taste even with the same beans. With the same method, the darker roast tasted more bitter to me.” I give the first sheet of the summary the ID `1c`.
+Imagine starting at `1`, writing about different concerns at `1a`–`1e`, then summarizing at `1f`. Later, at `1g`, I return to the original question or pursue another line. **The summary `1f` represents my thinking at that time.** It does not have to be rewritten to cover everything I think afterward.
 
-If the first version takes several sheets, I use `1c`, `1c1`, `1c2`, and `1c3` in order. To point to the next sheet, I can write `:1c1`, `:1c2`, and `:1c3` in red at the ends of the respective sheets. A separate note expanding on something in `1c1` goes at `1c1a`.
+```text
+1    Begin thinking about my present self
+1a   Values
+1b   Relationships
+1c   Diet
+1d   The future
+1e   Current concerns
+1f   Summary as of November 12, 2026
+1g   Revisit the original question
+1h   Another thought
+```
 
-If I revisit the summary after my thinking has changed, I start version 2 at the next available ID, `1c4` in this example. I make a Topic Index using the first ID, `1c-Coffee summary`, so I can find the opening sheet of either version.
+A note can be patchy, contain detours, or continue after a summary. **Those gaps are part of the thought process**, not defects. Keep dates and links so you can return to an earlier interpretation.
 
-**`1c-Coffee summary`**
+Later summaries may have their own regular note IDs. If finding them becomes difficult, add references to an existing Topic Index. Writing a summary does not automatically require another Topic Index.
 
-|  |  |
+
+### 12. Dated reflections are ordinary notes
+
+I might use `1e` to start a series of periodic reflections and `1e1`, `1e2`… for particular dates. Write the date on each sheet. If a later thought deepens one particular reflection, give it a branch of that note.
+
+| ID | Content |
 |---|---|
-| Summary 1 | `1c` |
-| Summary 2 | `1c4` |
+| `1e` | Begin reflecting periodically |
+| `1e1` | Reflection on November 12 |
+| `1e2` | Reflection on November 20 |
+| `1e2a` | Develop an idea from November 20 |
 
-Each entry in this index gives the ID of the first sheet of that version. I read version 1 from `1c` through `1c3` and start version 2 at `1c4`.
+When the sequence is easy to follow, no Topic Index is necessary. If it grows unwieldy, create one associated with `1e` at that point.
 
-#### Build an overview from smaller summaries
+These are different from the diary sheets, which use the date as the ID at the upper left and are kept in a separate folder.
 
-A Topic Index can have an entry called “Summary.” In the Goals index it covers all your goals. In the Finances index it covers your financial goals. Write both summaries as ordinary notes.
-
-| Open Topic Index | Entries in that index |
-| --- | --- |
-| `2-Goals` | `Finances 2a`, `Mysticism 2b`, `Summary 2d` |
-| `2a-Finances` | `Summary 2a1` |
-| `2a1-Summary` (Finances) | `Summary 1 2a1`, `Summary 2 2a1b` |
-| `2d-Summary` (All goals) | `Summary 1 2d`, `Summary 2 2d2` |
-
-Start with smaller subjects, such as financial goals, goals related to mysticism, or recent goals. In the overall summary, write a short account of what matters now in each area and link to the smaller summaries for details. When you update the overview, you can reuse those summaries without copying every detail again.
-
-In the Finances Topic Index at `2a`, the summary has **one entry, `Summary 2a1`**. Put the versions, `Summary 1 2a1` and `Summary 2 2a1b`, in **the Topic Index at `2a1`**. Their note titles can be `Summary-2026 10 01` and `Summary-2026 10 02`. Do the same for the overall summary. Put `Summary 2d` in the Goals index and list the versions in the Topic Index at `2d`.
-
-Digitally, open “Finances” from the Goals Topic Index. In that note’s `BranchGroup/Group`, open “Summary.” The Summary note has its own `BranchGroup/Group`, where you find the dated summaries. On paper, follow the same route using the IDs written in the indexes.
-
-### 12. Link subject-by-subject progress to a daily overview
-
-A “Progress” entry tells you how far you had got by that date. For example, a philosophy progress note could say “Compared two arguments,” and a history note could say “Divided the timeline into three periods.”
-
-| Scope | Example note |
-| --- | --- |
-| Overall study progress `4c1` | Daily review with links to philosophy `4a1` and history `4b1` |
-| Philosophy `4a1` | Compared two arguments |
-| History `4b1` | Divided the timeline into three periods |
-
-In the overall study progress note, add a short review of the day and the IDs for the philosophy and history progress notes. As the updates accumulate, give Progress its own Topic Index so you can find the dated notes, just as with summaries.
-
-When progress notes accumulate, add a “Progress” entry in each subject’s Topic Index and list dated notes in the index it leads to. Use the same pattern for overall progress. For example, `4-Study` can lead to “Philosophy `4a`,” “History `4b`,” and “Progress `4c`.” The subject indexes lead to “Progress `4a1`” and “Progress `4b1`.” The overall index, `4c-Progress`, lists the daily overview at `4c1`.
 
 ### 13. Collect short items in Fragment Notes
 
@@ -398,47 +340,42 @@ A["Leave the top clear and start writing"] --> B["Assign an ID based on the conn
 
 ## Part 2 · Quick reference
 
-A guide to paper notes and the Double Index, based on Niklas Luhmann’s Zettelkasten.
+The operational rules of the Double Index System.
 
 | Item | Rule |
-| --- | --- |
-| Notes | Use portrait A4. Leave the top clear and write the body first. Assign the ID later and write it at the upper left. Put the date at the upper right. Keep sheets with unfinished thoughts, too. |
-| Branching | Branch from a note whose subject the new note broadens, deepens, or relates to. Similarity is enough. Choose a place that makes the connection easy to find. |
-| Pens | Use red for the full citation and continuation marks, including parentheses and colons, and for index commas and dots. Use blue for note text, headings, and the sheet’s own ID at the upper left. Use non-erasable ballpoint pens for both. |
-| Citations and continuations | Mark the end of a passage with `(1)` or `(2)`. Refer to it as `(1):Like this` on the same sheet or `7a(1)` from a different sheet. Use `ID:` for a citation and `:ID` for a continuation. |
-| Global Index | Look up keywords across the collection. Sort paper slips by kana reading or alphabetically. Use a spreadsheet to work out the order before rearranging the slips. |
-| Choosing an index | Use the Global Index for a subject itself and the relevant Topic Index for that subject within a particular context. A note developing general ideas from that context can also be indexed globally. |
-| Topic Index | Write “ID-Topic” at the upper left of a portrait A4 sheet. List keyword–ID pairs in two columns, omitting headings and lines. A keyword can have more than one ID. |
-| Dots and stars | When a keyword lists two or more IDs and has a Topic Index, put a red dot directly above the ID for that index. Start an entry with a hand-drawn star to point to a related Topic Index. |
-| Topic hubs | Gather growing references within a shared context in a dedicated Topic Index. In a multi-ID entry, dot the ID where that index was made. A single-ID entry takes no dot. |
-| Making an index | One Topic Index per ID. Before making one, check the Global Index and related Topic Indexes. If an index already covers the same subject, add entries there. |
-| Pages and filing | Label the next page of an index `7-PKM 2`, for example. Number folders on the front. File the sheets from front to back as 1, 1a, 1a1, 1a1a, 1a2, and so on. Use tabs at the top for numeric IDs or topics with many notes. |
-| Diary | Use a separate clear folder. Put the date at the upper left, with one page per day as the default. Add a page number after the date on later pages. Write referenced note IDs in red. |
-| Summaries and progress | Start with smaller topics. Write the main points in the overview and link to the subject notes. Index each summary version by its first sheet, and use dates to find progress updates. |
-| Fragment Notes | In the Global Index, write “Fragment Notes” with the first sheet’s ID. Add short items to the same sheet until it fills up, then start a continuation sheet. |
+|---|---|
+| Regular notes | Portrait A4, write first and assign Folgezettel IDs afterward. Preserve unfinished thinking. |
+| Branching | Extend or deepen an existing inquiry, but do not force every related subject into the same series. |
+| Reading notes | Book A: `1,1a,1b…`; Book B: `2,2a,2b…`. Give sustained tangents a separate root ID. |
+| Summaries | A summary is a dated snapshot; subsequent notes can reopen the question. Gaps are permitted. |
+| Topic Index IDs | Separate sequence: `0-1,0-2,0-3…`. |
+| Number of indexes | Each starting note ID may have zero or one Topic Index. `1` and `1a` may each have their own. |
+| When to create one | After enough notes have accumulated, at a level of detail near the content, neither overly broad nor overly narrow. |
+| Topic titles | Indicate the **starting point**, not a restrictive category. |
+| Global Index | Keyword slips lead to notes or indexes; sort alphabetically or by Japanese reading. |
+| Dot, arrows and links | A red dot marks a note with an associated Topic Index; state `0-1` explicitly. `★` is a related index, `↑` is a useful broader one, `＝` is a summary. |
+| References | Mark passages `(1)`; cite `7a(1)`; use `ID:` and `:ID` for source and continuation. |
+| Paper storage | Keep regular notes in Folgezettel order, `0-1` series indexes separately, and the dated diary in a separate folder. |
+| Dated progress | Use ordinary notes; create an index only when useful. |
+| Fragment notes | Collect short unrelated items on one A4 sheet, continuing when full. |
 
+## Putting the method into practice
 
-## Grow topic indexes as your notes develop
+**Write first, index later.** Open-ended thinking does not need predefined topics. Reading notes stay reasonably focused on their source book. Separate lines of thought can connect through references or a later Topic Index.
 
-A Topic Index is not a special parent hierarchy or a table of contents that must exist from the beginning. It is a regular note with its own Folgezettel ID, combining thoughts about a subject with keywords, questions and referenced note IDs. When a topic deserves its own index, create a new branch such as 1a; that note can in turn develop into 1a1, 1a2 and beyond.
+```text
+Regular notes (the thinking)          Topic Indexes (made later)
 
-- 1 — Did ancient Greek wrestlers experience erections while competing nude?
-- 1a — Ancient Greece [Topic Index]
-- 1a1 — Notes on Athenian democracy
-- 1b — Ancient Greek wrestling [another Topic Index]
+1  Thinking about my present self     0-1  Started at note 1
+├─ 1a  My values                 →    Values 1a
+│  ├─ 1a1                        →    Life habits 1c
+│  └─ 1a2                        →    Summary 1f
+├─ 1b  Relationships
+├─ 1c  Life habits                    0-2  Started at note 1a
+├─ 1f  Provisional summary       →    Values 1a
+└─ 1g  Return to the question    →    Changes in thinking 1a2
+```
 
-### Topic Index — 1b
+The IDs `0-1` and `0-2` do not belong to the Folgezettel sequence. Each starting note ID has at most one associated Topic Index, and an index can be absent altogether. The name records the point of departure, not a boundary around the content. There is no need to build a complete Religion → Buddhism → Psychology taxonomy. Choose useful index granularity after seeing the notes, and preserve detours, gaps and provisional conclusions.
 
-- ↑ Ancient Greece — 1a
-- Nudity and bodily responses — 1
-- ★ Competition rules — 1b1
-- ● Research summary and progress — 1b2
-
-- **↑**: Reference to a broader concept, not necessarily a Folgezettel parent.
-- **★**: Reference to another Topic Index.
-- **●**: Reference to a summary, progress report or status note.
-- **No mark**: Ordinary keyword or question reference.
-
-The Global Index contains entries such as “Ancient Greece → 1a”. Note 1 stays in its original ID position; the Topic Index at 1a points back to it. Write only the directly relevant Topic Index at the top of a note. Create broader indexes later, under their own IDs, when there is something to say about those subjects. Paper and YuriiNote use separate ID namespaces but share the same ↑, ★ and ● conventions.
-
-[Previous version (before 2026-11-11 update)](versions/2026-11-11-before-update/guide.md)
+[Earlier version (before November 11, 2026)](versions/2026-11-11-before-update/guide.md)
