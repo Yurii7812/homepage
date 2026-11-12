@@ -184,7 +184,6 @@ Suppose I start at `1` by thinking about my present self and continue at `1a` (v
 |---|---|---|
 | `0-1` | Thoughts begun with my present self | `1, 1a, 1b, 1c, 1d` |
 | `0-2` | Exploring my values | `1a, 1a1, 1a2` |
-| `0-3` | Notes comparing non-self across books | `1a, 2a, 2b` |
 
 These are **possible indexes, not a template to create in advance**. I may need one, several over time, or none yet. A single note can be found through several indexes.
 
