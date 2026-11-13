@@ -1,0 +1,245 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>図でわかる 紙の知識管理術</title>
+<style>
+:root{color-scheme:light;--ink:#222e27;--blue:#173e7b;--red:#a3242d;--muted:#526058;--green:#245944;--line:#b1c5b6;--light:#e8f1e9;--paper:#fffef9;--card:#f9f0d8;background:#eff2ec;color:var(--ink);font-family:system-ui,-apple-system,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif}
+*{box-sizing:border-box}body{margin:0}main{max-width:830px;margin:auto;padding:28px clamp(15px,4vw,44px) 58px;background:#fbfcf8}header{padding:16px 0 24px;border-bottom:2px solid var(--green)}h1{font-size:clamp(30px,6vw,49px);line-height:1.2;margin:0}h2{font-size:clamp(20px,4vw,29px);margin:34px 0 18px;color:var(--green)}h3{font-size:clamp(18px,3.5vw,23px);line-height:1.45;margin:0 0 10px}.step{display:inline-block;min-width:2em;margin-right:.5em;color:var(--green);font:700 .85em ui-monospace,monospace}.lesson{padding:19px 0;border-top:1px solid var(--line)}p{font-size:16px;line-height:1.8;margin:9px 0;overflow-wrap:anywhere}strong{color:var(--green)}code{font-family:ui-monospace,monospace;font-size:.95em}.tag{display:block;margin-bottom:11px;color:var(--green);font-size:12px;letter-spacing:.13em;font-weight:750}
+figure{margin:13px auto;background:#edf2e9;border-radius:9px;padding:12px;max-width:680px}figure.narrow{max-width:495px}figcaption{font-size:13px;color:var(--muted);line-height:1.5;text-align:center;margin-top:3px}svg{display:block;width:100%;height:auto;overflow:visible}.paper{fill:#fffef9;stroke:#9eac9f;stroke-width:1.6}.card{fill:var(--card);stroke:#a39465;stroke-width:1.6}.card-shadow{fill:#e5dbbb;stroke:#a39465;stroke-width:1.2}.accent{fill:#d6eadc;stroke:#76a48c;stroke-width:1.6}.label,.small,.id,.entry{fill:var(--ink);font:650 22px system-ui,-apple-system,"Hiragino Sans","Yu Gothic",sans-serif}.small{font-size:19px;font-weight:550}.entry{font-size:16px;font-weight:550}.id{font-size:25px;font-family:ui-monospace,monospace;fill:var(--blue);font-weight:750}.edge,.rule,.call,.fold-line,.ring{fill:none;stroke:#6b8c79;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.rule{stroke:#cbd5c9;stroke-width:1.3}.call{stroke-dasharray:3 4}.fold-line{stroke:#9b6c2f;stroke-dasharray:5 5}.dot{fill:var(--red)}.hole{fill:#a39263}.ring{stroke:#65716d;stroke-width:3}.paired{display:grid;grid-template-columns:1fr 1fr;gap:9px}.paired figure{margin:8px 0}.paired svg .small{font-size:23px}.paired svg .label{font-size:26px}.paired svg .id{font-size:29px}
+
+.thought-opening,.thought-ink{fill:var(--blue);font:550 22px system-ui,sans-serif}.thought-opening{font-size:23px;font-weight:700}.thought-line{fill:none;stroke:var(--blue);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.point-table{width:min(100%,680px);margin:13px auto;border-collapse:collapse;font-size:clamp(12px,2.5vw,15px)}.point-table th,.point-table td{text-align:left;padding:6px 8px;border-bottom:1px solid #c4d2c5}.point-table th{background:#e8f1e9;color:var(--green)}.refid{fill:var(--red)}.ink-note{fill:var(--blue);font:600 20px system-ui,sans-serif}.ink-line{stroke:var(--blue);stroke-width:1.3;fill:none;stroke-linecap:round}.file-outline,.file-front{fill:#c8d9e8;stroke:#6a8399;stroke-width:1.8}.file-front{fill:#d7e7f1;fill-opacity:.6}.file-number{fill:#202723;font:800 44px ui-monospace,monospace}.sticky{fill:#fae698;stroke:#ab9352;stroke-width:1.2}
+.blue-ink{color:var(--blue)}.red-ink{color:var(--red);font-weight:750}.reference-key{display:flex;gap:12px;flex-wrap:wrap;font-weight:700;margin:1px 0 9px}.written{min-width:0;background:var(--paper);border:1px solid #bdcbbb;border-radius:5px;padding:10px;color:var(--blue)}.written-title{font-weight:800;border-bottom:1px solid #cdd8cd;padding-bottom:5px}.written p{font-size:14px;line-height:1.55;margin:8px 0}.written small{color:var(--muted);font-size:11px}
+.index-sheet{width:min(100%,495px);aspect-ratio:210/297;margin:auto;background:var(--paper);border:1px solid #9eac9f;border-radius:4px;padding:clamp(8px,3vw,19px);color:var(--blue)}.sheet-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}.sheet-head strong{color:var(--blue);font-size:clamp(18px,5vw,29px)}.sheet-head span{font-size:12px;color:var(--muted)}.sheet-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(7px,2vw,13px)}.topic-col + .topic-col{padding-left:clamp(6px,2vw,12px)}.topic-col ul{margin:0;padding:0;list-style:none}.topic-col li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;gap:4px;padding:8px 0;font-size:clamp(10px,2.3vw,13px);line-height:1.35}.topic-col li span{overflow-wrap:anywhere}.topic-col li code,.lookup-path code{color:var(--red);font-weight:750;white-space:nowrap}.lookup-path{padding:0;margin:12px auto 16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;max-width:680px;gap:14px}.lookup-path li{position:relative;border-top:2px solid #99b5a2;padding:6px 3px 2px;min-width:0;overflow-wrap:anywhere}.lookup-path small,.lookup-path b{display:block}.lookup-path small{color:var(--muted);font-size:clamp(10px,2.5vw,12px)}.lookup-path li+li:before{content:'→';position:absolute;left:-13px;top:8px;color:var(--green);font-weight:700}
+
+
+.mini-ink{fill:var(--blue);font:550 14px system-ui,sans-serif}.stamp{fill:var(--blue);font:650 14px ui-monospace,monospace}.pen-star{fill:none;stroke:var(--blue);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.star-mark{display:inline-block;width:1.05em;height:1.05em;vertical-align:-.12em;margin-right:.15em}
+.stack-order{display:flex;align-items:center;flex-wrap:wrap;gap:8px;justify-content:center;color:var(--green);margin:15px auto}.stack-order ol{display:flex;flex-wrap:wrap;list-style:none;gap:6px;margin:0;padding:0}.stack-order li{border:1px solid #aebfae;background:var(--paper);border-radius:4px;padding:4px 8px;font:700 14px ui-monospace,monospace;color:var(--blue)}.stack-order li+li:before{content:'›';margin-right:5px;color:var(--muted)}
+.diagram-root{max-width:390px;margin:3px auto 15px;text-align:center;color:var(--green);font-weight:800;background:#f9fbf6;border:1px solid #9fbba7;border-radius:6px;padding:8px;position:relative}.diagram-root:after{content:'↓';position:absolute;bottom:-17px;left:49%}.diagram-branches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.diagram-branches.three{grid-template-columns:repeat(3,minmax(0,1fr))}.diagram-branches>div{border-top:2px solid #9fbba7;background:var(--paper);padding:7px;line-height:1.5;overflow-wrap:anywhere}.diagram-branches>div>div{font-size:13px;margin-top:5px}.diagram-branches code,.reuse-note code{color:var(--red)}.reuse-note{margin-top:9px;background:var(--paper);border-radius:5px;padding:9px}.reuse-note p{font-size:14px;margin:3px 0}.workflow-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px;counter-reset:review}.workflow-list li{counter-increment:review;display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:5px;background:var(--paper);padding:8px;border-radius:5px}.workflow-list li:before{content:counter(review);grid-row:span 2;color:var(--green);font-weight:800}.workflow-list span{grid-column:2;font-size:13px}
+
+.summary-root{max-width:250px;margin:auto}.summary-routes{margin-top:12px}.summary-routes h4{margin:0 0 6px;color:var(--green);font-size:13px}.summary-index{padding:9px 12px;border:1px solid #b4c5b4;border-radius:5px;background:var(--paper);color:var(--blue);font-size:14px;line-height:1.6}.summary-index b{display:block;margin-bottom:3px}.summary-index code{color:var(--red);font-weight:750}.summary-arrow{margin:2px 0;text-align:center;color:var(--green);font-weight:800}
+dl{margin:0}dl div{display:grid;grid-template-columns:145px 1fr;gap:13px;border-top:1px solid var(--line);padding:12px 0}dt{font-weight:750;color:var(--green)}dd{margin:0;line-height:1.65;overflow-wrap:anywhere}.basis{font-size:13px;color:var(--muted);margin-bottom:12px}
+@media(max-width:560px){.paired{grid-template-columns:1fr}.lesson{padding:14px 0}dl div{grid-template-columns:1fr;gap:3px}figure{padding:6px}}
+@media print{@page{size:A4;margin:13mm}:root,main{background:white}main{max-width:none;padding:0}header{padding-top:0}h2,h3{break-after:avoid}figure,dl div{break-inside:avoid}.lesson{padding:13px 0}figure{print-color-adjust:exact}p{font-size:13px}.tag{font-size:11px}}
+
+.paper-row{display:grid;grid-template-columns:repeat(var(--sheets,2),minmax(0,1fr));gap:12px;align-items:start}
+.paper-row.three-sheets{--sheets:3}.paper-row.four-sheets{--sheets:4}
+.a4-paper{box-sizing:border-box;aspect-ratio:210/297;background:var(--paper);border:1px solid #9eac9f;border-radius:4px;padding:clamp(8px,2vw,15px);min-width:0;color:var(--blue)}
+.a4-paper .written-title{border:0;margin-bottom:.6em;padding:0;overflow-wrap:anywhere}
+.a4-paper h5{margin:0 0 .6em;color:var(--blue);font-size:inherit}
+.a4-paper .topic-col li{padding:.4em 0;line-height:1.25}
+.a4-paper .topic-col+.topic-col{padding-left:0}
+.a4-paper p{font-size:clamp(12px,2vw,14px);line-height:1.45}
+.a4-paper .sheet-columns{gap:8px}
+.a4-paper .sheet-columns li{font-size:clamp(10px,1.8vw,13px)}
+.a4-paper .star-mark{display:inline-block;width:12px;height:12px;vertical-align:baseline}
+.index-dot{position:relative}.index-dot::before{content:"";position:absolute;left:50%;top:-.2em;width:4px;height:4px;background:var(--red);border-radius:50%;transform:translateX(-50%)}
+.a4-paper .sheet-columns li:has(.index-dot){padding-top:.75em}
+.sheet-figure .topic-col li{padding:clamp(3px,1.05vw,8px) 0}
+.figure-subtitle{margin:0 0 8px;font-weight:750;color:var(--ink)}
+.paper-order svg{width:min(100%,530px);margin:auto}
+.a4-stack-id{fill:var(--blue);font:750 21px ui-monospace,monospace}
+.a4-stack-body{fill:var(--blue);font:500 12px system-ui,sans-serif}
+.a4-level-label{fill:var(--muted);font:750 16px system-ui,sans-serif}
+.folgezettel-tree{--tree-indent:clamp(1.2rem,4vw,1.9rem);--tree-joint:1rem;--tree-line:#647a6a}
+.folgezettel-tree ul{list-style:none;margin:0;padding:0}
+.folgezettel-tree ul ul{margin-inline-start:.4rem;padding-inline-start:var(--tree-indent)}
+.folgezettel-tree ul ul>li{position:relative}
+.folgezettel-tree ul ul>li::before,.folgezettel-tree ul ul>li::after{content:"";position:absolute;inset-inline-start:calc(-1 * var(--tree-indent));pointer-events:none}
+.folgezettel-tree ul ul>li::before{inset-block:0;border-inline-start:1px solid var(--tree-line)}
+.folgezettel-tree ul ul>li:last-child::before{inset-block-end:auto;block-size:var(--tree-joint)}
+.folgezettel-tree ul ul>li::after{inset-block-start:var(--tree-joint);inline-size:calc(var(--tree-indent) - .32rem);border-block-start:1px solid var(--tree-line)}
+.folgezettel-tree .tree-note{display:flex;align-items:baseline;gap:.65rem;padding-block:.24rem;min-block-size:2rem;font-size:clamp(.875rem,2.4vw,1rem);line-height:1.5}
+.folgezettel-tree code{color:var(--blue);font-weight:750;flex:none}
+.folgezettel-tree .tree-excerpt{min-inline-size:0;overflow-wrap:anywhere}
+.a4-index .written-title{font-size:clamp(10px,1.8vw,14px)}
+.brainstorm-a4 svg{width:min(100%,510px);margin:auto}
+@media(max-width:560px){.paper-row,.paper-row.three-sheets,.paper-row.four-sheets{grid-template-columns:minmax(0,1fr)}.paper-row .a4-paper,.reference-pair .a4-paper{width:min(100%,320px);margin-inline:auto}}
+.summary-version-sheet{width:min(100%,260px);margin:auto}
+.folgezettel-tree .tree-copy{min-inline-size:0}
+.folgezettel-tree .tree-reason{display:block;font-size:.84em;color:var(--muted);line-height:1.4;margin:.12em 0 .28em;overflow-wrap:anywhere}
+.diagram-code{padding:16px;overflow:auto;white-space:pre;background:#edf2e9;border:1px solid #b1c5b6;border-radius:8px;font:13px/1.65 ui-monospace,monospace}.topic-index-new .paper-row{justify-content:center;gap:12px}.topic-index-new .a4-paper{padding:13px;min-width:0;width:44%;min-height:170px}.topic-index-new p{font-size:14px;margin:6px 0}
+</style>
+<link rel="alternate" hreflang="ja" href="../../ja/paper-pkm/">
+<link rel="alternate" hreflang="en" href="../../en/paper-pkm/">
+<link rel="stylesheet" href="../../navigation.css">
+</head><body><main>
+<div class="page-bar"><div class="page-links"><a href="../">← トップへ</a><a href="https://github.com/Yurii7812/homepage/blob/main/ja/paper-pkm/guide.md">Markdown</a></div><nav class="language-switch" aria-label="言語"><a href="../../ja/paper-pkm/" lang="ja" hreflang="ja" aria-current="page">日本語</a><a href="../../en/paper-pkm/" lang="en" hreflang="en">English</a></nav></div>
+<header><span class="tag">紙のノートとダブルインデックス</span><h1>図でわかる 紙の知識管理術</h1></header>
+<p>この方法では、最初に分類体系を設計しない。まずノートを書き、内容がたまってから、役立つ粒度のTopic Indexを必要な分だけ作る。名前は思考の出発点を示し、その後の内容を限定しない。</p>
+<p>ルーマンのツェッテルカステンを土台に、枝分かれする<strong>フォルゲゼッテル（Folgezettel）ID</strong>とノート同士のリンクを使う。A4に書いてからIDを付け、グローバルIndexで話題の入口を、トピックIndexでその話題の中身を探す。この二つの索引を組み合わせるのがダブルインデックス方式。</p>
+<section aria-labelledby="benefits">
+<h2 id="benefits">この方式のメリット</h2>
+<ul>
+<li><p><strong>A4は大学や図書館でも使いやすい。</strong> 普段の筆記用具と一緒に持ち運べるので、A6カードの束を箱で持ち歩くより扱いやすい。広い紙面に、長い文章も図も書き込める。</p></li>
+<li><p><strong>普通のノートのように書ける。</strong> 私は、一つの考えを一枚に収めるアトミックノートを使わない。考えが続くところまで書けるので、ブレインストーミングの途中で紙を分ける必要がない。走り書きも、考え途中の紙も、まとまった文章も、同じように保管する。</p></li>
+<li><p><strong>文脈と言葉のニュアンスが残る。</strong> 考えを短い独立したノートに圧縮すると、前後のつながりや、言葉を選んだ理由まで抜け落ちることがある。ブレインストーミングの紙をそのまま残せば、あとから結論に至った流れを読み返せる。</p></li>
+<li><p><strong>長いノートの一部分だけを引用できる。</strong> 気になる箇所に <code>(1)</code> と付けておけば、別のノートから <code>7a(1)</code> のように、その箇所を指せる。引用のために元の文章から切り出す手間が省ける。</p></li>
+<li><p><strong>ノートが増えても探しやすい。</strong> グローバルIndexで全体から話題の入口を見つけ、トピックIndexでその話題の中をたどる。長いノートやブレインストーミングの紙が増えても、読み返したい内容に戻りやすい。</p></li>
+</ul>
+</section>
+<h2>第1部　実際に使いながら覚える</h2>
+<section class="lesson"><h3><span class="step">01</span>A4の上を空けて、まず書く</h3>
+<p>A4を<strong>縦向き</strong>に置き、上に余白を残して本文から書き始める。<strong>左上のIDはあとで決める。</strong> 書いた内容と既存のノートのつながりが見えてから、位置を決めてIDを書く。</p>
+<figure class=""><svg viewBox="0 0 600 379" role="img" aria-label="縦向きのA4は上部を空けて本文から書く。あとから左上にID、右上に日付を入れた例。" xmlns="http://www.w3.org/2000/svg"><rect x="43" y="42" width="210" height="297" rx="3" class="paper"/><rect x="346" y="42" width="210" height="297" rx="3" class="paper"/><text x="148" y="27" text-anchor="middle" class="label">① 先に本文</text><text x="451" y="27" text-anchor="middle" class="label">② あとからID</text><text x="363" y="75" text-anchor="start" class="id">1</text><text x="542" y="68" text-anchor="end" class="stamp">2026 10 02</text><text x="58" y="137" text-anchor="start" class="mini-ink"><tspan x="58" dy="0">同じ豆でも、淹れ方で</tspan><tspan x="58" dy="18">味が変わる。</tspan><tspan x="58" dy="18">豆の状態や道具も</tspan><tspan x="58" dy="18">関係しそうだ。</tspan></text><text x="361" y="137" text-anchor="start" class="mini-ink"><tspan x="361" dy="0">同じ豆でも、淹れ方で</tspan><tspan x="361" dy="18">味が変わる。</tspan><tspan x="361" dy="18">豆の状態や道具も</tspan><tspan x="361" dy="18">関係しそうだ。</tspan></text><path d="M266 172 L333 172" class="edge"/><path d="M326 167 L333 172 L326 177" class="edge"/><text x="149" y="367" text-anchor="middle" class="small">上部に余白を残す</text><text x="452" y="367" text-anchor="middle" class="small">左上にID、右上に日付</text></svg><figcaption>同じ一枚の、書き始めとIDを決めたあと。</figcaption></figure>
+<p>私は、<strong>本文と用紙自身のIDは青、参照の記号とIDは赤</strong>のボールペンを使う。索引の参照先や、本文中の引用・続きのIDが見つけやすくなる。索引で複数のIDを並べるときは、間のカンマも赤で書く。トピックIndexへの入口を示す点も赤。赤も青も、<strong>消えないボールペン</strong>を使う。</p>
+<p>右上に日付を書く。手書きなら <strong><code>2026 10 02</code></strong> のように、年・月・日を空白で区切る。日付印なら、<strong>COLOP Mini Dater S 120の数字月タイプ（CLP120B2）</strong>で年・月・日の順に押せる。 <a href="https://item.rakuten.co.jp/thewind/513526/">輸入代理店の印字例</a></p>
+</section>
+<section class="lesson"><h3><span class="step">02</span>考えながら書いた紙も、そのまま入れる</h3>
+<p>下の図は、ゲームの村について<strong>実際に考えながら書くと、こうなることもある</strong>という一例。思いつきの箇条書き、書きかけの文章、図や線が混じった紙も、そのままノートにできる。</p>
+<figure class="brainstorm-a4"><svg viewBox="0 0 600 826" role="img" aria-label="村に人はいるのに暮らしている感じがしない、という最初の一文から、何が足りないかと、今の行動は何かの二方向に線を引く。人を増やす案と、畑・倉庫・家だけを往復する観察を見比べ、用事の間に着目。夕方の井戸で試す案と疑問を書き足す。" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="10" width="570" height="806.14" rx="4" class="paper"/><text x="36" y="43" text-anchor="start" class="id">6a</text><text x="37" y="79" text-anchor="start" class="thought-opening">村に人はいるのに、暮らしてる感じがしない。</text><path d="M40 89q172 3 467 0M195 98q-28 17-64 35m2-8-3 9 11-2M396 98q33 15 49 35m-10-2 11 3-3-10" class="thought-line"/><text x="47" y="160" text-anchor="start" class="thought-ink">何が足りない？</text><text x="318" y="160" text-anchor="start" class="thought-ink">今は何をしてる？</text><path d="M107 171q2 10 1 20m-5-7 5 8 5-8M388 171q1 10 0 20m-5-7 5 8 5-8" class="thought-line"/><text x="48" y="218" text-anchor="start" class="thought-ink">人を増やす？</text><text x="59" y="249" text-anchor="start" class="thought-ink">でも、今も歩いてる。</text><text x="318" y="218" text-anchor="start" class="thought-ink">畑 → 倉庫 → 家</text><text x="330" y="249" text-anchor="start" class="thought-ink">用が済むとすぐ帰る。</text><text x="332" y="280" text-anchor="start" class="thought-ink">途中で立ち止まらない？</text><path d="M146 266q32 37 89 67m-11-1 12 2-4-10M422 291q-31 17-66 40m4-9-6 10 12-2" class="thought-line"/><text x="54" y="368" text-anchor="start" class="thought-opening">見たいのは、用事と用事の間かも。</text><path d="M56 378q163 2 361-1M192 384q1 9 0 20m-6-8 6 9 5-9" class="thought-line"/><text x="55" y="434" text-anchor="start" class="thought-ink">試す：夕方、井戸で二人が立ち止まる。</text><path d="M90 444q3 9 17 19" class="thought-line"/><text x="84" y="490" text-anchor="start" class="thought-ink">毎日同じ時間だと、また作業っぽい？</text></svg><figcaption>ゲームの村について考えたときにできた一枚の例。</figcaption></figure>
+<p>このときは「人を増やす？」と考えたあと、村人が普段何をしているかを横に書いた。それを見て「用事と用事の間かも」と思いつき、線でつないだ。書いたあと、既存の「村づくり」のノート <code>6</code> の枝としてこの紙に <code>6a</code> とIDを付け、疑問が残った状態のままPKMに入れた。</p>
+<p>紙が増えたら、あとで思い出しそうな言葉から探せるようにする。全体から探す<strong>グローバルIndex</strong>と、話題の中で探す<strong>トピックIndex</strong>。この二つを使う方法を<strong>ダブルインデックス</strong>と呼ぶ。</p>
+</section>
+<section class="lesson"><h3><span class="step">03</span>考えのつながりに合わせてIDを付ける</h3>
+<p>新しいノートが、既存のノートの話を<strong>広げている、深めている、またはその話に関連している</strong>ときは、そのノートから分岐させる。ただ似ているだけで、必ず同じ系列に入れる必要はない。置き場所の候補がいくつかあるなら、一緒に読み返したときに関係が分かりやすい場所を選ぶ。</p>
+<p id="branch-layout">たとえば、A4に「同じ豆でも、淹れ方で味が変わる。豆の状態や道具も関係しそうだ」と書き、その紙に <code>1</code> を付けたとする。</p>
+<p>そのあと「ハンドドリップとフレンチプレスでは、粉がお湯に触れる時間が違う」と書いた。<code>1</code> に書いた淹れ方の話を広げているので、このノートは <code>1a</code> に置く。さらに「ハンドドリップで一度に注ぐお湯の量を変えたら、味も変わるだろうか」と書いたら、<code>1a</code> の話を掘り下げているので、その下に <code>1a1</code> を置く。注ぐ量だけを変えて比べる手順まで書いたら、そのノートは <code>1a1</code> の下の <code>1a1a</code> に置ける。</p>
+<p>今度はフレンチプレスで粉をお湯に浸す時間について書いた。これは <code>1a</code> の淹れ方の話を別の方法から広げているので、ハンドドリップの <code>1a1</code> と同じ段に <code>1a2</code> を置く。「同じ淹れ方でも、深煎りの豆は苦く感じた」と書いたノートは、<code>1</code> に書いた豆の話を掘り下げているので、<code>1a</code> と同じ段の <code>1b</code> に置く。あとで淹れ方や豆について書いたことを読み返し、気づいたことを一枚にまとめ始めたら、同じ <code>1</code> からつながる <code>1c</code> に置く。</p>
+<p>「同じ淹れ方でも、焙煎の強いほうじ茶は苦く感じた」と書いたとする。焙煎の違いと苦味に気づいた点が、コーヒーについて書いた <code>1b</code> と似ている。そこで、関連するノートとして <code>1b</code> から枝を付け、<code>1b2</code> に置ける。</p>
+<p><code>1c1</code> 以降は、まとめの続きや次の版に使う。書き分け方は <a href="#summary-versions">11のまとめの例</a> で説明する。</p>
+<figure class="folgezettel-tree" id="folgezettel-tree"><div class="figure-subtitle">フォルゲゼッテルの枝分かれ</div><ul role="list"><li><div class="tree-note"><code>1</code><div class="tree-copy"><span class="tree-excerpt">同じ豆でも、淹れ方で味が変わる</span><small class="tree-reason">コーヒーについて最初に書いたノート。この例の起点。</small></div></div><ul role="list"><li><div class="tree-note"><code>1a</code><div class="tree-copy"><span class="tree-excerpt">ハンドドリップとフレンチプレスでは、粉がお湯に触れる時間が違う</span><small class="tree-reason">1で触れた、淹れ方による味の違いを広げる。</small></div></div><ul role="list"><li><div class="tree-note"><code>1a1</code><div class="tree-copy"><span class="tree-excerpt">一度に注ぐお湯の量で味が変わるか</span><small class="tree-reason">1aに出てくるハンドドリップを掘り下げる。</small></div></div><ul role="list"><li><div class="tree-note"><code>1a1a</code><div class="tree-copy"><span class="tree-excerpt">一度に注ぐ量だけを変えて比べる</span><small class="tree-reason">1a1の疑問をどう確かめるかを書く。</small></div></div></li></ul></li><li><div class="tree-note"><code>1a2</code><div class="tree-copy"><span class="tree-excerpt">フレンチプレスで粉をお湯に浸す時間</span><small class="tree-reason">1aに出てくるもう一つの淹れ方を掘り下げる。</small></div></div></li></ul></li><li><div class="tree-note"><code>1b</code><div class="tree-copy"><span class="tree-excerpt">同じ淹れ方でも、深煎りの豆は苦く感じた</span><small class="tree-reason">1で触れた豆の話を掘り下げる。</small></div></div><ul role="list"><li><div class="tree-note"><code>1b1</code><div class="tree-copy"><span class="tree-excerpt">浅煎りと深煎りを同じ淹れ方で比べる</span><small class="tree-reason">1bで気づいた焙煎による違いを、条件をそろえて比べる。</small></div></div></li><li><div class="tree-note"><code>1b2</code><div class="tree-copy"><span class="tree-excerpt">焙煎の強いほうじ茶は苦く感じた</span><small class="tree-reason">ほうじ茶での観察が1bのコーヒーでの観察と似ている。</small></div></div></li></ul></li><li><div class="tree-note"><code>1c</code><div class="tree-copy"><span class="tree-excerpt">淹れ方と豆について試したことのまとめ</span><small class="tree-reason">1から書き広げた淹れ方と豆のノートをまとめる。</small></div></div><ul role="list"><li><div class="tree-note"><code>1c1</code><div class="tree-copy"><span class="tree-excerpt">第1版の続き</span><small class="tree-reason">1cで始めた第1版の2枚目。</small></div></div><ul role="list"><li><div class="tree-note"><code>1c1a</code><div class="tree-copy"><span class="tree-excerpt">1c1に書いたことの補足</span><small class="tree-reason">1c1の内容を補う別紙なので、1c1の下に置く。</small></div></div></li></ul></li><li><div class="tree-note"><code>1c2</code><div class="tree-copy"><span class="tree-excerpt">第1版の続き</span><small class="tree-reason">第1版の3枚目。1c1の次に読む紙で、1cの下の同じ段に置く。</small></div></div></li><li><div class="tree-note"><code>1c3</code><div class="tree-copy"><span class="tree-excerpt">第1版の最後</span><small class="tree-reason">第1版の4枚目。1c2に続けて、1cの下の同じ段に置く。</small></div></div></li><li><div class="tree-note"><code>1c4</code><div class="tree-copy"><span class="tree-excerpt">第2版の最初</span><small class="tree-reason">第2版は、1cの下で次に空いているIDから始める。</small></div></div></li></ul></li></ul></li></ul><figcaption>各IDの右に本文の一部や要点を、その下にその位置を選んだ理由を示した。</figcaption></figure>
+<p><code>1c1a</code> は <code>1c1</code> のすぐ奥、<code>1c2</code> より手前に入れる。<code>2</code> と <code>3</code> は別の系列の最初のノート。</p>
+<figure class="paper-order" id="filing-stack"><div class="figure-subtitle">クリアファイルに入れる順番</div><svg viewBox="0 0 578 690" role="img" aria-label="クリアファイルに入れる順番. 表側・手前 → 奥 1 → 1a → 1a1 → 1a1a → 1a2 → 1b → 1b1 → 1b2 → 1c → 1c1 → 1c1a → 1c2 → 1c3 → 1c4 → 2 → 3" xmlns="http://www.w3.org/2000/svg"><g data-note-id="3" data-stack-depth="15"><rect x="384" y="43" width="182" height="257.40" rx="2" class="paper"/><text x="391" y="62" class="a4-stack-id">3</text></g><g data-note-id="2" data-stack-depth="14"><rect x="360" y="66" width="182" height="257.40" rx="2" class="paper"/><text x="367" y="85" class="a4-stack-id">2</text></g><g data-note-id="1c4" data-stack-depth="13"><rect x="336" y="89" width="182" height="257.40" rx="2" class="paper"/><text x="343" y="108" class="a4-stack-id">1c4</text></g><g data-note-id="1c3" data-stack-depth="12"><rect x="312" y="112" width="182" height="257.40" rx="2" class="paper"/><text x="319" y="131" class="a4-stack-id">1c3</text></g><g data-note-id="1c2" data-stack-depth="11"><rect x="288" y="135" width="182" height="257.40" rx="2" class="paper"/><text x="295" y="154" class="a4-stack-id">1c2</text></g><g data-note-id="1c1a" data-stack-depth="10"><rect x="264" y="158" width="182" height="257.40" rx="2" class="paper"/><text x="271" y="177" class="a4-stack-id">1c1a</text></g><g data-note-id="1c1" data-stack-depth="9"><rect x="240" y="181" width="182" height="257.40" rx="2" class="paper"/><text x="247" y="200" class="a4-stack-id">1c1</text></g><g data-note-id="1c" data-stack-depth="8"><rect x="216" y="204" width="182" height="257.40" rx="2" class="paper"/><text x="223" y="223" class="a4-stack-id">1c</text></g><g data-note-id="1b2" data-stack-depth="7"><rect x="192" y="227" width="182" height="257.40" rx="2" class="paper"/><text x="199" y="246" class="a4-stack-id">1b2</text></g><g data-note-id="1b1" data-stack-depth="6"><rect x="168" y="250" width="182" height="257.40" rx="2" class="paper"/><text x="175" y="269" class="a4-stack-id">1b1</text></g><g data-note-id="1b" data-stack-depth="5"><rect x="144" y="273" width="182" height="257.40" rx="2" class="paper"/><text x="151" y="292" class="a4-stack-id">1b</text></g><g data-note-id="1a2" data-stack-depth="4"><rect x="120" y="296" width="182" height="257.40" rx="2" class="paper"/><text x="127" y="315" class="a4-stack-id">1a2</text></g><g data-note-id="1a1a" data-stack-depth="3"><rect x="96" y="319" width="182" height="257.40" rx="2" class="paper"/><text x="103" y="338" class="a4-stack-id">1a1a</text></g><g data-note-id="1a1" data-stack-depth="2"><rect x="72" y="342" width="182" height="257.40" rx="2" class="paper"/><text x="79" y="361" class="a4-stack-id">1a1</text></g><g data-note-id="1a" data-stack-depth="1"><rect x="48" y="365" width="182" height="257.40" rx="2" class="paper"/><text x="55" y="384" class="a4-stack-id">1a</text></g><g data-note-id="1" data-stack-depth="0"><rect x="24" y="388" width="182" height="257.40" rx="2" class="paper"/><text x="31" y="407" class="a4-stack-id">1</text><text x="31" y="434" class="a4-stack-body"><tspan x="31" dy="0">同じ豆でも、淹れ方で</tspan><tspan x="31" dy="18">味が変わる。</tspan><tspan x="31" dy="18">豆の状態や道具も</tspan><tspan x="31" dy="18">関係しそうだ。</tspan></text></g><text x="24" y="676" class="a4-level-label">表側・手前</text><text x="384" y="29" class="a4-level-label">奥</text></svg><figcaption>図では各用紙のIDが見えるようにずらしている。実際は、表側から1、1a、1a1…の順に重ねる。</figcaption></figure>
+<h4>続きのたびに枝を深くするとどうなるか（無限ID問題）</h4>
+<p>直前に書いたノートの続きというだけで毎回その下に置くと、IDが際限なく長くなりやすい。話題が広がっていても、並びだけを見ると、すべてが直前のノートの細部を掘り下げたように見える。</p>
+<figure class="folgezettel-tree" id="infinite-id-tree"><div class="figure-subtitle">続きのたびに一段深くした場合</div><ul role="list"><li><div class="tree-note"><code>1</code></div><ul role="list"><li><div class="tree-note"><code>1a</code></div><ul role="list"><li><div class="tree-note"><code>1a1</code></div><ul role="list"><li><div class="tree-note"><code>1a1a</code></div><ul role="list"><li><div class="tree-note"><code>1a1a1</code></div><ul role="list"><li><div class="tree-note"><code>…</code></div></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul><figcaption>一つ前のノートの下に置き続けると、枝が横に並ばず、IDが一段ずつ長くなる。</figcaption></figure>
+<p>読んでほしい順番があるなら、本文に <code>:1b</code> のように続きのリンクを書く。続きのリンクと、IDが表す枝分かれはそれぞれ決められる。</p>
+<h4>読書ノートと自由な考察は、同じように広げなくてもよい</h4>
+<p>本Aを読みながら書いた <code>1, 1a, 1b, 1c…</code> は、基本的に本Aについての読書ノートとして続ける。本Bを読み始めたら、<code>2, 2a, 2b…</code> という新しい系列にする。本Aの内容を理解するために心理学と比較することはできるが、心理学自体の研究が中心になれば、別の独立IDで始め、元のノートから参照する。</p>
+<pre class="diagram-code">1  本A（仏教）の読書ノート
+├─ 1a  本Aの無我の説明
+├─ 1b  心理学との比較（本Aを理解するため）
+└─ 1c  本Aについての暫定的なまとめ
+
+2  本B（別の仏教書）の読書ノート
+├─ 2a  本Bの無我の説明
+└─ 2b  本Aと本Bの比較
+
+3  心理学自体についての独立した考察</pre>
+<p><strong>関連しているからといって、必ず同じ系列に入れる必要はない。</strong> 一方、考えが飛んだり、途中のまとめの後に新しい議論が始まったりしても、それは欠陥ではない。思考の枝や「穴ぼこ」はそのまま残してよい。まとめは書いた時点のまとめであり、最終結論ではない。後で探せるように、必要な参照だけ付ける。</p></section>
+<section class="lesson"><h3><span class="step">04</span>引用元と続きの行き先を書く</h3>
+<p>あとから参照したい文章の<strong>末尾</strong>に <code class="red-ink">(1)</code> や <code class="red-ink">(2)</code> を書く。たとえば紙のPKMのノート <code>7a</code> に「紙は置き場所が手がかりになる。 &nbsp;<code class="red-ink">(1)</code>」。</p>
+<figure class="reference-figure" id="reference-ink"><div class="reference-key"><span class="blue-ink">青：本文と用紙自身のID</span><span class="red-ink">赤：引用・続きの記号とID</span></div><div class="paired reference-pair"><div class="written a4-paper"><div class="written-title"><code>7a</code>　紙のPKM</div><p>紙は置き場所が手がかりになる。 &nbsp;<code class="red-ink">(1)</code></p><p><code class="red-ink">(1):</code>こういう感じ。<br><small>同じノートで引用</small></p><p><code class="red-ink">:7a1</code><br><small>続きの行き先</small></p></div><div class="written a4-paper"><div class="written-title"><code>7d</code>　検索の比較</div><p><code class="red-ink">7a(1):</code>デジタルの検索方法と比べてみる。<br><small>別のノートの (1) を引用</small></p><p><code class="red-ink">7a:</code>紙のPKMのノートも読み返す。<br><small>ノートを引用</small></p></div></div><figcaption>コロンは引用元の後ろ、続きの行き先の前。括弧・番号・コロンまで赤で書く。</figcaption></figure>
+<p>同じノート内でそこを受けて書くなら <strong><code class="red-ink">(1):</code>こういう感じ</strong>。別のノートからその箇所を指すなら <strong><code class="red-ink">7a(1)</code></strong>。検索の比較ノート <code>7d</code> に書き足すなら <code class="red-ink">7a(1):</code>デジタルの検索方法と比べてみる。 と書ける。</p>
+<p>ノートを引用するときは <strong><code class="red-ink">ID:</code></strong>（例 <code class="red-ink">7a:</code>）。「続きはここ」と案内するときは <strong><code class="red-ink">:ID</code></strong>（例 <code class="red-ink">:7a1</code>）。コロンとIDは詰めて書く。引用・続きの記号は、括弧・番号・コロンを含めて赤。ノート自身のIDは用紙の左上に青で書く。</p>
+</section>
+<section class="lesson"><h3><span class="step">05</span>グローバルIndexで、全体から探す</h3>
+<p>A8の紙を<strong>折り目が長辺と平行になる向き</strong>に半分に折る。読む向きで<strong>左側</strong>に穴を開け、金属製の綴じリングなどに通す。</p>
+<figure class=""><svg viewBox="0 0 550 201" role="img" aria-label="A8を長辺と平行に二つ折り。読む向きで左に穴を開け、リングに通した紙片にキーワードとIDを書く。" xmlns="http://www.w3.org/2000/svg"><rect x="35" y="32" width="72" height="103" rx="3" class="card"/><path d="M71 32 L71 135" class="fold-line"/><text x="71" y="170" text-anchor="middle" class="small">A8を折る</text><path d="M125 84 L205 84" class="edge"/><path d="M198 79 L205 84 L198 89" class="edge"/><rect x="220" y="58" width="294" height="103" rx="6" class="card-shadow"/><rect x="214" y="52" width="294" height="103" rx="6" class="card"/><circle cx="229" cy="104" r="6" class="hole"/><ellipse cx="215" cy="104" rx="17" ry="10" class="ring"/><text x="251" y="111" text-anchor="start" class="ink-note">PKM</text><text x="463" y="111" text-anchor="start" class="id refid">7</text><text x="225" y="186" text-anchor="middle" class="small">左に穴</text><path d="M229 119 L229 158" class="call"/><text x="365" y="186" text-anchor="middle" class="small">キーワードとID</text></svg><figcaption>一片に一つのキーワード。IDは複数書ける。</figcaption></figure>
+<p>小紙片一枚に一つのキーワードと、対応するIDを書く。「個人の知識管理」の紙片と「PKM」の紙片の両方に <code>7</code> を書いてもよい。 03のノートを「コーヒー」から探したければ、紙片に「コーヒー <code>1</code>」と書く。紙片はキーワードの<strong>読みのあいうえお順</strong>に綴じる。</p>
+<p><strong>パソコンで紙片の並び順を確認できる。</strong> 表にキーワード・読み・IDを入力し、読みでソートする。表示された順に紙片をリングに通し直せば、あいうえお順に揃えやすい。</p>
+<p>グローバルIndexのキーワードには通常ノートIDだけでなく、必要に応じて独立したTopic Index番号（例 <code>0-1</code>）も書ける。</p></section>
+<section class="lesson"><h3><span class="step">06</span>Topic Indexは、書いてから必要な粒度で作る</h3><figure class="topic-index-new"><div class="figure-subtitle">本文ノートの系列と、後から作るTopic Indexは別番号</div><div class="paper-row"><div class="a4-paper a4-index"><div class="written-title">本文ノート</div><p><code>1</code> 今の自分</p><p><code>1a</code> 価値観</p><p><code>1b</code> 人間関係</p><p><code>1c</code> 食生活</p></div><div class="a4-paper a4-index"><div class="written-title"><code>0-1</code> 今の自分</div><p>価値観 <code>1a</code></p><p>人間関係 <code>1b</code></p><p>食生活 <code>1c</code></p></div></div><figcaption>最初にノートを書く。索引が必要になったら、独立番号の0-1を作る。</figcaption></figure>
+<p>Topic Indexは、本文ノートとは<strong>独立した番号</strong>を使う。例えば <code>0-1</code>、<code>0-2</code>、<code>0-3</code>。通常ノートの <code>1</code> や <code>1a</code> と、Topic Indexの番号を混同しない。</p>
+<p><strong>最初からトピック名や分類階層を決めない。</strong> 読書、プロジェクト、自由な思考などをまず書き進め、ノートがある程度蓄積してから、実際に使いやすい粒度でTopic Indexを作る。話が大きく広がっても、最初に書いたノートの内容を無理に移し替える必要はない。</p>
+<p>例えば <code>1</code> から「今の自分について」という考察を始め、<code>1a</code> に価値観、<code>1b</code> に人間関係、<code>1c</code> に食生活、<code>1d</code> に将来について書いたとする。全体をたどる入口が必要になった時点で、<code>0-1 — 今の自分について考え始めた記録</code> を作れる。</p>
+<table class="point-table"><tbody>
+<tr><th>Topic Index</th><th>名前（出発点）</th><th>主な参照先</th></tr>
+<tr><td><code>0-1</code></td><td>今の自分について考え始めた記録</td><td><code>1, 1a, 1b, 1c, 1d</code></td></tr>
+<tr><td><code>0-2</code></td><td>価値観についての考察</td><td><code>1a, 1a1, 1a2</code></td></tr>
+
+</tbody></table>
+<p>これは最初から2枚用意するという意味ではない。<strong>最初は1枚でも0枚でもよい。</strong> 後から必要になったときだけ追加する。あるノートが複数の索引から参照されてもかまわない。</p>
+<h4>名前は分類の境界ではなく出発点</h4>
+<p><code>0-1</code> の「今の自分」は、その中に書かれたすべての話題を定義する分類名ではない。途中で心理学や経済の話へ広がってもよい。索引は思考がどこから始まったかを示し、実際の項目で必要なノートに案内する。</p>
+<p>「宗教」の下に必ず「仏教」を作る、という階層は不要。仏教についてのノートがあっても、<code>宗教</code> という上位Topic Indexが必要になるとは限らない。索引の粒度は、<strong>実際にたどりたいノートに近く、広すぎず細かすぎない範囲</strong>にする。</p></section>
+<section class="lesson"><h3><span class="step">07</span>一つのノートIDから作るTopic Indexは最大一つ</h3>
+<p><code>1</code> から始まる考察に対応するTopic Indexが必要なら、例えば <code>0-1</code> を作る。<code>1a</code> の考察が独自に広がって見渡しにくくなったら、<code>1a</code> に対応する別のTopic Index <code>0-2</code> を作ってよい。</p>
+<p><strong>一つのノートIDにつきTopic Indexは0個または1個。</strong> ただし、これは<code>1</code> の系列全体に1枚しか作れないという意味ではない。<code>1a</code> や <code>1a1</code> にも、必要ならそれぞれ1枚作れる。異なる観点で索引を作るためだけに、同じノートIDへ複数のTopic Indexを割り当てない。</p>
+<table class="point-table"><tbody>
+<tr><th>ノートの出発点</th><th>対応するTopic Index</th><th>状態</th></tr>
+<tr><td><code>1</code> 今の自分について</td><td><code>0-1</code></td><td>必要になったので作成</td></tr>
+<tr><td><code>1a</code> 自分の価値観</td><td><code>0-2</code></td><td>考察が増えたので作成</td></tr>
+<tr><td><code>1b</code> 人間関係</td><td>なし</td><td>まだ必要ない</td></tr>
+<tr><td><code>2</code> 本Bの読書ノート</td><td>なし</td><td>ノートの流れだけで十分</td></tr>
+</tbody></table>
+<h4>Global Indexと赤い点</h4>
+<p>Global Indexはキーワードから本文ノートやTopic Indexへアクセスするための索引。例えば「今の自分 → <code>1</code>、関連Topic Index → <code>0-1</code>」と書ける。<code>1</code> に対応するTopic Indexがあることを示したければ、<code>1</code> の真上に赤い点を打ち、行内に対応先の <code>0-1</code> を明記する。</p>
+<p><strong>点の有無を「キーワードにIDが二つ以上あるか」で決めない。</strong> 点は対応するTopic Indexが存在することの目印であり、Topic IndexのIDそのものは <code>0-1</code> のように明記する。索引が存在しないときは点を付けない。</p></section>
+<section class="lesson"><h3><span class="step">08</span>Topic Indexを増やし、関連する索引へつなぐ</h3>
+<p>Topic Indexは縦向きのA4用紙。左上に独立番号と出発点を記し、本文にはキーワードと参照先のノートIDを並べる。例えば <code>0-1 — 今の自分</code> の中に、<code>価値観 1a</code>、<code>生活習慣 1c</code>、<code>現時点のまとめ 1e</code> と記入する。二列に分けるのは自由で、項目を増やすために用紙を継ぎ足してもよい。</p>
+<p><code>0-1</code> が埋まったら、次の用紙は <code>0-1 2</code> とする。末尾の <code>2</code> はページ番号で、新しいTopic Indexではない。</p>
+<p>別のTopic Indexへの参照には <code>★</code> を使う。例えば <code>★価値観 → 0-2</code> と書けばよい。上位概念を参照したいときは <code>↑</code> を使えるが、<strong>「宗教→仏教→無我」という分類階層を先に作る必要はない</strong>。上位のTopic Indexは、実際に使うようになってから作る。</p>
+<table class="point-table"><tbody>
+<tr><th>記号</th><th>意味</th></tr>
+<tr><td><code>↑</code></td><td>必要になった上位のTopic Indexへの参照</td></tr>
+<tr><td><code>★</code></td><td>関連する別のTopic Indexへの参照</td></tr>
+<tr><td><code>＝</code></td><td>まとめ・現状整理のノートへの参照</td></tr>
+<tr><td>記号なし</td><td>通常ノートの参照</td></tr>
+</tbody></table>
+<p>Topic Indexの置き場所は、通常ノートのFolgezettel系列とは分けて管理する。紙のクリアファイルでは <code>0-1</code>、<code>0-2</code>…をまとめておくと見つけやすい。</p></section>
+<section class="lesson"><h3><span class="step">09</span>A4のクリアファイルにしまう</h3>
+<p>ノートとA4のトピックIndexは、<strong>A4のクリアファイル</strong>に入れる。いっぱいになったら別のクリアファイルを使う。</p>
+<figure class=""><svg viewBox="0 0 575 310" role="img" aria-label="クリアファイルの表にマジックペンでファイル番号の1、2を書く。ノートの上部の付箋にはノートIDを書く。" xmlns="http://www.w3.org/2000/svg"><rect x="18" y="48" width="139" height="193" rx="7" class="file-outline"/><rect x="28" y="26" width="118" height="166.89" rx="3" class="paper"/><rect x="18" y="53" width="139" height="188" rx="7" class="file-front"/><text x="40" y="113" text-anchor="start" class="file-number">1</text><rect x="183" y="48" width="139" height="193" rx="7" class="file-outline"/><rect x="193" y="26" width="118" height="166.89" rx="3" class="paper"/><rect x="183" y="53" width="139" height="188" rx="7" class="file-front"/><text x="205" y="113" text-anchor="start" class="file-number">2</text><text x="170" y="292" text-anchor="middle" class="small">クリアファイルの順番</text><path d="M341 22 L341 242" class="rule"/><rect x="379" y="34" width="161" height="227.70" rx="4" class="paper"/><text x="394" y="66" text-anchor="start" class="id">1</text><rect x="425" y="12" width="54" height="43" rx="2" class="sticky"/><text x="453" y="41" text-anchor="middle" class="id">1</text><path d="M400 94 L519 94" class="rule"/><path d="M400 118 L519 118" class="rule"/><path d="M400 142 L519 142" class="rule"/><text x="460" y="292" text-anchor="middle" class="small">上の付箋にはノートのID</text></svg><figcaption>ファイル番号は表。ノートのIDは上の付箋。</figcaption></figure><figure class="paper-order"><div class="figure-subtitle">クリアファイルに入れる順番</div><svg viewBox="0 0 578 690" role="img" aria-label="クリアファイルに入れる順番. 表側・手前 → 奥 1 → 1a → 1a1 → 1a1a → 1a2 → 1b → 1b1 → 1b2 → 1c → 1c1 → 1c1a → 1c2 → 1c3 → 1c4 → 2 → 3" xmlns="http://www.w3.org/2000/svg"><g data-note-id="3" data-stack-depth="15"><rect x="384" y="43" width="182" height="257.40" rx="2" class="paper"/><text x="391" y="62" class="a4-stack-id">3</text></g><g data-note-id="2" data-stack-depth="14"><rect x="360" y="66" width="182" height="257.40" rx="2" class="paper"/><text x="367" y="85" class="a4-stack-id">2</text></g><g data-note-id="1c4" data-stack-depth="13"><rect x="336" y="89" width="182" height="257.40" rx="2" class="paper"/><text x="343" y="108" class="a4-stack-id">1c4</text></g><g data-note-id="1c3" data-stack-depth="12"><rect x="312" y="112" width="182" height="257.40" rx="2" class="paper"/><text x="319" y="131" class="a4-stack-id">1c3</text></g><g data-note-id="1c2" data-stack-depth="11"><rect x="288" y="135" width="182" height="257.40" rx="2" class="paper"/><text x="295" y="154" class="a4-stack-id">1c2</text></g><g data-note-id="1c1a" data-stack-depth="10"><rect x="264" y="158" width="182" height="257.40" rx="2" class="paper"/><text x="271" y="177" class="a4-stack-id">1c1a</text></g><g data-note-id="1c1" data-stack-depth="9"><rect x="240" y="181" width="182" height="257.40" rx="2" class="paper"/><text x="247" y="200" class="a4-stack-id">1c1</text></g><g data-note-id="1c" data-stack-depth="8"><rect x="216" y="204" width="182" height="257.40" rx="2" class="paper"/><text x="223" y="223" class="a4-stack-id">1c</text></g><g data-note-id="1b2" data-stack-depth="7"><rect x="192" y="227" width="182" height="257.40" rx="2" class="paper"/><text x="199" y="246" class="a4-stack-id">1b2</text></g><g data-note-id="1b1" data-stack-depth="6"><rect x="168" y="250" width="182" height="257.40" rx="2" class="paper"/><text x="175" y="269" class="a4-stack-id">1b1</text></g><g data-note-id="1b" data-stack-depth="5"><rect x="144" y="273" width="182" height="257.40" rx="2" class="paper"/><text x="151" y="292" class="a4-stack-id">1b</text></g><g data-note-id="1a2" data-stack-depth="4"><rect x="120" y="296" width="182" height="257.40" rx="2" class="paper"/><text x="127" y="315" class="a4-stack-id">1a2</text></g><g data-note-id="1a1a" data-stack-depth="3"><rect x="96" y="319" width="182" height="257.40" rx="2" class="paper"/><text x="103" y="338" class="a4-stack-id">1a1a</text></g><g data-note-id="1a1" data-stack-depth="2"><rect x="72" y="342" width="182" height="257.40" rx="2" class="paper"/><text x="79" y="361" class="a4-stack-id">1a1</text></g><g data-note-id="1a" data-stack-depth="1"><rect x="48" y="365" width="182" height="257.40" rx="2" class="paper"/><text x="55" y="384" class="a4-stack-id">1a</text></g><g data-note-id="1" data-stack-depth="0"><rect x="24" y="388" width="182" height="257.40" rx="2" class="paper"/><text x="31" y="407" class="a4-stack-id">1</text><text x="31" y="434" class="a4-stack-body"><tspan x="31" dy="0">同じ豆でも、淹れ方で</tspan><tspan x="31" dy="18">味が変わる。</tspan><tspan x="31" dy="18">豆の状態や道具も</tspan><tspan x="31" dy="18">関係しそうだ。</tspan></text></g><text x="24" y="676" class="a4-level-label">表側・手前</text><text x="384" y="29" class="a4-level-label">奥</text></svg><figcaption>図では各用紙のIDが見えるようにずらしている。実際は、表側から1、1a、1a1…の順に重ねる。</figcaption></figure>
+<p>クリアファイルの表に、<strong>マジックペンで <code>1</code>、<code>2</code>、…</strong> と順番を書く。並べ直すためのファイル番号で、ノートのIDとは別。</p>
+<p>クリアファイルの<strong>表側が手前</strong>。そこから <code>1</code>、<code>1a</code>、<code>1a1</code>、<code>1a1a</code>、<code>1a2</code>、…の順に重ねる。小さい数字の系列を手前に置き、その系列の枝を続けて入れる。</p>
+<p>ノートが多いトピックの入口や、<code>1</code>、<code>2</code> のように数字だけのノートは、上のほうに<strong>IDを書いた付箋</strong>を貼ると探しやすい。</p>
+<p>Topic Indexは本文ノートとは独立した番号を使う。<code>0-1</code>、<code>0-2</code>…の索引用紙は、通常ノート<code>1</code>、<code>1a</code>…とは分けて保管する。以前のように「<code>1-コーヒー</code>を本文<code>1</code>に重ねる」というルールは使わない。</p>
+</section>
+<section class="lesson"><h3><span class="step">10</span>日記は別のクリアファイルに入れる</h3>
+<p>日記は左上に<strong>日付</strong>を書く。本文ノートと同じ書式で、たとえば <code>2026 10 02</code>。この順で押せる日付スタンプも使える。何を書いてもよく、その日に書いたノートや、考えた結論を短く振り返っておくとあとで読み返しやすい。詳しい内容が本文ノートにあるときは、「詳しくは」に続けて<strong>参照先のIDを赤で</strong>書く。</p>
+<figure class=""><div class="paired reference-pair"><div class="written a4-paper"><b>2026 10 02</b><p>今日はトピックIndexの書き方をまとめた。詳しくは <code class="red-ink">7f2</code>。</p><p>短い話は断片メモに集めることにした。最初の一枚は <code class="red-ink">5</code>。</p></div><div class="written a4-paper"><b>2026 10 02 2</b><p>あとで思いついたことを書き足す。</p></div></div><figcaption>左上に日付を書く。赤いIDをたどると、詳しい内容が読める。</figcaption></figure>
+<p>短い日でも、基本は<strong>一日一ページ</strong>。一枚に収まらない日は、次のページの左上に <code>2026 10 02 2</code> のように日付と続きの番号を書く。日記用のA4クリアファイルを、PKMのノートとは別に用意する。</p>
+</section>
+<section class="lesson"><h3><span class="step">11</span>まとめは途中の記録でよい</h3>
+<p><code>1</code> から自由な考察を始めて、<code>1a</code>〜<code>1e</code> と広がったあと、<code>1f</code> に一度まとめを書く。その後 <code>1g</code> で最初の問いについて考え直しても問題ない。<strong><code>1f</code> はその時点のまとめ</strong>であり、以後のノートをすべて取り込む最終版ではない。</p>
+<pre class="diagram-code">1    今の自分について考え始める
+1a   価値観
+1b   人間関係
+1c   食生活
+1d   将来
+1e   今の問題
+1f   2026-11-12時点のまとめ
+1g   後日、最初の問いを考え直す
+1h   新しい気づき</pre>
+<p>途中の話題が飛んでも、まとめの後に考察が続いても、<strong>ノートを穴ぼこのない完成品に整える必要はない</strong>。日付や参照先を残すことで、いつ何を考えたかを振り返れる。</p>
+<p>後から新しいまとめを書きたければ、次に適切な空きIDへ書く。版ごとに見つける必要ができたら、その時点で既存のTopic Indexに「まとめ 1f」「次のまとめ …」を加える。まとめのためだけにTopic Indexを新設する義務はない。</p></section>
+<section class="lesson"><h3><span class="step">12</span>日付別の振り返りも普通のノートとして書く</h3>
+<p>例えば <code>1e</code> を「自分の状態を定期的に振り返る」という考察の出発点にして、<code>1e1</code>、<code>1e2</code>…へ日付ごとの振り返りをつないでもよい。日付は各用紙の右上に記録する。別の日の考察が前の振り返りを直接深めるなら、そのIDからさらに分岐させてもよい。</p>
+<table class="point-table"><tbody>
+<tr><th>ID</th><th>記録</th></tr>
+<tr><td><code>1e</code></td><td>自分の状態を振り返り始める</td></tr>
+<tr><td><code>1e1</code></td><td>11月12日時点の考察</td></tr>
+<tr><td><code>1e2</code></td><td>11月20日時点の考察</td></tr>
+<tr><td><code>1e2a</code></td><td>11月20日の気づきを掘り下げる</td></tr>
+</tbody></table>
+<p><code>1e</code> の系列をそのままたどれるならTopic Indexは不要。振り返りが増えて一覧しにくくなってから、<code>1e</code> に対応するTopic Indexを1枚作ればよい。</p>
+<p>この日付付きの振り返りは、日記とは別。日記は日付そのものを用紙の左上に書き、専用のクリアファイルに保管する。</p></section>
+<section class="lesson"><h3><span class="step">13</span>断片メモを一枚に集める</h3>
+<p>豆知識や、一言で収まる発見は、一枚のA4に上から書き足す。グローバルIndexには <strong>「断片メモ」と最初の用紙に付けたID</strong> を登録する。たとえば、最初の用紙のIDが <code>5</code> なら <code>断片メモ 5</code> と書く。</p>
+<figure class=""><div class="paired reference-pair"><div class="written a4-paper"><b><code>5</code></b><p>机の引き出しに、A4を横に入れられた。</p><p>夕方の散歩道。橋の手前で左に曲がると静か。</p><p>次の展示の名前は「風の庭」。</p></div><div class="written a4-paper"><b><code>5a</code></b><p>5が埋まったら、次の短い話はここから。</p></div></div><figcaption>別々の短い話を一枚に足していく。最初のIDが5なら、続きは5a、5b。</figcaption></figure>
+<p>この例では、一枚が埋まったら <code>5a</code>、その次は <code>5b</code>。一つの話にA4を一枚ずつ使わず、別々の短い話を続けて書ける。あとで一項目だけ引きたいときは、その箇所に <code>(1)</code> などを付けて <code>5(1)</code> と参照できる。</p>
+</section>
+<section class="lesson"><h3><span class="step">14</span>全体の流れをおさらいする</h3>
+<p>普段は、まず書き、IDを決めて保管する。索引は必要になったときに作る。読み返すときは索引や付箋から探す。考えが増えたときは、同じトピックのノートを小さくまとめ、必要なところからリンクする。</p>
+<figure class=""><div class="diagram-root">A4の上部を空け、まず書く</div><div class="diagram-branches three"><div><b>ノート</b><div>つながりを見てIDを決める</div></div><div><b>断片メモ</b><div>短い話を一枚に集める</div></div><div><b>日記</b><div>左上に日付を書き、別ファイルへ</div></div></div><ol class="workflow-list"><li><b>必要になった索引を作る</b><span>Global Indexを入口に、Topic Indexは後から適切な粒度で作る。</span></li><li><b>しまう・探す</b><span>クリアファイルの表側からID順。索引や付箋でA4を探す。</span></li><li><b>読み返して育てる</b><span>続きを書く。分野別のまとめ・進捗を作り、全体からリンクする。</span></li></ol><figcaption>通常のノートも断片メモも索引から引ける。日記は日付でたどる。</figcaption></figure>
+</section>
+<h2>第2部　ルール早見表</h2>
+<p class="basis">ルーマンのツェッテルカステンを土台にした、紙のノートとダブルインデックスの使い方。</p>
+<dl>
+<div><dt>本文ノート</dt><dd>A4縦。まず自由に書き、書いた後でIDを付ける。右上に日付。思考の途中の紙も残す。</dd></div>
+<div><dt>Folgezettel</dt><dd>考察を深めたり広げたりするときに分岐する。関連するだけで全てを同じ系列に押し込まない。続きの順番は参照で示せる。</dd></div>
+<div><dt>読書ノート</dt><dd>本Aは1、1a、1b…、本Bは2、2a、2b…など別の系列にする。比較は自由だが、別主題の継続的な研究は独立IDへ。</dd></div>
+<div><dt>思考とまとめ</dt><dd>穴ぼこや寄り道を認める。途中のまとめはその時点の記録。後から別の考察を続けてよい。</dd></div>
+<div><dt>Topic Indexの番号</dt><dd>本文ノートと独立した0-1、0-2、0-3…を使う。</dd></div>
+<div><dt>Topic Indexの数</dt><dd>一つの本文ノートIDに対し0個または1個。1にも1aにも、それぞれ必要に応じて作れる。</dd></div>
+<div><dt>作成時期と粒度</dt><dd>事前設計せず、ノートが蓄積してから、探したい内容に近く、広すぎない適切な粒度で作る。</dd></div>
+<div><dt>名前の役割</dt><dd>分類境界ではなく思考の出発点。名前が後の内容を制限しない。</dd></div>
+<div><dt>グローバルIndex</dt><dd>小紙片のキーワードからノートやTopic Indexへ。見出しはあいうえお順。</dd></div>
+<div><dt>赤い点と参照</dt><dd>赤い点はそのノートIDに対応するTopic Indexの存在を示す。独立番号0-1等も併記する。★は関連索引、↑は必要になった上位索引、＝はまとめ。</dd></div>
+<div><dt>引用と続き</dt><dd>(1)、7a(1)、ID:、:IDで参照。参照先や記号は赤、用紙自身のIDと本文は青。</dd></div>
+<div><dt>保管と日記</dt><dd>通常ノートはFolgezettel順、Topic Indexは0-1から独立管理。日記は日付を左上に書いて別ファイル。</dd></div>
+<div><dt>振り返り</dt><dd>日付付きのまとめや進捗も通常ノートで書く。必要になってからTopic Indexを設ける。</dd></div>
+<div><dt>断片メモ</dt><dd>短い話を一枚にまとめて書き、埋まったら続きの紙へ。</dd></div>
+</dl><section class="lesson" id="evolving-topic-index"><h2>実際に運用するときの考え方</h2>
+<p><strong>ノートを書いてから索引を作る。</strong> これがこの方式の基本。自由な思考は最初から整理しない。読書ノートなら本Aは <code>1,1a,1b…</code>、本Bは <code>2,2a,2b…</code> と別々に展開し、どちらからも「無我」などのTopic Indexを後から作れる。</p>
+<pre class="diagram-code">本文ノート（思考の記録）          Topic Index（あとから作る入口）
+
+1  今の自分について              0-1  今の自分から始めた考察
+├─ 1a  価値観                →   価値観 1a
+│  ├─ 1a1                    →   生活習慣 1c
+│  └─ 1a2                    →   現在のまとめ 1f
+├─ 1b  人間関係
+├─ 1c  生活習慣                 0-2  価値観について
+├─ 1f  一度まとめる         →   価値観 1a
+└─ 1g  また考え始める       →   考えの変化 1a2</pre>
+<p><code>0-1</code> や <code>0-2</code> は本文ノートのIDではない。<strong>各出発点のIDに対応するTopic Indexは最大1枚でよく、作らないままでもよい。</strong> 名称はその時点の出発点を示すだけで、内容の境界を決めるものではない。複数の観点から同じノートを探したいときは、索引内の項目や相互参照を使う。</p>
+<p>最初から「宗教」「仏教」「心理学」といった体系を完成させる必要はない。ノートが蓄積してから、実際の内容に近い適切な粒度で必要な索引だけ作る。思考の飛躍、穴ぼこ、暫定的なまとめは消さず、後からたどれるようにする。</p></section></main><script>try { localStorage.setItem("lang", "ja"); } catch {}</script>
+</body></html>
