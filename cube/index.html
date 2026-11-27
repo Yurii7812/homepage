@@ -171,14 +171,21 @@
 
 <script>
 // スクリプトが動かなかったとき、その理由を画面に出す（言語は保存した設定に合わせる）
-const enDiag = /[?&]lang=en\b/.test(location.search) || localStorage.getItem('lang') === 'en';
+let diagLang = new URLSearchParams(location.search).get('lang');
+if (!['ja','en','ru'].includes(diagLang)) {
+  try { diagLang = localStorage.getItem('lang'); } catch {}
+}
+const diagMessages = {
+  ja: ['表示のエラー: ', '表示の準備ができませんでした（スクリプトが動いていません）。Ctrl+Shift+Rで開き直してください。'],
+  en: ['Display error: ', 'The display could not start. Reload it hard (Ctrl+Shift+R).'],
+  ru: ['Ошибка отображения: ', 'Не удалось запустить отображение. Выполните принудительное обновление (Ctrl+Shift+R).']
+};
+const diag = diagMessages[diagLang] || diagMessages.ja;
 window.addEventListener('error', (e) => {
-  document.getElementById('diag').textContent = (enDiag ? 'Display error: ' : '表示のエラー: ') + e.message;
+  document.getElementById('diag').textContent = diag[0] + e.message;
 });
 setTimeout(() => {
-  if (!window.cubeReady) document.getElementById('diag').textContent = enDiag
-    ? 'The display could not start (the script is not running). An old page may be cached. Reload it hard (Ctrl+Shift+R; on a phone, do a strong reload).'
-    : '表示の準備ができませんでした（スクリプトが動いていません）。古い表示が残っている可能性があるので、Ctrl+Shift+R（スマホは再読み込みを強く）で開き直してください。';
+  if (!window.cubeReady) document.getElementById('diag').textContent = diag[1];
 }, 5000);
 </script>
 <script type="module">
