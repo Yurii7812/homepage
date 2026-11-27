@@ -1,35 +1,10 @@
 <!doctype html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yurii</title>
-<link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="../navigation.css">
-<link rel="alternate" hreflang="ja" href="../ja/">
-<link rel="alternate" hreflang="en" href="../en/">
-</head>
-<body>
-<nav class="language-switch" aria-label="言語"><a href="../ja/" lang="ja" hreflang="ja" aria-current="page">日本語</a><a href="../en/" lang="en" hreflang="en">English</a></nav>
-<h1>Hi I'm Yurii</h1>
-<nav>
-  <a href="#brainstorm">ブレスト</a>
-  <a href="#works">作品</a>
-  <a href="#other">その他</a>
-</nav>
-
-<h2 id="brainstorm">ブレスト</h2>
-<p><a href="brainstorm-philosophy/">ブレストという思想</a><br><span class="note">思考・信念・意識を自在に扱う思想。信仰の信仰、全肯定、ブレストトランスとの関係を10点の図解で紹介。</span></p>
-
-<p><a href="brainstorm-language-learning/">ブレスト的な言語学習</a><br><span class="note">間違ってもいいから、まず使う。自己生成と修正フィードバックによる言語学習を図解で紹介。</span></p>
-
-<h2 id="works">作品</h2>
-<p><a href="../cube/?lang=ja">I love U Rubik's Cube</a><span>（3D モデル）</span></p>
-
-<h2 id="other">その他</h2>
-<p><a href="archive/">アーカイブ</a></p>
-<p id="contact"><span>SimpleX で連絡できます: </span><a href="https://smp18.simplex.im/a#7VdnQWiFgN_xi4BoW1QFBVJLWPeN5uEtJRZqyUy8ydY">SimpleX の連絡先リンク</a></p>
-
-<script>try { localStorage.setItem("lang", "ja"); } catch {}</script>
-</body>
-</html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Yurii</title><link rel="canonical" href="../#/ja/home.md"><script>
+const target = new URL("../#/ja/home.md", location.href);
+let section = location.hash.slice(1);
+try { section = decodeURIComponent(section); } catch {}
+const legacy = {"brainstorm":"ブレスト","works":"作品","other":"その他","contact":"その他"};
+if (true && Object.prototype.hasOwnProperty.call(legacy, section)) section = legacy[section];
+if (section) target.hash += "?section=" + encodeURIComponent(section);
+location.replace(target.href);
+</script></head><body><p><a href="../#/ja/home.md">ページを開く</a></p></body></html>
