@@ -4,13 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Yurii</title>
-<link rel="stylesheet" href="reader.css">
+<link rel="stylesheet" href="reader.css?v=e81a1c38ba24">
 <link rel="stylesheet" id="paper-css" href="paper-guide.css" disabled>
 <link rel="alternate" hreflang="ja" href="./#/ja/home.md">
 <link rel="alternate" hreflang="en" href="./#/en/home.md">
 <script defer src="https://cdn.jsdelivr.net/npm/marked@18.2.0/lib/marked.umd.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.4.17/dist/purify.min.js"></script>
 <script defer src="reader.js"></script>
+<style>
+/* Keep links visibly distinct even if an older stylesheet is cached. */
+#site a[href], #site a[href]:link, #site a[href]:visited {
+  color: #005bcc !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#site a[href]:hover, #site a[href]:focus-visible {
+  color: #003b88 !important;
+}
+</style>
 </head>
 <body>
 <div id="site">
