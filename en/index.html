@@ -1,35 +1,10 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yurii</title>
-<link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="../navigation.css">
-<link rel="alternate" hreflang="ja" href="../ja/">
-<link rel="alternate" hreflang="en" href="../en/">
-</head>
-<body>
-<nav class="language-switch" aria-label="Language"><a href="../ja/" lang="ja" hreflang="ja">日本語</a><a href="../en/" lang="en" hreflang="en" aria-current="page">English</a></nav>
-<h1>Hi I'm Yurii</h1>
-<nav>
-  <a href="#brainstorm">Brainstorming</a>
-  <a href="#works">Works</a>
-  <a href="#other">Other</a>
-</nav>
-
-<h2 id="brainstorm">Brainstorming</h2>
-<p><a href="../ja/brainstorm-philosophy/" hreflang="ja">Brainstorming as a Philosophy</a> <span lang="en">(Japanese)</span><br><span class="note">An illustrated exploration of freedom in thought, belief, and consciousness.</span></p>
-
-<p><a href="../ja/brainstorm-language-learning/" hreflang="ja">Brainstorming-Style Language Learning</a> <span lang="en">(Japanese)</span><br><span class="note">Learning by expressing yourself, making mistakes, and using feedback.</span></p>
-
-<h2 id="works">Works</h2>
-<p><a href="../cube/?lang=en">I love U Rubik&#x27;s Cube</a><span> (3D model)</span></p>
-
-<h2 id="other">Other</h2>
-<p><a href="archive/">Archive</a></p>
-<p id="contact"><span>You can reach me on SimpleX: </span><a href="https://smp18.simplex.im/a#7VdnQWiFgN_xi4BoW1QFBVJLWPeN5uEtJRZqyUy8ydY">SimpleX contact link</a></p>
-
-<script>try { localStorage.setItem("lang", "en"); } catch {}</script>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Yurii</title><link rel="canonical" href="../#/en/home.md"><script>
+const target = new URL("../#/en/home.md", location.href);
+let section = location.hash.slice(1);
+try { section = decodeURIComponent(section); } catch {}
+const legacy = {"brainstorm":"brainstorming","works":"works","other":"other","contact":"other"};
+if (true && Object.prototype.hasOwnProperty.call(legacy, section)) section = legacy[section];
+if (section) target.hash += "?section=" + encodeURIComponent(section);
+location.replace(target.href);
+</script></head><body><p><a href="../#/en/home.md">Open page</a></p></body></html>
