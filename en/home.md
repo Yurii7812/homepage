@@ -2,6 +2,9 @@
 
 ## Brainstorming
 
+[BRESUTO — Brainstorming app](https://github.com/Yurii7812/bresuto)  
+A Linux desktop app for developing and grouping ideas on an infinite canvas. Each node is saved as Markdown.
+
 [Brainstorming as a Philosophy](../ja/brainstorm-philosophy/guide.md) (Japanese)  
 An illustrated exploration of freedom in thought, belief, and consciousness.
 
