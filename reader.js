@@ -6,12 +6,12 @@
   const nav = document.getElementById("site-nav");
   const paperCss = document.getElementById("paper-css");
   let currentFile = "", generation = 0;
-  const valid = p => /^(ja|en)\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.md$/.test(p);
+  const valid = p => /^(ja|en|ru)\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.md$/.test(p);
   const hashFor = (file, section = "") => "#/" + file + (section ? "?section=" + encodeURIComponent(section) : "");
   function savedLanguage() {
     const lang = new URL(location.href).searchParams.get("lang");
-    if (lang === "ja" || lang === "en") return lang;
-    try { return localStorage.getItem("lang") === "en" ? "en" : "ja"; } catch { return "ja"; }
+    if (["ja", "en", "ru"].includes(lang)) return lang;
+    try { const saved = localStorage.getItem("lang"); return ["ja", "en", "ru"].includes(saved) ? saved : "ja"; } catch { return "ja"; }
   }
   function route() {
     const raw = location.hash.startsWith("#/") ? location.hash.slice(2) : "";
@@ -21,20 +21,20 @@
   }
   function setNav(file) {
     const lang = file.split("/")[0], rest = file.slice(3);
-    const paired = /^(home\.md|archive\.md|paper-pkm\/guide\.md|yuriinote\/guide\.md)$/.test(rest);
+    const paired = /^(home\.md|archive\.md|(?:paper-pkm|yuriinote|brainstorm-philosophy|brainstorm-language-learning)\/guide\.md)$/.test(rest);
     document.documentElement.lang = lang;
     try { localStorage.setItem("lang", lang); } catch {}
     nav.replaceChildren();
     const home = document.createElement("a");
     home.href = hashFor(lang + "/home.md");
-    home.textContent = lang === "ja" ? "ホーム" : "Home";
+    home.textContent = {ja:"ホーム", en:"Home", ru:"Главная"}[lang];
     nav.append(home);
     const langs = document.createElement("span");
     langs.className = "languages";
-    for (const l of ["ja", "en"]) {
+    for (const l of ["ja", "en", "ru"]) {
       const a = document.createElement("a");
       a.href = hashFor(l + "/" + (paired ? rest : "home.md"));
-      a.textContent = l === "ja" ? "日本語" : "English";
+      a.textContent = {ja:"日本語", en:"English", ru:"Русский"}[l];
       a.lang = l;
       if (l === lang) a.setAttribute("aria-current", "page");
       langs.append(a);
@@ -84,13 +84,13 @@
       history.replaceState(null, "", root.href + hashFor(file, section));
     }
     if (file === currentFile) { scrollToSection(section); return; }
-    const serial = ++generation, ja = file.startsWith("ja/");
+    const serial = ++generation, lang = file.split("/")[0];
     currentFile = "";
     setNav(file);
     paperCss.disabled = !file.includes("/paper-pkm/");
     content.className = file.includes("/paper-pkm/") ? "paper-guide" : file.endsWith("/home.md") ? "home" : "article";
     content.setAttribute("aria-busy", "true");
-    content.textContent = ja ? "読み込み中…" : "Loading…";
+    content.textContent = {ja:"読み込み中…", en:"Loading…", ru:"Загрузка…"}[lang];
     try {
       if (!window.marked || !window.DOMPurify) throw new Error("Markdown renderer unavailable");
       const response = await fetch(new URL(file, root), { cache: "no-cache" });
@@ -106,7 +106,7 @@
     } catch (error) {
       if (serial !== generation) return;
       currentFile = "";
-      content.textContent = ja ? "ページを読み込めませんでした。再読み込みしてください。" : "Could not load this page. Please reload.";
+      content.textContent = {ja:"ページを読み込めませんでした。再読み込みしてください。", en:"Could not load this page. Please reload.", ru:"Не удалось загрузить страницу. Обновите её."}[lang];
       console.error(error);
     } finally { if (serial === generation) content.removeAttribute("aria-busy"); }
   }

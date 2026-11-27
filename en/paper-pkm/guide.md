@@ -2,7 +2,7 @@
 
 <div id="benefits"></div>
 
-Write first, before designing a classification. Give notes IDs based on their relationship, then find them through a Global Index and Topic Indexes. This guide works entirely on paper. Keep long arguments and unfinished thinking on A4 sheets; there is no need to split them into atomic notes.
+Write first, before designing a classification. Give notes IDs based on their relationship, then find them through a Global Index and Topic Indexes. This is a practical guide to a double-index system that works entirely on paper. Keep long arguments and unfinished thinking on A4 sheets; there is no need to split them into atomic notes.
 
 **Contents**
 

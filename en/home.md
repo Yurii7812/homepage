@@ -1,15 +1,15 @@
 # Hi I'm Yurii
 
-## Brainstorming
+## Brainstorm
 
 [BRESUTO — Brainstorming app](https://github.com/Yurii7812/bresuto)  
-A Linux desktop app for developing and grouping ideas on an infinite canvas. Each node is saved as Markdown.
+A Linux app for putting thoughts onto an infinite canvas and organizing them in groups. Each node is saved as Markdown.
 
-[Brainstorming as a Philosophy](../ja/brainstorm-philosophy/guide.md) (Japanese)  
-An illustrated exploration of freedom in thought, belief, and consciousness.
+[Brainstorm as a Philosophy](brainstorm-philosophy/guide.md)  
+A philosophy of engaging freely with thought, belief, and consciousness. Ten diagrams introduce Faith in Faith, Total Affirmation, and the relationship to Brainstorm Trance.
 
-[Brainstorming-Style Language Learning](../ja/brainstorm-language-learning/guide.md) (Japanese)  
-Learning by expressing yourself, making mistakes, and using feedback.
+[Brainstorm-based Language Learning](brainstorm-language-learning/guide.md)  
+Use the language first, even if you make mistakes. An illustrated introduction to learning through self-generated expressions and corrective feedback.
 
 ## Works
 
@@ -19,4 +19,4 @@ Learning by expressing yourself, making mistakes, and using feedback.
 
 [Archive](archive.md)
 
-You can reach me on SimpleX: [SimpleX contact link](https://smp18.simplex.im/a#7VdnQWiFgN_xi4BoW1QFBVJLWPeN5uEtJRZqyUy8ydY)
+Contact me on SimpleX: [SimpleX contact link](https://smp18.simplex.im/a#7VdnQWiFgN_xi4BoW1QFBVJLWPeN5uEtJRZqyUy8ydY)
