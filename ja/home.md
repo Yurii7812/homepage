@@ -2,6 +2,9 @@
 
 ## ブレスト
 
+[BRESUTO — ブレストアプリ](https://github.com/Yurii7812/bresuto)  
+無限キャンバスに思考を書き出し、グループ化して整理するLinux向けアプリ。各ノードをMarkdownで保存。
+
 [ブレストという思想](brainstorm-philosophy/guide.md)  
 思考・信念・意識を自在に扱う思想。信仰の信仰、全肯定、ブレストトランスとの関係を10点の図解で紹介。
 
