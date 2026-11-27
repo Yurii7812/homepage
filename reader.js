@@ -85,6 +85,7 @@
     }
     if (file === currentFile) { scrollToSection(section); return; }
     const serial = ++generation, ja = file.startsWith("ja/");
+    currentFile = "";
     setNav(file);
     paperCss.disabled = !file.includes("/paper-pkm/");
     content.className = file.includes("/paper-pkm/") ? "paper-guide" : file.endsWith("/home.md") ? "home" : "article";
@@ -101,7 +102,7 @@
       content.replaceChildren(fragment);
       currentFile = file;
       document.title = (content.querySelector("h1")?.textContent || "Yurii") + " | Yurii";
-      scrollToSection(section);
+      scrollToSection(route().section);
     } catch (error) {
       if (serial !== generation) return;
       currentFile = "";
