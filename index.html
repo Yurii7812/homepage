@@ -2,41 +2,21 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Yurii</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="navigation.css">
-<link rel="alternate" hreflang="ja" href="ja/">
-<link rel="alternate" hreflang="en" href="en/">
-<script>
-const url = new URL(window.location.href);
-const requested = url.searchParams.get("lang");
-let saved;
-try { saved = localStorage.getItem("lang"); } catch {}
-const lang = ["ja", "en"].includes(requested) ? requested : saved === "en" ? "en" : "ja";
-url.searchParams.delete("lang");
-const target = new URL(lang + "/", url);
-target.search = url.search;
-target.hash = url.hash;
-window.location.replace(target);
-</script>
+<link rel="stylesheet" href="reader.css">
+<link rel="stylesheet" id="paper-css" href="paper-guide.css" disabled>
+<link rel="alternate" hreflang="ja" href="./#/ja/home.md">
+<link rel="alternate" hreflang="en" href="./#/en/home.md">
+<script defer src="https://cdn.jsdelivr.net/npm/marked@18.2.0/lib/marked.umd.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.4.17/dist/purify.min.js"></script>
+<script defer src="reader.js"></script>
 </head>
 <body>
-<nav class="language-switch" aria-label="言語"><a href="ja/" lang="ja" hreflang="ja" aria-current="page">日本語</a><a href="en/" lang="en" hreflang="en">English</a></nav>
-<h1>Hi I'm Yurii</h1>
-<nav>
-  <a href="#works">作品</a>
-  <a href="#contact">連絡先</a>
-</nav>
-
-<h2 id="works">作品</h2>
-<p><a href="cube/?lang=ja">I love U Rubik's Cube</a><span>（3D モデル）</span></p>
-<p><a href="https://github.com/Yurii7812/gnosis">Gnosis</a><br><span class="note">Markdown のノートを本物の Vim で書き、リンクでつないで育てる PKM（個人の知識管理）です。日本語と英語に対応し、Linux・macOS・Windows 用のインストーラーがあります。</span></p>
-
-<p><a href="ja/paper-pkm/">図でわかる 紙の知識管理術</a> · <a href="https://github.com/Yurii7812/homepage/blob/main/ja/paper-pkm/guide.md">Markdown</a><br><span class="note">A4のノートを、フォルゲゼッテルIDとダブルインデックスでつなぐ方法。</span></p>
-
-<h2 id="contact">連絡先</h2>
-<p><span>SimpleX で連絡できます: </span><a href="https://smp18.simplex.im/a#7VdnQWiFgN_xi4BoW1QFBVJLWPeN5uEtJRZqyUy8ydY">SimpleX の連絡先リンク</a></p>
-
+<div id="site">
+<nav id="site-nav" aria-label="Navigation"><a href="./#/ja/home.md">日本語</a><a href="./#/en/home.md">English</a></nav>
+<main id="content" aria-live="polite">読み込み中… / Loading…</main>
+<noscript>JavaScriptを有効にしてください。 / Please enable JavaScript to view the site.</noscript>
+</div>
 </body>
 </html>
