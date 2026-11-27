@@ -1,24 +1,24 @@
-# Brainstorm as a Philosophy
+# Brainstorm as an Idea
 
 **An attempt to go beyond a single method of thinking and to engage freely with thought, belief, and consciousness.**
 
-Brainstorming is generally known as a technique for generating ideas. I want to understand the word more broadly, however: as a philosophy of not being bound to particular ways of thinking, of attending also to belief and consciousness, and of developing a flexible relationship with the workings of the mind.
+Brainstorming is generally known as a technique for generating ideas. I want to understand the word more broadly, however: as an idea centred on not being bound to particular ways of thinking, of attending also to belief and consciousness, and of developing a flexible relationship with the workings of the mind.
 
-“Brainstorm” as described here is not a proposed new definition of an established academic term. It is a personal philosophy developed from ordinary brainstorming as its starting point. The framework of the brain and thought that serves as this starting point does not limit where the philosophy may lead.
+“Brainstorm” as described here is not a proposed new definition of an established academic term. It is a personal idea developed from ordinary brainstorming as its starting point. The framework of the brain and thought that serves as this starting point does not limit where this idea may lead.
 
-## 1. Brainstorm is not a method, but a philosophy about methods
+## 1. Brainstorm is not a method, but an idea about methods
 
 Ordinary brainstorming emphasizes generating many ideas while withholding criticism. In my conception of Brainstorm, however, following a particular procedure is not an end in itself.
 
-Consider rubber duck debugging: putting your thoughts into words as if explaining them to someone makes ambiguities and contradictions apparent. This is not classical brainstorming itself, but it is one of the methods one can freely choose within the philosophy of Brainstorm.
+Consider rubber duck debugging: putting your thoughts into words as if explaining them to someone makes ambiguities and contradictions apparent. This is not classical brainstorming itself, but it is one of the methods one can freely choose within the framework of Brainstorm.
 
 The idea of freely choosing methods need not be limited to thinking techniques. Beliefs, emotions, attention, and states of consciousness also fall within its scope.
 
 ![The scope of Brainstorm](figures/scope.svg)
 
-*Figure 1. From an idea-generation technique to a philosophy concerning the workings of the mind as a whole.*
+*Figure 1. From an idea-generation technique to an idea concerning the workings of the mind as a whole.*
 
-> Brainstorm is a philosophy and practice that aims to engage freely with thought, belief, emotion, states of consciousness, and other aspects of the mind without being rigidly bound to them.
+> Brainstorm is an idea and a practice that aims to engage freely with thought, belief, emotion, states of consciousness, and other aspects of the mind without being rigidly bound to them.
 
 By freedom here I do not mean complete voluntary control over every mental state. Rather, the aim is to be able to choose, as appropriate, whether to seek control or to let go.
 
@@ -40,7 +40,7 @@ Brainstorm does not mean using many methods at once. What matters is not the num
 
 ![Relationships among thinking techniques](figures/methods.svg)
 
-*Figure 3. Each technique can be selected within the philosophy of Brainstorm.*
+*Figure 3. Each technique can be selected within the framework of Brainstorm.*
 
 Writing on paper, thinking silently, and having conversations can all be practices. Rubber duck debugging may help on one occasion; diagrams or random input may help on another. Which method is suitable depends on the purpose and circumstances.
 
@@ -88,7 +88,7 @@ I therefore position Total Affirmation as a way to return to Faith in Faith.
 
 *Figure 6. A reversible model of entering a particular perspective and opening up the possibility of other perspectives again.*
 
-Total Affirmation is the practice of accepting the possibility of all perspectives and including the very attitude of acceptance among the things affirmed. I consider it possible that even if conviction in the philosophy is lost, remembering only the form of the method and practising it again might restore that conviction.
+Total Affirmation is the practice of accepting the possibility of all perspectives and including the very attitude of acceptance among the things affirmed. I consider it possible that even if conviction in this idea is lost, remembering only the form of the method and practising it again might restore that conviction.
 
 ![The self-reference of Total Affirmation](figures/self-reference.svg)
 
@@ -118,7 +118,7 @@ The idea of treating beliefs as non-fixed and using worldviews according to circ
 
 Brainstorm, however, is not a system limited to magic. It encompasses a wide range of everyday practices: writing, language learning, problem-solving, and philosophical inquiry. Practices involving belief are only one part of it.
 
-| Aspect | Brainstorm as a philosophy | Points of contact with chaos magic |
+| Aspect | Brainstorm as an idea | Points of contact with chaos magic |
 | --- | --- | --- |
 | Methods | Freely using methods related to thought and cognition | Treating beliefs and worldviews as tools |
 | Scope | Ideation, learning, belief, states of consciousness, and more | Magical practice and the use of belief |
@@ -128,7 +128,7 @@ This is a conceptual comparison, not evidence of magical efficacy or a rigorous 
 
 ## 8. Relationship to Brainstorm Trance Esotericism
 
-Brainstorm is the name of the philosophy, while Brainstorm Trance Esotericism is conceived as the name of a group that foregrounds distinctive practices within that philosophy.
+Brainstorm is the name of the idea, while Brainstorm Trance Esotericism is conceived as the name of a group that foregrounds distinctive practices within that framework.
 
 Trance here refers to an altered state of consciousness. Drawing on personal experiences of deep absorption or ecstasy during Brainstorm, I also make the relationship between thought and states of consciousness a subject of inquiry.
 
@@ -144,7 +144,7 @@ It is fine to practise ordinary Brainstorm alone, without adopting a religious f
 
 At the entrance to Brainstorm is the practice of brainstorming, which presupposes the brain. We think, put thoughts into words, and use various methods to develop freedom in relation to thought, belief, and consciousness.
 
-But starting with the brain as a premise does not require remaining within that premise. In Faith in Faith, the understanding that the brain exists and the philosophy of Brainstorm itself can also be regarded as beliefs.
+But starting with the brain as a premise does not require remaining within that premise. In Faith in Faith, the understanding that the brain exists and the idea of Brainstorm itself can also be regarded as beliefs.
 
 Beyond the question of whether the brain exists, one can conceive of a way of being in which even the distinction between existence and nonexistence, or between the subject that acts and the object acted upon, disappears.
 
@@ -168,15 +168,15 @@ Neither need be fixed as the ultimate state. Practising within the world or movi
 
 ## 11. Not being bound even by Brainstorm itself
 
-The philosophy of Brainstorm begins with freely using various thinking methods and extends that freedom to beliefs and states of consciousness.
+The idea of Brainstorm begins with freely using various thinking methods and extends that freedom to beliefs and states of consciousness.
 
-Within Faith in Faith, the philosophy of Brainstorm itself can be engaged with freely. One may adopt Brainstorm without having to insist on being a practitioner of Brainstorm.
+Within Faith in Faith, the idea of Brainstorm itself can be engaged with freely. One may adopt Brainstorm without having to insist on being a practitioner of Brainstorm.
 
 Even Faith in Faith need not be fixed as the final answer. Beyond it there may be ways of being that I cannot yet imagine.
 
 > Brainstorm is an entry point into practice. There is no need for the name Brainstorm to limit how far one can proceed from that entrance.
 
-The philosophy of Brainstorm is not a closed system intended to lead to a particular conclusion. I want it to be an open philosophy that includes the possibility of going beyond Brainstorm itself.
+The idea of Brainstorm is not a closed system intended to lead to a particular conclusion. I want it to be an open idea that includes the possibility of going beyond Brainstorm itself.
 
 ---
 
