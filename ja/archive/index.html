@@ -1,26 +1,10 @@
 <!doctype html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>アーカイブ | Yurii</title>
-<link rel="stylesheet" href="../../style.css">
-<link rel="stylesheet" href="../../navigation.css">
-<link rel="alternate" hreflang="ja" href="../../ja/archive/">
-<link rel="alternate" hreflang="en" href="../../en/archive/">
-</head>
-<body>
-<nav class="language-switch" aria-label="言語"><a href="../../ja/archive/" lang="ja" hreflang="ja" aria-current="page">日本語</a><a href="../../en/archive/" lang="en" hreflang="en">English</a></nav>
-<p><a href="../">トップページに戻る</a></p>
-<h1>アーカイブ</h1>
-<p>過去の作品・資料</p>
-
-<p><a href="https://github.com/Yurii7812/gnosis">Gnosis</a><br><span class="note">Markdown のノートを本物の Vim で書き、リンクでつないで育てる PKM（個人の知識管理）です。日本語と英語に対応し、Linux・macOS・Windows 用のインストーラーがあります。</span></p>
-
-<p><a href="../paper-pkm/">図でわかる 紙の知識管理術</a><br><span class="note">A4のノートを、フォルゲゼッテルIDとダブルインデックスでつなぐ方法。</span></p>
-
-<p><a href="https://github.com/Yurii7812/YuriiNote">YuriiNote — GitHub</a> · <a href="../yuriinote/">使い方（日本語）</a> · <a href="../../en/yuriinote/">English guide</a><br><span class="note">紙・デジタルのノート、索引、チャットメモ、日記を一元管理するデスクトップアプリ。</span></p>
-
-<script>try { localStorage.setItem("lang", "ja"); } catch {}</script>
-</body>
-</html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>アーカイブ | Yurii</title><link rel="canonical" href="../../#/ja/archive.md"><script>
+const target = new URL("../../#/ja/archive.md", location.href);
+let section = location.hash.slice(1);
+try { section = decodeURIComponent(section); } catch {}
+const legacy = {"brainstorm":"ブレスト","works":"作品","other":"その他","contact":"その他"};
+if (false && Object.prototype.hasOwnProperty.call(legacy, section)) section = legacy[section];
+if (section) target.hash += "?section=" + encodeURIComponent(section);
+location.replace(target.href);
+</script></head><body><p><a href="../../#/ja/archive.md">ページを開く</a></p></body></html>
