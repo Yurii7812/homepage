@@ -45,7 +45,7 @@ async function openMap(img){
   try{
     const res=await fetch(img.src,{cache:"no-cache"});if(!res.ok)throw Error("HTTP "+res.status);
     const raw=await res.text();if(token!==serial||!dlg.open)return;
-    const clean=DOMPurify.sanitize(raw,{USE_PROFILES:{svg:true,svgFilters:false},ADD_ATTR:["data-section","tabindex"],FORBID_TAGS:["script","foreignObject","style"],FORBID_ATTR:["style"]});
+    const clean=DOMPurify.sanitize(raw,{USE_PROFILES:{svg:true,svgFilters:false},ADD_TAGS:["a"],ADD_ATTR:["data-section","tabindex"],FORBID_TAGS:["script","foreignObject","style"],FORBID_ATTR:["style"]});
     const doc=new DOMParser().parseFromString(clean,"image/svg+xml"),node=doc.documentElement;
     if(node.localName!=="svg"||doc.querySelector("parsererror"))throw Error("Invalid SVG");
     svg=document.importNode(node,true);
