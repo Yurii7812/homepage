@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>無限階段 | Yurii</title>
+<style>
+:root{color-scheme:light dark;--bg:#f7f6f2;--ink:#242824;--muted:#636860;--line:#d6d8cf;--accent:#a43b27;--stage:#eeeee7;--panel:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#191c1b;--ink:#efefe8;--muted:#b2b7af;--line:#424943;--accent:#ff997d;--stage:#272d29;--panel:#222724}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,sans-serif}main{max-width:850px;margin:auto;padding:24px 22px 54px}nav{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.86rem}a{color:inherit;text-underline-offset:3px}nav span{display:flex;gap:13px}nav [aria-current]{font-weight:bold}header{margin:30px 0 18px}h1{font-size:clamp(1.8rem,5vw,2.9rem);font-weight:650;letter-spacing:-.045em;line-height:1.15;margin:0 0 10px}header p{color:var(--muted);margin:0}.stage{position:relative;background:var(--stage);border:1px solid var(--line);border-radius:12px;overflow:hidden}.stage svg{display:block;width:100%;height:auto}.status{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 16px 13px;color:var(--muted);font-size:.8rem;font-variant-numeric:tabular-nums}.status strong{color:var(--ink);font-weight:600}.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:17px 0}button,select{font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:8px 13px;cursor:pointer}button.primary{background:var(--ink);color:var(--bg);border-color:var(--ink);min-width:125px}button:disabled{opacity:.55;cursor:wait}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}label{display:inline-flex;gap:8px;align-items:center;font-size:.85rem;color:var(--muted)}input{width:95px;accent-color:var(--accent)}.hint{color:var(--muted);font-size:.82rem;min-height:1.4em;margin:0}details{margin-top:26px;border-top:1px solid var(--line);padding-top:16px}summary{cursor:pointer;font-weight:600}details p{color:var(--muted);font-size:.92rem}#spectrum{width:100%;max-width:470px;display:block;height:auto}#walker line,#walker path{stroke-linecap:round;stroke-linejoin:round}#walker{pointer-events:none}@media(max-width:520px){main{padding:18px 12px 36px}header{margin-top:25px}.controls{gap:8px}button,select{padding:7px 9px}}
+</style>
+</head>
+<body>
+<main>
+<nav><a id="home" href="../#/ja/home.md">← ホーム</a><span><a href="?lang=ja" data-lang="ja">日本語</a><a href="?lang=en" data-lang="en">English</a><a href="?lang=ru" data-lang="ru">Русский</a></span></nav>
+<header><h1 id="title">無限階段</h1><p id="subtitle">ペンローズの階段 × シェパードトーン</p></header>
+<section class="stage" aria-label="Penrose stairs">
+<svg id="scene" viewBox="0 0 680 440" role="img" aria-labelledby="scene-title">
+<title id="scene-title">ペンローズの階段を歩く人</title>
+<defs><radialGradient id="floor"><stop offset="0" stop-color="#353a32" stop-opacity=".17"/><stop offset="1" stop-color="#353a32" stop-opacity="0"/></radialGradient></defs>
+<ellipse cx="340" cy="335" rx="285" ry="87" fill="url(#floor)"/>
+<g id="walls"></g><g id="stairs"></g>
+<g id="walker"><ellipse id="shadow" cx="0" cy="0" rx="10" ry="3.4" fill="#222" opacity=".23"/><g id="body" stroke="#39342f" stroke-width="3.1" fill="none"><path id="legs" d="M0 -16 L-4 -8 L-5 0 M0 -16 L4 -8 L5 0"/><path d="M-4 -31 Q0 -34 4 -31 L5 -16 Q0 -13 -5 -16Z" fill="#ae4932" stroke="#753725" stroke-width="1.2"/><path id="arms" d="M-3 -28 L-9 -21 L-5 -17 M3 -28 L8 -21 L4 -18" stroke="#ae4932" stroke-width="2.8"/><circle cx="0" cy="-38" r="5.8" fill="#d9ad87" stroke="#59463a" stroke-width="1.1"/><path d="M-5 -39 Q-4 -46 3 -43 L5 -39" fill="#39342f" stroke="none"/></g></g>
+</svg>
+<div class="status"><span><span id="step-label">段</span> <strong id="step">01 / 28</strong></span><span><span id="note-label">音</span> <strong id="note">C</strong></span><span><span id="lap-label">周回</span> <strong id="lap">0</strong></span></div>
+</section>
+<div class="controls"><button class="primary" id="play" type="button">▶ 再生</button><button id="direction" type="button">↑ 登る</button><label><span id="speed-label">速度</span><select id="speed"><option value="0.7">0.7×</option><option value="1" selected>1×</option><option value="1.4">1.4×</option><option value="2">2×</option></select></label><label><span id="volume-label">音量</span><input type="range" id="volume" min="0" max="100" value="25"></label></div>
+<p class="hint" id="hint">再生を押すと音が鳴ります。音量は小さめからお試しください。</p>
+<details><summary id="how">仕組み</summary><p id="explain">8つのオクターブ成分を重ね、低音と高音を弱く、中央の音を強くします。ドレミファソラシと上がるにつれて各成分が移動し、最も高い成分は消え、低い成分が現れます。1オクターブごとに同じ周波数と音量の組み合わせに戻ります。28段を1周すると4オクターブ分の循環が完了します。</p><svg id="spectrum" viewBox="0 0 400 110" role="img" aria-label="Eight octave components under a bell-shaped amplitude envelope"></svg></details>
+</main>
+<script>
+(() => {
+'use strict';
+const $=id=>document.getElementById(id);
+const strings={
+ja:{title:'無限階段',subtitle:'ペンローズの階段 × シェパードトーン',home:'← ホーム',scene:'ペンローズの階段を歩く人',step:'段',note:'音',lap:'周回',play:'▶ 再生',pause:'Ⅱ 停止',up:'↑ 登る',down:'↓ 降りる',speed:'速度',volume:'音量',hint:'再生を押すと音が鳴ります。音量は小さめからお試しください。',how:'仕組み',explain:'8つのオクターブ成分を重ね、低音と高音を弱く、中央の音を強くします。ドレミファソラシと上がるにつれて各成分が移動し、最も高い成分は消え、低い成分が現れます。1オクターブごとに同じ周波数と音量の組み合わせに戻ります。28段を1周すると4オクターブ分の循環が完了します。',error:'音声を開始できませんでした。ブラウザの音声設定を確認してください。'},
+en:{title:'Infinite Staircase',subtitle:'Penrose stairs × Shepard tone',home:'← Home',scene:'A person walking on the Penrose stairs',step:'Step',note:'Note',lap:'Laps',play:'▶ Play',pause:'Ⅱ Pause',up:'↑ Ascend',down:'↓ Descend',speed:'Speed',volume:'Volume',hint:'Press Play to enable sound. Start with the volume low.',how:'How it works',explain:'Eight octave-spaced components are combined, with the middle frequencies louder than the low and high extremes. As the notes ascend through C, D, E, F, G, A and B, the highest component fades out and a low component appears. After one octave the same frequencies and amplitudes recur. One lap of 28 steps completes four octave cycles.',error:'Audio could not start. Check your browser audio settings.'},
+ru:{title:'Бесконечная лестница',subtitle:'Лестница Пенроуза × тон Шепарда',home:'← Главная',scene:'Человек идёт по лестнице Пенроуза',step:'Ступень',note:'Нота',lap:'Круги',play:'▶ Пуск',pause:'Ⅱ Пауза',up:'↑ Вверх',down:'↓ Вниз',speed:'Скорость',volume:'Громкость',hint:'Нажмите «Пуск», чтобы включить звук. Начните с малой громкости.',how:'Как это работает',explain:'Восемь звуковых компонентов с интервалом в октаву звучат одновременно. Средние частоты громче крайних. При переходе от до к си верхний компонент постепенно исчезает, а нижний появляется. Через октаву частоты и амплитуды повторяются. Один круг из 28 ступеней соответствует четырём октавным циклам.',error:'Не удалось включить звук. Проверьте настройки браузера.'}
+};
+const lang=new URLSearchParams(location.search).get('lang');
+const l=Object.hasOwn(strings,lang)?lang:'ja', t=strings[l];
+document.documentElement.lang=l;document.title=t.title+' | Yurii';
+for(const id of ['title','subtitle','home','play','speed-label','volume-label','step-label','note-label','lap-label','hint','how','explain','scene-title']) $(id).textContent=t[id.replace('-label','').replace('scene-title','scene')];
+$('home').href='../#/'+l+'/home.md';
+document.querySelector('[data-lang="'+l+'"]').setAttribute('aria-current','page');
+$('direction').textContent=t.up;
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);parent.append(e);return e}
+const mix=(a,b,u)=>[a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u];
+const dy=(p,h)=>[p[0],p[1]+h], mid=(a,b)=>mix(a,b,.5);
+const poly=(g,pts,fill)=>el('polygon',{points:pts.map(p=>p.join(',')).join(' '),fill,stroke:'#5c6056','stroke-width':'.9','stroke-linejoin':'round'},g);
+// Forced-perspective ring: every tread has a positive rise in the walking direction.
+// The four different projected run slopes are intentional, making a closed impossible loop.
+const corners=[
+{O:[340,94],Q:[394,119],I:[340,147],Y:[286,119]},
+{O:[592,214],Q:[538,241],I:[484,214],Y:[538,187]},
+{O:[340,347],Q:[286,320],I:[340,293],Y:[394,320]},
+{O:[88,214],Q:[142,187],I:[196,214],Y:[142,241]}
+];
+const N=7,H=6,DEPTH=20,steps=[],landings=[],runs=[];
+const topColors=['#e7e5d6','#f3efde','#e9e5d4','#f2efdf'],risers=['#a4a797','#a9a694','#969b8b','#b3b29e'];
+for(let i=0;i<4;i++){
+ const a=corners[i],b=corners[(i+1)%4],run=[];
+ landings.push(mid(a.O,a.I));
+ for(let j=0;j<N;j++){
+  const u=j/N,v=(j+1)/N;
+  const o=mix(a.Q,b.Y,u),q=mix(a.I,b.I,u),O=mix(a.Q,b.Y,v),Q=mix(a.I,b.I,v);
+  const lo=dy(O,H),lq=dy(Q,H);
+  const center=mid(mid(o,q),mid(lo,lq));
+  run.push({o,q,O,Q,lo,lq,center});steps.push({center,side:i});
+ }
+ runs.push(run);
+}
+const walls=$('walls'),stairs=$('stairs');
+for(const i of [0,3,1,2]){
+ const outer=i===1||i===2,run=runs[i];
+ for(const s of run){
+  const a=outer?s.o:s.q,b=outer?s.lo:s.lq,c=outer?s.O:s.Q;
+  poly(walls,[a,b,c,dy(c,DEPTH),dy(a,DEPTH)],outer?'#a5a99b':'#92998c');
+ }
+ const c=corners[i];
+ if(i===1||i===2||i===3){
+  for(const p of [c.Q,c.Y])poly(walls,[c.O,p,dy(p,DEPTH),dy(c.O,DEPTH)],'#a5a99b');
+ }
+}
+for(const i of [0,3,1,2]){
+ const c=corners[i];
+ poly(stairs,[c.O,c.Q,c.I,c.Y],topColors[i]);
+ const order=(i===0||i===1)?runs[i]:[...runs[i]].reverse();
+ for(const s of order){
+  poly(stairs,[s.o,s.q,s.lq,s.lo],topColors[i]);
+  poly(stairs,[s.lo,s.lq,s.Q,s.O],risers[i]);
+ }
+}
+const count=steps.length,scale=[0,2,4,5,7,9,11],names=['C','D','E','F','G','A','B'];
+const mod=(n,m)=>((n%m)+m)%m;
+const amp=x=>x<=0||x>=8?0:Math.pow(Math.sin(Math.PI*x/8),4);
+function components(n){const p=scale[mod(n,7)]/12;return Array.from({length:8},(_,k)=>({f:16.3515978313*Math.pow(2,k+p),a:amp(k+p),x:k+p}));}
+const spectrum=$('spectrum'),sx=x=>16+x*46,sy=a=>89-a*68;
+el('line',{x1:16,y1:89,x2:384,y2:89,stroke:'currentColor',opacity:'.35'},spectrum);
+el('polyline',{points:Array.from({length:81},(_,i)=>sx(i/10)+','+sy(amp(i/10))).join(' '),fill:'none',stroke:'currentColor',opacity:'.35','stroke-dasharray':'4 3'},spectrum);
+const bars=Array.from({length:8},()=>el('line',{stroke:'var(--accent)','stroke-width':'4','stroke-linecap':'round'},spectrum));
+function drawSpectrum(n){components(n).forEach((c,i)=>{const b=bars[i];b.setAttribute('x1',sx(c.x));b.setAttribute('x2',sx(c.x));b.setAttribute('y1',89);b.setAttribute('y2',sy(c.a));});}
+let pos=0,dir=1,travel=0,playing=false,busy=false,session=null,frame=0,lastNote=null;
+function pathAt(n,p,d){
+ const a=steps[mod(n,count)],b=steps[mod(n+d,count)];
+ if(a.side===b.side)return mix(a.center,b.center,p);
+ const corner=landings[d===1?b.side:a.side];
+ return p<.5?mix(a.center,corner,p*2):mix(corner,b.center,(p-.5)*2);
+}
+function draw(n,p=0){
+ const q=pathAt(n,p,dir),hop=Math.sin(Math.PI*p)*2.8,sw=Math.sin(Math.PI*2*p);
+ $('walker').setAttribute('transform','translate('+q[0]+' '+q[1]+')');
+ $('body').setAttribute('transform','translate(0 '+(-hop)+')');
+ const flip=steps[mod(n+dir,count)].center[0]>=steps[mod(n,count)].center[0]?1:-1;
+ $('legs').setAttribute('d','M0 -16 L'+(-3+sw*3*flip)+' -8 L'+(-5+sw*6*flip)+' '+(-Math.max(0,sw)*3)+' M0 -16 L'+(3-sw*3*flip)+' -8 L'+(5-sw*6*flip)+' '+(-Math.max(0,-sw)*3));
+ $('arms').setAttribute('d','M-3 -28 L'+(-8-sw*3*flip)+' -21 L'+(-5-sw*3*flip)+' -17 M3 -28 L'+(8+sw*3*flip)+' -21 L'+(5+sw*3*flip)+' -18');
+ if(n!==lastNote){
+  lastNote=n;$('step').textContent=String(mod(n,count)+1).padStart(2,'0')+' / '+count;$('note').textContent=names[mod(n,7)];$('lap').textContent=String(Math.floor(travel/count));drawSpectrum(n);
+ }
+}
+function schedule(s,n,when){
+ const comps=components(n),sum=comps.reduce((a,c)=>a+c.a,0);
+ const gate=s.ctx.createGain(),end=when+s.period*.96;
+ gate.gain.setValueAtTime(0,when);
+ gate.gain.linearRampToValueAtTime(1,when+Math.min(.035,s.period*.14));
+ gate.gain.setValueAtTime(1,end-Math.min(.06,s.period*.2));
+ gate.gain.linearRampToValueAtTime(0,end);gate.connect(s.master);
+ let remain=comps.length;
+ for(const c of comps){
+  const osc=s.ctx.createOscillator(),g=s.ctx.createGain();
+  osc.type='sine';osc.frequency.value=c.f;g.gain.value=c.a/sum;
+  osc.connect(g);g.connect(gate);osc.start(when);osc.stop(end+.005);
+  osc.onended=()=>{osc.disconnect();g.disconnect();if(--remain===0)gate.disconnect();};
+ }
+}
+function pump(s){
+ const now=s.ctx.currentTime;
+ // Re-anchor after a long inactive/throttled interval rather than burst old notes.
+ if(s.start+s.next*s.period<now-.12)s.next=Math.max(s.next,Math.ceil((now-s.start)/s.period));
+ while(s.start+s.next*s.period<now+.13){schedule(s,s.origin+s.next*s.dir,s.start+s.next*s.period);s.next++;}
+}
+function tick(s){
+ if(session!==s||!playing)return;
+ const x=Math.max(0,(s.ctx.currentTime-s.start)/s.period),i=Math.floor(x),p=x-i;
+ pos=s.origin+i*s.dir;travel=s.travel+i;draw(pos,p);
+ frame=requestAnimationFrame(()=>tick(s));
+}
+function setVolume(){if(session){const s=session;s.master.gain.setTargetAtTime(Number($('volume').value)/100*.22,s.ctx.currentTime,.025);}}
+async function start(){
+ if(playing||busy)return;busy=true;$('play').disabled=true;
+ let ctx;
+ try{
+  const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)throw Error('Web Audio unavailable');
+  ctx=new Audio();await ctx.resume();
+  const master=ctx.createGain();master.gain.value=Number($('volume').value)/100*.22;master.connect(ctx.destination);
+  const s={ctx,master,period:.32/Number($('speed').value),origin:pos,dir,travel,start:ctx.currentTime+.06,next:0,timer:0};
+  session=s;playing=true;$('play').textContent=t.pause;$('hint').textContent=t.hint;
+  pump(s);s.timer=setInterval(()=>pump(s),25);tick(s);
+ }catch(e){if(ctx)ctx.close().catch(()=>{});session=null;playing=false;$('hint').textContent=t.error;}
+ finally{busy=false;$('play').disabled=false;}
+}
+function stop(){
+ const s=session;if(!s)return;playing=false;session=null;
+ clearInterval(s.timer);cancelAnimationFrame(frame);
+ s.master.gain.cancelScheduledValues(s.ctx.currentTime);s.master.gain.setTargetAtTime(0,s.ctx.currentTime,.009);
+ setTimeout(()=>s.ctx.close().catch(()=>{}),55);$('play').textContent=t.play;draw(pos,0);
+}
+$('play').addEventListener('click',()=>playing?stop():start());
+$('direction').addEventListener('click',()=>{if(busy)return;const resume=playing;if(resume)stop();dir=-dir;$('direction').textContent=dir===1?t.up:t.down;draw(pos);if(resume)start();});
+$('speed').addEventListener('change',()=>{if(playing){stop();start();}});
+$('volume').addEventListener('input',setVolume);
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)stop();});
+window.addEventListener('pagehide',stop);
+draw(0);
+})();
+</script>
+</body>
+</html>

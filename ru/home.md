@@ -15,6 +15,8 @@
 
 [I love U Rubik's Cube](../cube/?lang=ru) (3D-модель)
 
+[Бесконечная лестница — лестница Пенроуза × тон Шепарда](../infinite-staircase/?lang=ru)
+
 ## Прочее
 
 [Архив](archive.md)

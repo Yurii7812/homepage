@@ -15,6 +15,8 @@ Use the language first, even if you make mistakes. An illustrated introduction t
 
 [I love U Rubik's Cube](../cube/?lang=en) (3D model)
 
+[Infinite Staircase — Penrose stairs × Shepard tone](../infinite-staircase/?lang=en)
+
 ## Other
 
 [Archive](archive.md)

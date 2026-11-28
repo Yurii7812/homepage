@@ -15,6 +15,8 @@
 
 [I love U Rubik's Cube](../cube/?lang=ja)（3D モデル）
 
+[無限階段 — ペンローズの階段 × シェパードトーン](../infinite-staircase/?lang=ja)
+
 ## その他
 
 [アーカイブ](archive.md)
