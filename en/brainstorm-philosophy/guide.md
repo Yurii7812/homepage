@@ -2,9 +2,11 @@
 
 **An attempt to go beyond a single method of thinking and to engage freely with thought, belief, and consciousness.**
 
-Brainstorming is generally known as a technique for generating ideas. I want to understand the word more broadly, however: as a philosophy of not being bound to particular ways of thinking, of attending also to belief and consciousness, and of developing a flexible relationship with the workings of the mind.
+Brainstorming is generally known as a technique in which a group meets to generate ideas. I want to understand the word more broadly. Not as following a particular procedure, but as the attitude of freely choosing and using ways of thinking itself — and further, as extending that freedom to belief, emotion, and states of consciousness. This is what I call “Brainstorm.”
 
-“Brainstorm” as described here is not a proposed new definition of an established academic term. It is a personal philosophy developed from ordinary brainstorming as its starting point. The framework of the brain and thought that serves as this starting point does not limit where the philosophy may lead.
+The sections below cover Brainstorm as a philosophy about methods (§1–4), its application to belief as Faith in Faith and Total Affirmation (§5–6), related practices and the group (§7–8), and the possibility of going beyond the framework of Brainstorm itself (§9–11).
+
+“Brainstorm” as described here does not seek to revise the definition of an existing term. It is a personal philosophy developed from ordinary brainstorming as its starting point.
 
 ## 1. Brainstorm is not a method, but a philosophy about methods
 
@@ -24,13 +26,13 @@ By freedom here I do not mean complete voluntary control over every mental state
 
 ## 2. Two meanings of Storm
 
-Storm can mean a tempest as a noun, and to rush or attack as a verb. I combine these two meanings as metaphors for Brainstorm.
+Storm can mean a tempest as a noun, and to rush or attack as a verb. Alex Osborn, who devised brainstorming, explained the word in the latter sense: using the brain to storm, or attack, a creative problem [1]. I add the sense of a tempest to this and combine the two as metaphors for Brainstorm.
 
 Like a storm, thought can move freely as established sequences and frameworks loosen. At the same time, one can have an intention to explore something and direct thought toward it.
 
 ![Two images of Storm](figures/storm.svg)
 
-*Figure 2. Free exploration and direction. This is my interpretation of the word, not a claim about its historical etymology.*
+*Figure 2. Free exploration and direction. The sense of attack follows Osborn’s explanation; overlaying the sense of a tempest is my own interpretation.*
 
 A clear conclusion or goal is not necessary at the outset. Exploration in the hope that something interesting might emerge is enough. The goal can also change along the way.
 
@@ -181,3 +183,7 @@ The philosophy of Brainstorm is not a closed system intended to lead to a partic
 ---
 
 This article reconstructs conversations about brainstorming, Faith in Faith, Total Affirmation, and Brainstorm Trance Esotericism. It distinguishes established scientific findings from original philosophical hypotheses and subjective experiences. Comparisons with chaos magic and Buddhism are conceptual and are not intended as examinations of individual primary sources.
+
+## References
+
+[1] Osborn, A. F. *Your Creative Power*. 1948, ch. 33. The relevant passage is also quoted in Buffalo State University, “[Alex Osborn Archives](https://creativity.buffalostate.edu/alex-osborn-archives)” (accessed 28 November 2026).
