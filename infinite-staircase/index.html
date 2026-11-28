@@ -15,12 +15,12 @@
 <nav><a id="home" href="../#/ja/home.md">← ホーム</a><span><a href="?lang=ja" data-lang="ja">日本語</a><a href="?lang=en" data-lang="en">English</a><a href="?lang=ru" data-lang="ru">Русский</a></span></nav>
 <header><h1 id="title">無限階段</h1><p id="subtitle">ペンローズの階段 × シェパードトーン</p></header>
 <section class="stage" aria-label="Penrose stairs">
-<svg id="scene" viewBox="0 0 680 440" role="img" aria-labelledby="scene-title">
+<svg id="scene" viewBox="0 0 680 470" role="img" aria-labelledby="scene-title">
 <title id="scene-title">ペンローズの階段を歩く人</title>
 <defs><radialGradient id="floor"><stop offset="0" stop-color="#353a32" stop-opacity=".17"/><stop offset="1" stop-color="#353a32" stop-opacity="0"/></radialGradient></defs>
-<ellipse cx="340" cy="335" rx="285" ry="87" fill="url(#floor)"/>
+<ellipse cx="340" cy="380" rx="270" ry="70" fill="url(#floor)"/>
 <g id="walls"></g><g id="stairs"></g>
-<g id="walker"><ellipse id="shadow" cx="0" cy="0" rx="10" ry="3.4" fill="#222" opacity=".23"/><g id="body" stroke="#39342f" stroke-width="3.1" fill="none"><path id="legs" d="M0 -16 L-4 -8 L-5 0 M0 -16 L4 -8 L5 0"/><path d="M-4 -31 Q0 -34 4 -31 L5 -16 Q0 -13 -5 -16Z" fill="#ae4932" stroke="#753725" stroke-width="1.2"/><path id="arms" d="M-3 -28 L-9 -21 L-5 -17 M3 -28 L8 -21 L4 -18" stroke="#ae4932" stroke-width="2.8"/><circle cx="0" cy="-38" r="5.8" fill="#d9ad87" stroke="#59463a" stroke-width="1.1"/><path d="M-5 -39 Q-4 -46 3 -43 L5 -39" fill="#39342f" stroke="none"/></g></g>
+<g id="walker" stroke-linecap="round" stroke-linejoin="round"><ellipse id="shadow" rx="13" ry="4" fill="#333" opacity=".17"/><path id="leg-back" stroke="#474b48" stroke-width="4.2" fill="none"/><path id="arm-back" stroke="#8d4434" stroke-width="3.5" fill="none"/><path id="leg-front" stroke="#333a39" stroke-width="4.4" fill="none"/><path id="shoes" stroke="#292c2b" stroke-width="3.4" fill="none"/><path id="torso" fill="#b65b42" stroke="#743e31" stroke-width="1"/><path id="arm-front" stroke="#b65b42" stroke-width="3.6" fill="none"/><circle id="head" r="6.4" fill="#d9ad87" stroke="#59463a" stroke-width=".85"/><path id="hair" fill="#39342f"/></g>
 </svg>
 <div class="status"><span><span id="step-label">段</span> <strong id="step">01 / 28</strong></span><span><span id="note-label">音</span> <strong id="note">C</strong></span><span><span id="lap-label">周回</span> <strong id="lap">0</strong></span></div>
 </section>
@@ -49,52 +49,48 @@ function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const
 const mix=(a,b,u)=>[a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u];
 const dy=(p,h)=>[p[0],p[1]+h], mid=(a,b)=>mix(a,b,.5);
 const poly=(g,pts,fill)=>el('polygon',{points:pts.map(p=>p.join(',')).join(' '),fill,stroke:'#5c6056','stroke-width':'.9','stroke-linejoin':'round'},g);
-// Forced-perspective ring: every tread has a positive rise in the walking direction.
-// The four different projected run slopes are intentional, making a closed impossible loop.
-const corners=[
-{O:[340,94],Q:[394,119],I:[340,147],Y:[286,119]},
-{O:[592,214],Q:[538,241],I:[484,214],Y:[538,187]},
-{O:[340,347],Q:[286,320],I:[340,293],Y:[394,320]},
-{O:[88,214],Q:[142,187],I:[196,214],Y:[142,241]}
-];
-const N=7,H=6,DEPTH=20,steps=[],landings=[],runs=[];
-const topColors=['#e7e5d6','#f3efde','#e9e5d4','#f2efdf'],risers=['#a4a797','#a9a694','#969b8b','#b3b29e'];
+// Four local ascending flights use consistent parallel-projection axes.
+// The shorter return flights make their positive vertical rises close in screen space.
+const N=7,H=4.2,W=23,DEPTH=16,steps=[],faces=[];
+const U=[1,.7],V=[-1,.7],neg=a=>[-a[0],-a[1]],add=(a,b)=>[a[0]+b[0],a[1]+b[1]],mul=(a,k)=>[a[0]*k,a[1]*k];
+const ds=[U,V,neg(U),neg(V)],ws=[V,U,V,U],lengths=[250,250,166,166];
+const corners=[[298,85]];
+for(let i=0;i<3;i++)corners.push(dy(add(corners[i],mul(ds[i],lengths[i])),-N*H));
+const topColors=['#ebe5d5','#e6dfcc','#f1e9d7','#f0e7d6'];
+function face(pts,color,layer=0){faces.push({pts,color,z:pts.reduce((s,p)=>s+p[1],0)/pts.length,layer});}
+function edgeWall(a,b,color){face([a,b,dy(b,DEPTH),dy(a,DEPTH)],color);}
+function section(c,w){return [add(c,mul(w,-W)),add(c,mul(w,W))];}
 for(let i=0;i<4;i++){
- const a=corners[i],b=corners[(i+1)%4],run=[];
- landings.push(mid(a.O,a.I));
+ const c=corners[i],d=ds[i],w=ws[i],L=lengths[i],prev=ds[(i+3)%4];
+ const nearU=add(c,mul(U,W)),nearV=add(c,mul(V,W));
+ const landing=[add(add(c,mul(U,-W)),mul(V,-W)),add(add(c,mul(U,W)),mul(V,-W)),add(add(c,mul(U,W)),mul(V,W)),add(add(c,mul(U,-W)),mul(V,W))];
+ face(landing,topColors[i],1);
+ for(const [axis,other,center] of [[U,V,nearU],[V,U,nearV]]){
+  const same=a=>a[0]===axis[0]&&a[1]===axis[1];
+  if(!same(d)&&!same(neg(prev)))edgeWall(add(center,mul(other,-W)),add(center,mul(other,W)),'#a7aa9b');
+ }
+ steps.push({center:c,side:i});
+ const tread=(L-2*W)/(N-1);
  for(let j=0;j<N;j++){
-  const u=j/N,v=(j+1)/N;
-  const o=mix(a.Q,b.Y,u),q=mix(a.I,b.I,u),O=mix(a.Q,b.Y,v),Q=mix(a.I,b.I,v);
-  const lo=dy(O,H),lq=dy(Q,H);
-  const center=mid(mid(o,q),mid(lo,lq));
-  run.push({o,q,O,Q,lo,lq,center});steps.push({center,side:i});
- }
- runs.push(run);
-}
-const walls=$('walls'),stairs=$('stairs');
-for(const i of [0,3,1,2]){
- const outer=i===1||i===2,run=runs[i];
- for(const s of run){
-  const a=outer?s.o:s.q,b=outer?s.lo:s.lq,c=outer?s.O:s.Q;
-  poly(walls,[a,b,c,dy(c,DEPTH),dy(a,DEPTH)],outer?'#a5a99b':'#92998c');
- }
- const c=corners[i];
- if(i===1||i===2||i===3){
-  for(const p of [c.Q,c.Y])poly(walls,[c.O,p,dy(p,DEPTH),dy(c.O,DEPTH)],'#a5a99b');
+  const boundary=add(c,mul(d,W+j*tread));
+  const lower=dy(boundary,-j*H),upper=dy(lower,-H);
+  const [al,bl]=section(lower,w),[au,bu]=section(upper,w);
+  // Riser and tread are individually shaded; nearer faces occlude farther faces.
+  face([al,bl,bu,au],d[1]<0?'#858c81':'#a6a899',0);
+  if(j===N-1)continue;
+  const finish=add(upper,mul(d,tread)),[ae,be]=section(finish,w);
+  face([au,bu,be,ae],topColors[i],1);
+  edgeWall(bu,be,i%2===0?'#a5aa9c':'#91998d');
+  steps.push({center:mid(upper,finish),side:i});
  }
 }
-for(const i of [0,3,1,2]){
- const c=corners[i];
- poly(stairs,[c.O,c.Q,c.I,c.Y],topColors[i]);
- const order=(i===0||i===1)?runs[i]:[...runs[i]].reverse();
- for(const s of order){
-  poly(stairs,[s.o,s.q,s.lq,s.lo],topColors[i]);
-  poly(stairs,[s.lo,s.lq,s.Q,s.O],risers[i]);
- }
-}
+faces.sort((a,b)=>a.z-b.z||a.layer-b.layer);
+for(const f of faces)poly($('stairs'),f.pts,f.color);
 const count=steps.length,scale=[0,2,4,5,7,9,11],names=['C','D','E','F','G','A','B'];
 const mod=(n,m)=>((n%m)+m)%m;
-const amp=x=>x<=0||x>=8?0:Math.pow(Math.sin(Math.PI*x/8),4);
+// Fixed log-frequency envelope centered around A4. Smoothly taper the end bins.
+const smooth=x=>{const u=Math.max(0,Math.min(1,x));return u*u*(3-2*u);};
+const amp=x=>x<=0||x>=8?0:Math.exp(-.5*Math.pow((x-Math.log2(440/16.3515978313))/1.18,2))*smooth(x/.85)*smooth((8-x)/.85);
 function components(n){const p=scale[mod(n,7)]/12;return Array.from({length:8},(_,k)=>({f:16.3515978313*Math.pow(2,k+p),a:amp(k+p),x:k+p}));}
 const spectrum=$('spectrum'),sx=x=>16+x*46,sy=a=>89-a*68;
 el('line',{x1:16,y1:89,x2:384,y2:89,stroke:'currentColor',opacity:'.35'},spectrum);
@@ -102,29 +98,49 @@ el('polyline',{points:Array.from({length:81},(_,i)=>sx(i/10)+','+sy(amp(i/10))).
 const bars=Array.from({length:8},()=>el('line',{stroke:'var(--accent)','stroke-width':'4','stroke-linecap':'round'},spectrum));
 function drawSpectrum(n){components(n).forEach((c,i)=>{const b=bars[i];b.setAttribute('x1',sx(c.x));b.setAttribute('x2',sx(c.x));b.setAttribute('y1',89);b.setAttribute('y2',sy(c.a));});}
 let pos=0,dir=1,travel=0,playing=false,busy=false,session=null,frame=0,lastNote=null;
-function pathAt(n,p,d){
- const a=steps[mod(n,count)],b=steps[mod(n+d,count)];
- if(a.side===b.side)return mix(a.center,b.center,p);
- const corner=landings[d===1?b.side:a.side];
- return p<.5?mix(a.center,corner,p*2):mix(corner,b.center,(p-.5)*2);
+function pathAt(n,p,d){return mix(steps[mod(n,count)].center,steps[mod(n+d,count)].center,p);}
+function footAt(n){
+ const q=steps[mod(n,count)],v=ds[q.side],k=mod(n,2)===0?1:-1;
+ return add(q.center, [k*(-v[1])*2.3,k*v[0]*2.3]);
+}
+const fmt=p=>p.map(x=>x.toFixed(2)).join(' ');
+function setPath(id,pts){$(id).setAttribute('d',pts.map((p,i)=>(i?'L':'M')+fmt(p)).join(' '));}
+function knee(hip,foot,face){
+ const delta=[foot[0]-hip[0],foot[1]-hip[1]],dist=Math.max(.1,Math.hypot(...delta));
+ const bend=Math.sqrt(Math.max(2,Math.pow(16,2)-Math.pow(dist/2,2)));
+ const normal=[delta[1]/dist*face,-delta[0]/dist*face];
+ return add(mid(hip,foot),mul(normal,bend*.78));
 }
 function draw(n,p=0){
- const q=pathAt(n,p,dir),hop=Math.sin(Math.PI*p)*2.8,sw=Math.sin(Math.PI*2*p);
- $('walker').setAttribute('transform','translate('+q[0]+' '+q[1]+')');
- $('body').setAttribute('transform','translate(0 '+(-hop)+')');
- const flip=steps[mod(n+dir,count)].center[0]>=steps[mod(n,count)].center[0]?1:-1;
- $('legs').setAttribute('d','M0 -16 L'+(-3+sw*3*flip)+' -8 L'+(-5+sw*6*flip)+' '+(-Math.max(0,sw)*3)+' M0 -16 L'+(3-sw*3*flip)+' -8 L'+(5-sw*6*flip)+' '+(-Math.max(0,-sw)*3));
- $('arms').setAttribute('d','M-3 -28 L'+(-8-sw*3*flip)+' -21 L'+(-5-sw*3*flip)+' -17 M3 -28 L'+(8+sw*3*flip)+' -21 L'+(5+sw*3*flip)+' -18');
+ const a=footAt(n-dir),stance=footAt(n),b=footAt(n+dir);
+ const u=smooth(p),swing=p<.5?mix(a,stance,smooth(p*2)):mix(stance,b,smooth(p*2-1));
+ swing[1]-=Math.sin(Math.PI*p)*9;
+ const ground=mix(mid(a,stance),mid(stance,b),u),forward=pathAt(n,1,dir),current=pathAt(n,0,dir);
+ const facing=forward[0]>=current[0]?1:-1;
+ const hip=[ground[0],ground[1]-24-Math.sin(Math.PI*p)*1.8];
+ const shoulder=[hip[0]+facing*3,hip[1]-16],head=[shoulder[0]+facing*1.4,shoulder[1]-8];
+ const feet=mod(n,2)===0?[stance,swing]:[swing,stance];
+ const order=feet[0][1]<feet[1][1]?[0,1]:[1,0];
+ $('shadow').setAttribute('cx',ground[0]);$('shadow').setAttribute('cy',ground[1]+1);
+ setPath('leg-back',[hip,knee(hip,feet[order[0]],facing),feet[order[0]]]);
+ setPath('leg-front',[hip,knee(hip,feet[order[1]],facing),feet[order[1]]]);
+ $('shoes').setAttribute('d',feet.map(f=>'M'+fmt(f)+' L'+fmt(add(f,[facing*4,0]))).join(' '));
+ $('torso').setAttribute('d','M'+fmt(add(shoulder,[-4,-2]))+' Q'+fmt(add(shoulder,[0,-5]))+' '+fmt(add(shoulder,[4,-2]))+' L'+fmt(add(hip,[4,1]))+' Q'+fmt(add(hip,[0,3]))+' '+fmt(add(hip,[-4,1]))+' Z');
+ const armPhase=Math.cos(Math.PI*p)*(mod(n,2)===0?1:-1)*facing;
+ setPath('arm-back',[add(shoulder,[-3,1]),add(shoulder,[-3+armPhase*5,9]),add(shoulder,[-2+armPhase*7,15])]);
+ setPath('arm-front',[add(shoulder,[3,1]),add(shoulder,[3-armPhase*5,9]),add(shoulder,[2-armPhase*7,15])]);
+ $('head').setAttribute('cx',head[0]);$('head').setAttribute('cy',head[1]);
+ $('hair').setAttribute('d','M'+fmt(add(head,[-6,-1]))+' Q'+fmt(add(head,[-5,-9]))+' '+fmt(add(head,[3,-6]))+' Q'+fmt(add(head,[6,-4]))+' '+fmt(add(head,[6,-1]))+' Q'+fmt(add(head,[0,-4]))+' '+fmt(add(head,[-6,-1]))+' Z');
  if(n!==lastNote){
   lastNote=n;$('step').textContent=String(mod(n,count)+1).padStart(2,'0')+' / '+count;$('note').textContent=names[mod(n,7)];$('lap').textContent=String(Math.floor(travel/count));drawSpectrum(n);
  }
 }
 function schedule(s,n,when){
  const comps=components(n),sum=comps.reduce((a,c)=>a+c.a,0);
- const gate=s.ctx.createGain(),end=when+s.period*.96;
+ const gate=s.ctx.createGain(),fade=Math.min(.055,s.period*.18),end=when+s.period+fade;
  gate.gain.setValueAtTime(0,when);
- gate.gain.linearRampToValueAtTime(1,when+Math.min(.035,s.period*.14));
- gate.gain.setValueAtTime(1,end-Math.min(.06,s.period*.2));
+ gate.gain.linearRampToValueAtTime(1,when+fade);
+ gate.gain.setValueAtTime(1,when+s.period);
  gate.gain.linearRampToValueAtTime(0,end);gate.connect(s.master);
  let remain=comps.length;
  for(const c of comps){
@@ -154,7 +170,7 @@ async function start(){
   const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)throw Error('Web Audio unavailable');
   ctx=new Audio();await ctx.resume();
   const master=ctx.createGain();master.gain.value=Number($('volume').value)/100*.22;master.connect(ctx.destination);
-  const s={ctx,master,period:.32/Number($('speed').value),origin:pos,dir,travel,start:ctx.currentTime+.06,next:0,timer:0};
+  const s={ctx,master,period:.43/Number($('speed').value),origin:pos,dir,travel,start:ctx.currentTime+.06,next:0,timer:0};
   session=s;playing=true;$('play').textContent=t.pause;$('hint').textContent=t.hint;
   pump(s);s.timer=setInterval(()=>pump(s),25);tick(s);
  }catch(e){if(ctx)ctx.close().catch(()=>{});session=null;playing=false;$('hint').textContent=t.error;}
