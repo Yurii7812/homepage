@@ -22,6 +22,37 @@
 
 ここでいう自在とは、あらゆる精神状態を意志で完全に制御できるという意味ではない。制御しようとすることも、手放すことも、必要に応じて選べるようにするという方向性である。
 
+### 集団に限定されたブレスト観
+
+日本語の辞書では、ブレインストーミングを集団で行う発想法として説明するものが多い。[デジタル大辞泉](https://kotobank.jp/word/ぶれーんすとーみんぐ-3168207)は「米国で開発された集団的思考の技術」、精選版 日本国語大辞典は「創造的集団思考法」と説明している。
+
+一方、英語の辞書には、個人で行うブレインストーミングも含めて定義しているものがある。[Merriam-Webster](https://www.merriam-webster.com/dictionary/brainstorming)では、集団による発想法に加えて、次の意味が記載されている。
+
+> the mulling over of ideas by one or more individuals in an attempt to devise or find a solution to a problem
+
+（一人または複数の人が、問題の解決策を考案・発見するためにアイデアを考えること。筆者訳）
+
+また、[Dictionary.com](https://www.dictionary.com/browse/brainstorming)では「usually performed through group participation」（通常は集団で行われる）と説明されている。集団で行うことは一般的な形式であって、必須条件とはされていない。
+
+2026年11月28日に、オンラインで確認できる日本語による辞書・事典と英語による辞書を各9件比較した結果は、次のとおりである。
+
+| 定義・説明の形式 | 日本語（9件） | 英語（9件） |
+| --- | ---: | ---: |
+| 集団で行うものとして説明 | 9件（100%） | 4件（44.4%） |
+| 通常は集団とするが限定しない | 0件 | 2件（22.2%） |
+| 個人で行えることを明記 | 0件 | 2件（22.2%） |
+| 人数を明記せず討議として説明 | 0件 | 1件（11.1%） |
+
+調査対象は、次のとおりである。日本語側は[コトバンク収録の6辞典・事典](https://kotobank.jp/word/ぶれーんすとーみんぐ-3168207)（デジタル大辞泉、精選版 日本国語大辞典、日本大百科全書、ブリタニカ国際大百科事典、流通用語辞典、百科事典マイペディア）、[e-Words](https://e-words.jp/w/ブレインストーミング.html)、[日本語版ウィクショナリー](https://ja.wiktionary.org/wiki/ブレインストーミング)、[英辞郎](https://eow.alc.co.jp/search?q=brainstorming)。英語側は、集団型の[Oxford Advanced Learner's Dictionary](https://www.oxfordlearnersdictionaries.com/definition/english/brainstorming)、[Cambridge Advanced Learner's Dictionary](https://dictionary.cambridge.org/dictionary/english/brainstorming)、[Webster's New World College Dictionary](https://www.collinsdictionary.com/dictionary/english/brainstorming)、[英語版Wiktionary](https://en.wiktionary.org/wiki/brainstorming)、「通常は集団」とするDictionary.comと[APA Dictionary of Psychology](https://dictionary.apa.org/brainstorming)、個人を明記するMerriam-Websterと[American Heritage Dictionary](https://www.ahdictionary.com/word/search.html?q=brainstorming)、人数を明記しない[Collins English Dictionary](https://www.dictionary.com/browse/brainstorming)である。
+
+この集計は無作為抽出ではなく、確認できた見出し語の説明を辞書・事典の収録元ごとに分類したものである。集団型の説明は、個人による実践を明示的に否定しているという意味ではない。また、辞書の記述だけから日本社会全体の認識を断定することはできない。しかし、この比較の範囲では、日本語による説明が集団で行う形式に偏っていることがわかる。
+
+私が問題にしたいのは、集団で行うブレインストーミングそのものではなく、それだけがブレストであると考え、個人での実践や他の可能性を排除する認識である。古典的なブレインストーミングを集団的な技法として説明することと、その形式にあらゆるブレストを限定することは別である。
+
+自由な発想を重視するはずのブレストについて、既存の定義に囚われ、それ以外の可能性を認めないというのは、私の考えるブレストの精神とは矛盾している。そうした凝り固まった姿勢は、たとえブレインストーミングの形式を守っていたとしても、ブレスト的とはいえない。
+
+**ブレストについてもブレストする。ブレストそのものの定義にさえ囚われないことが、ブレストという思想の一部である。**
+
 ## 2. Stormに込める二つの意味
 
 stormには、名詞としての「嵐」と、動詞としての「攻めかかる」という意味がある。私はこの二つを、ブレストの比喩として重ねて考える。
