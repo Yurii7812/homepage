@@ -24,28 +24,39 @@
 
 ### 集団に限定されたブレスト観
 
-日本語の辞書では、ブレインストーミングを集団で行う発想法として説明するものが多い。[デジタル大辞泉](https://kotobank.jp/word/ぶれーんすとーみんぐ-3168207)は「米国で開発された集団的思考の技術」、精選版 日本国語大辞典は「創造的集団思考法」と説明している。
+日本語の辞書には、ブレインストーミングを集団で行う発想法として説明するものが多い。デジタル大辞泉は「米国で開発された集団的思考の技術」[1]、精選版 日本国語大辞典は「創造的集団思考法」[2] と説明している。
 
-一方、英語の辞書には、個人で行うブレインストーミングも含めて定義しているものがある。[Merriam-Webster](https://www.merriam-webster.com/dictionary/brainstorming)では、集団による発想法に加えて、次の意味が記載されている。
+一方、英語の辞書には、個人で行うブレインストーミングも含めて定義しているものがある。Merriam-Websterでは、集団による発想法に加えて、次の意味が記載されている。
 
-> the mulling over of ideas by one or more individuals in an attempt to devise or find a solution to a problem
+> the mulling over of ideas by one or more individuals in an attempt to devise or find a solution to a problem [24]
 
-（一人または複数の人が、問題の解決策を考案・発見するためにアイデアを考えること。筆者訳）
+（一人または複数の人が、問題の解決策を考案・発見するためにアイデアを考えること。）
 
-また、[Dictionary.com](https://www.dictionary.com/browse/brainstorming)では「usually performed through group participation」（通常は集団で行われる）と説明されている。集団で行うことは一般的な形式であって、必須条件とはされていない。
+また、Dictionary.comでは「usually performed through group participation」[26]（通常は集団で行われる）と説明されている。集団で行うことは一般的な形式であって、必須条件とはされていない。American Heritage Dictionaryも個人が多数の解決策を生み出す過程を別の語義として挙げている [25]。
 
-2026年11月28日に、オンラインで確認できる日本語による辞書・事典と英語による辞書を各9件比較した結果は、次のとおりである。
+#### 日英の辞書・用語集における定義の比較
 
-| 定義・説明の形式 | 日本語（9件） | 英語（9件） |
+2026年11月28日に、オンラインで確認できる日本語・英語の辞書、百科事典、専門用語集におけるブレインストーミングの説明を比較した。調査対象は日本語15件 [1–15]、英語19件 [16–34]、計34件である。
+
+| 定義・説明の形式 | 日本語（15件） | 英語（19件） |
 | --- | ---: | ---: |
-| 集団で行うものとして説明 | 9件（100%） | 4件（44.4%） |
-| 通常は集団とするが限定しない | 0件 | 2件（22.2%） |
-| 個人で行えることを明記 | 0件 | 2件（22.2%） |
-| 人数を明記せず討議として説明 | 0件 | 1件（11.1%） |
+| A：集団を前提として説明（個人への言及なし） | 14件（93.3%） | 10件（52.6%） |
+| B：通常は集団と説明（集団に限定しない） | 0件（0.0%） | 2件（10.5%） |
+| C：個人での実践を明記 | 1件（6.7%） | 4件（21.1%） |
+| D：人数を明示しない | 0件（0.0%） | 3件（15.8%） |
 
-調査対象は、次のとおりである。日本語側は[コトバンク収録の6辞典・事典](https://kotobank.jp/word/ぶれーんすとーみんぐ-3168207)（デジタル大辞泉、精選版 日本国語大辞典、日本大百科全書、ブリタニカ国際大百科事典、流通用語辞典、百科事典マイペディア）、[e-Words](https://e-words.jp/w/ブレインストーミング.html)、[日本語版ウィクショナリー](https://ja.wiktionary.org/wiki/ブレインストーミング)、[英辞郎](https://eow.alc.co.jp/search?q=brainstorming)。英語側は、集団型の[Oxford Advanced Learner's Dictionary](https://www.oxfordlearnersdictionaries.com/definition/english/brainstorming)、[Cambridge Advanced Learner's Dictionary](https://dictionary.cambridge.org/dictionary/english/brainstorming)、[Webster's New World College Dictionary](https://www.collinsdictionary.com/dictionary/english/brainstorming)、[英語版Wiktionary](https://en.wiktionary.org/wiki/brainstorming)、「通常は集団」とするDictionary.comと[APA Dictionary of Psychology](https://dictionary.apa.org/brainstorming)、個人を明記するMerriam-Websterと[American Heritage Dictionary](https://www.ahdictionary.com/word/search.html?q=brainstorming)、人数を明記しない[Collins English Dictionary](https://www.dictionary.com/browse/brainstorming)である。
+資料の種類による偏りも考慮し、一般辞書・百科事典と専門辞書・用語集に分けると、集団を前提とするAの割合は次のようになる。
 
-この集計は無作為抽出ではなく、確認できた見出し語の説明を辞書・事典の収録元ごとに分類したものである。集団型の説明は、個人による実践を明示的に否定しているという意味ではない。また、辞書の記述だけから日本社会全体の認識を断定することはできない。しかし、この比較の範囲では、日本語による説明が集団で行う形式に偏っていることがわかる。
+| 資料の種類 | 日本語 | 英語 |
+| --- | ---: | ---: |
+| 一般辞書・百科事典 | 6/6件（100.0%） | 6/10件（60.0%） |
+| 専門辞書・用語集 | 8/9件（88.9%） | 4/9件（44.4%） |
+
+集計では、同じ辞書の転載やURL違いを重複して数えず、一つの辞書・事典・用語集の見出し語を1件とした。同一サイトに掲載される異なる辞書は別々に集計したが、同一出版社の辞書間の独立性は保証されない。見出し語に複数の定義がある場合や詳細解説で個人による実践に言及している場合は、個人を明記するCを優先した。Aは集団で行う形式を中心に説明しているという意味で、個人による実践を明示的に否定しているという意味ではない。Dは人数を明示しない説明（討議や発想・執筆の技法としての説明を含む）であり、個人を明示的に認めるCとは区別した。各資料の分類と出典は末尾の参考文献に示す。
+
+日本語でも個人での実践を認める例は存在する。日本ノハム協会のSDGs用語集には「ブレイン ストーミングは個人で行うことも可能」[15] と明記されている。
+
+この調査は無作為抽出ではなく、オンラインで確認できた資料に基づく探索的な比較である。Weblioなど、本文を確認できなかった辞書は含めていない。辞書の記述のみから日本社会全体の認識を断定することはできないが、この範囲では日本語の説明は英語の説明よりも集団的な形式に偏っていた。
 
 私が問題にしたいのは、集団で行うブレインストーミングそのものではなく、それだけがブレストであると考え、個人での実践や他の可能性を排除する認識である。古典的なブレインストーミングを集団的な技法として説明することと、その形式にあらゆるブレストを限定することは別である。
 
@@ -212,3 +223,80 @@ stormには、名詞としての「嵐」と、動詞としての「攻めかか
 ---
 
 本稿は、ブレインストーミング、信仰の信仰、全肯定、ブレストトランス密教についての対話を再構成したものである。確立した科学的知見と独自の哲学的仮説・主観的体験は区別している。カオスマジックや仏教との比較は概念的なものであり、個別の原典の検証を目的とした記事ではない。
+
+## 参考文献
+
+辞書・事典・用語集の閲覧日：2026年11月28日。各項目末尾の「一般／専門」は資料の種類、A–Dは本文の分類を示す。
+
+### 日本語の資料
+
+[1] デジタル大辞泉「[ブレーンストーミング](https://kotobank.jp/word/ぶれーんすとーみんぐ-3168207)」。（一般・A）
+
+[2] 精選版 日本国語大辞典「[ブレーンストーミング](https://kotobank.jp/word/ぶれーんすとーみんぐ-3168207)」。（一般・A）
+
+[3] 日本大百科全書（ニッポニカ）「[ブレーン・ストーミング](https://kotobank.jp/word/ぶれーんすとーみんぐ-3168207)」。（一般・A）
+
+[4] ブリタニカ国際大百科事典 小項目事典「[ブレーンストーミング](https://kotobank.jp/word/ぶれーんすとーみんぐ-3168207)」。（一般・A）
+
+[5] 流通用語辞典「[ブレーン・ストーミング](https://kotobank.jp/word/ぶれーんすとーみんぐ-3168207)」。（専門・A）
+
+[6] 百科事典マイペディア「[ブレーンストーミング](https://kotobank.jp/word/ぶれーんすとーみんぐ-3168207)」。（一般・A）
+
+[7] ウィクショナリー日本語版「[ブレインストーミング](https://ja.wiktionary.org/wiki/ブレインストーミング)」。（一般・A）
+
+[8] IT用語辞典 e-Words「[ブレインストーミング](https://e-words.jp/w/ブレインストーミング.html)」。（専門・A）
+
+[9] 三菱総合研究所 人材戦略コンパス「[ブレインストーミング](https://hr-compass.mri.co.jp/glossary/brainstorming-session/)」。（専門・A）
+
+[10] セゾンパーソナルプラス 人材育成用語集「[ブレーンストーミング](https://corporate.saison-psp.co.jp/hrd/glossary/human_resources_training/gl263/)」。（専門・A）
+
+[11] デジタルラーニング・コンソーシアム 用語集「[ブレーンストーミング](https://www.elc.or.jp/keyword/detail/id%3D146)」。（専門・A）
+
+[12] NTT東日本 BizDrive 用語辞典「[ブレインストーミング](https://business.ntt-east.co.jp/content/bizdrive/word/brainstorming.html)」。（専門・A）
+
+[13] 最新ビジネス用語辞典「[は行（ブレインストーミング）](https://www.bpb-jp.com/words/900/960/)」。（専門・A）
+
+[14] サーブコープ ワークスペース用語集「[ブレスト（ブレインストーミング）](https://www.servcorp.co.jp/ja/workspace-glossary/brainstorming/)」。（専門・A）
+
+[15] 日本ノハム協会 SDGs用語集「[ブレイン ストーミング](https://noharm.or.jp/news/glossary/ブレイン-ストーミング/)」。（専門・C）
+
+
+### 英語の資料
+
+[16] Oxford Advanced Learner’s Dictionary「[brainstorming](https://www.oxfordlearnersdictionaries.com/us/definition/english/brainstorming)」。（一般・A）
+
+[17] Cambridge Advanced Learner’s Dictionary & Thesaurus「[brainstorming](https://dictionary.cambridge.org/us/dictionary/english/brainstorming)」。（一般・A）
+
+[18] Cambridge Business English Dictionary「[brainstorming](https://dictionary.cambridge.org/us/dictionary/english/brainstorming)」。（専門・A）
+
+[19] Webster’s New World College Dictionary「[brainstorming](https://www.collinsdictionary.com/dictionary/english/brainstorming)」。（一般・A）
+
+[20] Random House（Collins掲載の米語辞典）「[brainstorming](https://www.collinsdictionary.com/dictionary/english/brainstorming)」。（一般・A）
+
+[21] Wiktionary（英語版）「[brainstorming](https://en.wiktionary.org/wiki/brainstorming)」。（一般・A）
+
+[22] Vocabulary.com Dictionary「[brainstorming](https://www.vocabulary.com/dictionary/brainstorming)」。（一般・A）
+
+[23] Collins English Dictionary「[brainstorming](https://www.dictionary.com/browse/brainstorming)」。（一般・D）
+
+[24] Merriam-Webster「[brainstorming](https://www.merriam-webster.com/dictionary/brainstorming)」。（一般・C）
+
+[25] American Heritage Dictionary「[brainstorming](https://www.ahdictionary.com/word/search.html?q=brainstorming)」。（一般・C）
+
+[26] Dictionary.com（米語の定義）「[brainstorming](https://www.dictionary.com/browse/brainstorming)」。（一般・B）
+
+[27] APA Dictionary of Psychology「[brainstorming](https://dictionary.apa.org/brainstorming)」。（専門・B）
+
+[28] Monash Business School Marketing Dictionary「[Brainstorming](https://www.monash.edu/business/marketing/marketing-dictionary/b/brainstorming)」。（専門・A）
+
+[29] American Society for Quality（ASQ）Quality Glossary「[Brainstorming（詳細解説を含む）](https://asq.org/quality-resources/brainstorming)」。（専門・C）
+
+[30] Princeton University User Experience Office Glossary「[Brainstorming](https://ux.princeton.edu/learn-ux/glossary2)」。（専門・C）
+
+[31] U.S. Department of Education, LINCS Glossary「[brainstorming](https://www.lincs.ed.gov/federal-initiatives/teal/guide/glossary)」。（専門・A）
+
+[32] Kent State University, Lean Terminology「[Brainstorming](https://www.kent.edu/lean/lean-terminology)」。（専門・A）
+
+[33] University of Maryland Global Campus, Writing Center Glossary「[brainstorming](https://www.umgc.edu/current-students/learning-resources/writing-center/online-guide-to-writing/tutorial/glossary/gloss)」。（専門・D）
+
+[34] University of Kansas, Speak Out, Call In: Glossary of Terms「[Brainstorming](https://opentext.ku.edu/speakoutcallin2/back-matter/glossary/)」。（専門・D）
