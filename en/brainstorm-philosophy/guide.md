@@ -12,7 +12,7 @@ The article has four parts. Part 1 starts from the common understanding of the w
 
 ### 1.1 The word brainstorming
 
-#### Two meanings of Storm
+#### 1.1.1 Two meanings of Storm
 
 Storm can mean a tempest as a noun, and to rush or attack as a verb. Alex Osborn, who devised brainstorming, explained the word in the latter sense: using the brain to storm, or attack, a creative problem [1]. I add the sense of a tempest to this and combine the two as metaphors for Brainstorm.
 
@@ -86,7 +86,7 @@ Faith in Faith is a meta-belief that takes not only individual beliefs as its ob
 
 **The flexibility of Faith in Faith lies not only in being able to choose beliefs freely, but also in not needing to be bound by Faith in Faith itself.**
 
-#### The self-containedness of Faith in Faith
+#### 2.1.1 The self-containedness of Faith in Faith
 
 Faith in Faith is also a self-contained belief. Because the belief that everything is faith includes itself as a belief, it does not need to posit a further absolute premise outside faith in order to locate itself. In that sense, Faith in Faith is complete within itself. Nor does it need to posit ever-higher beliefs in order to regard itself as a belief.
 
@@ -122,7 +122,7 @@ However, whether this self-referential structure actually strengthens conviction
 
 Brainstorm, Faith in Faith, and Total Affirmation share a structure: none of them places itself outside the domain to which it applies. I first look at each individually and then summarize what they have in common.
 
-#### Brainstorming about Brainstorm
+#### 2.3.1 Brainstorming about Brainstorm
 
 **Brainstorm about Brainstorm, too. Not being bound even by the definition of Brainstorm is part of the philosophy of Brainstorm.**
 
@@ -130,19 +130,19 @@ If the objects of Brainstorm are not limited, Brainstorm itself is included amon
 
 By becoming one object of thought among others, Brainstorm itself is relativized. The philosophy of Brainstorm can be reconsidered, changed, and even relinquished.
 
-#### The self-reference of Faith in Faith
+#### 2.3.2 The self-reference of Faith in Faith
 
 The word “everything” in the proposition “everything is faith” includes that proposition itself. Thus the understanding that everything is faith is itself a belief. Faith in Faith is not merely a position from which other beliefs are observed externally; it is a self-referential belief that includes itself within the same domain.
 
 This self-reference does not negate the proposition that everything is faith. Rather, it applies the same perspective to the proposition itself. There is consequently no need to exempt oneself and occupy an absolute position outside faith. It is a meta-belief about faith, and at the same time that meta-position itself is relativized.
 
-#### The self-reference of Total Affirmation
+#### 2.3.3 The self-reference of Total Affirmation
 
 Total Affirmation is itself an object of affirmation. Through self-inclusion, Total Affirmation, which stood on the side of affirming, is also placed on the side of the affirmed. Here there is self-objectification and, through it, self-relativization. In taking the practice of affirming itself as an object of affirmation, Total Affirmation is also a meta-practice.
 
 Likewise, self and other, the affirming and the affirmed, Total Affirmation and non-Total Affirmation (the negation of Total Affirmation, or an attitude that does not adopt it) all stand on the same level as objects of affirmation. Total Affirmation does not treat itself as special. This does not mean that the distinction between subject and object necessarily disappears; it means relativizing the privilege attached to that distinction.
 
-#### The shared structure
+#### 2.3.4 The shared structure
 
 **Self-inclusion → self-objectification → self-relativization**
 
