@@ -68,7 +68,7 @@ Example: [Brainstorm-based language learning](../brainstorm-language-learning/gu
 
 ## 2. From methods to belief
 
-### 2.1 From thinking methods to beliefs — Faith in Faith
+### 2.1 Faith in Faith
 
 The idea of freely choosing thinking methods can be extended to beliefs and worldviews.
 
