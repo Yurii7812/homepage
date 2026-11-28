@@ -130,7 +130,7 @@ This is a conceptual comparison, not evidence of magical efficacy or a rigorous 
 
 ## 8. Relationship to Brainstorm Trance Esotericism
 
-Brainstorm is the name of the philosophy, while Brainstorm Trance Esotericism is conceived as the name of a group that foregrounds distinctive practices within that philosophy.
+Brainstorm is the name of the philosophy, while Brainstorm Trance Esotericism is conceived as the name of a group that foregrounds distinctive practices within that philosophy. Just as the Zen school takes Zen (meditation) as its practice and bears it in its name, Brainstorm Trance Esotericism takes Brainstorm as its practice.
 
 Trance here refers to an altered state of consciousness. Drawing on personal experiences of deep absorption or ecstasy during Brainstorm, I also make the relationship between thought and states of consciousness a subject of inquiry.
 
