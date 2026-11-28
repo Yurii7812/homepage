@@ -4,27 +4,13 @@
 
 Brainstorming is generally known as a technique in which a group meets to generate ideas. I want to understand the word more broadly. Not as following a particular procedure, but as the attitude of freely choosing and using ways of thinking itself — and further, as extending that freedom to belief, emotion, and states of consciousness. This is what I call “Brainstorm.”
 
-The sections below cover Brainstorm as a philosophy about methods (§1–4), its application to belief as Faith in Faith and Total Affirmation (§5–6), related practices and the group (§7–8), and the possibility of going beyond the framework of Brainstorm itself (§9–11).
+Starting from the word itself (§1), the sections below cover Brainstorm as a philosophy about methods (§2–3), its application to belief as Faith in Faith and Total Affirmation, together with the structure they share (§4–6), related practices and the group (§7–8), and the possibility of going beyond the framework of Brainstorm itself (§9–10).
 
 “Brainstorm” as described here does not seek to revise the definition of an existing term. It is a personal philosophy developed from ordinary brainstorming as its starting point.
 
-## 1. Brainstorm is not a method, but a philosophy about methods
+## 1. The word brainstorming
 
-Ordinary brainstorming emphasizes generating many ideas while withholding criticism. In my conception of Brainstorm, however, following a particular procedure is not an end in itself.
-
-Consider rubber duck debugging: putting your thoughts into words as if explaining them to someone makes ambiguities and contradictions apparent. This is not classical brainstorming itself, but it is one of the methods one can freely choose within the philosophy of Brainstorm.
-
-The idea of freely choosing methods need not be limited to thinking techniques. Beliefs, emotions, attention, and states of consciousness also fall within its scope.
-
-![The scope of Brainstorm](figures/scope.svg)
-
-*Figure 1. From an idea-generation technique to a philosophy concerning the workings of the mind as a whole.*
-
-> Brainstorm is a philosophy and practice that aims to engage freely with thought, belief, emotion, states of consciousness, and other aspects of the mind without being rigidly bound to them.
-
-By freedom here I do not mean complete voluntary control over every mental state. Rather, the aim is to be able to choose, as appropriate, whether to seek control or to let go.
-
-## 2. Two meanings of Storm
+### Two meanings of Storm
 
 Storm can mean a tempest as a noun, and to rush or attack as a verb. Alex Osborn, who devised brainstorming, explained the word in the latter sense: using the brain to storm, or attack, a creative problem [1]. I add the sense of a tempest to this and combine the two as metaphors for Brainstorm.
 
@@ -32,23 +18,37 @@ Like a storm, thought can move freely as established sequences and frameworks lo
 
 ![Two images of Storm](figures/storm.svg)
 
-*Figure 2. Free exploration and direction. The sense of attack follows Osborn’s explanation; overlaying the sense of a tempest is my own interpretation.*
+*Figure 1. Free exploration and direction. The sense of attack follows Osborn’s explanation; overlaying the sense of a tempest is my own interpretation.*
 
 A clear conclusion or goal is not necessary at the outset. Exploration in the hope that something interesting might emerge is enough. The goal can also change along the way.
 
-## 3. Using diverse methods freely
+## 2. Not a method, but a philosophy about methods
 
-Brainstorm does not mean using many methods at once. What matters is not the number of methods but freedom from attachment to them.
+Ordinary brainstorming emphasizes generating many ideas while withholding criticism. In my conception of Brainstorm, however, following a particular procedure is not an end in itself.
+
+Consider rubber duck debugging: putting your thoughts into words as if explaining them to someone makes ambiguities and contradictions apparent. Random input uses an unrelated word or object as a trigger for association. Webbing is a kind of diagram that spreads related ideas outward from a central theme like a web. Even simply writing one’s thoughts out as a clean draft of ordinary prose can be a practice, since ideas become organized and new insights arise in the course of writing.
+
+These are not classical brainstorming itself, but they are methods one can freely choose within the philosophy of Brainstorm. And they are only a few examples. Writing on paper, thinking silently, having conversations, and reading can all be practices.
 
 ![Relationships among thinking techniques](figures/methods.svg)
 
-*Figure 3. Each technique can be selected within the philosophy of Brainstorm.*
+*Figure 2. Each technique can be selected within the philosophy of Brainstorm. Those shown are only examples.*
 
-Writing on paper, thinking silently, and having conversations can all be practices. Rubber duck debugging may help on one occasion; diagrams or random input may help on another. Which method is suitable depends on the purpose and circumstances.
+Brainstorm does not mean using many methods at once. What matters is not the number of methods but freedom from attachment to them. Which method is suitable depends on the purpose and circumstances.
 
-The distinction between simply thinking and practising Brainstorm is not determined solely by the outward appearance of the activity. It lies in the attitude one takes toward one's own way of thinking.
+The distinction between simply thinking and practising Brainstorm is not determined solely by the outward appearance of the activity. It lies in the attitude one takes toward one’s own way of thinking.
 
-## 4. Generating imperfect material
+The idea of freely choosing methods need not be limited to thinking techniques. Beliefs, emotions, attention, and states of consciousness also fall within its scope.
+
+![The scope of Brainstorm](figures/scope.svg)
+
+*Figure 3. From an idea-generation technique to a philosophy concerning the workings of the mind as a whole.*
+
+> Brainstorm is a philosophy and practice that aims to engage freely with thought, belief, emotion, states of consciousness, and other aspects of the mind without being rigidly bound to them.
+
+By freedom here I do not mean complete voluntary control over every mental state. Rather, the aim is to be able to choose, as appropriate, whether to seek control or to let go.
+
+## 3. Generating imperfect material
 
 The classical brainstorming principle of deferred judgment can also be applied to Brainstorm in its broader sense.
 
@@ -64,7 +64,7 @@ This does not mean treating mistakes as truths. It means **not making correctnes
 
 Example: [Brainstorm-based language learning](../brainstorm-language-learning/guide.md).
 
-## 5. From thinking methods to beliefs — Faith in Faith
+## 4. From thinking methods to beliefs — Faith in Faith
 
 The idea of freely choosing thinking methods can be extended to beliefs and worldviews.
 
@@ -78,7 +78,17 @@ This does not mean believing in nothing. It resembles an empty vessel in that it
 
 “Faith” here is my own broad term encompassing not only religious faith but also assumptions and perspectives through which we understand the world. It does not mean that scientific evidence and unsupported assertions are equally reliable.
 
-## 6. A precursor to faith and Total Affirmation
+Faith in Faith is a meta-belief that takes not only individual beliefs as its object but also itself as a belief (this structure is discussed in §6). Faith in Faith itself is therefore not made absolute. Adopting it, not adopting it, and returning to it are all possibilities.
+
+**The flexibility of Faith in Faith lies not only in being able to choose beliefs freely, but also in not needing to be bound by Faith in Faith itself.**
+
+### The self-containedness of Faith in Faith
+
+Faith in Faith is also a self-contained belief. Because the belief that everything is faith includes itself as a belief, it does not need to posit a further absolute premise outside faith in order to locate itself. In that sense, Faith in Faith is complete within itself. Nor does it need to posit ever-higher beliefs in order to regard itself as a belief.
+
+This self-containedness does not mean that the truth of the belief is proved by self-reference, nor that it is a closed system excluding other beliefs. Precisely because it too is relativized as one belief, one can move from it to other beliefs.
+
+## 5. A precursor to faith and Total Affirmation
 
 Faith in Faith is better understood as a “precursor” from which one can move into various beliefs, rather than as a necessary premise common to all belief systems.
 
@@ -98,21 +108,49 @@ Total Affirmation is the practice of accepting the possibility of all perspectiv
 
 Total Affirmation does not require continually adopting all beliefs at once. Precisely because various beliefs can be affirmed, it becomes possible to select a particular belief or to relinquish it.
 
-Faith in Faith is necessarily a meta-belief by virtue of its structure. The belief that everything is faith takes not only individual beliefs as its object but also itself as a belief. This self-referential structure prevents Faith in Faith itself from being made absolute. Adopting it, not adopting it, and returning to it are all possibilities.
-
-**The flexibility of Faith in Faith lies not only in being able to choose beliefs freely, but also in not needing to be bound by Faith in Faith itself.**
-
-### The self-referential nature of Faith in Faith
-
-The word “everything” in the proposition “everything is faith” includes that proposition itself. Thus the understanding that everything is faith is itself a belief. Faith in Faith is not merely a position from which other beliefs are observed externally; it is a self-referential belief that includes itself within the same domain.
-
-This self-reference does not negate the proposition that everything is faith. Rather, it applies the same perspective to the proposition itself. There is consequently no need to exempt oneself and occupy an absolute position outside faith.
-
 Total Affirmation opens up the possibility of various beliefs, among which one can choose. Faith in Faith itself, which makes this choice possible, is also among the objects of choice. It contains the possibility of relinquishing itself.
 
 This is openness as a structural property; it does not guarantee that those who believe in it will actually remain flexible at all times.
 
 However, whether this self-referential structure actually strengthens conviction, or whether one can return from any belief, remains untested. The question of how to create an occasion for returning also remains. Total Affirmation is distinct from simultaneously accepting contradictory propositions as facts or condoning harmful conduct.
+
+## 6. Self-inclusion as a shared structure
+
+Brainstorm, Faith in Faith, and Total Affirmation share a structure: none of them places itself outside the domain to which it applies. I first look at each individually and then summarize what they have in common.
+
+### Brainstorming about Brainstorm
+
+**Brainstorm about Brainstorm, too. Not being bound even by the definition of Brainstorm is part of the philosophy of Brainstorm.**
+
+If the objects of Brainstorm are not limited, Brainstorm itself is included among them. This is self-reference through self-inclusion. If we call brainstorming about Brainstorm “the Brainstorm of Brainstorm,” it is a meta-practice that takes the method of thinking itself as an object of thought.
+
+By becoming one object of thought among others, Brainstorm itself is relativized. The philosophy of Brainstorm can be reconsidered, changed, and even relinquished.
+
+### The self-reference of Faith in Faith
+
+The word “everything” in the proposition “everything is faith” includes that proposition itself. Thus the understanding that everything is faith is itself a belief. Faith in Faith is not merely a position from which other beliefs are observed externally; it is a self-referential belief that includes itself within the same domain.
+
+This self-reference does not negate the proposition that everything is faith. Rather, it applies the same perspective to the proposition itself. There is consequently no need to exempt oneself and occupy an absolute position outside faith. It is a meta-belief about faith, and at the same time that meta-position itself is relativized.
+
+### The self-reference of Total Affirmation
+
+Total Affirmation is itself an object of affirmation. Through self-inclusion, Total Affirmation, which stood on the side of affirming, is also placed on the side of the affirmed. Here there is self-objectification and, through it, self-relativization. In taking the practice of affirming itself as an object of affirmation, Total Affirmation is also a meta-practice.
+
+Likewise, self and other, the affirming and the affirmed, Total Affirmation and non-Total Affirmation (the negation of Total Affirmation, or an attitude that does not adopt it) all stand on the same level as objects of affirmation. Total Affirmation does not treat itself as special. This does not mean that the distinction between subject and object necessarily disappears; it means relativizing the privilege attached to that distinction.
+
+### The shared structure
+
+**Self-inclusion → self-objectification → self-relativization**
+
+| Concept | Self-inclusion / self-reference | Self-relativization |
+| --- | --- | --- |
+| Brainstorm of Brainstorm | Takes Brainstorm itself as an object of Brainstorm | Brainstorm becomes an object of thought on a par with other philosophies and methods |
+| Faith in Faith | Includes Faith in Faith itself as one belief | Faith in Faith stands on a par with other beliefs |
+| Total Affirmation | Takes Total Affirmation itself as an object of affirmation | Total Affirmation and non-Total Affirmation are equally objects of affirmation |
+
+All three are meta in that they objectify themselves through self-inclusion. The Brainstorm of Brainstorm takes Brainstorm itself as an object of thought; Faith in Faith regards Faith in Faith itself as one belief; Total Affirmation takes Total Affirmation itself as an object of affirmation. They act not only on objects but also on their own activity and framework.
+
+Although what each does differs, the mechanism of objectifying and relativizing oneself through self-inclusion is shared. Being meta and being placed on a par with other things as an object are compatible. Being on a par concerns position as an object; it does not mean that content or value become equal.
 
 ## 7. Similarities to and differences from chaos magic
 
@@ -156,6 +194,14 @@ Beyond the question of whether the brain exists, one can conceive of a way of be
 
 **Brainstorm is a starting point, not a limit on what can be reached.** One can begin with Brainstorm and go beyond Brainstorm itself.
 
+The philosophy of Brainstorm itself can be engaged with freely. One may adopt Brainstorm without having to insist on being a practitioner of Brainstorm.
+
+Even Faith in Faith need not be fixed as the final answer. Beyond it there may be ways of being that I cannot yet imagine.
+
+> Brainstorm is an entry point into practice. There is no need for the name Brainstorm to limit how far one can proceed from that entrance.
+
+The philosophy of Brainstorm is not a closed system intended to lead to a particular conclusion. I want it to be an open philosophy that includes the possibility of going beyond Brainstorm itself.
+
 ## 10. Freedom within the world and freedom beyond it
 
 I want to call the freedom to think, choose, and practise various things within the world “freedom of engagement” (jizai). Here there are distinctions: an acting subject, an object upon which one acts, and something to choose.
@@ -167,18 +213,6 @@ One can also conceive of freedom in which such distinctions themselves disappear
 *Figure 10. Freedom within the world and freedom not confined even to the distinction implied by free engagement. This is my own conception.*
 
 Neither need be fixed as the ultimate state. Practising within the world or moving away from it need not be predetermined by a single conclusion.
-
-## 11. Not being bound even by Brainstorm itself
-
-The philosophy of Brainstorm begins with freely using various thinking methods and extends that freedom to beliefs and states of consciousness.
-
-Within Faith in Faith, the philosophy of Brainstorm itself can be engaged with freely. One may adopt Brainstorm without having to insist on being a practitioner of Brainstorm.
-
-Even Faith in Faith need not be fixed as the final answer. Beyond it there may be ways of being that I cannot yet imagine.
-
-> Brainstorm is an entry point into practice. There is no need for the name Brainstorm to limit how far one can proceed from that entrance.
-
-The philosophy of Brainstorm is not a closed system intended to lead to a particular conclusion. I want it to be an open philosophy that includes the possibility of going beyond Brainstorm itself.
 
 ---
 
