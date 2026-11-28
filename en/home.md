@@ -17,6 +17,8 @@ Use the language first, even if you make mistakes. An illustrated introduction t
 
 [Infinite Staircase — Penrose stairs × Shepard tone](../infinite-staircase/?lang=en)
 
+[Crab Canon — Möbius Strip](../crab-canon/?lang=en)
+
 ## Other
 
 [Archive](archive.md)

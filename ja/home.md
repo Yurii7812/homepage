@@ -17,6 +17,8 @@
 
 [無限階段 — ペンローズの階段 × シェパードトーン](../infinite-staircase/?lang=ja)
 
+[蟹のカノン — メビウスの帯](../crab-canon/?lang=ja)
+
 ## その他
 
 [アーカイブ](archive.md)
